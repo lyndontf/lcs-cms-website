@@ -9,6 +9,8 @@ const DOMAIN_TO_SITE: Record<string, string> = {
   'www.glchire.com': 'glc-hire',
   'agency.genesiscare.com.my': 'glc-hire',
   'www.agency.genesiscare.com.my': 'glc-hire',
+  'genesiscare.com.my': 'centre',
+  'www.genesiscare.com.my': 'centre',
   'projectdeo.com.my': 'project-deo',
   'www.projectdeo.com.my': 'project-deo',
 };
