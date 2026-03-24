@@ -327,7 +327,7 @@ export default function DementiaCareKlangZh() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {centreData.facilityImages?.map((img, i) => (
               <div key={i} className="rounded-xl overflow-hidden shadow-sm border border-gray-100 h-64">
-                <img src={img} alt={`设施 ${i + 1}`} className="w-full h-full object-cover" />
+                <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
               </div>
             )) || null}
           </div>
@@ -345,7 +345,7 @@ export default function DementiaCareKlangZh() {
           <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {centreData.testimonials?.map((t, i) => (
               <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                <p className="font-bold text-gray-900 text-sm mb-2">{t.author}</p>
+                <p className="font-bold text-gray-900 text-sm mb-2">{t.name}</p>
                 <p className="text-sm text-gray-600 leading-relaxed">{t.text}</p>
               </div>
             )) || null}

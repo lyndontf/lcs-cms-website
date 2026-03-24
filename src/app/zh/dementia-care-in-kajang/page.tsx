@@ -353,7 +353,7 @@ export default function DementiaCareKajangZh() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {centreData.facilityImages?.map((img, i) => (
               <div key={i} className="rounded-xl overflow-hidden shadow-sm border border-gray-100 h-64">
-                <img src={img} alt={`设施 ${i + 1}`} className="w-full h-full object-cover" />
+                <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
               </div>
             )) || null}
           </div>
@@ -373,7 +373,7 @@ export default function DementiaCareKajangZh() {
               <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
                 <div className="flex items-start gap-3 mb-3">
                   <div className="flex-1">
-                    <p className="font-bold text-gray-900 text-sm">{t.author}</p>
+                    <p className="font-bold text-gray-900 text-sm">{t.name}</p>
                     <div className="flex gap-0.5 mt-1">
                       {[...Array(5)].map((_, j) => (
                         <svg key={j} className={`w-3.5 h-3.5 ${j < Math.floor(parseFloat(centre.rating)) ? 'text-gold' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
