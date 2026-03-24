@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply text-gray-800 antialiased;
+  }
+}
+
+@layer components {
+  .prose a {
+    @apply text-primary hover:text-primary-600 underline;
+  }
+  .prose strong {
+    @apply text-gray-900;
+  }
+}
+
