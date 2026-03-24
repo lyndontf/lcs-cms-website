@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: '加影老人院 - Genesis Life Care Kajang',
   description:
-    'Family-friendly old folks home 在加影 with 24/7 nursing care, nutritious meals, dementia care & rehabilitation. Serving southern Klang Valley. Affordable rates. Rated 4.7\u2605.',
+    'Genesis Life Care 加影老人院 — 全天候24小时专业护理、营养膳食、失智症护理和康复服务。服务巴生谷南部地区。收费合理透明。谷歌评分4.7\u2605。',
 };
 
 export const revalidate = 60;
@@ -28,7 +28,7 @@ const centre = {
 };
 
 const highlights = [
-  { label: '服务年限', value: '4+', sub: 'Since 2021' },
+  { label: '服务年限', value: '4+', sub: '自2021年' },
   { label: '居民容量', value: '120+', sub: '舒适的床位' },
   { label: '谷歌评分', value: '4.7 \u2605', sub: '32 条评价' },
   { label: '收费合理', value: '\u2713', sub: '所有中心' },
@@ -38,7 +38,7 @@ const highlights = [
 const dailyLife = [
   {
     title: '个性化日常计划',
-    desc: 'Every resident follows a tailored schedule designed around their preferences, abilities, and medical needs \u2014 from wake-up to bedtime.',
+    desc: '每位住客都遵循个性化的日程安排，围绕其偏好、能力和医疗需求量身定制 — 从起床到就寝。',
     icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
   },
   {
@@ -82,30 +82,30 @@ const checklist = [
   { title: '清洁卫生', desc: '我们遵守严格的卫生标准，定期深度清洁、感染控制协议和设施维护良好。' },
   { title: '膳食质量与选择', desc: '新鲜制备的营养膳食、医疗条件的膳食调整和多样菜单。' },
   { title: '探访政策', desc: '我们鼓励家属参与，灵活的探访时间和舒适的空间可供共同享受高质量的时间。' },
-  { title: '位置与便利性', desc: 'Our Kajang centre is easily accessible via SILK Highway, PLUS Highway, and Kajang MRT station, with ample parking for visitors.' },
+  { title: '位置与便利性', desc: '我们的加影中心交通便利，可通过SILK高速公路、PLUS高速公路和加影捷运站轻松抵达，访客停车位充足。' },
   { title: '可用的专科护理', desc: '除了基本护理，我们提供失智症计划、中风康复、临终关怀和术后康复。' },
 ];
 
 const faqs = [
   {
-    q: 'How much does an old folks home cost 在加影?',
-    a: 'Costs at Genesis Life Care Kajang vary depending on the level of care required and room type. We offer competitive rates starting from around RM 2,500 per month for basic care. Contact us for a personalised quote based on your loved one\'s needs.',
+    q: '加影老人院的费用是多少？',
+    a: 'Genesis Life Care加影的费用取决于所需的护理级别和房间类型。我们提供具有竞争力的费率，基本护理每月约RM 2,500起。请联系我们，根据您亲人的需求获取个性化报价。',
   },
   {
-    q: '老人院和护理院有什么区别?',
-    a: 'In Malaysia, "old folks home" and "nursing home" are often used interchangeably. At Genesis Life Care, we provide professional nursing care alongside a warm, home-like environment \u2014 combining the best of both. Our residents receive 24/7 medical support while enjoying daily activities and social engagement.',
+    q: '老人院和护理院有什么区别？',
+    a: '在马来西亚，"老人院"和"护理院"经常互换使用。在Genesis Life Care，我们提供专业的护理服务以及温馨如家的环境 — 两者兼备。我们的住客享有全天候医疗支持，同时参与日常活动和社交互动。',
   },
   {
-    q: 'Is Genesis Life Care Kajang affordable?',
+    q: 'Genesis Life Care加影的费用合理吗？',
     a: '是的。我们在所有中心提供具有竞争力和透明的费率。我们的团队与每个家族合作，推荐适合其需求和预算的护理计划。联系我们获取个性化报价。',
   },
   {
-    q: 'Can my parent bring personal belongings?',
-    a: 'Absolutely. We encourage residents to bring personal items such as photos, favourite blankets, and small familiar objects. Having familiar belongings helps residents feel more at home and can be particularly beneficial for those with memory conditions.',
+    q: '我的父母可以带个人物品吗？',
+    a: '当然可以。我们鼓励住客携带个人物品，如照片、喜欢的毯子和熟悉的小物件。拥有熟悉的物品有助于住客感到更有家的感觉，对记忆障碍患者尤其有益。',
   },
   {
-    q: 'What are visiting hours at the Kajang old folks home?',
-    a: 'We maintain flexible visiting hours to encourage family involvement. General visiting hours are from 10am to 6pm daily. Special arrangements can be made for families who need to visit outside these hours \u2014 just speak with our care team.',
+    q: '加影老人院的探访时间是什么？',
+    a: '我们保持灵活的探访时间，鼓励家属参与。一般探访时间为每天上午10点至下午6点。如需在其他时间探访，可与我们的护理团队协商安排。',
   },
 ];
 
@@ -142,7 +142,7 @@ export default function OldFolksHomeZh() {
             '@type': 'LocalBusiness',
             '@id': 'https://genesiscare.com.my/zh/old-folks-home-in-kajang',
             name: centre.fullName,
-            description: 'Family-friendly old folks home 在加影 with 24/7 nursing care, nutritious meals, dementia care and rehabilitation.',
+            description: 'Genesis Life Care 加影老人院 — 全天候24小时专业护理、营养膳食、失智症护理和康复服务。',
             url: 'https://genesiscare.com.my/zh/old-folks-home-in-kajang',
             telephone: centre.phone,
             address: {
@@ -192,17 +192,17 @@ export default function OldFolksHomeZh() {
             <div>
               <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6">
                 <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
-                <span className="text-gold text-xs font-semibold tracking-wide uppercase">Rated {centre.rating} ★ on Google</span>
+                <span className="text-gold text-xs font-semibold tracking-wide uppercase">谷歌评分 {centre.rating} ★</span>
               </div>
 
-              <p className="text-sm font-bold uppercase tracking-widest text-white/70 mb-3" style={{ color: 'rgba(255,255,255,0.7)' }}>Old Folks Home in {centre.name}</p>
+              <p className="text-sm font-bold uppercase tracking-widest text-white/70 mb-3" style={{ color: 'rgba(255,255,255,0.7)' }}>加影老人院</p>
               <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6" style={{ color: 'white' }}>
-                Best Old Folks Home<br className="hidden sm:block" /> in {centre.name}
+                加影最佳<br className="hidden sm:block" />老人护理中心
               </h1>
               <p className="text-lg text-white/90 max-w-xl mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.9)' }}>
-                A warm, family-friendly environment where your loved ones receive professional care with dignity and
-                compassion. Our Kajang centre features 24/7 nursing care, an in-house kitchen, dementia care,
-                and rehabilitation facilities serving the southern Klang Valley.
+                温馨如家的环境，让您的挚爱家人在这里获得有尊严和关爱的专业护理。
+                我们的加影中心提供全天候24小时护理、自家厨房烹饪的营养膳食、失智症护理
+                和康复设施，服务巴生谷南部地区。
               </p>
 
               <div className="flex flex-col sm:flex-row items-start gap-4">
@@ -225,7 +225,7 @@ export default function OldFolksHomeZh() {
 
             <div className="hidden lg:block">
               <div className="relative">
-                <img src={centre.heroImg} alt={`${centre.fullName} — old folks home 在加影`} className="rounded-2xl shadow-2xl w-full object-cover" style={{ maxHeight: '420px' }} />
+                <img src={centre.heroImg} alt={`${centre.fullName} — 加影老人院`} className="rounded-2xl shadow-2xl w-full object-cover" style={{ maxHeight: '420px' }} />
                 <div className="absolute -bottom-4 -right-4 bg-white rounded-xl shadow-lg p-4 flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                     <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
@@ -261,31 +261,29 @@ export default function OldFolksHomeZh() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Why Kajang</p>
+              <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">为何选择加影</p>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">
-                Why Choose Our 加影老人院?
+                为什么选择我们的加影老人院？
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  Finding the right old folks home for your loved one is one of the most important decisions a family
-                  can make. Located in the heart of southern Klang Valley, Kajang is a growing family-friendly area,
-                  and our centre in Taman Kajang Baru along Jalan Bukit sits in a quiet residential neighbourhood
-                  — perfect for elderly care.
+                  为您的挚爱家人选择合适的老人院是一个家庭最重要的决定之一。位于巴生谷南部中心地带，
+                  加影是一个适合家庭生活且不断发展的地区。我们位于Taman Kajang Baru Jalan Bukit的中心
+                  坐落在安静的住宅区内 — 是老年护理的理想之地。
                 </p>
                 <p>
-                  Our Kajang old folks home is situated near Hospital Kajang, making it easy for families to manage
-                  medical appointments. The centre is accessible from SILK Highway, PLUS Highway, and Kajang MRT
-                  station, ensuring stress-free family visits from Kajang, Bangi, Semenyih, and surrounding areas.
+                  我们的加影老人院毗邻加影医院，方便家属管理医疗预约。中心可通过SILK高速公路、
+                  PLUS高速公路和加影捷运站轻松抵达，确保来自加影、万宜、士毛月及周边地区的家属
+                  无忧探访。
                 </p>
                 <p>
-                  What sets our Kajang old folks home apart is the strong emphasis on quality in-house dining and
-                  personalised care, reflecting the needs of the local Kajang community. Combined with round-the-clock nursing care,
-                  dementia programmes, rehabilitation services, and a warm home-like atmosphere, we provide
-                  comprehensive elderly care that families can trust.
+                  我们的加影老人院与众不同之处在于高度重视优质的自家膳食和个性化护理，
+                  反映了加影社区的需求。结合全天候护理、失智症计划、康复服务和温馨如家的氛围，
+                  我们提供家属可以信赖的全面老年护理。
                 </p>
               </div>
               <div className="flex flex-wrap gap-2 mt-6">
-                {['Southern Klang Valley', 'Near Hospital Kajang', '优质餐饮', 'SILK Highway Access', 'MRT Accessible'].map((t) => (
+                {['巴生谷南部', '毗邻加影医院', '优质餐饮', 'SILK高速公路', '捷运站可达'].map((t) => (
                   <span key={t} className="bg-primary-50 text-primary-700 text-xs font-semibold px-3 py-1.5 rounded-full">{t}</span>
                 ))}
               </div>
@@ -293,7 +291,7 @@ export default function OldFolksHomeZh() {
             <div>
               <img
                 src="/images/services/common-area-scenic.jpg"
-                alt="Common area at our old folks home 在加影"
+                alt="加影老人院公共区域"
                 className="rounded-2xl shadow-lg w-full object-cover"
                 style={{ maxHeight: '400px' }}
               />
@@ -306,10 +304,10 @@ export default function OldFolksHomeZh() {
       <section className="py-16 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Life at Our Home</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">What Daily Life Looks Like</h2>
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">院内生活</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">日常生活是怎样的</h2>
             <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-              Every day at our old folks home is designed to be comfortable, meaningful, and safe. Here is what your loved one can expect.
+              我们老人院的每一天都旨在让住客感到舒适、有意义和安全。以下是您的家人可以期待的日常生活。
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -330,10 +328,10 @@ export default function OldFolksHomeZh() {
       <section className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Our Care Services</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">Specialist Care Under One Roof</h2>
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">我们的护理服务</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">一站式专科护理</h2>
             <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-              Beyond everyday care, our old folks home 在加影 offers a full range of specialist services.
+              除了日常护理，我们的加影老人院还提供全方位的专科服务。
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -357,12 +355,12 @@ export default function OldFolksHomeZh() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Helpful Guide</p>
+              <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">实用指南</p>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">
-                How to Choose the Right Old Folks Home
+                如何选择合适的老人院
               </h2>
               <p className="text-gray-600 leading-relaxed mb-8">
-                Choosing an old folks home is a big decision. Here is a simple checklist of what to look for — and how Genesis Life Care measures up.
+                选择老人院是一个重大决定。以下是需要关注的简单清单 — 以及Genesis Life Care如何达标。
               </p>
             </div>
             <div className="space-y-4">
@@ -388,16 +386,16 @@ export default function OldFolksHomeZh() {
       <section className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Getting Started</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">Simple Admission Process</h2>
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">入住流程</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">简单的入住流程</h2>
             <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-              Moving into our old folks home is straightforward. We guide you every step of the way.
+              入住我们的老人院流程简单明了。我们全程指导您的每一步。
             </p>
           </div>
           <div className="grid sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {[
               { step: '1', title: '联系我们', desc: '致电我们或填写在线表格。我们的护理顾问将回答您的问题并安排方便的访问时间。' },
-              { step: '2', title: '免费评估与参观', desc: '访问我们的 Kajang centre, meet the care team, and we will assess your loved one\'s needs at no charge.' },
+              { step: '2', title: '免费评估与参观', desc: '参观我们的加影中心，与护理团队见面，我们将免费评估您亲人的需求。' },
               { step: '3', title: '搬入', desc: '一旦您准备好，我们将准备个性化护理计划并帮助您的亲人舒适地安顿在新家中。' },
             ].map((s) => (
               <div key={s.step} className="text-center">
@@ -411,7 +409,7 @@ export default function OldFolksHomeZh() {
           </div>
           <div className="text-center mt-10">
             <Link href="/zh/contact" className="whitespace-nowrap inline-flex items-center gap-2 bg-primary hover:bg-primary-700 text-white font-bold px-6 py-3.5 rounded-full transition shadow-lg">
-              Schedule a Visit
+              预约参观
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </Link>
           </div>
@@ -422,8 +420,8 @@ export default function OldFolksHomeZh() {
       <section className="py-16 sm:py-20 bg-[#f4f8fb]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Common Questions</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">Frequently Asked Questions</h2>
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">常见问题</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">常见问题解答</h2>
           </div>
           <div className="space-y-6">
             {faqs.map((faq, i) => (
@@ -440,26 +438,26 @@ export default function OldFolksHomeZh() {
       <section className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">More Locations</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">Visit Our Other Old Folks Homes</h2>
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">更多分院</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">参观我们的其他老人院</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {otherHomes.map((home) => (
-              <Link key={home.slug} href={`/${home.slug}`} className="group bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-all">
+              <Link key={home.slug} href={`/zh/${home.slug}`} className="group bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-all">
                 <div className="aspect-[4/3] overflow-hidden">
-                  <img src={home.img} alt={`Old folks home in ${home.name}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src={home.img} alt={`${home.name}老人院`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <div className="p-4">
                   <span className="inline-block bg-primary-50 text-primary text-xs font-semibold px-2 py-0.5 rounded-full mb-2">{home.tag}</span>
-                  <h3 className="text-base font-bold text-gray-900 group-hover:text-primary transition-colors">Old Folks Home in {home.name}</h3>
-                  <span className="text-sm text-gray-500">Rated {home.rating} ★</span>
+                  <h3 className="text-base font-bold text-gray-900 group-hover:text-primary transition-colors">{home.name}老人院</h3>
+                  <span className="text-sm text-gray-500">评分 {home.rating} ★</span>
                 </div>
               </Link>
             ))}
           </div>
           <div className="text-center mt-8">
-            <Link href={centre.nursingHomeSlug} className="text-primary font-semibold text-sm hover:underline">
-              View full centre details for {centre.name} →
+            <Link href={`/zh${centre.nursingHomeSlug}`} className="text-primary font-semibold text-sm hover:underline">
+              查看{centre.name}中心完整详情 →
             </Link>
           </div>
         </div>
@@ -473,18 +471,17 @@ export default function OldFolksHomeZh() {
         />
         <div className="relative max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4" style={{ color: 'white' }}>
-            Visit Our Old Folks Home in {centre.name}
+            参观我们的{centre.name}老人院
           </h2>
           <p className="text-lg text-white/90 mb-8 max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.9)' }}>
-            Schedule a free walkthrough of our Kajang centre. Meet the team, see the facilities, and find out
-            if we are the right home for your loved one. No obligations.
+            预约免费参观我们的加影中心。与团队见面，参观设施，了解我们是否是您亲人的理想之家。无任何义务。
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/zh/contact"
               className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl"
             >
-              Schedule a Visit
+              预约参观
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </Link>
             <a
