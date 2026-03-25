@@ -847,7 +847,7 @@ export default async function HomePage() {
               </div>
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { value: '200+', label: 'Helpers Placed' },
+                  { value: 'GLC', label: 'Facility Trained' },
                   { value: 'JTKSM', label: 'Licensed' },
                   { value: '5★', label: 'Satisfaction' },
                 ].map((s, i) => (
