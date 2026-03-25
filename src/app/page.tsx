@@ -677,7 +677,7 @@ export default async function HomePage() {
             <div className="relative">
               <div className="bg-gradient-to-br from-primary-800 via-primary to-secondary rounded-2xl overflow-hidden aspect-[4/3] relative">
                 <img
-                  src="/images/general/common-area.jpg"
+                  src="/images/general/common-area-graded.png"
                   alt="Genesis Life Care centre using AI-powered monitoring technology"
                   className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-40"
                 />
