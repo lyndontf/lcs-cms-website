@@ -130,6 +130,7 @@ const otherCentres = [
 export default async function NursingHomeKajangZh() {
   const siteId = await getCurrentSiteId();
   const recentPosts = await getPublishedPosts(siteId || undefined);
+
   return (
     <main className="bg-white">
       {/* Override global custom_css !important rules for dark-bg sections */}

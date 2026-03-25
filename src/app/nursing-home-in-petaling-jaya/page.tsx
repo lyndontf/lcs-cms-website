@@ -3,6 +3,11 @@ import Link from 'next/link';
 import GlcHireSection from '@/components/sections/GlcHireSection';
 import FaqSection from '@/components/sections/FaqSection';
 import FinalCtaSection from '@/components/sections/FinalCtaSection';
+import { getCurrentSiteId } from '@/lib/site-context';
+import { getPublishedPosts } from '@/lib/supabase';
+import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
+import WhyChooseUsSection from '@/components/sections/WhyChooseUsSection';
+import LatestNewsSection from '@/components/sections/LatestNewsSection';
 
 export const metadata: Metadata = {
   title: 'Nursing Home in Petaling Jaya — Genesis Life Care PJ | 24/7 Elderly Care',
@@ -140,7 +145,9 @@ const otherCentres = [
 
 /* ─── Page component ─────────────────────────────────────────────────── */
 
-export default function NursingHomePJ() {
+export default async function NursingHomePJ() {
+  const siteId = await getCurrentSiteId();
+  const recentPosts = await getPublishedPosts(siteId || undefined);
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'MedicalBusiness',
@@ -501,6 +508,9 @@ export default function NursingHomePJ() {
         </div>
       </section>
 
+      <CostCalculatorSection />
+      <WhyChooseUsSection />
+
       {/* ── LOCATION & CONTACT ────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -663,6 +673,8 @@ export default function NursingHomePJ() {
 
       {/* ── GLC HIRE SECTION ──────────────────────────────────────────── */}
       <GlcHireSection />
+
+      <LatestNewsSection posts={recentPosts} />
 
       {/* ── FAQ SECTION ────────────────────────────────────────────────── */}
       <FaqSection

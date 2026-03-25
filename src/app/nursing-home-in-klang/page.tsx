@@ -1,5 +1,13 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { getCurrentSiteId } from '@/lib/site-context';
+import { getPublishedPosts } from '@/lib/supabase';
+import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
+import WhyChooseUsSection from '@/components/sections/WhyChooseUsSection';
+import GlcHireSection from '@/components/sections/GlcHireSection';
+import LatestNewsSection from '@/components/sections/LatestNewsSection';
+import FaqSection from '@/components/sections/FaqSection';
+import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Nursing Home in Klang — Genesis Life Care Klang | 24/7 Elderly Care',
@@ -143,7 +151,9 @@ const otherCentres = [
 
 /* ─── Page component ─────────────────────────────────────────────────── */
 
-export default function NursingHomeKlang() {
+export default async function NursingHomeKlang() {
+  const siteId = await getCurrentSiteId();
+  const recentPosts = await getPublishedPosts(siteId || undefined);
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'MedicalBusiness',
@@ -517,6 +527,9 @@ export default function NursingHomeKlang() {
         </div>
       </section>
 
+      <CostCalculatorSection />
+      <WhyChooseUsSection />
+
       {/* ── LOCATION & CONTACT ────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -682,46 +695,19 @@ export default function NursingHomeKlang() {
         </div>
       </section>
 
-      {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-            backgroundSize: '28px 28px',
-          }}
-        />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            Ready to Visit Our Klang Centre?
-          </h2>
-          <p className="text-lg text-white mb-8 max-w-2xl mx-auto" style={{color: 'white'}}>
-            Book a free tour of our Klang facility. See our care spaces,
-            meet the team, and learn about our programmes — no obligations.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap"
-            >
-              Book a Free Tour
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <a
-              href={`tel:${centre.phone.replace(/\s/g, '')}`}
-              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              Call {centre.phoneCTA}
-            </a>
-          </div>
-        </div>
-      </section>
+      <GlcHireSection />
+      <LatestNewsSection posts={recentPosts} />
+      <FaqSection
+        faqs={[
+          { q: 'How much does nursing home care cost in Klang?', a: 'Genesis Life Care Klang offers affordable nursing home packages starting from RM 2,500 per month. Rates vary by room type and level of care required. All pricing is transparent with no hidden charges.' },
+          { q: 'What types of care does the Klang centre provide?', a: 'We provide 24/7 nursing home care, dementia and memory care, stroke rehabilitation, post-operative recovery, palliative care, and short-term respite care. Each resident receives a personalised care plan.' },
+          { q: 'Is Genesis Life Care Klang government-approved?', a: 'Yes, our Klang centre is registered and approved by JKM (Jabatan Kebajikan Masyarakat) and holds AgeCope certification meeting international aged care standards.' },
+          { q: 'Can I visit the Klang centre before deciding?', a: 'Absolutely. Book a free tour and consultation. Our care advisors will walk you through the facilities and help you find the right solution for your loved one.' },
+          { q: 'Where is Genesis Life Care Klang located?', a: 'We are located at No.3, Jalan Istana, Amverton Business Centre, 41000 Klang, Selangor. Easily accessible from major highways.' },
+        ]}
+        label="KLANG CENTRE"
+      />
+      <FinalCtaSection phone="+6012-321-0457" />
     </main>
     </>
   );
