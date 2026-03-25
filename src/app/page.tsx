@@ -962,18 +962,9 @@ export default async function HomePage() {
                   </details>
                 ))}
               </div>
-            </div>
 
-            {/* Right — Image + CTA card */}
-            <div className="flex flex-col gap-6 lg:sticky lg:top-24">
-              <div className="rounded-2xl overflow-hidden">
-                <img
-                  src="/images/general/comprehensive-care-2.png"
-                  alt="Professional caregiver assisting elderly resident at Genesis Life Care"
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-              <div className="bg-primary-50 rounded-2xl p-6 border border-primary/10">
+              {/* Still have questions? CTA */}
+              <div className="bg-primary-50 rounded-2xl p-6 border border-primary/10 mt-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Still have questions?</h3>
                 <p className="text-sm text-gray-500 mb-4">Our care advisors are happy to help. Speak to us directly or schedule a free visit to any of our centres.</p>
                 <div className="flex flex-col sm:flex-row gap-3">
@@ -991,6 +982,17 @@ export default async function HomePage() {
                     Book a Free Visit
                   </Link>
                 </div>
+              </div>
+            </div>
+
+            {/* Right — Image */}
+            <div className="lg:sticky lg:top-24">
+              <div className="rounded-2xl overflow-hidden">
+                <img
+                  src="/images/general/comprehensive-care-2.png"
+                  alt="Professional caregiver assisting elderly resident at Genesis Life Care"
+                  className="w-full h-auto object-cover"
+                />
               </div>
             </div>
           </div>
