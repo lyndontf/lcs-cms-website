@@ -1,6 +1,6 @@
 import { getCurrentSiteSlug, getCurrentSiteId } from '@/lib/site-context';
 import { getPageBySlug } from '@/lib/supabase';
-import ContactFormClient from '../ContactFormClient';
+import ContactFormClient from '../../contact/ContactFormClient';
 
 export const revalidate = 60;
 

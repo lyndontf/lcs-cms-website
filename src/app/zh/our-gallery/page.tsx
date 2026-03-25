@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import GalleryClient from '../GalleryClient';
+import GalleryClient from '../../our-gallery/GalleryClient';
 
 export const metadata: Metadata = {
   title: '我们的图库 - Genesis Life Care护理之家的照片',
