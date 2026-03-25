@@ -368,7 +368,7 @@ export default function OldFolksHomeZh() {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">
               How to Choose the Right Old Folks Home
             </h2>
-            <p className="text-gray-600 leading-relaxed mb-8 text-center max-w-3xl mx-auto">ax-w-2xl">
+            <p className="text-gray-600 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
               Choosing an old folks home is a big decision. Here is a simple checklist of what to look for — and how Genesis Life Care measures up.
             </p>
           </div>
