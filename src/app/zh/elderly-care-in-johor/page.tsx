@@ -21,8 +21,8 @@ const nearestCentre = {
   name: '柔佛新山',
   fullName: 'Genesis Life Care 柔佛新山',
   slug: 'nursing-home-in-johor-bahru',
-  phone: '+6012 321 0457',
-  phoneCTA: '+6012-321-0457',
+  phone: '+6019 282 0457',
+  phoneCTA: '+6019-282-0457',
   address: '81100 柔佛新山，德萨泰布镇，Taman Desa Tebrau，Jalan Harmonium 23/10，No. 41，柔佛州',
   rating: '4.8',
   reviews: 40,
@@ -107,7 +107,7 @@ const jsonLd = {
       name: 'Genesis Life Care Johor Bahru',
       description: 'Genesis Life Care 柔佛新山提供专业的老年护理和养老服务。',
       url: 'https://genesiscare.com.my/zh/elderly-care-in-johor',
-      telephone: '+60123210457',
+      telephone: '+6019-282-0457',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'No. 41, Jalan Harmonium 23/10, Taman Desa Tebrau',
@@ -471,7 +471,7 @@ export default function ElderlyCareZhJohor() {
                   </svg>
                 </Link>
                 <a
-                  href="https://wa.me/60123210457"
+                  href="https://wa.me/60192820457"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-600 transition-colors text-sm"

@@ -14,8 +14,8 @@ export const revalidate = 60;
 const centre = {
   name: 'Johor Bahru',
   fullName: 'Genesis Life Care Johor Bahru',
-  phone: '+6012 321 0457',
-  phoneCTA: '+6012-321-0457',
+  phone: '+6019 282 0457',
+  phoneCTA: '+6019-282-0457',
   address: 'Holiday Plaza, Jalan Dato Sulaiman, 80250 Johor Bahru, Johor',
   rating: '4.8',
   reviews: 24,

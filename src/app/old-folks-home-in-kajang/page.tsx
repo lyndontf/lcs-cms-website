@@ -14,8 +14,8 @@ export const revalidate = 60;
 const centre = {
   name: 'Kajang',
   fullName: 'Genesis Life Care Kajang',
-  phone: '+6012 321 0457',
-  phoneCTA: '+6012-321-0457',
+  phone: '+6019 334 0457',
+  phoneCTA: '+6019-334-0457',
   address: 'Jalan Bukit, Taman Kajang Baru, 43000 Kajang, Selangor',
   rating: '4.7',
   reviews: 32,

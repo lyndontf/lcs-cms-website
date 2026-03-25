@@ -116,7 +116,7 @@ const jsonLd = {
       name: 'Genesis Life Care Klang',
       description: 'Professional elderly care and nursing home near Shah Alam, Klang.',
       url: 'https://genesiscare.com.my/elderly-care-in-shah-alam',
-      telephone: '+60123210457',
+      telephone: '+6012-321-0457',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'No.3, Jalan Istana, Amverton Business Centre',

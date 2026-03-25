@@ -14,8 +14,8 @@ export const revalidate = 60;
 const centre = {
   name: 'Puchong',
   fullName: 'Genesis Life Care Puchong',
-  phone: '+6012 321 0457',
-  phoneCTA: '+6012-321-0457',
+  phone: '+6019 759 0457',
+  phoneCTA: '+6019-759-0457',
   address: 'Bandar Puteri, 47100 Puchong, Selangor',
   rating: '4.8',
   reviews: 38,
@@ -545,7 +545,7 @@ export default function NursingHomePuchongZh() {
                   </svg>
                 </Link>
                 <a
-                  href={`https://wa.me/60123210457`}
+                  href={`https://wa.me/60197590457`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-600 transition-colors text-sm"

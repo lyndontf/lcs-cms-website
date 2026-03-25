@@ -27,8 +27,8 @@ export const revalidate = 60;
 const centre = {
   name: 'Johor Bahru',
   fullName: 'Genesis Life Care Johor Bahru',
-  phone: '+6012 321 0457',
-  phoneCTA: '+6012-321-0457',
+  phone: '+6019 282 0457',
+  phoneCTA: '+6019-282-0457',
   address: 'Holiday Plaza, Jalan Dato Sulaiman, 80250 Johor Bahru, Johor',
   rating: '4.8',
   reviews: 24,
@@ -144,7 +144,7 @@ export default function NursingHomeJB() {
     name: 'Genesis Life Care Johor Bahru',
     description: 'Premier nursing home in JB at Holiday Plaza offering 24/7 nursing care, dementia care, stroke rehabilitation & dedicated kitchen. Rated 4.8★ on Google.',
     url: 'https://genesiscare.com.my/nursing-home-in-johor-bahru',
-    telephone: '+6012-321-0457',
+    telephone: '+6019-282-0457',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Holiday Plaza, Jalan Dato Sulaiman',
@@ -609,7 +609,7 @@ export default function NursingHomeJB() {
                   </svg>
                 </Link>
                 <a
-                  href={`https://wa.me/60123210457`}
+                  href={`https://wa.me/60192820457`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-600 transition-colors text-sm"

@@ -149,7 +149,7 @@ const jsonLd = {
       name: 'Genesis Life Care Klang',
       description: 'Professional stroke rehabilitation centre in Klang offering physiotherapy, occupational therapy, and speech therapy for stroke recovery.',
       url: 'https://genesiscare.com.my/stroke-rehabilitation-in-klang',
-      telephone: '+60123210457',
+      telephone: '+6012-321-0457',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'No.3, Jalan Istana, Amverton Business Centre',

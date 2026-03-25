@@ -74,8 +74,8 @@ const selangorCentres = [
   },
 ];
 
-const phone = '+6012 321 0457';
-const phoneCTA = '+6012-321-0457';
+const phone = '+6019 295 0457';
+const phoneCTA = '+6019-295-0457';
 
 const centre = centres['johor-bahru'];
 const otherCentres = getOtherCentres(centre.name);
@@ -138,7 +138,7 @@ const faqs = [
   },
   {
     q: 'Can I visit a Genesis Life Care centre before making a decision?',
-    a: 'Absolutely. We encourage families to book a free tour at any of our four Selangor centres. You can see the living spaces, meet the care team, and ask questions — with no obligations. Call us at +6012-321-0457 to arrange a visit.',
+    a: 'Absolutely. We encourage families to book a free tour at any of our four Selangor centres. You can see the living spaces, meet the care team, and ask questions — with no obligations. Call us at +6019-295-0457 to arrange a visit.',
   },
   {
     q: 'What areas in Selangor does Genesis Life Care serve?',
@@ -156,7 +156,7 @@ const jsonLd = {
       name: 'Genesis Life Care Selangor',
       description: 'Professional elderly care and nursing homes across Selangor, Malaysia.',
       url: 'https://genesiscare.com.my/elderly-care-in-selangor',
-      telephone: '+60123210457',
+      telephone: '+6019-295-0457',
       areaServed: { '@type': 'State', name: 'Selangor' },
       location: selangorCentres.map((c) => ({
         '@type': 'Place',

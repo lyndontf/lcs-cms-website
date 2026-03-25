@@ -14,8 +14,8 @@ export const revalidate = 60;
 const centre = {
   name: '新山',
   fullName: 'Genesis Life Care 新山',
-  phone: '+6012 321 0457',
-  phoneCTA: '+6012-321-0457',
+  phone: '+6019 282 0457',
+  phoneCTA: '+6019-282-0457',
   address: 'Holiday Plaza, Jalan Dato Sulaiman, 80250 Johor Bahru, Johor',
   rating: '4.8',
   reviews: 24,
@@ -543,7 +543,7 @@ export default function NursingHomeJBZh() {
                   </svg>
                 </Link>
                 <a
-                  href={`https://wa.me/60123210457`}
+                  href={`https://wa.me/60192820457`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-600 transition-colors text-sm"

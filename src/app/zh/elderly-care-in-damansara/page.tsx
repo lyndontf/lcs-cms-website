@@ -21,8 +21,8 @@ const nearestCentre = {
   name: '八打灵再也',
   fullName: 'Genesis Life Care 八打灵再也',
   slug: 'nursing-home-in-petaling-jaya',
-  phone: '+6012 321 0457',
-  phoneCTA: '+6012-321-0457',
+  phone: '+6019 295 0457',
+  phoneCTA: '+6019-295-0457',
   address: '47810 八打灵再也，古达曼莎拉Dataran Sunway，Jalan PJU 5/9，No. 33-1，雪兰莪州',
   rating: '4.9',
   reviews: 155,
@@ -108,7 +108,7 @@ const jsonLd = {
       name: 'Genesis Life Care Petaling Jaya',
       description: 'Genesis Life Care 八打灵再也提供专业的老年护理和养老服务。',
       url: 'https://genesiscare.com.my/zh/elderly-care-in-damansara',
-      telephone: '+60123210457',
+      telephone: '+6019-295-0457',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'No. 33-1, Jalan PJU 5/9, Dataran Sunway, Kota Damansara',
@@ -538,7 +538,7 @@ export default function ElderlyCareZhDamansara() {
                   </svg>
                 </Link>
                 <a
-                  href="https://wa.me/60123210457"
+                  href="https://wa.me/60192950457"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-600 transition-colors text-sm"

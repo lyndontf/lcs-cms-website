@@ -636,14 +636,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ─── CMS PAGE CONTENT (if published) ─── */}
-      {page && page.content.length > 0 && (
-        <section className="py-12 sm:py-16">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ContentRenderer blocks={page.content} />
-          </div>
-        </section>
-      )}
+      {/* CMS page content removed — centre home page is fully hardcoded */}
 
       {/* ─── RECENT BLOG POSTS (if published) ─── */}
       {recentPosts.length > 0 && (
@@ -748,7 +741,7 @@ export default async function HomePage() {
       </section>
 
       {/* ─── FINAL CTA ─── */}
-      <section className="hp-cta relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
+      <section className="hp-cta relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
         <div className="absolute -top-[40%] -right-[10%] w-[60%] pb-[60%] rounded-full bg-white/[.06] pointer-events-none" />
         <div className="absolute -bottom-[50%] -left-[5%] w-[50%] pb-[50%] rounded-full bg-black/[.06] pointer-events-none" />
 

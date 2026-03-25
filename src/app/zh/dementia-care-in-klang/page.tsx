@@ -138,7 +138,7 @@ const jsonLd = {
       name: 'Genesis Life Care 巴生 — 失智症护理',
       description: '雪兰莪州巴生专业失智症和记忆护理。',
       url: 'https://genesiscare.com.my/zh/dementia-care-in-klang',
-      telephone: '+60123210457',
+      telephone: '+6012-321-0457',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'No.3, Jalan Istana, Amverton Business Centre',

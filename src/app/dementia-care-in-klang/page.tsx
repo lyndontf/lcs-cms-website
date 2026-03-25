@@ -149,7 +149,7 @@ const jsonLd = {
       name: 'Genesis Life Care Klang — Dementia Care',
       description: 'Specialised dementia and memory care in Klang, Selangor.',
       url: 'https://genesiscare.com.my/dementia-care-in-klang',
-      telephone: '+60123210457',
+      telephone: '+6012-321-0457',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'No.3, Jalan Istana, Amverton Business Centre',

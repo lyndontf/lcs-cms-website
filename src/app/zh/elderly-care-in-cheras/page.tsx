@@ -23,8 +23,8 @@ const nearestCentre = {
   name: '加影',
   fullName: 'Genesis Life Care 加影',
   slug: 'nursing-home-kajang',
-  phone: '+6012 321 0457',
-  phoneCTA: '+6012-321-0457',
+  phone: '+6019 334 0457',
+  phoneCTA: '+6019-334-0457',
   address: '41500 加影，Reko Sentral，芝拉斯-加影高速公路，Jalan Reko Sentral 1，No. 16，雪兰莪州',
   rating: '4.7',
   reviews: 32,
@@ -112,7 +112,7 @@ const jsonLd = {
       name: 'Genesis Life Care Kajang',
       description: 'Genesis Life Care 加影提供专业的老年护理和养老服务。',
       url: 'https://genesiscare.com.my/zh/elderly-care-in-cheras',
-      telephone: '+60123210457',
+      telephone: '+6019-334-0457',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'No. 16, Jalan Reko Sentral 1, Reko Sentral',
@@ -546,7 +546,7 @@ export default function ElderlyCareZhCheras() {
                   </svg>
                 </Link>
                 <a
-                  href="https://wa.me/60123210457"
+                  href="https://wa.me/60193340457"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-600 transition-colors text-sm"

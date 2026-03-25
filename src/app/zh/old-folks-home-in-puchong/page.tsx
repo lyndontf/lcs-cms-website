@@ -14,8 +14,8 @@ export const revalidate = 60;
 const centre = {
   name: 'Puchong',
   fullName: 'Genesis Life Care Puchong',
-  phone: '+6012 321 0457',
-  phoneCTA: '+6012-321-0457',
+  phone: '+6019 759 0457',
+  phoneCTA: '+6019-759-0457',
   address: 'Bandar Puteri, 47100 Puchong, Selangor',
   rating: '4.8',
   reviews: 38,

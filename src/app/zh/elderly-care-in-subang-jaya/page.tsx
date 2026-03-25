@@ -23,8 +23,8 @@ const pjCentre = {
   name: '八打灵再也',
   fullName: 'Genesis Life Care 八打灵再也',
   slug: 'nursing-home-in-petaling-jaya',
-  phone: '+6012 321 0457',
-  phoneCTA: '+6012-321-0457',
+  phone: '+6019 295 0457',
+  phoneCTA: '+6019-295-0457',
   address: 'No. 33-1, Jalan PJU 5/9, Dataran Sunway, Kota Damansara, 47810 Petaling Jaya, Selangor',
   rating: '4.9',
   reviews: 155,
@@ -38,8 +38,8 @@ const puchongCentre = {
   name: '蒲种',
   fullName: 'Genesis Life Care 蒲种',
   slug: 'nursing-home-in-puchong',
-  phone: '+6012 321 0457',
-  phoneCTA: '+6012-321-0457',
+  phone: '+6019 295 0457',
+  phoneCTA: '+6019-295-0457',
   address: 'No.33, Jalan TPP 1/1, Taman Perindustrian Puchong, 47100 Puchong, Selangor',
   rating: '4.8',
   reviews: 58,
@@ -128,7 +128,7 @@ const jsonLd = {
       name: 'Genesis Life Care Petaling Jaya',
       description: 'Professional elderly care and nursing home near Subang Jaya, Petaling Jaya.',
       url: 'https://genesiscare.com.my/zh/elderly-care-in-subang-jaya',
-      telephone: '+60123210457',
+      telephone: '+6019-295-0457',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'No. 33-1, Jalan PJU 5/9, Dataran Sunway, Kota Damansara',
@@ -154,7 +154,7 @@ const jsonLd = {
       name: 'Genesis Life Care Puchong',
       description: 'Professional elderly care and nursing home near Subang Jaya, Puchong.',
       url: 'https://genesiscare.com.my/zh/elderly-care-in-subang-jaya',
-      telephone: '+60123210457',
+      telephone: '+6019-295-0457',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'No.33, Jalan TPP 1/1, Taman Perindustrian Puchong',
@@ -638,7 +638,7 @@ export default function ElderlyCareSubangJayaZh() {
                   </svg>
                 </Link>
                 <a
-                  href="https://wa.me/60123210457"
+                  href="https://wa.me/60192950457"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-600 transition-colors text-sm"
