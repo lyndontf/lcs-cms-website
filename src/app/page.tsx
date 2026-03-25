@@ -770,28 +770,29 @@ export default async function HomePage() {
 
       {/* CMS page content removed — centre home page is fully hardcoded */}
 
-      {/* ─── GLC HIRE / AGENCY ─── */}
+      {/* ─── GLC HIRE / DOMESTIC HELPERS ─── */}
       <section className="bg-white py-14 sm:py-20 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left — Content */}
             <div>
               <span className="inline-flex items-center gap-2 text-xs font-bold tracking-[.14em] uppercase text-secondary mb-4">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                Caregiver Staffing Agency
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                Home Care Solutions
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-5 leading-tight">
-                Need Caregivers for Your Home or Facility?
+                Hire a Trained Domestic Helper for Home Care
               </h2>
               <p className="text-gray-500 text-lg leading-relaxed mb-6">
-                Agensi Pekerjaan GLC — our licensed staffing arm — provides trained, vetted caregivers and healthcare assistants for private homes, nursing facilities, and hospitals across Malaysia. Whether you need full-time live-in care or part-time support, we match families with qualified professionals.
+                Through Agensi Pekerjaan GLC, we recruit and train domestic helpers from Indonesia and the Philippines specifically in elderly care and home nursing. Each helper undergoes our in-house training programme at Genesis Life Care before being placed with your family — so they arrive ready to provide professional, compassionate care from day one.
               </p>
               <div className="flex flex-col gap-3 mb-8">
                 {[
-                  'Licensed by the Malaysian government (JTKSM)',
-                  'Trained caregivers with elderly care certification',
-                  'Flexible placements — full-time, part-time, or relief',
-                  'Serving families and facilities across Klang Valley & JB',
+                  'Helpers sourced from Indonesia & the Philippines',
+                  'Trained in-house by Genesis Life Care in elderly care, hygiene & safety',
+                  'Licensed agency (JTKSM) — fully legal and compliant placement',
+                  'Live-in home care — companionship, meal prep, mobility assistance & more',
+                  'Ongoing support from GLC after placement',
                 ].map((point, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className="w-6 h-6 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0">
@@ -808,11 +809,11 @@ export default async function HomePage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-secondary text-white px-6 py-3 rounded-full text-sm font-bold hover:brightness-110 transition-all shadow-md"
                 >
-                  Visit GLC Hire
+                  Learn More at GLC Hire
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                 </a>
                 <a
-                  href="https://wa.me/60123210457?text=Hi%2C%20I%20would%20like%20to%20enquire%20about%20hiring%20a%20caregiver."
+                  href="https://wa.me/60123210457?text=Hi%2C%20I%20would%20like%20to%20enquire%20about%20hiring%20a%20domestic%20helper%20for%20home%20care."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 border-2 border-secondary text-secondary px-6 py-3 rounded-full text-sm font-bold hover:bg-secondary hover:text-white transition-all"
@@ -823,29 +824,38 @@ export default async function HomePage() {
               </div>
             </div>
 
-            {/* Right — Visual card */}
+            {/* Right — How it works + stats */}
             <div className="bg-gradient-to-br from-secondary/5 to-primary/5 rounded-2xl p-8 sm:p-10 border border-secondary/10">
-              <div className="grid grid-cols-2 gap-5 mb-8">
+              <h3 className="text-lg font-bold text-gray-900 mb-6">How It Works</h3>
+              <div className="flex flex-col gap-5 mb-8">
                 {[
-                  { value: '200+', label: 'Caregivers Placed', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z' },
-                  { value: 'JTKSM', label: 'Licensed Agency', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
-                  { value: '24hr', label: 'Support Available', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
-                  { value: '5★', label: 'Client Satisfaction', icon: 'M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z' },
-                ].map((s, i) => (
-                  <div key={i} className="bg-white rounded-xl p-5 text-center shadow-sm">
-                    <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center mx-auto mb-2">
-                      <svg className="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={s.icon} /></svg>
+                  { step: '1', title: 'Tell Us Your Needs', desc: 'Share your care requirements — type of assistance, language preference, live-in or part-time.' },
+                  { step: '2', title: 'We Source & Train', desc: 'We recruit helpers from Indonesia or the Philippines and train them at our Genesis Life Care centres in elderly care, hygiene, and safety protocols.' },
+                  { step: '3', title: 'Meet Your Helper', desc: 'Review candidate profiles, conduct interviews, and choose the right fit for your family.' },
+                  { step: '4', title: 'Placement & Support', desc: 'Your helper arrives ready to provide care. We stay involved with ongoing check-ins and support.' },
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-4">
+                    <div className="w-9 h-9 rounded-full bg-secondary text-white flex items-center justify-center flex-shrink-0 text-sm font-bold">
+                      {item.step}
                     </div>
-                    <span className="block text-xl font-extrabold text-gray-900">{s.value}</span>
-                    <span className="text-[11px] text-gray-500 font-medium">{s.label}</span>
+                    <div>
+                      <strong className="block text-sm font-bold text-gray-900">{item.title}</strong>
+                      <span className="text-sm text-gray-500 leading-relaxed">{item.desc}</span>
+                    </div>
                   </div>
                 ))}
               </div>
-              <div className="bg-white rounded-xl p-5 border border-secondary/10">
-                <p className="text-sm text-gray-600 italic leading-relaxed">
-                  &ldquo;GLC placed a wonderful caregiver for my mother within a week. She&apos;s compassionate, well-trained, and treats mum like family. Highly recommended.&rdquo;
-                </p>
-                <p className="text-xs text-gray-400 font-semibold mt-3">— Family in Petaling Jaya</p>
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { value: '200+', label: 'Helpers Placed' },
+                  { value: 'JTKSM', label: 'Licensed' },
+                  { value: '5★', label: 'Satisfaction' },
+                ].map((s, i) => (
+                  <div key={i} className="bg-white rounded-xl p-4 text-center shadow-sm">
+                    <span className="block text-xl font-extrabold text-gray-900">{s.value}</span>
+                    <span className="text-[10px] text-gray-500 font-medium">{s.label}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
