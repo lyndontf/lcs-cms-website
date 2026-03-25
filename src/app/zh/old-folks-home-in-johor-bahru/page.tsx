@@ -1,5 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import FaqSection from '../../../components/sections/FaqSection';
+import FinalCtaSection from '../../../components/sections/FinalCtaSection';
+import GlcHireSection from '../../../components/sections/GlcHireSection';
+import CostCalculatorSection from '../../../components/sections/CostCalculatorSection';
 
 export const metadata: Metadata = {
   title: '古来老人院 - Genesis Life Care JB',
@@ -80,7 +84,6 @@ const checklist = [
   { title: '透明定价', desc: 'Genesis Life Care提供有竞争力和透明的定价，无隐藏成本。我们与家属合作，找到适合其预算的护理计划。' },
   { title: '合格的护理人员', desc: '我们的团队包括训练有素的护士、物理治疗师、心理学家和经验丰富的护理人员，全天候可用。' },
   { title: '清洁卫生', desc: '我们遵守严格的卫生标准，定期深度清洁、感染控制协议和设施维护良好。' },
-  { title: '膳食质量与选择', desc: '新鲜制备的营养膳食、医疗条件的膳食调整和多样菜单。' },
   { title: '探访政策', desc: '我们鼓励家属参与，灵活的探访时间和舒适的空间可供共同享受高质量的时间。' },
   { title: '位置与便利性', desc: 'Our JB centre at Holiday Plaza on Jalan Dato Sulaiman is a well-known landmark, easily accessible from across Johor Bahru and Iskandar Malaysia.' },
   { title: '可用的专科护理', desc: '除了基本护理，我们提供失智症计划、中风康复、临终关怀和术后康复。' },
@@ -179,79 +182,82 @@ export default function OldFolksHomeZh() {
       />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }}
-        />
+      <section
+        className="hero-dark relative overflow-hidden"
+        style={{
+          backgroundImage: `url('${centre.heroImg}')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/70 via-primary-800/60 to-secondary/70" />
+
+        {/* Decorative circles */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full translate-y-1/2 -translate-x-1/3" />
 
         <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6">
-                <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
-                <span className="text-gold text-xs font-semibold tracking-wide uppercase">Rated {centre.rating} ★ on Google</span>
-              </div>
-
-              <p className="text-sm font-bold uppercase tracking-widest text-white/70 mb-3" style={{ color: 'rgba(255,255,255,0.7)' }}>Old Folks Home in {centre.name}</p>
-              <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6" style={{ color: 'white' }}>
-                Best Old Folks Home<br className="hidden sm:block" /> in {centre.name}
-              </h1>
-              <p className="text-lg text-white/90 max-w-xl mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.9)' }}>
-                A warm, home-like environment where your loved ones receive professional care with dignity and
-                compassion. Our Johor Bahru centre at Holiday Plaza features dementia care programmes, rehabilitation facilities,
-                and a caring team available around the clock.
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-start gap-4">
-                <Link
-                  href="/zh/contact"
-                  className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl"
-                >
-                  访问我们的家
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-                </Link>
-                <a
-                  href={`tel:${centre.phone.replace(/\s/g, '')}`}
-                  className="whitespace-nowrap inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3.5 rounded-full transition"
-                >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                  致电 {centre.phoneCTA}
-                </a>
-              </div>
+          <div className="lg:max-w-2xl">
+            <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6">
+              <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
+              <span className="text-gold text-xs font-semibold tracking-wide uppercase">Rated {centre.rating} ★ on Google</span>
             </div>
 
-            <div className="hidden lg:block">
-              <div className="relative">
-                <img src={centre.heroImg} alt={`${centre.fullName} — old folks home 乔豪州古来`} className="rounded-2xl shadow-2xl w-full object-cover" style={{ maxHeight: '420px' }} />
-                <div className="absolute -bottom-4 -right-4 bg-white rounded-xl shadow-lg p-4 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-                  </div>
-                  <div>
-                    <span className="block text-xs text-gray-800">收费合理</span>
-                    <span className="block text-sm font-bold text-gray-900">透明定价</span>
-                  </div>
-                </div>
-              </div>
+            <p className="text-sm font-bold uppercase tracking-widest text-white/70 mb-3" style={{ color: 'rgba(255,255,255,0.7)' }}>Old Folks Home in {centre.name}</p>
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6" style={{ color: 'white' }}>
+              Best Old Folks Home<br className="hidden sm:block" /> in {centre.name}
+            </h1>
+            <p className="text-lg text-white/90 mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.9)' }}>
+              A warm, home-like environment where your loved ones receive professional care with dignity and
+              compassion. Our Johor Bahru centre at Holiday Plaza features dementia care programmes, rehabilitation facilities,
+              and a caring team available around the clock.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <Link
+                href="/zh/contact"
+                className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl"
+              >
+                访问我们的家
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+              </Link>
+              <a
+                href={`tel:${centre.phone.replace(/\s/g, '')}`}
+                className="whitespace-nowrap inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3.5 rounded-full transition"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                致电 {centre.phoneCTA}
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── STATS BAR ─────────────────────────────────────────────────── */}
-      <section className="bg-gray-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
-            {highlights.map((h) => (
-              <div key={h.label}>
-                <span className="block text-2xl sm:text-3xl font-extrabold text-primary">{h.value}</span>
-                <span className="block text-sm font-semibold text-gray-900 mt-1">{h.label}</span>
-                <span className="block text-xs text-gray-500">{h.sub}</span>
-              </div>
-            ))}
+      {/* ── TRUST BAR ─────────────────────────────────────────────────── */}
+      <section className="bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 py-12">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-8 items-center text-center">
+            <div>
+              <span className="block text-3xl sm:text-4xl font-extrabold text-primary">500+</span>
+              <span className="block text-xs text-gray-600 font-semibold mt-2 uppercase tracking-wide">Happy Residents</span>
+            </div>
+            <div>
+              <span className="block text-3xl sm:text-4xl font-extrabold text-primary">5</span>
+              <span className="block text-xs text-gray-600 font-semibold mt-2 uppercase tracking-wide">Care Centres</span>
+            </div>
+            <div>
+              <span className="block text-3xl sm:text-4xl font-extrabold text-primary">24/7</span>
+              <span className="block text-xs text-gray-600 font-semibold mt-2 uppercase tracking-wide">Professional Care</span>
+            </div>
+            <div>
+              <span className="block text-3xl sm:text-4xl font-extrabold text-primary">4.8★</span>
+              <span className="block text-xs text-gray-600 font-semibold mt-2 uppercase tracking-wide">Google Rating</span>
+            </div>
+            <div className="col-span-2 sm:col-span-4 lg:col-span-1 flex items-center justify-center gap-3">
+              <img src="/images/logos/jkm-logo.png" alt="JKM" className="h-8 opacity-70" />
+              <img src="/images/logos/agecope-logo.png" alt="AgeCope" className="h-8 opacity-70" />
+            </div>
           </div>
         </div>
       </section>
@@ -365,7 +371,7 @@ export default function OldFolksHomeZh() {
                 Choosing an old folks home is a big decision. Here is a simple checklist of what to look for — and how Genesis Life Care measures up.
               </p>
             </div>
-            <div className="space-y-4">
+            <div className="grid sm:grid-cols-2 gap-4">
               {checklist.map((item, i) => (
                 <div key={i} className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
                   <div className="flex items-start gap-3">
@@ -419,22 +425,7 @@ export default function OldFolksHomeZh() {
       </section>
 
       {/* ── FAQS ──────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 bg-[#f4f8fb]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Common Questions</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">Frequently Asked Questions</h2>
-          </div>
-          <div className="space-y-6">
-            {faqs.map((faq, i) => (
-              <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                <h3 className="text-base font-bold text-gray-900 mb-3">{faq.q}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{faq.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FaqSection faqs={faqs} />
 
       {/* ── OTHER LOCATIONS ───────────────────────────────────────────── */}
       <section className="py-16 sm:py-20">
@@ -465,38 +456,20 @@ export default function OldFolksHomeZh() {
         </div>
       </section>
 
+      {/* ── COST CALCULATOR ───────────────────────────────────────────── */}
+      <CostCalculatorSection />
+
+      {/* ── GLC HIRE ───────────────────────────────────────────────────── */}
+      <GlcHireSection />
+
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }}
-        />
-        <div className="relative max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4" style={{ color: 'white' }}>
-            Visit Our Old Folks Home in {centre.name}
-          </h2>
-          <p className="text-lg text-white/90 mb-8 max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.9)' }}>
-            Schedule a free walkthrough of our Johor Bahru centre. Meet the team, see the facilities, and find out
-            if we are the right home for your loved one. No obligations.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/zh/contact"
-              className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl"
-            >
-              Schedule a Visit
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-            </Link>
-            <a
-              href={`tel:${centre.phone.replace(/\s/g, '')}`}
-              className="whitespace-nowrap inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-bold px-6 py-3.5 rounded-full transition"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-              致电 {centre.phoneCTA}
-            </a>
-          </div>
-        </div>
-      </section>
+      <FinalCtaSection
+        heading="Ready to Take the Next Step?"
+        description="Contact us today for a free consultation. Our care advisors speak to dozens of families every week and can help find the perfect care solution for your loved one."
+        primaryLabel="Schedule a Visit"
+        primaryHref="/zh/contact"
+        phone="+6012-321 0457"
+      />
     </main>
   );
 }
