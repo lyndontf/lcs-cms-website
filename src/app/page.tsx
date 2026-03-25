@@ -595,11 +595,11 @@ export default async function HomePage() {
 
           {/* Video + stat cards row */}
           <div className="grid lg:grid-cols-5 gap-6 mb-12">
-            {/* Dashboard image — spans 3 cols */}
+            {/* Care image — spans 3 cols */}
             <div className="lg:col-span-3 rounded-2xl overflow-hidden">
               <img
-                src="/images/general/ai-dashboard-mockup.png"
-                alt="Life Care Systems AI-powered dashboard on desktop and mobile"
+                src="/images/general/comprehensive-care.png"
+                alt="Comprehensive medical care — caregiver assisting elderly resident at Genesis Life Care"
                 className="w-full h-full object-cover"
               />
             </div>
