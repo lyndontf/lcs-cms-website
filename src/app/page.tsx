@@ -379,7 +379,7 @@ export default async function HomePage() {
       </section>
 
       {/* ─── TRUST BAR ─── */}
-      <section className="relative border-b border-gray-200 py-6 sm:py-8 overflow-hidden" style={{ background: 'linear-gradient(135deg, #f8fafc 25%, transparent 25%, transparent 50%, #f8fafc 50%, #f8fafc 75%, transparent 75%, transparent)', backgroundSize: '40px 40px', backgroundColor: '#ffffff' }}>
+      <section className="bg-white border-b border-gray-200 py-6 sm:py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-8">
             <div className="text-center flex-1 min-w-[120px]">
