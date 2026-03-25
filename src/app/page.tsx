@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getPageBySlug, getSiteSettings, getPublishedPosts } from '@/lib/supabase';
 import { getCurrentSiteId, getCurrentSiteSlug } from '@/lib/site-context';
 import ContentRenderer from '@/components/ContentRenderer';
+import QuickEnquiryCard from '@/components/QuickEnquiryCard';
 
 export async function generateMetadata(): Promise<Metadata> {
   const [siteId, siteSlug] = await Promise.all([getCurrentSiteId(), getCurrentSiteSlug()]);
@@ -371,38 +372,7 @@ export default async function HomePage() {
             </div>
 
             {/* Right — Quick enquiry card */}
-            <div className="hp-enquiry bg-white rounded-2xl p-6 sm:p-8 shadow-2xl">
-              <span className="hp-eq-label text-xs font-bold tracking-[.14em] uppercase text-primary mb-3 block">Quick Enquiry</span>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-1 leading-tight">Find the Right Care for Your Loved One</h3>
-              <p className="hp-eq-sub text-sm text-gray-500 mb-6">Our care advisors will get back to you within 24 hours.</p>
-              <div className="flex flex-col gap-3 mb-5">
-                <a href={`tel:${settings?.contact_phone || '+6012-321 0457'}`} className="flex items-center gap-3 p-3 rounded-xl bg-primary-50 hover:bg-primary-100 transition-colors group">
-                  <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                  </div>
-                  <div>
-                    <span className="hp-eq-sub text-xs text-gray-500">Call us directly</span>
-                    <span className="hp-eq-phone block text-sm font-bold text-gray-900 group-hover:text-primary transition-colors">{settings?.contact_phone || '+6012-321 0457'}</span>
-                  </div>
-                </a>
-                <a href={`mailto:${settings?.contact_email || 'enquiries@genesiscare.com.my'}`} className="flex items-center gap-3 p-3 rounded-xl bg-primary-50 hover:bg-primary-100 transition-colors group">
-                  <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                  </div>
-                  <div>
-                    <span className="hp-eq-sub text-xs text-gray-500">Email us</span>
-                    <span className="hp-eq-phone block text-sm font-bold text-gray-900 group-hover:text-primary transition-colors">{settings?.contact_email || 'enquiries@genesiscare.com.my'}</span>
-                  </div>
-                </a>
-              </div>
-              <Link
-                href="/contact"
-                className="block w-full text-center bg-primary text-white py-3.5 rounded-full text-base font-bold shadow-md hover:bg-primary-600 transition-all"
-              >
-                Get a Free Care Assessment →
-              </Link>
-              <p className="text-center text-xs text-gray-400 mt-3">No obligations. 100% confidential.</p>
-            </div>
+            <QuickEnquiryCard email={settings?.contact_email || 'enquiries@genesiscare.com.my'} />
           </div>
         </div>
       </section>
@@ -501,6 +471,30 @@ export default async function HomePage() {
               <h3 className="text-lg font-bold text-gray-900 mb-2">Stroke Rehabilitation</h3>
               <p className="text-sm text-gray-500 leading-relaxed mb-4">Comprehensive stroke recovery with physiotherapy, occupational therapy, and 24-hour nursing support.</p>
               <Link href="/stroke-rehabilitation-kajang" className="text-sm font-bold text-primary inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                Learn more <span>→</span>
+              </Link>
+            </div>
+
+            {/* Service Card 5 */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+              <div className="w-14 h-14 rounded-xl bg-primary-50 flex items-center justify-center mb-5">
+                <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Senior Day Care</h3>
+              <p className="text-sm text-gray-500 leading-relaxed mb-4">Daytime care programmes with meals, activities, and supervision — ideal for families who need support during working hours.</p>
+              <Link href="/contact" className="text-sm font-bold text-primary inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                Learn more <span>→</span>
+              </Link>
+            </div>
+
+            {/* Service Card 6 */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+              <div className="w-14 h-14 rounded-xl bg-primary-50 flex items-center justify-center mb-5">
+                <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Respite Care</h3>
+              <p className="text-sm text-gray-500 leading-relaxed mb-4">Short-term stays from a few days to several weeks — giving family caregivers a well-deserved break while their loved one receives full-service care.</p>
+              <Link href="/respite-care-in-malaysia" className="text-sm font-bold text-primary inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                 Learn more <span>→</span>
               </Link>
             </div>
