@@ -2,9 +2,21 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Palliative Care in Malaysia | Genesis Life Care',
+  title: 'Palliative Care in Malaysia — Comfort & Dignity | Genesis Life Care',
   description:
-    'Compassionate palliative care across 5 centres in Malaysia. Expert pain management, emotional and spiritual support, family counselling, and dignified end-of-life care. Book a free consultation.',
+    'Compassionate palliative care across 5 centres in Selangor & Johor Bahru. Expert pain management, emotional support, family counselling, and dignified end-of-life care. 24/7 nursing. Book a free consultation.',
+  alternates: {
+    canonical: 'https://genesiscare.com.my/palliative-care-malaysia',
+    languages: { 'zh-Hans': 'https://genesiscare.com.my/zh/palliative-care-malaysia' },
+  },
+  openGraph: {
+    title: 'Palliative Care in Malaysia | Genesis Life Care',
+    description: 'Expert pain management, emotional support & dignified end-of-life care across 5 centres in Malaysia.',
+    url: 'https://genesiscare.com.my/palliative-care-malaysia',
+    siteName: 'Genesis Life Care',
+    locale: 'en_MY',
+    type: 'website',
+  },
 };
 
 export const revalidate = 60;

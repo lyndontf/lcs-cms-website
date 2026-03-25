@@ -2,9 +2,22 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Nursing Home in Klang - Genesis Life Care Klang',
+  title: 'Nursing Home in Klang — Genesis Life Care Klang | 24/7 Elderly Care',
   description:
-    'Genesis Life Care Klang — our original nursing home near major hospitals in Klang. Dedicated on-site doctor, professional nursing care, rehab services & psychologist-led dementia care. Affordable rates. Rated 4.8★ on Google. Book a free tour.',
+    'Genesis Life Care Klang — our original nursing home near major hospitals in Klang. On-site doctor, 24/7 nursing care, rehab & psychologist-led dementia care. From RM 2,500/month. Rated 4.8★ on Google. Book a free tour.',
+  alternates: {
+    canonical: 'https://genesiscare.com.my/nursing-home-in-klang',
+    languages: { 'zh-Hans': 'https://genesiscare.com.my/zh/nursing-home-in-klang' },
+  },
+  openGraph: {
+    title: 'Nursing Home in Klang | Genesis Life Care',
+    description: 'On-site doctor, 24/7 nursing care, rehab & dementia care in Klang. Rated 4.8★ on Google.',
+    url: 'https://genesiscare.com.my/nursing-home-in-klang',
+    siteName: 'Genesis Life Care',
+    locale: 'en_MY',
+    type: 'website',
+    images: [{ url: 'https://genesiscare.com.my/images/klang-centre.jpg', width: 1200, height: 630, alt: 'Genesis Life Care Klang nursing home' }],
+  },
 };
 
 export const revalidate = 60;
@@ -131,8 +144,53 @@ const otherCentres = [
 /* ─── Page component ─────────────────────────────────────────────────── */
 
 export default function NursingHomeKlang() {
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalBusiness',
+    name: 'Genesis Life Care Klang',
+    description: 'Original nursing home near major hospitals in Klang offering 24/7 nursing care with on-site doctor, dementia care & rehabilitation. Rated 4.8★ on Google.',
+    url: 'https://genesiscare.com.my/nursing-home-in-klang',
+    telephone: '+6012-321-0457',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'No.3, Jalan Istana, Amverton Business Centre',
+      addressLocality: 'Klang',
+      addressRegion: 'Selangor',
+      postalCode: '41500',
+      addressCountry: 'MY',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 3.0456,
+      longitude: 101.4484,
+    },
+    image: 'https://genesiscare.com.my/images/klang-centre.jpg',
+    priceRange: 'From RM 2,500/month',
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '00:00',
+      closes: '23:59',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '45',
+      bestRating: '5',
+    },
+    medicalSpecialty: ['Geriatric Medicine', 'Rehabilitation', 'Palliative Care'],
+    areaServed: ['Klang', 'Shah Alam', 'Meru'],
+    parentOrganization: {
+      '@type': 'Organization',
+      name: 'Genesis Life Care',
+      url: 'https://genesiscare.com.my',
+    },
+  };
+
   return (
-    <main className="bg-white">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+      <main className="bg-white">
       {/* Override global custom_css !important rules for dark-bg sections */}
       <style dangerouslySetInnerHTML={{ __html: `
         .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div { color: inherit; }
@@ -665,5 +723,6 @@ export default function NursingHomeKlang() {
         </div>
       </section>
     </main>
+    </>
   );
 }

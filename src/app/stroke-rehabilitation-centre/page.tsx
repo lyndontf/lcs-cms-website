@@ -4,7 +4,20 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Stroke Rehabilitation Centre in Malaysia | Genesis Life Care',
   description:
-    'Comprehensive stroke rehabilitation across 5 centres in Malaysia. Physiotherapy, occupational therapy & speech therapy. Individualised recovery plans with a multidisciplinary team. Book a free consultation.',
+    'Comprehensive stroke rehabilitation across 5 centres in Selangor & Johor Bahru. Physiotherapy, occupational therapy & speech therapy with individualised recovery plans. 24/7 nursing support. Book a free consultation.',
+  alternates: {
+    canonical: 'https://genesiscare.com.my/stroke-rehabilitation-centre',
+    languages: { 'zh-Hans': 'https://genesiscare.com.my/zh/stroke-rehabilitation-centre' },
+  },
+  openGraph: {
+    title: 'Stroke Rehabilitation Centre in Malaysia | Genesis Life Care',
+    description: 'Physiotherapy, OT & speech therapy across 5 centres. Individualised stroke recovery plans with 24/7 nursing support.',
+    url: 'https://genesiscare.com.my/stroke-rehabilitation-centre',
+    siteName: 'Genesis Life Care',
+    locale: 'en_MY',
+    type: 'website',
+    images: [{ url: 'https://genesiscare.com.my/images/services/rehab-department.jpg', width: 1200, height: 630, alt: 'Stroke rehabilitation at Genesis Life Care' }],
+  },
 };
 
 export const revalidate = 60;

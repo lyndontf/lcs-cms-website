@@ -4,7 +4,19 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Post-Operative Recovery Care in Malaysia | Genesis Life Care',
   description:
-    'Professional post-operative recovery care across 5 centres in Malaysia. Expert wound care, physiotherapy, medication management & discharge planning. Flexible short-term stays. Book a free consultation.',
+    'Professional post-op recovery care across 5 centres in Selangor & Johor Bahru. Expert wound care, physiotherapy, medication management & discharge planning. Flexible short-term stays from 2 weeks. Book a free consultation.',
+  alternates: {
+    canonical: 'https://genesiscare.com.my/post-op-care-malaysia',
+    languages: { 'zh-Hans': 'https://genesiscare.com.my/zh/post-op-care-malaysia' },
+  },
+  openGraph: {
+    title: 'Post-Operative Recovery Care in Malaysia | Genesis Life Care',
+    description: 'Expert wound care, physiotherapy & recovery support. Flexible short-term stays across 5 centres.',
+    url: 'https://genesiscare.com.my/post-op-care-malaysia',
+    siteName: 'Genesis Life Care',
+    locale: 'en_MY',
+    type: 'website',
+  },
 };
 
 export const revalidate = 60;

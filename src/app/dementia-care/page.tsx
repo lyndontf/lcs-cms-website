@@ -4,7 +4,20 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Dementia Care & Memory Care in Malaysia | Genesis Life Care',
   description:
-    'Specialist dementia and memory care across 5 centres in Malaysia. Psychologist-led cognitive stimulation therapy (CST), dedicated Memory Care Wings at every centre, trained caregivers & family support. Book a free consultation.',
+    'Specialist dementia and memory care across 5 centres in Selangor & Johor Bahru. Psychologist-led cognitive stimulation therapy (CST), dedicated Memory Care Wings, trained caregivers & family support. From RM 2,500/month. Book a free consultation.',
+  alternates: {
+    canonical: 'https://genesiscare.com.my/dementia-care',
+    languages: { 'zh-Hans': 'https://genesiscare.com.my/zh/dementia-care' },
+  },
+  openGraph: {
+    title: 'Dementia Care & Memory Care in Malaysia | Genesis Life Care',
+    description: 'Psychologist-led dementia care across 5 centres. Dedicated Memory Care Wings, CST programmes & trained caregivers.',
+    url: 'https://genesiscare.com.my/dementia-care',
+    siteName: 'Genesis Life Care',
+    locale: 'en_MY',
+    type: 'website',
+    images: [{ url: 'https://genesiscare.com.my/images/services/common-area-scenic.jpg', width: 1200, height: 630, alt: 'Dementia care activities at Genesis Life Care' }],
+  },
 };
 
 export const revalidate = 60;

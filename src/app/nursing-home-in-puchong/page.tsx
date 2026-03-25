@@ -2,9 +2,22 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Nursing Home in Puchong - Genesis Life Care Puchong',
+  title: 'Nursing Home in Puchong — Genesis Life Care Puchong | 24/7 Elderly Care',
   description:
-    'Genesis Life Care Puchong — modern nursing home in Bandar Puteri with easy highway access. 24/7 nursing care, rehab services, dementia care & Senior Daycare. Affordable rates. Rated 4.8★ on Google. Book a free tour.',
+    'Genesis Life Care Puchong — modern nursing home in Bandar Puteri with easy highway access. 24/7 nursing care, rehab, dementia care & Senior Daycare. From RM 2,500/month. Rated 4.8★ on Google. Book a free tour.',
+  alternates: {
+    canonical: 'https://genesiscare.com.my/nursing-home-in-puchong',
+    languages: { 'zh-Hans': 'https://genesiscare.com.my/zh/nursing-home-in-puchong' },
+  },
+  openGraph: {
+    title: 'Nursing Home in Puchong | Genesis Life Care',
+    description: 'Modern nursing home in Bandar Puteri. 24/7 care, rehab & dementia care. Rated 4.8★.',
+    url: 'https://genesiscare.com.my/nursing-home-in-puchong',
+    siteName: 'Genesis Life Care',
+    locale: 'en_MY',
+    type: 'website',
+    images: [{ url: 'https://genesiscare.com.my/images/puchong-centre.jpeg', width: 1200, height: 630, alt: 'Genesis Life Care Puchong nursing home' }],
+  },
 };
 
 export const revalidate = 60;
@@ -131,8 +144,53 @@ const otherCentres = [
 /* ─── Page component ─────────────────────────────────────────────────── */
 
 export default function NursingHomePuchong() {
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalBusiness',
+    name: 'Genesis Life Care Puchong',
+    description: 'Modern nursing home in Bandar Puteri Puchong with easy highway access. 24/7 nursing care, dementia care & rehabilitation. Rated 4.8★ on Google.',
+    url: 'https://genesiscare.com.my/nursing-home-in-puchong',
+    telephone: '+6012-321-0457',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Bandar Puteri',
+      addressLocality: 'Puchong',
+      addressRegion: 'Selangor',
+      postalCode: '47100',
+      addressCountry: 'MY',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 3.0300,
+      longitude: 101.6200,
+    },
+    image: 'https://genesiscare.com.my/images/puchong-centre.jpeg',
+    priceRange: 'From RM 2,500/month',
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '00:00',
+      closes: '23:59',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '38',
+      bestRating: '5',
+    },
+    medicalSpecialty: ['Geriatric Medicine', 'Rehabilitation', 'Palliative Care'],
+    areaServed: ['Puchong', 'Seri Kembangan', 'Cyberjaya'],
+    parentOrganization: {
+      '@type': 'Organization',
+      name: 'Genesis Life Care',
+      url: 'https://genesiscare.com.my',
+    },
+  };
+
   return (
-    <main className="bg-white">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+      <main className="bg-white">
       {/* Override global custom_css !important rules for dark-bg sections */}
       <style dangerouslySetInnerHTML={{ __html: `
         .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div { color: inherit; }
@@ -663,5 +721,6 @@ export default function NursingHomePuchong() {
         </div>
       </section>
     </main>
+    </>
   );
 }

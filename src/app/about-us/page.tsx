@@ -3,9 +3,26 @@ import Link from 'next/link';
 import { getSiteSettings } from '@/lib/supabase';
 
 export const metadata: Metadata = {
-  title: "About Genesis Life Care - Malaysia's Premier Long-Term Care",
+  title: "About Genesis Life Care — Malaysia's Trusted Nursing Home Operator",
   description:
-    "Learn about Genesis Life Care Centre, Malaysia's largest long-term care operator with 150+ trained professionals. Personalized care since 2018.",
+    "Learn about Genesis Life Care, operating 5 nursing homes across Selangor & Johor since 2018. 150+ trained nurses, caregivers & therapists delivering compassionate, government-approved elderly care. JKM registered & AgeCope certified.",
+  alternates: {
+    canonical: 'https://genesiscare.com.my/about-us',
+  },
+  openGraph: {
+    title: "About Genesis Life Care — Malaysia's Trusted Nursing Home Operator",
+    description: "5 nursing homes across Selangor & Johor. 150+ care professionals. Government-approved since 2018.",
+    url: 'https://genesiscare.com.my/about-us',
+    siteName: 'Genesis Life Care',
+    locale: 'en_MY',
+    type: 'website',
+    images: [{ url: 'https://genesiscare.com.my/images/general/staff-care.jpg', width: 1200, height: 630, alt: 'Genesis Life Care team caring for elderly residents' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "About Genesis Life Care — Malaysia's Trusted Nursing Home Operator",
+    description: "5 nursing homes across Selangor & Johor. 150+ care professionals. Government-approved since 2018.",
+  },
 };
 
 export const revalidate = 60;

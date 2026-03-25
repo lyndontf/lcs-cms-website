@@ -5,8 +5,57 @@ import { getCurrentSiteId, getCurrentSiteSlug } from '@/lib/site-context';
 import ContentRenderer from '@/components/ContentRenderer';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const siteId = await getCurrentSiteId();
+  const [siteId, siteSlug] = await Promise.all([getCurrentSiteId(), getCurrentSiteSlug()]);
   const page = await getPageBySlug('home', siteId || undefined);
+
+  if (siteSlug === 'centre') {
+    return {
+      title: 'Nursing Home & Elderly Care in Malaysia | Genesis Life Care',
+      description:
+        'Genesis Life Care operates 5 nursing homes across Klang Valley & Johor Bahru. 24/7 professional nursing care, dementia care, stroke rehabilitation & post-operative recovery. Government-approved, rated 4.8★ on Google. Book a free consultation today.',
+      alternates: {
+        canonical: 'https://genesiscare.com.my/',
+        languages: { 'zh-Hans': 'https://genesiscare.com.my/zh' },
+      },
+      openGraph: {
+        title: 'Genesis Life Care — Nursing Home & Elderly Care in Malaysia',
+        description:
+          '5 nursing homes across Klang Valley & Johor Bahru. 24/7 nursing care, dementia care, stroke rehabilitation. Rated 4.8★ on Google.',
+        url: 'https://genesiscare.com.my/',
+        siteName: 'Genesis Life Care',
+        locale: 'en_MY',
+        type: 'website',
+        images: [
+          {
+            url: 'https://genesiscare.com.my/images/general/hero-main.jpeg',
+            width: 1200,
+            height: 630,
+            alt: 'Genesis Life Care nursing home in Malaysia',
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: 'Genesis Life Care — Nursing Home & Elderly Care in Malaysia',
+        description:
+          '5 nursing homes across Klang Valley & Johor Bahru. 24/7 nursing care, dementia care, stroke rehabilitation. Rated 4.8★.',
+      },
+      keywords: [
+        'nursing home Malaysia',
+        'elderly care Malaysia',
+        'nursing home Klang Valley',
+        'dementia care Malaysia',
+        'old folks home Malaysia',
+        'stroke rehabilitation centre Malaysia',
+        'aged care Selangor',
+        'nursing home Johor Bahru',
+        'palliative care Malaysia',
+        'respite care Malaysia',
+        'Genesis Life Care',
+      ],
+    };
+  }
+
   return {
     title: page?.meta_title || page?.title || 'Home',
     description: page?.meta_description || 'Quality healthcare and aged care services in Malaysia',
@@ -134,8 +183,115 @@ export default async function HomePage() {
   }
 
   // ─── Centre site: original hardcoded layout ───
+
+  /* ─── JSON-LD Structured Data ─── */
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalOrganization',
+    '@id': 'https://genesiscare.com.my/#organization',
+    name: 'Genesis Life Care',
+    url: 'https://genesiscare.com.my',
+    logo: 'https://genesiscare.com.my/images/general/logo.png',
+    description:
+      'Genesis Life Care operates 5 nursing homes across Malaysia, providing 24/7 professional nursing care, dementia care, stroke rehabilitation, and post-operative recovery services.',
+    telephone: settings?.contact_phone || '+6012-321 0457',
+    email: settings?.contact_email || 'enquiries@genesiscare.com.my',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'No.3, Jalan Istana, Amverton Business Centre',
+      addressLocality: 'Klang',
+      addressRegion: 'Selangor',
+      postalCode: '41500',
+      addressCountry: 'MY',
+    },
+    areaServed: [
+      { '@type': 'City', name: 'Petaling Jaya' },
+      { '@type': 'City', name: 'Klang' },
+      { '@type': 'City', name: 'Kajang' },
+      { '@type': 'City', name: 'Puchong' },
+      { '@type': 'City', name: 'Johor Bahru' },
+      { '@type': 'State', name: 'Selangor' },
+      { '@type': 'State', name: 'Johor' },
+    ],
+    medicalSpecialty: [
+      'Geriatric Medicine',
+      'Rehabilitation',
+      'Palliative Care',
+    ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '197',
+      bestRating: '5',
+    },
+    numberOfEmployees: { '@type': 'QuantitativeValue', value: 150, unitText: 'staff' },
+    foundingDate: '2018',
+    sameAs: [
+      'https://www.facebook.com/genesislifecare/',
+      'https://www.instagram.com/genesislifecare/',
+      'https://www.youtube.com/@genesislifecarecentre1443',
+    ],
+  };
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How much does a nursing home cost in Malaysia?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Genesis Life Care offers affordable nursing home packages starting from RM 2,500 per month. Rates vary by centre and level of care required. All pricing is transparent with no hidden charges. Contact us for a personalised quote.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Where are Genesis Life Care centres located?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Genesis Life Care has 5 centres across Malaysia: Petaling Jaya, Klang, Kajang, and Puchong in the Klang Valley (Selangor), plus Johor Bahru in the southern region. All centres are conveniently located and easily accessible.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What types of care does Genesis Life Care provide?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'We provide a comprehensive range of elderly care services including 24/7 nursing home care, dementia and memory care, stroke rehabilitation, post-operative recovery care, palliative care, and short-term respite care. Each resident receives a personalised care plan.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is Genesis Life Care government-approved?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, all Genesis Life Care centres are registered and approved by JKM (Jabatan Kebajikan Masyarakat / Department of Social Welfare Malaysia). We also hold AgeCope certification, meeting international standards of aged care quality.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I visit a Genesis Life Care centre before making a decision?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Absolutely. We encourage families to book a free tour and consultation at any of our 5 centres. Our care advisors will walk you through the facilities, explain our care programmes, and help you find the right solution. Call +6012-321 0457 or visit our contact page to schedule a visit.',
+        },
+      },
+    ],
+  };
+
   return (
     <>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       {/* ─── HERO ─── */}
       <section className="hp-hero relative overflow-hidden">
         {/* Background image */}
@@ -548,6 +704,48 @@ export default async function HomePage() {
           </div>
         </section>
       )}
+
+      {/* ─── FAQ SECTION ─── */}
+      <section className="bg-white py-14 sm:py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="inline-block text-xs font-bold tracking-[.14em] uppercase text-primary mb-3">Common Questions</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Frequently Asked Questions</h2>
+          </div>
+          <div className="flex flex-col gap-4">
+            {[
+              {
+                q: 'How much does a nursing home cost in Malaysia?',
+                a: 'Genesis Life Care offers affordable nursing home packages starting from RM 2,500 per month. Rates vary by centre and level of care required. All pricing is transparent with no hidden charges. Contact us for a personalised quote.',
+              },
+              {
+                q: 'Where are Genesis Life Care centres located?',
+                a: 'We have 5 centres across Malaysia: Petaling Jaya, Klang, Kajang, and Puchong in the Klang Valley (Selangor), plus Johor Bahru in the southern region. All centres are conveniently located and easily accessible.',
+              },
+              {
+                q: 'What types of care does Genesis Life Care provide?',
+                a: 'We provide a comprehensive range of elderly care services including 24/7 nursing home care, dementia and memory care, stroke rehabilitation, post-operative recovery care, palliative care, and short-term respite care. Each resident receives a personalised care plan.',
+              },
+              {
+                q: 'Is Genesis Life Care government-approved?',
+                a: 'Yes, all Genesis Life Care centres are registered and approved by JKM (Jabatan Kebajikan Masyarakat). We also hold AgeCope certification, meeting international standards of aged care quality.',
+              },
+              {
+                q: 'Can I visit a Genesis Life Care centre before making a decision?',
+                a: 'Absolutely. We encourage families to book a free tour and consultation at any of our 5 centres. Our care advisors will walk you through the facilities, explain our care programmes, and help you find the right solution.',
+              },
+            ].map((item, i) => (
+              <details key={i} className="group bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
+                <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer list-none font-bold text-gray-900 text-base hover:bg-gray-100 transition-colors">
+                  {item.q}
+                  <svg className="w-5 h-5 text-gray-400 flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </summary>
+                <div className="px-5 pb-5 text-sm text-gray-600 leading-relaxed">{item.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ─── FINAL CTA ─── */}
       <section className="hp-cta relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">

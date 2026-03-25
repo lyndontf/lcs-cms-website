@@ -2,9 +2,22 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Nursing Home in Johor Bahru - Genesis Life Care JB',
+  title: 'Nursing Home in Johor Bahru — Genesis Life Care JB | 24/7 Elderly Care',
   description:
-    'Genesis Life Care Johor Bahru — our first centre outside the Klang Valley. 24/7 nursing care, rehab services, dementia care & dedicated kitchen at Holiday Plaza. Affordable rates. Rated 4.8★ on Google. Book a free tour.',
+    'Genesis Life Care Johor Bahru — premier nursing home in JB at Holiday Plaza. 24/7 nursing care, rehab, dementia care & dedicated kitchen. From RM 2,500/month. Rated 4.8★ on Google. Book a free tour.',
+  alternates: {
+    canonical: 'https://genesiscare.com.my/nursing-home-in-johor-bahru',
+    languages: { 'zh-Hans': 'https://genesiscare.com.my/zh/nursing-home-in-johor-bahru' },
+  },
+  openGraph: {
+    title: 'Nursing Home in Johor Bahru | Genesis Life Care',
+    description: 'Premier JB nursing home at Holiday Plaza. 24/7 care, rehab & dementia care. Rated 4.8★.',
+    url: 'https://genesiscare.com.my/nursing-home-in-johor-bahru',
+    siteName: 'Genesis Life Care',
+    locale: 'en_MY',
+    type: 'website',
+    images: [{ url: 'https://genesiscare.com.my/images/jb-centre.jpeg', width: 1200, height: 630, alt: 'Genesis Life Care Johor Bahru nursing home' }],
+  },
 };
 
 export const revalidate = 60;
@@ -125,8 +138,53 @@ const otherCentres = [
 /* ─── Page component ─────────────────────────────────────────────────── */
 
 export default function NursingHomeJB() {
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalBusiness',
+    name: 'Genesis Life Care Johor Bahru',
+    description: 'Premier nursing home in JB at Holiday Plaza offering 24/7 nursing care, dementia care, stroke rehabilitation & dedicated kitchen. Rated 4.8★ on Google.',
+    url: 'https://genesiscare.com.my/nursing-home-in-johor-bahru',
+    telephone: '+6012-321-0457',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Holiday Plaza, Jalan Dato Sulaiman',
+      addressLocality: 'Johor Bahru',
+      addressRegion: 'Johor',
+      postalCode: '80250',
+      addressCountry: 'MY',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 1.4800,
+      longitude: 103.7600,
+    },
+    image: 'https://genesiscare.com.my/images/jb-centre.jpeg',
+    priceRange: 'From RM 2,500/month',
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '00:00',
+      closes: '23:59',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '24',
+      bestRating: '5',
+    },
+    medicalSpecialty: ['Geriatric Medicine', 'Rehabilitation', 'Palliative Care'],
+    areaServed: ['Johor Bahru', 'Skudai', 'Iskandar Puteri'],
+    parentOrganization: {
+      '@type': 'Organization',
+      name: 'Genesis Life Care',
+      url: 'https://genesiscare.com.my',
+    },
+  };
+
   return (
-    <main className="bg-white">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+      <main className="bg-white">
       {/* Override global custom_css !important rules for dark-bg sections */}
       <style dangerouslySetInnerHTML={{ __html: `
         .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div { color: inherit; }
@@ -661,5 +719,6 @@ export default function NursingHomeJB() {
         </div>
       </section>
     </main>
+    </>
   );
 }

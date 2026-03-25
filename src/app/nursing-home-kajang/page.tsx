@@ -2,9 +2,22 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Nursing Home in Kajang - Genesis Life Care Kajang',
+  title: 'Nursing Home in Kajang — Genesis Life Care Kajang | 24/7 Elderly Care',
   description:
-    'Genesis Life Care Kajang — family-friendly nursing home in the southern Klang Valley. 24/7 nursing care, rehab services, dementia care & Senior Daycare. Affordable rates. Rated 4.7★ on Google. Book a free tour.',
+    'Genesis Life Care Kajang — family-friendly nursing home in the southern Klang Valley. 24/7 nursing care, rehab services, dementia care & Senior Daycare. Affordable rates from RM 2,500/month. Rated 4.7★ on Google. Book a free tour.',
+  alternates: {
+    canonical: 'https://genesiscare.com.my/nursing-home-kajang',
+    languages: { 'zh-Hans': 'https://genesiscare.com.my/zh/nursing-home-kajang' },
+  },
+  openGraph: {
+    title: 'Nursing Home in Kajang | Genesis Life Care',
+    description: '24/7 nursing care, rehab, dementia care in Kajang. Affordable rates. Rated 4.7★ on Google.',
+    url: 'https://genesiscare.com.my/nursing-home-kajang',
+    siteName: 'Genesis Life Care',
+    locale: 'en_MY',
+    type: 'website',
+    images: [{ url: 'https://genesiscare.com.my/images/kajang-centre.jpeg', width: 1200, height: 630, alt: 'Genesis Life Care Kajang nursing home' }],
+  },
 };
 
 export const revalidate = 60;
@@ -125,7 +138,34 @@ const otherCentres = [
 /* ─── Page component ─────────────────────────────────────────────────── */
 
 export default function NursingHomeKajang() {
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalBusiness',
+    name: 'Genesis Life Care Kajang',
+    description: 'Family-friendly nursing home in Kajang offering 24/7 nursing care, dementia care, stroke rehabilitation & senior daycare. Rated 4.7★ on Google.',
+    url: 'https://genesiscare.com.my/nursing-home-kajang',
+    telephone: '+6012-321-0457',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Jalan Bukit, Taman Kajang Baru',
+      addressLocality: 'Kajang',
+      addressRegion: 'Selangor',
+      postalCode: '43000',
+      addressCountry: 'MY',
+    },
+    geo: { '@type': 'GeoCoordinates', latitude: 2.9927, longitude: 101.7897 },
+    image: 'https://genesiscare.com.my/images/kajang-centre.jpeg',
+    priceRange: 'From RM 2,500/month',
+    openingHoursSpecification: { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '00:00', closes: '23:59' },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.7', reviewCount: '32', bestRating: '5' },
+    medicalSpecialty: ['Geriatric Medicine', 'Rehabilitation', 'Palliative Care'],
+    areaServed: [{ '@type': 'City', name: 'Kajang' }, { '@type': 'City', name: 'Bangi' }, { '@type': 'City', name: 'Semenyih' }],
+    parentOrganization: { '@type': 'Organization', name: 'Genesis Life Care', url: 'https://genesiscare.com.my' },
+  };
+
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
     <main className="bg-white">
       {/* Override global custom_css !important rules for dark-bg sections */}
       <style dangerouslySetInnerHTML={{ __html: `
@@ -657,5 +697,6 @@ export default function NursingHomeKajang() {
         </div>
       </section>
     </main>
+    </>
   );
 }

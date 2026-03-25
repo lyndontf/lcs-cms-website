@@ -2,9 +2,22 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Nursing Home in Petaling Jaya - Genesis Life Care PJ',
+  title: 'Nursing Home in Petaling Jaya — Genesis Life Care PJ | 24/7 Elderly Care',
   description:
-    'Genesis Life Care Petaling Jaya — our flagship nursing home in PJ with a dedicated memory care wing, rehab facilities & 24/7 nursing care. Affordable rates. Rated 4.9★ on Google. Book a free tour.',
+    'Genesis Life Care Petaling Jaya — flagship nursing home in PJ with dedicated memory care wing, rehab facilities & 24/7 nursing care. From RM 2,500/month. Rated 4.9★ on Google. Book a free tour.',
+  alternates: {
+    canonical: 'https://genesiscare.com.my/nursing-home-in-petaling-jaya',
+    languages: { 'zh-Hans': 'https://genesiscare.com.my/zh/nursing-home-in-petaling-jaya' },
+  },
+  openGraph: {
+    title: 'Nursing Home in Petaling Jaya | Genesis Life Care',
+    description: 'Flagship centre with memory care wing, rehab & 24/7 nursing. Rated 4.9★ on Google.',
+    url: 'https://genesiscare.com.my/nursing-home-in-petaling-jaya',
+    siteName: 'Genesis Life Care',
+    locale: 'en_MY',
+    type: 'website',
+    images: [{ url: 'https://genesiscare.com.my/images/pj-centre.jpg', width: 1200, height: 630, alt: 'Genesis Life Care Petaling Jaya nursing home' }],
+  },
 };
 
 export const revalidate = 60;
@@ -125,8 +138,53 @@ const otherCentres = [
 /* ─── Page component ─────────────────────────────────────────────────── */
 
 export default function NursingHomePJ() {
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalBusiness',
+    name: 'Genesis Life Care Petaling Jaya',
+    description: 'Flagship nursing home in PJ with dedicated memory care wing, rehab facilities & 24/7 nursing care. Rated 4.9★ on Google.',
+    url: 'https://genesiscare.com.my/nursing-home-in-petaling-jaya',
+    telephone: '+6019-295-0457',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Lot 1, Petaling Utama Avenue, Jalan PJS 1/50, Taman Petaling Utama',
+      addressLocality: 'Petaling Jaya',
+      addressRegion: 'Selangor',
+      postalCode: '46150',
+      addressCountry: 'MY',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 3.0936,
+      longitude: 101.6168,
+    },
+    image: 'https://genesiscare.com.my/images/pj-centre.jpg',
+    priceRange: 'From RM 2,500/month',
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '00:00',
+      closes: '23:59',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '58',
+      bestRating: '5',
+    },
+    medicalSpecialty: ['Geriatric Medicine', 'Rehabilitation', 'Palliative Care'],
+    areaServed: ['Petaling Jaya', 'Subang Jaya', 'Kelana Jaya'],
+    parentOrganization: {
+      '@type': 'Organization',
+      name: 'Genesis Life Care',
+      url: 'https://genesiscare.com.my',
+    },
+  };
+
   return (
-    <main className="bg-white">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+      <main className="bg-white">
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="pj-hero relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         {/* Decorative pattern */}
@@ -641,5 +699,6 @@ export default function NursingHomePJ() {
         </div>
       </section>
     </main>
+    </>
   );
 }
