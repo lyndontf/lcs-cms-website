@@ -4,6 +4,7 @@ import { getPageBySlug, getSiteSettings, getPublishedPosts } from '@/lib/supabas
 import { getCurrentSiteId, getCurrentSiteSlug } from '@/lib/site-context';
 import ContentRenderer from '@/components/ContentRenderer';
 import QuickEnquiryCard from '@/components/QuickEnquiryCard';
+import DeviceMockup from '@/components/DeviceMockup';
 
 export async function generateMetadata(): Promise<Metadata> {
   const [siteId, siteSlug] = await Promise.all([getCurrentSiteId(), getCurrentSiteSlug()]);
@@ -324,13 +325,13 @@ export default async function HomePage() {
                 </p>
               )}
               <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                <Link
-                  href="/contact"
+                <a
+                  href="#enquiry"
                   className="hp-gold-btn inline-flex items-center justify-center gap-2 bg-gold text-gray-900 px-7 py-3.5 rounded-full text-base font-bold shadow-lg hover:shadow-xl hover:brightness-110 transition-all"
                 >
                   Book a Free Consultation
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                </Link>
+                </a>
                 <Link
                   href="/about-us"
                   className="inline-flex items-center justify-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 text-white px-7 py-3.5 rounded-full text-base font-semibold hover:bg-white/25 transition-all"
@@ -646,16 +647,36 @@ export default async function HomePage() {
                   <span className="hp-muted text-xs">See life inside a Genesis centre</span>
                 </div>
               </a>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-primary-50 rounded-xl p-5 text-center">
-                  <svg className="w-8 h-8 text-primary mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                  <span className="block text-2xl font-extrabold text-primary">10+</span>
-                  <span className="text-xs text-gray-500 font-medium">Years Experience</span>
+              <div className="grid grid-cols-3 gap-3">
+                <div className="bg-primary-50 rounded-xl p-4 text-center">
+                  <svg className="w-7 h-7 text-primary mx-auto mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  <span className="block text-xl font-extrabold text-primary">10+</span>
+                  <span className="text-[10px] text-gray-500 font-medium">Years Experience</span>
                 </div>
-                <div className="bg-primary-50 rounded-xl p-5 text-center">
-                  <svg className="w-8 h-8 text-primary mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                  <span className="block text-2xl font-extrabold text-primary">150+</span>
-                  <span className="text-xs text-gray-500 font-medium">Care Staff</span>
+                <div className="bg-primary-50 rounded-xl p-4 text-center">
+                  <svg className="w-7 h-7 text-primary mx-auto mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                  <span className="block text-xl font-extrabold text-primary">150+</span>
+                  <span className="text-[10px] text-gray-500 font-medium">Care Staff</span>
+                </div>
+                <div className="bg-primary-50 rounded-xl p-4 text-center">
+                  <svg className="w-7 h-7 text-primary mx-auto mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                  <span className="block text-xl font-extrabold text-primary">5</span>
+                  <span className="text-[10px] text-gray-500 font-medium">Care Centres</span>
+                </div>
+                <div className="bg-primary-50 rounded-xl p-4 text-center">
+                  <svg className="w-7 h-7 text-primary mx-auto mb-1.5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
+                  <span className="block text-xl font-extrabold text-primary">4.8★</span>
+                  <span className="text-[10px] text-gray-500 font-medium">Google Rating</span>
+                </div>
+                <div className="bg-primary-50 rounded-xl p-4 text-center">
+                  <svg className="w-7 h-7 text-primary mx-auto mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                  <span className="block text-xl font-extrabold text-primary">500+</span>
+                  <span className="text-[10px] text-gray-500 font-medium">Families Served</span>
+                </div>
+                <div className="bg-primary-50 rounded-xl p-4 text-center">
+                  <svg className="w-7 h-7 text-primary mx-auto mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                  <span className="block text-xl font-extrabold text-primary">JKM</span>
+                  <span className="text-[10px] text-gray-500 font-medium">Govt Approved</span>
                 </div>
               </div>
             </div>
@@ -667,24 +688,11 @@ export default async function HomePage() {
       <section className="bg-[#f4f8fb] py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left — Visual */}
+            {/* Left — Device Mockup */}
             <div className="relative">
-              <div className="bg-gradient-to-br from-primary-800 via-primary to-secondary rounded-2xl overflow-hidden aspect-[4/3] relative">
-                <img
-                  src="/images/general/common-area-graded.png"
-                  alt="Genesis Life Care centre using AI-powered monitoring technology"
-                  className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-40"
-                />
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-                  <div className="w-20 h-20 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mb-5">
-                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                  </div>
-                  <span className="text-white text-lg font-bold mb-1">AI-Powered Care</span>
-                  <span className="text-white/70 text-sm">Malaysia&apos;s First</span>
-                </div>
-              </div>
+              <DeviceMockup />
               {/* Floating badge */}
-              <div className="absolute -bottom-4 -right-4 sm:bottom-4 sm:right-4 bg-gold text-gray-900 rounded-xl px-5 py-3 shadow-lg">
+              <div className="absolute -bottom-4 -right-4 sm:bottom-4 sm:right-4 bg-gold text-gray-900 rounded-xl px-5 py-3 shadow-lg z-20">
                 <span className="block text-xs font-bold uppercase tracking-wide">Proprietary Technology</span>
                 <span className="block text-[10px] text-gray-700 mt-0.5">Built in-house by our team</span>
               </div>

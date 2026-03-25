@@ -20,7 +20,7 @@ export default function QuickEnquiryCard({ email = 'enquiries@genesiscare.com.my
   const centre = CENTRES[selectedIdx];
 
   return (
-    <div className="hp-enquiry bg-white rounded-2xl p-6 sm:p-8 shadow-2xl">
+    <div id="enquiry" className="hp-enquiry bg-white rounded-2xl p-6 sm:p-8 shadow-2xl">
       <span className="hp-eq-label text-xs font-bold tracking-[.14em] uppercase text-primary mb-3 block">
         Quick Enquiry
       </span>

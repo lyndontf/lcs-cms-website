@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import LayoutWrapper from '@/components/LayoutWrapper';
 import TrackingScript from '@/components/TrackingScript';
+import WhatsAppFab from '@/components/WhatsAppFab';
 import { getMenus, getSiteSettings } from '@/lib/supabase';
 import { getCurrentSiteId, getCurrentSiteSlug } from '@/lib/site-context';
 
@@ -75,6 +76,7 @@ export default async function RootLayout({
           {children}
         </LayoutWrapper>
         <TrackingScript />
+        {!isCmsSite && <WhatsAppFab />}
         {settings?.custom_css && (
           <style dangerouslySetInnerHTML={{ __html: settings.custom_css }} />
         )}
