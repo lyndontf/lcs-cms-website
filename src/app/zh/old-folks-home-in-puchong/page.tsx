@@ -9,7 +9,7 @@ import HeroEnquiryForm from '@/components/HeroEnquiryForm';
 export const metadata: Metadata = {
   title: '蒲种老人院 - Genesis Life Care Puchong',
   description:
-    '蒲种现代化老人院，Bandar Puteri。24/7专业护理、康复治疗、失智症护理和营养餐食。价格合理，谷歌评分4.8。立即参观！'',
+    '蒲种现代化老人院，Bandar Puteri。24/7专业护理、康复治疗、失智症护理和营养餐食。价格合理，谷歌评分4.8。立即参观！',
 };
 
 export const revalidate = 60;
@@ -93,7 +93,7 @@ const checklist = [
 const faqs = [
   {
     q: '蒲种老人院费用是多少？',
-    a: '蒲种Genesis Life Care的费用根据护理级别和房间类型而异。我们Bandar Puteri的价格具有竞争力。请联系我们获取根据您亲人需求定制的报价。's needs.',
+    a: '蒲种Genesis Life Care的费用根据护理级别和房间类型而异。我们Bandar Puteri的价格具有竞争力。请联系我们获取根据您亲人需求定制的报价。',
   },
   {
     q: '老人院和护理院有什么区别?',
