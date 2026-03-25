@@ -4,7 +4,6 @@ import { getPageBySlug, getSiteSettings, getPublishedPosts } from '@/lib/supabas
 import { getCurrentSiteId, getCurrentSiteSlug } from '@/lib/site-context';
 import ContentRenderer from '@/components/ContentRenderer';
 import QuickEnquiryCard from '@/components/QuickEnquiryCard';
-import DeviceMockup from '@/components/DeviceMockup';
 
 export async function generateMetadata(): Promise<Metadata> {
   const [siteId, siteSlug] = await Promise.all([getCurrentSiteId(), getCurrentSiteSlug()]);
@@ -681,14 +680,13 @@ export default async function HomePage() {
       <section className="bg-[#f4f8fb] py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left — Device Mockup */}
+            {/* Left — Dashboard mockup image */}
             <div className="relative">
-              <DeviceMockup />
-              {/* Floating badge */}
-              <div className="absolute -bottom-4 -right-4 sm:bottom-4 sm:right-4 bg-gold text-gray-900 rounded-xl px-5 py-3 shadow-lg z-20">
-                <span className="block text-xs font-bold uppercase tracking-wide">Proprietary Technology</span>
-                <span className="block text-[10px] text-gray-700 mt-0.5">Built in-house by our team</span>
-              </div>
+              <img
+                src="/images/general/ai-dashboard-mockup.png"
+                alt="Life Care Systems AI-powered dashboard on desktop and mobile — real-time resident monitoring, vitals tracking, and care management"
+                className="w-full h-auto rounded-2xl"
+              />
             </div>
 
             {/* Right — Content */}
