@@ -595,27 +595,14 @@ export default async function HomePage() {
 
           {/* Video + stat cards row */}
           <div className="grid lg:grid-cols-5 gap-6 mb-12">
-            {/* Video — spans 3 cols */}
-            <a
-              href="https://youtu.be/Shmrvy-_b9U?si=dBv-B-8IpE1H4MJx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="lg:col-span-3 block rounded-2xl overflow-hidden aspect-[16/10] relative group"
-            >
+            {/* Dashboard image — spans 3 cols */}
+            <div className="lg:col-span-3 rounded-2xl overflow-hidden">
               <img
-                src="/images/general/staff-care.jpg"
-                alt="Genesis Life Care virtual tour video"
-                className="absolute inset-0 w-full h-full object-cover object-top"
+                src="/images/general/ai-dashboard-mockup.png"
+                alt="Life Care Systems AI-powered dashboard on desktop and mobile"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
-              <div className="hp-video-overlay absolute inset-0 flex flex-col items-center justify-center gap-3">
-                <div className="w-16 h-16 rounded-full bg-white/90 group-hover:bg-white group-hover:scale-110 transition-all flex items-center justify-center shadow-lg">
-                  <svg className="w-7 h-7 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-                <span className="text-sm font-bold">Take a Virtual Tour</span>
-                <span className="hp-muted text-xs">See life inside a Genesis centre</span>
-              </div>
-            </a>
+            </div>
 
             {/* Stat cards — 2 cols, 3 rows */}
             <div className="lg:col-span-2 grid grid-cols-2 gap-3">
