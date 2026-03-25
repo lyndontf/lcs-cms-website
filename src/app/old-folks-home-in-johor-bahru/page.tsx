@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import GlcHireSection from '@/components/sections/GlcHireSection';
+import FaqSection from '@/components/sections/FaqSection';
+import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Old Folks Home in Johor Bahru - Genesis Life Care JB',
@@ -465,38 +468,41 @@ export default function OldFolksHomeJB() {
         </div>
       </section>
 
+      <GlcHireSection />
+
+      <FaqSection
+        faqs={[
+          {
+            q: 'Is the Johor Bahru centre suitable for Singaporean families?',
+            a: 'Yes, many Singaporean families place their parents at our JB centre for its proximity to Singapore and high care standards. Our cross-border accessibility makes regular visits convenient.'
+          },
+          {
+            q: 'What emergency medical support is available at Holiday Plaza, Johor Bahru?',
+            a: 'Our centre is near Hospital Sultanah Aminah and other major JB healthcare facilities. We have 24/7 nursing staff and an on-call doctor for immediate medical emergencies.'
+          },
+          {
+            q: 'Can residents with stroke recovery needs access rehabilitation at the JB centre?',
+            a: 'Yes, our Johor Bahru facility offers comprehensive stroke rehabilitation with physiotherapy and occupational therapy teams. Recovery programs are personalized for each resident.'
+          },
+          {
+            q: 'How do I arrange a facility tour for the Johor Bahru centre?',
+            a: 'Call us at +6019-282-0457 to schedule a free tour. Tours typically take 45-60 minutes and include meeting the care team, seeing facilities, and discussing your loved one\'s care needs.'
+          },
+          {
+            q: 'Does the Johor Bahru centre offer dementia care programmes?',
+            a: 'Yes, our psychologist-led dementia care programme includes structured cognitive stimulation activities, memory training, and 24/7 monitoring for residents with dementia or memory conditions.'
+          }
+        ]}
+        heading="Location-Specific FAQs"
+        label="Johor Bahru Centre"
+      />
+
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }}
-        />
-        <div className="relative max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4" style={{ color: 'white' }}>
-            Visit Our Old Folks Home in {centre.name}
-          </h2>
-          <p className="text-lg text-white/90 mb-8 max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.9)' }}>
-            Schedule a free walkthrough of our Johor Bahru centre. Meet the team, see the facilities, and find out
-            if we are the right home for your loved one. No obligations.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl"
-            >
-              Schedule a Visit
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-            </Link>
-            <a
-              href={`tel:${centre.phone.replace(/\s/g, '')}`}
-              className="whitespace-nowrap inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-bold px-6 py-3.5 rounded-full transition"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-              Call {centre.phoneCTA}
-            </a>
-          </div>
-        </div>
-      </section>
+      <FinalCtaSection
+        heading={`Visit Our Old Folks Home in ${centre.name}`}
+        description="Schedule a free walkthrough of our Johor Bahru centre. Meet the team, see the facilities, and find out if we are the right home for your loved one. No obligations."
+        primaryLabel="Schedule a Visit"
+      />
     </main>
   );
 }

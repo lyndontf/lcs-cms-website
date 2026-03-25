@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import GlcHireSection from '@/components/sections/GlcHireSection';
+import FaqSection from '@/components/sections/FaqSection';
+import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Old Folks Home in Puchong - Genesis Life Care Puchong',
@@ -460,38 +463,41 @@ export default function OldFolksHomePuchong() {
         </div>
       </section>
 
+      <GlcHireSection />
+
+      <FaqSection
+        faqs={[
+          {
+            q: 'Is there adequate parking at the Puchong old folks home?',
+            a: 'Yes, our Puchong centre in Taman Perindustrian Puchong has ample parking for visitors and family members. Parking is complimentary and easily accessible.'
+          },
+          {
+            q: 'Can residents from Subang Jaya and USJ areas use the Puchong centre?',
+            a: 'Absolutely. Our Puchong facility is strategically located to serve residents from Subang Jaya, USJ, Sunway, Kinrara, and surrounding areas. We are just minutes away via main highways.'
+          },
+          {
+            q: 'What dietary accommodations are available at the Puchong home?',
+            a: 'Our kitchen team prepares customized meals based on medical requirements (diabetic, low-sodium, vegetarian, etc.). We accommodate all dietary preferences and allergies.'
+          },
+          {
+            q: 'Does the Puchong centre offer stroke rehabilitation for recent stroke survivors?',
+            a: 'Yes, our modern Puchong facility includes a full rehabilitation department with physiotherapy and occupational therapy teams. We design personalized stroke recovery programs.'
+          },
+          {
+            q: 'How quickly can my loved one be admitted to the Puchong centre?',
+            a: 'Admission timeline depends on bed availability and the level of care required. Most cases can be arranged within 1-2 weeks of the initial assessment. Contact us to discuss your timeline.'
+          }
+        ]}
+        heading="Location-Specific FAQs"
+        label="Puchong Centre"
+      />
+
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }}
-        />
-        <div className="relative max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4" style={{ color: 'white' }}>
-            Visit Our Old Folks Home in {centre.name}
-          </h2>
-          <p className="text-lg text-white/90 mb-8 max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.9)' }}>
-            Schedule a free walkthrough of our Puchong centre. Meet the team, see the facilities, and find out
-            if we are the right home for your loved one. No obligations.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl"
-            >
-              Schedule a Visit
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-            </Link>
-            <a
-              href={`tel:${centre.phone.replace(/\s/g, '')}`}
-              className="whitespace-nowrap inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-bold px-6 py-3.5 rounded-full transition"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-              Call {centre.phoneCTA}
-            </a>
-          </div>
-        </div>
-      </section>
+      <FinalCtaSection
+        heading={`Visit Our Old Folks Home in ${centre.name}`}
+        description="Schedule a free walkthrough of our Puchong centre. Meet the team, see the facilities, and find out if we are the right home for your loved one. No obligations."
+        primaryLabel="Schedule a Visit"
+      />
     </main>
   );
 }

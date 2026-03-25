@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getSiteSettings } from '@/lib/supabase';
+import GlcHireSection from '@/components/sections/GlcHireSection';
+import FaqSection from '@/components/sections/FaqSection';
+import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: "About Genesis Life Care — Malaysia's Trusted Nursing Home Operator",
@@ -476,40 +479,42 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* ─── CTA ─── */}
-      <section className="hp-cta relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
-        <div className="absolute -top-[40%] -right-[10%] w-[60%] pb-[60%] rounded-full bg-white/[.06] pointer-events-none" />
-        <div className="absolute -bottom-[50%] -left-[5%] w-[50%] pb-[50%] rounded-full bg-black/[.06] pointer-events-none" />
+      {/* ─── GLC HIRE SECTION ─── */}
+      <GlcHireSection />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Come See for Yourself
-          </h2>
-          <p className="hp-sub text-lg mb-8 max-w-2xl mx-auto">
-            The best way to know if Genesis is right for your family is to visit. Book a free tour of any of our centres &mdash; no obligations, no pressure.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="hp-gold-btn inline-flex items-center justify-center gap-2 bg-gold text-gray-900 px-6 py-3.5 rounded-full text-base font-bold shadow-lg hover:shadow-xl hover:brightness-110 transition-all whitespace-nowrap"
-            >
-              Book a Free Tour
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <a
-              href={`tel:${settings?.contact_phone || '+6012-321 0457'}`}
-              className="inline-flex items-center justify-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 text-white px-6 py-3.5 rounded-full text-base font-semibold hover:bg-white/25 transition-all whitespace-nowrap"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              Call {settings?.contact_phone || '+6012-321 0457'}
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* ─── FAQ SECTION ─── */}
+      <FaqSection
+        faqs={[
+          {
+            q: "What are your accreditations and registrations?",
+            a: "Genesis Life Care is registered with JKM (Ministry of Health Malaysia) as an affordable nursing home operator, AgeCope certified as a member of the Malaysian elderly care association, and HRDF-registered training provider. Our training academy is also registered with JPK as a TVET training provider."
+          },
+          {
+            q: "What qualifications do your staff have?",
+            a: "Our team includes on-site doctors, registered nurses, physiotherapists, occupational therapists, psychologists, and trained caregivers. All clinical staff hold relevant Malaysian professional registrations. We invest heavily in continuous training through our HRDF-registered academy."
+          },
+          {
+            q: "Are there flexible visiting hours?",
+            a: "Yes. We maintain open visiting hours so families can visit their loved ones freely. We also offer video call updates for families unable to visit in person, and provide monthly progress reviews to keep everyone informed."
+          },
+          {
+            q: "Do you offer transparent pricing?",
+            a: "Absolutely. All our nursing homes are registered as affordable care facilities with transparent, upfront pricing. No hidden fees. Rates typically start from RM 2,500/month depending on the level of care required."
+          },
+          {
+            q: "Can residents transfer between centres?",
+            a: "Yes. Our standardised care operating system means a resident can transfer between any of our 5 centres while maintaining consistent care quality and continuity. We facilitate smooth transitions with full care plan handovers."
+          }
+        ]}
+        heading="Frequently Asked Questions About Genesis Life Care"
+        label="ABOUT OUR CARE"
+      />
+
+      {/* ─── FINAL CTA ─── */}
+      <FinalCtaSection
+        heading="Start Your Journey to Peace of Mind"
+        description="Every family deserves to find the right care partner. Let us help you discover why hundreds of families trust Genesis Life Care with their loved ones."
+      />
     </>
   );
 }

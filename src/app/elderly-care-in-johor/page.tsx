@@ -6,6 +6,9 @@ import FacilityGallery from '@/components/sections/FacilityGallery';
 import Testimonials from '@/components/sections/Testimonials';
 import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
+import GlcHireSection from '@/components/sections/GlcHireSection';
+import FaqSection from '@/components/sections/FaqSection';
+import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Elderly Care in Johor - Nursing Home in Johor Bahru | Genesis Life Care',
@@ -434,45 +437,32 @@ export default function ElderlyCareJohor() {
 
       <OtherCentres centres={otherCentres} currentCentreName={centre.name} />
 
-      {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-            backgroundSize: '28px 28px',
-          }}
-        />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            Find Quality Elderly Care in Johor
-          </h2>
-          <p className="text-lg text-white mb-8 max-w-2xl mx-auto" style={{ color: 'white' }}>
-            Visit our Johor Bahru centre for a free tour. See our care spaces,
-            meet the team, and discover why families across Johor trust Genesis Life Care.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap"
-            >
-              Book a Free Tour
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <a
-              href={`tel:${nearestCentre.phone.replace(/\s/g, '')}`}
-              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              Call {nearestCentre.phoneCTA}
-            </a>
-          </div>
-        </div>
-      </section>
+      <GlcHireSection />
+
+      <FaqSection faqs={[
+        {
+          q: 'What are the care standards at your Johor elderly care facility?',
+          a: 'Our Johor Bahru centre maintains professional care standards with a 1:3 day-shift and 1:5 night-shift nursing staff-to-resident ratio. All nursing staff are registered professionals with verified credentials and continuous professional development training.',
+        },
+        {
+          q: 'Are there specialised dementia care programmes available in Johor?',
+          a: 'Yes. Our Johor Bahru centre offers psychologist-led dementia care with structured cognitive stimulation activities, memory exercises, therapeutic music, and art therapy. Our programme is designed to slow decline and maintain quality of life.',
+        },
+        {
+          q: 'What medical services are available at the nursing home in Johor?',
+          a: 'We provide on-site doctor consultations, nursing care 24/7, medication management, wound care, blood pressure monitoring, and coordination with hospitals for specialist referrals. Our team ensures residents receive comprehensive medical support.',
+        },
+        {
+          q: 'How do I arrange admission to the elderly care home in Johor?',
+          a: 'Admission starts with a free consultation and tour of our Johor Bahru facility. We assess your loved one\'s needs, review medical records, discuss care options, and create a personalised care plan. Most admissions are completed within 1-2 weeks.',
+        },
+        {
+          q: 'What payment options are available for elderly care in Johor?',
+          a: 'We offer flexible payment options including monthly billing, advance payment discounts, and customised care packages. Contact us to discuss rates and find a payment arrangement that works for your family.',
+        },
+      ]} />
+
+      <FinalCtaSection heading="Ready to Find Quality Elderly Care in Johor?" description="Visit our Johor Bahru centre for a free tour. See our care spaces, meet the team, and discover why families across Johor trust Genesis Life Care." />
     </main>
   );
 }

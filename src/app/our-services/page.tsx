@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import GlcHireSection from '@/components/sections/GlcHireSection';
+import FaqSection from '@/components/sections/FaqSection';
+import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Elderly Care Services in Malaysia — Nursing, Dementia & Rehab | Genesis Life Care',
@@ -442,46 +445,42 @@ export default function OurServices() {
         </div>
       </section>
 
-      {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-            backgroundSize: '28px 28px',
-          }}
-        />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            Find the Right Care for Your Loved One
-          </h2>
-          <p className="text-lg text-white mb-8 max-w-2xl mx-auto" style={{color: 'white'}}>
-            Not sure which service is right for your family? Book a free consultation and
-            our care advisors will help you find the best solution — no obligations.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap"
-            >
-              Book a Free Consultation
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <a
-              href="tel:+60123210457"
-              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              Call +6012-321-0457
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* ─── GLC HIRE SECTION ─── */}
+      <GlcHireSection />
+
+      {/* ─── FAQ SECTION ─── */}
+      <FaqSection
+        faqs={[
+          {
+            q: "What's the difference between nursing care and dementia care?",
+            a: "Nursing care provides 24/7 medical supervision and personal care assistance for seniors with various medical needs. Dementia care is a specialised programme with psychologist-led cognitive stimulation, structured routines, and trained staff who understand memory-related challenges. Both are available across all our centres."
+          },
+          {
+            q: "Is stroke rehabilitation suitable for everyone recovering from a stroke?",
+            a: "Yes. Our stroke rehabilitation programme is tailored to individual recovery needs. Whether someone is in the early recovery phase or regaining independence months after stroke, our physiotherapists and occupational therapists design personalised therapy plans. Family involvement is encouraged throughout."
+          },
+          {
+            q: "How long can residents stay for post-operative recovery?",
+            a: "Post-operative recovery stays are flexible, typically ranging from 2-8 weeks depending on the type of surgery and recovery progress. We coordinate closely with your surgeon and discharge you when you're confident and prepared to continue recovery at home."
+          },
+          {
+            q: "Is Senior Daycare available at all centres?",
+            a: "Senior Daycare is available at most centres with flexible scheduling. Programme includes structured activities, meals, health monitoring, and respite for family caregivers. Hours are typically 8am-5pm on weekdays, with some centres offering extended or weekend options."
+          },
+          {
+            q: "What happens if my loved one's care needs change?",
+            a: "Our care plans are reviewed monthly with families and adjusted as needs change. If your loved one requires a different level of care (e.g., transitioning from nursing care to palliative care), our team ensures a smooth transition with updated assessments and family discussions."
+          }
+        ]}
+        heading="Questions About Our Services?"
+        label="SERVICES FAQ"
+      />
+
+      {/* ─── FINAL CTA ─── */}
+      <FinalCtaSection
+        heading="Find the Right Care for Your Loved One"
+        description="Every family's situation is unique. Our care advisors are here to understand your specific needs and help you find the perfect service. Book a free consultation today — no obligations, no pressure."
+      />
     </main>
   );
 }

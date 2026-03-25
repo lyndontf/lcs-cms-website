@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import GlcHireSection from '@/components/sections/GlcHireSection';
+import FaqSection from '@/components/sections/FaqSection';
+import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Respite Care in Malaysia - Short-Term Elderly Care | Genesis Life Care',
@@ -393,76 +396,17 @@ export default function RespiteCareMalaysia() {
         </div>
       </section>
 
-      {/* ── FAQ ────────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">FAQ</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
-              Common questions about respite care and short-term elderly care in Malaysia.
-            </p>
-          </div>
+      {/* ── GLC HIRE SECTION ──────────────────────────────────────────── */}
+      <GlcHireSection />
 
-          <div className="max-w-3xl mx-auto space-y-4">
-            {faqs.map((faq, i) => (
-              <details key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm group">
-                <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                  <h3 className="text-base font-semibold text-gray-900 pr-4">{faq.q}</h3>
-                  <svg className="w-5 h-5 text-gray-400 flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-6 pb-6 text-sm text-gray-600 leading-relaxed">
-                  {faq.a}
-                </div>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── FAQs ──────────────────────────────────────────────────────── */}
+      <FaqSection faqs={faqs} />
 
-      {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-            backgroundSize: '28px 28px',
-          }}
-        />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            Give Yourself a Break — Your Loved One Is in Good Hands
-          </h2>
-          <p className="text-lg text-white mb-8 max-w-2xl mx-auto" style={{ color: 'white' }}>
-            Contact us to arrange respite care at any of our 5 centres. Our team will
-            guide you through the process and ensure a smooth, comfortable stay for your loved one.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap"
-            >
-              Book a Free Consultation
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <a
-              href={`tel:${phone.replace(/\s/g, '')}`}
-              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              Call {phoneCTA}
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* ── FINAL CTA ────────────────────────────────────────────────── */}
+      <FinalCtaSection
+        heading="Give Yourself a Break — Your Loved One Is in Good Hands"
+        description="Contact us to arrange respite care at any of our 5 centres. Our team will guide you through the process and ensure a smooth, comfortable stay for your loved one."
+      />
     </main>
   );
 }

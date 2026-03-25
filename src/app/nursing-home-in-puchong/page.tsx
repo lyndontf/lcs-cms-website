@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import GlcHireSection from '@/components/sections/GlcHireSection';
+import FaqSection from '@/components/sections/FaqSection';
+import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Nursing Home in Puchong — Genesis Life Care Puchong | 24/7 Elderly Care',
@@ -680,46 +683,28 @@ export default function NursingHomePuchong() {
         </div>
       </section>
 
-      {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-            backgroundSize: '28px 28px',
-          }}
-        />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            Ready to Visit Our Puchong Centre?
-          </h2>
-          <p className="text-lg text-white mb-8 max-w-2xl mx-auto" style={{color: 'white'}}>
-            Book a free tour of our Puchong facility. See our care spaces,
-            meet the team, and learn about our programmes — no obligations.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap"
-            >
-              Book a Free Tour
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <a
-              href={`tel:${centre.phone.replace(/\s/g, '')}`}
-              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              Call {centre.phoneCTA}
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* ── GLC HIRE SECTION ──────────────────────────────────────────── */}
+      <GlcHireSection />
+
+      {/* ── FAQ SECTION ────────────────────────────────────────────────── */}
+      <FaqSection
+        faqs={[
+          { q: 'How much does a nursing home in Puchong cost?', a: 'Our Puchong centre offers affordable rates starting from RM 2,500/month, depending on the level of care and room type. We offer flexible packages tailored to individual needs and budgets.' },
+          { q: 'Where exactly is the Genesis Life Care Puchong centre located?', a: 'We are located in Bandar Puteri, 47100 Puchong, Selangor. The centre is easily accessible via the LDP and ELITE highways, making visits convenient for families across the Klang Valley.' },
+          { q: 'What care services are available at the Puchong centre?', a: 'We provide 24/7 nursing care, dementia & memory care, stroke rehabilitation, palliative care, post-op recovery, and Senior Daycare programmes. All services are delivered by our experienced care team.' },
+          { q: 'Can I visit the Puchong centre before admission?', a: 'Yes! We encourage family visits. Tours are available daily from 9:00 AM to 6:00 PM. You can book a free tour through our contact form or call us at +6019-759-0457 to arrange a time.' },
+          { q: 'How many residents can the Puchong centre accommodate?', a: 'Our Puchong centre has 120+ beds and is designed to provide a comfortable, home-like environment for all residents while maintaining the highest standards of care.' },
+        ]}
+        heading="Frequently Asked Questions"
+        label="PUCHONG CENTRE"
+      />
+
+      {/* ── FINAL CTA ────────────────────────────────────────────────── */}
+      <FinalCtaSection
+        heading="Ready to Visit Our Puchong Centre?"
+        description="Book a free tour of our Puchong facility. See our care spaces, meet the team, and learn about our programmes — no obligations."
+        primaryLabel="Book a Free Tour"
+      />
     </main>
     </>
   );

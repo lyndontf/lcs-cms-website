@@ -6,6 +6,9 @@ import FacilityGallery from '@/components/sections/FacilityGallery';
 import Testimonials from '@/components/sections/Testimonials';
 import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
+import GlcHireSection from '@/components/sections/GlcHireSection';
+import FaqSection from '@/components/sections/FaqSection';
+import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Dementia Care in Puchong - Memory Care Puchong | Genesis Life Care',
@@ -425,26 +428,32 @@ export default function DementiaCarePuchong() {
 
       <OtherCentres centres={otherCentres} currentCentreName={centreData.name} />
 
-      {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">Specialised Dementia Care in Puchong</h2>
-          <p className="text-lg text-white mb-8 max-w-2xl mx-auto" style={{ color: 'white' }}>
-            Visit our Puchong centre for a free tour. See our dementia care spaces,
-            meet the psychologist and care team, and learn how we support families living with dementia.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/contact" className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap">
-              Book a Free Tour <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-            </Link>
-            <a href={`tel:${centre.phone.replace(/\s/g, '')}`} className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-              Call {centre.phoneCTA}
-            </a>
-          </div>
-        </div>
-      </section>
+      <GlcHireSection />
+
+      <FaqSection faqs={[
+        {
+          q: 'What dementia care expertise does your Puchong team have?',
+          a: 'Our Puchong centre has a dedicated psychologist and care team trained extensively in person-centred dementia care. We provide cognitive stimulation activities, therapeutic interventions, and structured memory support programmes tailored to each resident\'s needs.',
+        },
+        {
+          q: 'How large is your Puchong dementia care unit?',
+          a: 'Our Puchong centre has 120+ beds with dedicated dementia care units designed for safety and comfort. Units feature secure perimeters, colour-coded wayfinding, fall-prevention measures, and comfortable common spaces for activities.',
+        },
+        {
+          q: 'What therapeutic activities are offered for dementia residents in Puchong?',
+          a: 'We offer cognitive stimulation activities, therapeutic music, art therapy, reminiscence activities, gentle exercise programmes, gardening therapy, and social activities. All activities are tailored to residents\' abilities and interests.',
+        },
+        {
+          q: 'Can families visit dementia residents at your Puchong centre?',
+          a: 'Yes. Visiting hours are flexible, and families can visit anytime. We encourage family involvement in care planning and activities. We also provide family support programmes and education about dementia care.',
+        },
+        {
+          q: 'How is dementia progression monitored at your Puchong facility?',
+          a: 'Our team regularly assesses residents using standardised cognitive assessments, monitors changes in behaviour and function, and adjusts care plans accordingly. We coordinate with doctors and specialists for medical management of dementia-related conditions.',
+        },
+      ]} />
+
+      <FinalCtaSection heading="Ready for Specialised Dementia Care in Puchong?" description="Visit our Puchong centre for a free tour. See our dementia care spaces, meet the psychologist and care team, and learn how we support families living with dementia." />
     </main>
   );
 }

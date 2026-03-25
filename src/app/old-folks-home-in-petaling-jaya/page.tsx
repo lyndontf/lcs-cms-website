@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import GlcHireSection from '@/components/sections/GlcHireSection';
+import FaqSection from '@/components/sections/FaqSection';
+import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Old Folks Home in Petaling Jaya - Genesis Life Care PJ',
@@ -463,38 +466,41 @@ export default function OldFolksHomePJ() {
         </div>
       </section>
 
+      <GlcHireSection />
+
+      <FaqSection
+        faqs={[
+          {
+            q: 'What makes our Petaling Jaya centre our flagship location?',
+            a: 'As our oldest and largest centre, our Petaling Jaya facility in Kota Damansara has 50+ beds, the highest Google rating (4.9 stars with 155+ reviews), and is where we pioneered our psychologist-led dementia care programs.'
+          },
+          {
+            q: 'Is the Petaling Jaya centre easily accessible from highways?',
+            a: 'Yes, our PJ centre is strategically located in Kota Damansara with easy access via LDP, NKVE, and Sprint highways. Street parking and ample visitor parking are available.'
+          },
+          {
+            q: 'Can family members work with therapists at the Petaling Jaya home?',
+            a: 'Absolutely. We involve families in rehabilitation and care planning. Our therapists provide training and guidance so family members can support their loved ones at home.'
+          },
+          {
+            q: 'Does the flagship Petaling Jaya centre accept short-term respite care?',
+            a: 'Yes, we offer respite care for families who need temporary care solutions. This gives primary caregivers a break while ensuring your loved one receives professional care.'
+          },
+          {
+            q: 'What specialists are available on-site at the Petaling Jaya centre?',
+            a: 'Our PJ centre has on-site doctors, psychologists, physiotherapists, occupational therapists, and trained nurses. Specialist consultations are arranged as needed.'
+          }
+        ]}
+        heading="Location-Specific FAQs"
+        label="Petaling Jaya Flagship"
+      />
+
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }}
-        />
-        <div className="relative max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4" style={{ color: 'white' }}>
-            Visit Our Old Folks Home in {centre.name}
-          </h2>
-          <p className="text-lg text-white/90 mb-8 max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.9)' }}>
-            Schedule a free walkthrough of our Petaling Jaya centre. Meet the team, see the facilities, and find out
-            if we are the right home for your loved one. No obligations.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl"
-            >
-              Schedule a Visit
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-            </Link>
-            <a
-              href={`tel:${centre.phone.replace(/\s/g, '')}`}
-              className="whitespace-nowrap inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-bold px-6 py-3.5 rounded-full transition"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-              Call {centre.phoneCTA}
-            </a>
-          </div>
-        </div>
-      </section>
+      <FinalCtaSection
+        heading={`Visit Our Old Folks Home in ${centre.name}`}
+        description="Schedule a free walkthrough of our Petaling Jaya centre. Meet the team, see the facilities, and find out if we are the right home for your loved one. No obligations."
+        primaryLabel="Schedule a Visit"
+      />
     </main>
   );
 }

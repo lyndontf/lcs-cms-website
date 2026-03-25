@@ -6,6 +6,9 @@ import FacilityGallery from '@/components/sections/FacilityGallery';
 import Testimonials from '@/components/sections/Testimonials';
 import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
+import GlcHireSection from '@/components/sections/GlcHireSection';
+import FaqSection from '@/components/sections/FaqSection';
+import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Elderly Care in Selangor - Nursing Homes Across Selangor | Genesis Life Care',
@@ -464,45 +467,41 @@ export default function ElderlyCarSelangor() {
 
       <OtherCentres centres={otherCentres} currentCentreName={centre.name} />
 
+      <GlcHireSection />
+
+      <FaqSection
+        faqs={[
+          {
+            q: 'What types of elderly care are available across all Selangor centres?',
+            a: 'All four Genesis centres in Selangor offer nursing care, dementia programmes, stroke rehabilitation, palliative care, post-op recovery, and senior daycare. Services are standardized across locations.'
+          },
+          {
+            q: 'Which Selangor centre is closest to my area?',
+            a: 'Petaling Jaya serves Damansara and Mont Kiara areas. Klang serves Shah Alam and Port Klang. Kajang covers Bangi and south Cheras. Puchong serves Subang Jaya and USJ. Contact us for location recommendations.'
+          },
+          {
+            q: 'Can I transfer my parent between Selangor Genesis centres?',
+            a: 'Yes, internal transfers between our Selangor centres are straightforward. Your care plan transfers with you, ensuring continuity of care. Discuss transfer options with our team.'
+          },
+          {
+            q: 'Do all four Selangor centres have the same staff qualifications?',
+            a: 'Yes, all Genesis centres maintain consistent staffing standards with trained nurses, therapists, and psychologists available 24/7 at each location.'
+          },
+          {
+            q: 'How do I choose the right Selangor centre for my elderly parent?',
+            a: 'Consider location convenience, specific care needs (e.g., stroke rehab, dementia), and facility size. We recommend scheduling tours at 1-2 centres to compare. Our team can advise based on your situation.'
+          }
+        ]}
+        heading="Selangor-Wide FAQs"
+        label="All 4 Selangor Centres"
+      />
+
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-            backgroundSize: '28px 28px',
-          }}
-        />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            Find a Genesis Life Care Centre Near You in Selangor
-          </h2>
-          <p className="text-lg text-white mb-8 max-w-2xl mx-auto" style={{ color: 'white' }}>
-            Visit any of our 4 Selangor centres for a free tour. See our care spaces,
-            meet the team, and discover why families across the Klang Valley trust Genesis Life Care.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap"
-            >
-              Book a Free Tour
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <a
-              href={`tel:${phone.replace(/\s/g, '')}`}
-              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              Call {phoneCTA}
-            </a>
-          </div>
-        </div>
-      </section>
+      <FinalCtaSection
+        heading="Find a Genesis Life Care Centre Near You in Selangor"
+        description="Visit any of our 4 Selangor centres for a free tour. See our care spaces, meet the team, and discover why families across the Klang Valley trust Genesis Life Care."
+        primaryLabel="Book a Free Tour"
+      />
     </main>
   );
 }

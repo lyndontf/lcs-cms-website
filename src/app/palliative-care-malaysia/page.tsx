@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import GlcHireSection from '@/components/sections/GlcHireSection';
+import FaqSection from '@/components/sections/FaqSection';
+import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Palliative Care in Malaysia — Comfort & Dignity | Genesis Life Care',
@@ -558,69 +561,17 @@ export default function PalliativeCare() {
         </div>
       </section>
 
-      {/* ── FAQs ──────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 bg-[#f4f8fb]">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <p className="text-primary font-bold text-xs uppercase tracking-widest mb-3">Common Questions</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">Frequently Asked Questions</h2>
-          </div>
-          <div className="max-w-3xl mx-auto">
-            {faqs.map((faq, i) => (
-              <div key={i} className="border-b border-gray-200 py-6 last:border-b-0">
-                <h3 className="text-base font-bold text-gray-900 mb-2 flex items-start gap-3">
-                  <span className="bg-primary/10 text-primary rounded-full w-7 h-7 flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5">
-                    {i + 1}
-                  </span>
-                  {faq.q}
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed pl-10">{faq.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── GLC HIRE SECTION ──────────────────────────────────────────── */}
+      <GlcHireSection />
 
-      {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-            backgroundSize: '28px 28px',
-          }}
-        />
-        <div className="relative max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4" style={{ color: 'white' }}>
-            Find Compassionate Palliative Care<br className="hidden sm:block" /> for Your Loved One
-          </h2>
-          <p className="text-white/80 mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.8)' }}>
-            Book a free consultation with our care advisors. Visit any of our centres,
-            meet the team, and learn about our palliative care programme — no obligations.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl whitespace-nowrap"
-            >
-              Book a Free Consultation
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <a
-              href="tel:+60123210457"
-              className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3.5 rounded-full transition whitespace-nowrap"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              Call +6012-321-0457
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* ── FAQs ──────────────────────────────────────────────────────── */}
+      <FaqSection faqs={faqs} />
+
+      {/* ── FINAL CTA ────────────────────────────────────────────────── */}
+      <FinalCtaSection
+        heading="Find Compassionate Palliative Care for Your Loved One"
+        description="Book a free consultation with our care advisors. Visit any of our centres, meet the team, and learn about our palliative care programme — no obligations."
+      />
     </main>
   );
 }
