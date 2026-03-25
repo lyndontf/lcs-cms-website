@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import QuickEnquiryCard from '@/components/QuickEnquiryCard';
 
 export const metadata: Metadata = {
   title: 'Nursing Home in Kajang — Genesis Life Care Kajang | 24/7 Elderly Care',
@@ -42,7 +43,7 @@ const centre = {
 const highlights = [
   { label: 'Google Rating', value: '4.9 ★', sub: `${centre.reviews} reviews` },
   { label: 'Beds', value: '120', sub: 'Capacity' },
-  { label: 'Established', value: '2021', sub: 'Southern KV' },
+  { label: 'Established', value: '2021', sub: 'Kajang' },
   { label: 'Affordable Rates', value: '✓', sub: 'All Centres' },
   { label: 'Care Team', value: '20+', sub: 'Professionals' },
 ];
@@ -182,16 +183,18 @@ export default function NursingHomeKajang() {
         .team-card h3 { font-size: 0.75rem !important; line-height: 1rem !important; }
       ` }} />
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-            backgroundSize: '28px 28px',
-          }}
+      <section className="hero-dark relative overflow-hidden">
+        {/* Background image */}
+        <img
+          src="/images/general/hero-main.jpeg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary/85 to-secondary/80" />
+        {/* Decorative circles */}
+        <div className="absolute -top-[20%] -right-[10%] w-[55%] pb-[55%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.08)_0%,transparent_70%)] pointer-events-none" />
+        <div className="absolute -bottom-[30%] -left-[5%] w-[40%] pb-[40%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.05)_0%,transparent_70%)] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
@@ -199,7 +202,7 @@ export default function NursingHomeKajang() {
             <div>
               <div className="flex items-center gap-3 mb-5">
                 <span className="bg-gold text-gray-900 text-xs font-bold tracking-wide px-3 py-1 rounded-full uppercase">
-                  Southern KV
+                  Kajang
                 </span>
                 <span className="bg-white/15 text-white text-xs font-semibold px-3 py-1 rounded-full" style={{color: 'white'}}>
                   ★ {centre.rating} Google Rating
@@ -252,43 +255,40 @@ export default function NursingHomeKajang() {
               </div>
             </div>
 
-            {/* Right – image */}
-            <div className="relative hidden lg:block">
-              <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
-                <img
-                  src={centre.heroImg}
-                  alt={`${centre.fullName} facility`}
-                  className="w-full h-[420px] object-cover"
-                />
-              </div>
-              {/* Floating badge */}
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg px-5 py-3 flex items-center gap-3">
-                <div className="bg-primary/10 rounded-full p-2">
-                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-gray-800">Affordable Rates</p>
-                  <p className="text-xs text-gray-900">Ministry Approved</p>
-                </div>
-              </div>
-            </div>
+            {/* Right — Quick enquiry card */}
+            <QuickEnquiryCard email="enquiries@genesiscare.com.my" />
           </div>
         </div>
       </section>
 
-      {/* ── AT A GLANCE ──────────────────────────────────────────────── */}
-      <section className="bg-gray-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-            {highlights.map((h, i) => (
-              <div key={i} className="text-center">
-                <p className="text-2xl sm:text-3xl font-extrabold text-primary">{h.value}</p>
-                <p className="text-sm font-semibold text-gray-700 mt-1">{h.label}</p>
-                <p className="text-xs text-gray-400">{h.sub}</p>
-              </div>
-            ))}
+      {/* ── TRUST BAR ──────────────────────────────────────────────── */}
+      <section className="bg-white border-b border-gray-200 py-6 sm:py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-8">
+            <div className="text-center flex-1 min-w-[120px]">
+              <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">500+</span>
+              <span className="text-xs text-gray-500 mt-1 font-medium">Families Served</span>
+            </div>
+            <div className="hidden sm:block w-px h-12 bg-gray-200" />
+            <div className="text-center flex-1 min-w-[120px]">
+              <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">5</span>
+              <span className="text-xs text-gray-500 mt-1 font-medium">Care Centres</span>
+            </div>
+            <div className="hidden sm:block w-px h-12 bg-gray-200" />
+            <div className="text-center flex-1 min-w-[120px]">
+              <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">24/7</span>
+              <span className="text-xs text-gray-500 mt-1 font-medium">Professional Care</span>
+            </div>
+            <div className="hidden sm:block w-px h-12 bg-gray-200" />
+            <div className="text-center flex-1 min-w-[120px]">
+              <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">{centre.rating}</span>
+              <span className="text-xs text-gray-500 mt-1 font-medium">Google Rating ★</span>
+            </div>
+            <div className="hidden sm:block w-px h-12 bg-gray-200" />
+            <div className="flex items-center justify-center gap-4 flex-1 min-w-[200px]">
+              <img src="/images/logos/jkm-logo.webp" alt="JKM approved elderly care" className="h-10 w-auto" />
+              <img src="/images/logos/agecope-logo.webp" alt="AgeCope certification" className="h-10 w-auto" />
+            </div>
           </div>
         </div>
       </section>
@@ -300,23 +300,25 @@ export default function NursingHomeKajang() {
             <div>
               <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">About This Centre</p>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
-                Family-Friendly Care<br />in the Southern KV
+                Quality Nursing Care<br />in Kajang
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  Genesis Life Care Kajang serves families across the southern Klang Valley
-                  corridor — from Kajang and Bangi to Semenyih and Putrajaya. Our centre
-                  provides a warm, home-like environment where residents feel welcome and cared for.
+                  Located in the heart of Kajang, Genesis Life Care provides professional
+                  elderly care for families across Kajang, Bangi, Semenyih, Serdang, and
+                  Putrajaya. Our JKM-approved centre offers a safe, home-like environment
+                  where every resident is treated like family.
                 </p>
                 <p>
-                  We take pride in our personalised approach to care. Our <strong>in-house
-                  kitchen</strong> prepares nutritious meals supervised by a dietician, and we
-                  provide comfortable facilities designed to make every resident feel at home.
+                  Our dedicated care team delivers <strong>24/7 nursing care</strong> with
+                  weekly doctor consultations, personalised rehabilitation therapy, and
+                  structured daily activities. Nutritious meals are freshly prepared in
+                  our <strong>in-house kitchen</strong> under dietician supervision.
                 </p>
                 <p>
-                  The centre offers the full range of Genesis services including 24/7 nursing
-                  care, weekly doctor consultations, rehabilitation therapy, and structured
-                  activity programmes designed to keep residents active and engaged.
+                  Whether your loved one needs long-term residential care, post-surgery
+                  recovery, stroke rehabilitation, or specialised dementia support, our
+                  120-bed facility is equipped to provide the right level of care.
                 </p>
               </div>
 
@@ -345,42 +347,86 @@ export default function NursingHomeKajang() {
       </section>
 
       {/* ── SERVICES ──────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 bg-gray-50">
+      <section className="bg-[#f4f8fb] py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Our Services</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-              Care Services at Kajang Centre
-            </h2>
-            <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
-              We offer a comprehensive range of care services tailored to each resident&apos;s needs.
-            </p>
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="inline-block text-xs font-bold tracking-[.14em] uppercase text-primary mb-3">Our Services</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">Comprehensive Care for Every Need</h2>
+            <p className="text-gray-500 text-lg">From long-term residential nursing to specialised memory care, we have the right support for your family.</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((svc, i) => (
-              <Link
-                key={i}
-                href={svc.link}
-                className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:border-primary/20 transition-all group"
-              >
-                <div className="bg-primary/10 rounded-lg w-12 h-12 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={svc.icon} />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                  {svc.title}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{svc.desc}</p>
-                <span className="inline-flex items-center gap-1 text-primary text-sm font-semibold mt-4">
-                  Learn more
-                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
+            {/* Service Card 1 */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+              <div className="w-14 h-14 rounded-xl bg-primary-50 flex items-center justify-center mb-5">
+                <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Nursing Home Care</h3>
+              <p className="text-sm text-gray-500 leading-relaxed mb-4">24/7 professional nursing care in a warm, homelike environment. Personalised care plans for each resident.</p>
+              <Link href="/about-us" className="text-sm font-bold text-primary inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                Learn more <span>→</span>
               </Link>
-            ))}
+            </div>
+
+            {/* Service Card 2 */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+              <div className="w-14 h-14 rounded-xl bg-primary-50 flex items-center justify-center mb-5">
+                <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Dementia &amp; Memory Care</h3>
+              <p className="text-sm text-gray-500 leading-relaxed mb-4">Specialised programmes for Alzheimer&apos;s, dementia, and Parkinson&apos;s. Safe, structured, and stimulating environment.</p>
+              <Link href="/dementia-care" className="text-sm font-bold text-primary inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                Learn more <span>→</span>
+              </Link>
+            </div>
+
+            {/* Service Card 3 */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+              <div className="w-14 h-14 rounded-xl bg-primary-50 flex items-center justify-center mb-5">
+                <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Post-Operative Recovery</h3>
+              <p className="text-sm text-gray-500 leading-relaxed mb-4">Short-term rehabilitation and recovery care after surgery. Physiotherapy and medical supervision included.</p>
+              <Link href="/post-op-care-malaysia" className="text-sm font-bold text-primary inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                Learn more <span>→</span>
+              </Link>
+            </div>
+
+            {/* Service Card 4 */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+              <div className="w-14 h-14 rounded-xl bg-primary-50 flex items-center justify-center mb-5">
+                <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Stroke Rehabilitation</h3>
+              <p className="text-sm text-gray-500 leading-relaxed mb-4">Comprehensive stroke recovery with physiotherapy, occupational therapy, and 24-hour nursing support.</p>
+              <Link href="/stroke-rehabilitation-in-kajang" className="text-sm font-bold text-primary inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                Learn more <span>→</span>
+              </Link>
+            </div>
+
+            {/* Service Card 5 */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+              <div className="w-14 h-14 rounded-xl bg-primary-50 flex items-center justify-center mb-5">
+                <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Senior Day Care</h3>
+              <p className="text-sm text-gray-500 leading-relaxed mb-4">Daytime care programmes with meals, activities, and supervision — ideal for families who need support during working hours.</p>
+              <Link href="/contact" className="text-sm font-bold text-primary inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                Learn more <span>→</span>
+              </Link>
+            </div>
+
+            {/* Service Card 6 */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+              <div className="w-14 h-14 rounded-xl bg-primary-50 flex items-center justify-center mb-5">
+                <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Respite Care</h3>
+              <p className="text-sm text-gray-500 leading-relaxed mb-4">Short-term stays from a few days to several weeks — giving family caregivers a well-deserved break while their loved one receives full-service care.</p>
+              <Link href="/respite-care-in-malaysia" className="text-sm font-bold text-primary inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                Learn more <span>→</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
