@@ -509,6 +509,82 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* ─── COST CALCULATOR CTA ─── */}
+      <section className="bg-white py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative bg-gradient-to-br from-primary-50 via-white to-secondary/10 rounded-3xl border border-primary-100 overflow-hidden">
+            {/* Decorative accent */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-primary/5 to-transparent rounded-full -translate-y-1/3 translate-x-1/3 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-secondary/5 to-transparent rounded-full translate-y-1/3 -translate-x-1/3 pointer-events-none" />
+
+            <div className="relative grid lg:grid-cols-2 gap-10 lg:gap-16 items-center p-8 sm:p-12 lg:p-14">
+              {/* Left — Text */}
+              <div>
+                <span className="inline-flex items-center gap-2 text-xs font-bold tracking-[.14em] uppercase text-primary mb-4">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                  Free Tool
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+                  Nursing Home Cost Calculator
+                </h2>
+                <p className="text-gray-500 text-lg leading-relaxed mb-6">
+                  Get an instant personalised estimate based on the care your loved one needs. Select a centre, room type, care level, and add-on services — see the monthly cost breakdown in seconds.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 mb-6">
+                  <a
+                    href="https://web.genesiscare.com.my/cost-calculator"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 bg-primary text-white px-7 py-3.5 rounded-full text-base font-bold shadow-md hover:bg-primary-600 hover:shadow-lg transition-all"
+                  >
+                    Calculate Your Cost
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                  </a>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-2 text-primary font-semibold px-6 py-3.5 rounded-full border border-primary/20 hover:bg-primary-50 transition-all text-base"
+                  >
+                    Or Speak to an Advisor
+                  </Link>
+                </div>
+                <p className="text-xs text-gray-400">No sign-up required. Estimates are indicative — final pricing confirmed after assessment.</p>
+              </div>
+
+              {/* Right — Feature highlights */}
+              <div className="flex flex-col gap-4">
+                {[
+                  {
+                    icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+                    title: 'Choose Your Centre',
+                    desc: 'Compare pricing across our 5 centres in PJ, Klang, Kajang, Puchong & JB.',
+                  },
+                  {
+                    icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01',
+                    title: 'Customise Care Needs',
+                    desc: 'Select room type, feeding assistance, wound care, rehab, dementia care & more.',
+                  },
+                  {
+                    icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+                    title: 'See Your Estimate Instantly',
+                    desc: 'Transparent monthly breakdown with no hidden costs. Starts from RM 2,500/month.',
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-4 bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+                    <div className="w-11 h-11 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} /></svg>
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-bold text-gray-900 mb-1">{item.title}</h3>
+                      <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── WHY GENESIS ─── */}
       <section className="bg-white py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -587,6 +663,84 @@ export default async function HomePage() {
                   <span className="block text-2xl font-extrabold text-primary">150+</span>
                   <span className="text-xs text-gray-500 font-medium">Care Staff</span>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── AI-POWERED CARE ─── */}
+      <section className="bg-[#f4f8fb] py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left — Visual */}
+            <div className="relative">
+              <div className="bg-gradient-to-br from-primary-800 via-primary to-secondary rounded-2xl overflow-hidden aspect-[4/3] relative">
+                <img
+                  src="/images/general/common-area.jpg"
+                  alt="Genesis Life Care centre using AI-powered monitoring technology"
+                  className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-40"
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
+                  <div className="w-20 h-20 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mb-5">
+                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                  </div>
+                  <span className="text-white text-lg font-bold mb-1">AI-Powered Care</span>
+                  <span className="text-white/70 text-sm">Malaysia&apos;s First</span>
+                </div>
+              </div>
+              {/* Floating badge */}
+              <div className="absolute -bottom-4 -right-4 sm:bottom-4 sm:right-4 bg-gold text-gray-900 rounded-xl px-5 py-3 shadow-lg">
+                <span className="block text-xs font-bold uppercase tracking-wide">Proprietary Technology</span>
+                <span className="block text-[10px] text-gray-700 mt-0.5">Built in-house by our team</span>
+              </div>
+            </div>
+
+            {/* Right — Content */}
+            <div>
+              <span className="inline-flex items-center gap-2 text-xs font-bold tracking-[.14em] uppercase text-primary mb-4">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                Innovation in Aged Care
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-5 leading-tight">
+                Malaysia&apos;s First AI-Powered Care Facility
+              </h2>
+              <p className="text-gray-500 text-lg leading-relaxed mb-8">
+                Genesis Life Care is pioneering the use of artificial intelligence in Malaysia&apos;s aged care sector. Our proprietary technology platform harnesses AI to deliver safer, more comprehensive, and more affordable care — setting a new standard for what families can expect from a nursing home.
+              </p>
+              <div className="flex flex-col gap-4">
+                {[
+                  {
+                    title: 'Smart Vitals Monitoring',
+                    desc: 'AI-driven alerts detect early warning signs in vital readings, enabling our nurses to intervene before issues escalate.',
+                    icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+                  },
+                  {
+                    title: 'Intelligent Fall Risk Assessment',
+                    desc: 'Machine learning models analyse each resident\'s health profile to predict and prevent falls — one of the leading causes of injury in elderly care.',
+                    icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+                  },
+                  {
+                    title: 'AI-Assisted Care Planning',
+                    desc: 'Our AI platform helps our clinical team build and optimise personalised care plans, ensuring every resident receives the right level of support.',
+                    icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4',
+                  },
+                  {
+                    title: 'Transparent Cost Management',
+                    desc: 'Technology-driven efficiency means better care at lower cost. We pass the savings on to families — with pricing from RM 2,500/month.',
+                    icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-4 p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
+                    <div className="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} /></svg>
+                    </div>
+                    <div>
+                      <strong className="block text-sm font-bold text-gray-900 mb-0.5">{item.title}</strong>
+                      <span className="text-sm text-gray-500 leading-relaxed">{item.desc}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
