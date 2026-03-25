@@ -1,8 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import GlcHireSection from '@/components/sections/GlcHireSection';
-import FaqSection from '@/components/sections/FaqSection';
-import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Nursing Home in Kajang — Genesis Life Care Kajang | 24/7 Elderly Care',
@@ -32,7 +29,7 @@ const centre = {
   fullName: 'Genesis Life Care Kajang',
   phone: '+6019 334 0457',
   phoneCTA: '+6019-334-0457',
-  address: 'Jalan Bukit, Taman Kajang Baru, 43000 Kajang, Selangor',
+  address: '41, Jalan Ria 1, Kawasan Perindustrian Ria, 43500 Kajang, Selangor',
   rating: '4.7',
   reviews: 32,
   established: '2021',
@@ -150,10 +147,10 @@ export default function NursingHomeKajang() {
     telephone: '+6019-334-0457',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Jalan Bukit, Taman Kajang Baru',
+      streetAddress: '41, Jalan Ria 1, Kawasan Perindustrian Ria',
       addressLocality: 'Kajang',
       addressRegion: 'Selangor',
-      postalCode: '43000',
+      postalCode: '43500',
       addressCountry: 'MY',
     },
     geo: { '@type': 'GeoCoordinates', latitude: 2.9927, longitude: 101.7897 },
@@ -185,7 +182,7 @@ export default function NursingHomeKajang() {
         .team-card h3 { font-size: 0.75rem !important; line-height: 1rem !important; }
       ` }} />
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -659,28 +656,46 @@ export default function NursingHomeKajang() {
         </div>
       </section>
 
-      {/* ── GLC HIRE SECTION ──────────────────────────────────────────── */}
-      <GlcHireSection />
-
-      {/* ── FAQ SECTION ────────────────────────────────────────────────── */}
-      <FaqSection
-        faqs={[
-          { q: 'How much does a nursing home in Kajang cost?', a: 'Our Kajang centre provides affordable nursing care starting from RM 2,500/month, with various room types and care packages available. We offer flexible payment options tailored to families\' needs and budgets.' },
-          { q: 'Where exactly is the Genesis Life Care Kajang centre located?', a: 'We are located at Jalan Bukit, Taman Kajang Baru, 43000 Kajang, Selangor. The centre is conveniently positioned in the southern Klang Valley, with easy road access for family visits.' },
-          { q: 'What makes the Kajang centre special?', a: 'As our southern KV location, the Kajang centre has been operating since 2021 and serves families throughout the region. We maintain the same high standards of care as all Genesis Life Care centres with a dedicated local care team.' },
-          { q: 'What care programmes does Kajang offer?', a: 'We provide 24/7 elderly nursing care, dementia & memory care, stroke rehabilitation, palliative care, post-op recovery, and Senior Daycare. All services are personalized to meet each resident\' individual health needs.' },
-          { q: 'How do I arrange a tour of the Kajang centre?', a: 'You can book a free tour by calling us at +6019-334-0457 or completing our contact form online. Tours are available daily between 9:00 AM and 6:00 PM.' },
-        ]}
-        heading="Frequently Asked Questions"
-        label="KAJANG CENTRE"
-      />
-
-      {/* ── FINAL CTA ────────────────────────────────────────────────── */}
-      <FinalCtaSection
-        heading="Ready to Visit Our Kajang Centre?"
-        description="Book a free tour of our Kajang facility. See our care spaces, meet the team, and learn about our programmes — no obligations."
-        primaryLabel="Book a Free Tour"
-      />
+      {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
+      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+            Ready to Visit Our Kajang Centre?
+          </h2>
+          <p className="text-lg text-white mb-8 max-w-2xl mx-auto" style={{color: 'white'}}>
+            Book a free tour of our Kajang facility. See our care spaces,
+            meet the team, and learn about our programmes — no obligations.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap"
+            >
+              Book a Free Tour
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <a
+              href={`tel:${centre.phone.replace(/\s/g, '')}`}
+              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Call {centre.phoneCTA}
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
     </>
   );

@@ -25,7 +25,7 @@ const nearestCentre = {
   slug: 'nursing-home-in-petaling-jaya',
   phone: '+6019 295 0457',
   phoneCTA: '+6019-295-0457',
-  address: 'No. 33-1, Jalan PJU 5/9, Dataran Sunway, Kota Damansara, 47810 Petaling Jaya, Selangor',
+  address: 'Lot 1, Petaling Utama Avenue, Jalan PJS 1/50, Taman Petaling Utama, 46150 Petaling Jaya, Selangor',
   rating: '4.9',
   reviews: 155,
   beds: '50+',
@@ -112,13 +112,13 @@ const jsonLd = {
       name: 'Genesis Life Care 巴生谷中心',
       description: 'Genesis Life Care 吧生附近的专业老年护理和养老院。',
       url: 'https://genesiscare.com.my/zh/elderly-care-in-bangsar',
-      telephone: '+6019-295-0457',
+      telephone: '+60192950457',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'No. 33-1, Jalan PJU 5/9, Dataran Sunway, Kota Damansara',
+        streetAddress: 'Lot 1, Petaling Utama Avenue, Jalan PJS 1/50, Taman Petaling Utama',
         addressLocality: 'Petaling Jaya',
         addressRegion: 'Selangor',
-        postalCode: '47810',
+        postalCode: '46150',
         addressCountry: 'MY',
       },
       areaServed: [
@@ -164,7 +164,7 @@ export default function ElderlyCareBangsarZh() {
       ` }} />
 
       {/* ── 英雄部分 ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{

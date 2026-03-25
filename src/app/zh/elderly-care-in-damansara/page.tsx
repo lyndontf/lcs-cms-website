@@ -108,13 +108,13 @@ const jsonLd = {
       name: 'Genesis Life Care Petaling Jaya',
       description: 'Genesis Life Care 八打灵再也提供专业的老年护理和养老服务。',
       url: 'https://genesiscare.com.my/zh/elderly-care-in-damansara',
-      telephone: '+6019-295-0457',
+      telephone: '+60192950457',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'No. 33-1, Jalan PJU 5/9, Dataran Sunway, Kota Damansara',
+        streetAddress: 'Lot 1, Petaling Utama Avenue, Jalan PJS 1/50, Taman Petaling Utama',
         addressLocality: '八打灵再也',
         addressRegion: '雪兰莪州',
-        postalCode: '47810',
+        postalCode: '46150',
         addressCountry: 'MY',
       },
       areaServed: [
@@ -158,7 +158,7 @@ export default function ElderlyCareZhDamansara() {
       ` }} />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{

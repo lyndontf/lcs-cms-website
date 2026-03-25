@@ -23,9 +23,9 @@ const pjCentre = {
   name: '八打灵再也',
   fullName: 'Genesis Life Care 八打灵再也',
   slug: 'nursing-home-in-petaling-jaya',
-  phone: '+6019 295 0457',
-  phoneCTA: '+6019-295-0457',
-  address: 'No. 33-1, Jalan PJU 5/9, Dataran Sunway, Kota Damansara, 47810 Petaling Jaya, Selangor',
+  phone: '+6019 759 0457',
+  phoneCTA: '+6019-759-0457',
+  address: 'Lot 1, Petaling Utama Avenue, Jalan PJS 1/50, Taman Petaling Utama, 46150 Petaling Jaya, Selangor',
   rating: '4.9',
   reviews: 155,
   beds: '50+',
@@ -38,9 +38,9 @@ const puchongCentre = {
   name: '蒲种',
   fullName: 'Genesis Life Care 蒲种',
   slug: 'nursing-home-in-puchong',
-  phone: '+6019 295 0457',
-  phoneCTA: '+6019-295-0457',
-  address: 'No.33, Jalan TPP 1/1, Taman Perindustrian Puchong, 47100 Puchong, Selangor',
+  phone: '+6019 759 0457',
+  phoneCTA: '+6019-759-0457',
+  address: '16, Jln TPP 1/1, Taman Perindustrian Puchong, 47100 Puchong, Selangor',
   rating: '4.8',
   reviews: 58,
   beds: '120+',
@@ -128,13 +128,13 @@ const jsonLd = {
       name: 'Genesis Life Care Petaling Jaya',
       description: 'Professional elderly care and nursing home near Subang Jaya, Petaling Jaya.',
       url: 'https://genesiscare.com.my/zh/elderly-care-in-subang-jaya',
-      telephone: '+6019-295-0457',
+      telephone: '+60197590457',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'No. 33-1, Jalan PJU 5/9, Dataran Sunway, Kota Damansara',
+        streetAddress: 'Lot 1, Petaling Utama Avenue, Jalan PJS 1/50, Taman Petaling Utama',
         addressLocality: 'Petaling Jaya',
         addressRegion: 'Selangor',
-        postalCode: '47810',
+        postalCode: '46150',
         addressCountry: 'MY',
       },
       areaServed: [
@@ -154,10 +154,10 @@ const jsonLd = {
       name: 'Genesis Life Care Puchong',
       description: 'Professional elderly care and nursing home near Subang Jaya, Puchong.',
       url: 'https://genesiscare.com.my/zh/elderly-care-in-subang-jaya',
-      telephone: '+6019-295-0457',
+      telephone: '+60197590457',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'No.33, Jalan TPP 1/1, Taman Perindustrian Puchong',
+        streetAddress: '16, Jln TPP 1/1, Taman Perindustrian Puchong',
         addressLocality: 'Puchong',
         addressRegion: 'Selangor',
         postalCode: '47100',
@@ -206,7 +206,7 @@ export default function ElderlyCareSubangJayaZh() {
       ` }} />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -638,7 +638,7 @@ export default function ElderlyCareSubangJayaZh() {
                   </svg>
                 </Link>
                 <a
-                  href="https://wa.me/60192950457"
+                  href="https://wa.me/60197590457"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-600 transition-colors text-sm"

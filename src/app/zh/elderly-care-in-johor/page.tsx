@@ -23,7 +23,7 @@ const nearestCentre = {
   slug: 'nursing-home-in-johor-bahru',
   phone: '+6019 282 0457',
   phoneCTA: '+6019-282-0457',
-  address: '81100 柔佛新山，德萨泰布镇，Taman Desa Tebrau，Jalan Harmonium 23/10，No. 41，柔佛州',
+  address: '81100 柔佛新山，德萨泰布镇，Taman Century，Jalan Harmonium 23/10，No. 41，柔佛州',
   rating: '4.8',
   reviews: 40,
   beds: '120+',
@@ -107,13 +107,13 @@ const jsonLd = {
       name: 'Genesis Life Care Johor Bahru',
       description: 'Genesis Life Care 柔佛新山提供专业的老年护理和养老服务。',
       url: 'https://genesiscare.com.my/zh/elderly-care-in-johor',
-      telephone: '+6019-282-0457',
+      telephone: '+60192820457',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'No. 41, Jalan Harmonium 23/10, Taman Desa Tebrau',
+        streetAddress: 'Level 6, Holiday Plaza Tower, Jalan Dato Sulaiman, Taman Century',
         addressLocality: '柔佛新山',
         addressRegion: '柔佛州',
-        postalCode: '81100',
+        postalCode: '80250',
         addressCountry: 'MY',
       },
       areaServed: [
@@ -159,7 +159,7 @@ export default function ElderlyCareZhJohor() {
       ` }} />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{

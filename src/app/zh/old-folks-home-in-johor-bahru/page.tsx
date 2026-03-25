@@ -16,7 +16,7 @@ const centre = {
   fullName: 'Genesis Life Care Johor Bahru',
   phone: '+6019 282 0457',
   phoneCTA: '+6019-282-0457',
-  address: 'Holiday Plaza, Jalan Dato Sulaiman, 80250 Johor Bahru, Johor',
+  address: 'Level 6, Holiday Plaza Tower, Jalan Dato Sulaiman, Taman Century, 80250 Johor Bahru, Johor Darul Ta’zim',
   rating: '4.8',
   reviews: 24,
   established: '2023',
@@ -147,7 +147,7 @@ export default function OldFolksHomeZh() {
             telephone: centre.phone,
             address: {
               '@type': 'PostalAddress',
-              streetAddress: 'Holiday Plaza, Jalan Dato Sulaiman',
+              streetAddress: 'Level 6, Holiday Plaza Tower, Jalan Dato Sulaiman, Taman Century',
               addressLocality: 'Johor Bahru',
               addressRegion: 'Johor',
               postalCode: '80250',
@@ -179,7 +179,7 @@ export default function OldFolksHomeZh() {
       />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }}

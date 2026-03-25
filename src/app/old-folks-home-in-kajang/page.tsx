@@ -1,8 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import GlcHireSection from '@/components/sections/GlcHireSection';
-import FaqSection from '@/components/sections/FaqSection';
-import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Old Folks Home in Kajang - Genesis Life Care Kajang',
@@ -19,7 +16,7 @@ const centre = {
   fullName: 'Genesis Life Care Kajang',
   phone: '+6019 334 0457',
   phoneCTA: '+6019-334-0457',
-  address: 'Jalan Bukit, Taman Kajang Baru, 43000 Kajang, Selangor',
+  address: '41, Jalan Ria 1, Kawasan Perindustrian Ria, 43500 Kajang, Selangor',
   rating: '4.7',
   reviews: 32,
   established: '2021',
@@ -150,10 +147,10 @@ export default function OldFolksHomeKajang() {
             telephone: centre.phone,
             address: {
               '@type': 'PostalAddress',
-              streetAddress: 'Jalan Bukit, Taman Kajang Baru',
+              streetAddress: '41, Jalan Ria 1, Kawasan Perindustrian Ria',
               addressLocality: 'Kajang',
               addressRegion: 'Selangor',
-              postalCode: '43000',
+              postalCode: '43500',
               addressCountry: 'MY',
             },
             geo: { '@type': 'GeoCoordinates', latitude: centre.lat, longitude: centre.lng },
@@ -182,7 +179,7 @@ export default function OldFolksHomeKajang() {
       />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }}
@@ -468,41 +465,38 @@ export default function OldFolksHomeKajang() {
         </div>
       </section>
 
-      <GlcHireSection />
-
-      <FaqSection
-        faqs={[
-          {
-            q: 'How much does it cost to stay at the Kajang old folks home?',
-            a: 'Costs at Genesis Life Care Kajang vary based on care level and room type. Our competitive rates start from around RM 2,500 per month for basic care. Contact us for a personalised quote reflecting your loved one\'s specific needs.'
-          },
-          {
-            q: 'Does the Kajang centre accept residents with advanced dementia?',
-            a: 'Yes, we specialize in dementia care. Our psychologist-led programmes are designed for early-stage through advanced dementia. We provide structured cognitive stimulation and 24/7 monitoring for all residents.'
-          },
-          {
-            q: 'How far is the Kajang centre from Bangi and Semenyih?',
-            a: 'Our Kajang facility is conveniently located in Reko Sentral, approximately 10-15 minutes from Bangi and Semenyih. Families in these areas choose us for our proximity and accessibility.'
-          },
-          {
-            q: 'Can I bring my elderly parent directly to the Kajang centre, or do I need an appointment?',
-            a: 'We recommend booking a free tour in advance so our care team can give you a proper walkthrough. However, we do accept walk-ins based on availability. Call us at +6019-334-0457 to arrange.'
-          },
-          {
-            q: 'What rehabilitation services are available at the Kajang home?',
-            a: 'Our Kajang centre offers comprehensive stroke rehabilitation with physiotherapy and occupational therapy, post-operative recovery programmes, and mobility training. All services are led by qualified professionals.'
-          }
-        ]}
-        heading="Location-Specific FAQs"
-        label="Kajang Centre"
-      />
-
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
-      <FinalCtaSection
-        heading={`Visit Our Old Folks Home in ${centre.name}`}
-        description="Schedule a free walkthrough of our Kajang centre. Meet the team, see the facilities, and find out if we are the right home for your loved one. No obligations."
-        primaryLabel="Schedule a Visit"
-      />
+      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }}
+        />
+        <div className="relative max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4" style={{ color: 'white' }}>
+            Visit Our Old Folks Home in {centre.name}
+          </h2>
+          <p className="text-lg text-white/90 mb-8 max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.9)' }}>
+            Schedule a free walkthrough of our Kajang centre. Meet the team, see the facilities, and find out
+            if we are the right home for your loved one. No obligations.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/contact"
+              className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl"
+            >
+              Schedule a Visit
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </Link>
+            <a
+              href={`tel:${centre.phone.replace(/\s/g, '')}`}
+              className="whitespace-nowrap inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-bold px-6 py-3.5 rounded-full transition"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+              Call {centre.phoneCTA}
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

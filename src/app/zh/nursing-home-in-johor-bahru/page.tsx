@@ -16,7 +16,7 @@ const centre = {
   fullName: 'Genesis Life Care 新山',
   phone: '+6019 282 0457',
   phoneCTA: '+6019-282-0457',
-  address: 'Holiday Plaza, Jalan Dato Sulaiman, 80250 Johor Bahru, Johor',
+  address: 'Level 6, Holiday Plaza Tower, Jalan Dato Sulaiman, Taman Century, 80250 Johor Bahru, Johor Darul Ta’zim',
   rating: '4.8',
   reviews: 24,
   established: '2023',
@@ -142,7 +142,7 @@ export default function NursingHomeJBZh() {
         .team-card h3 { font-size: 0.75rem !important; line-height: 1rem !important; }
       ` }} />
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{

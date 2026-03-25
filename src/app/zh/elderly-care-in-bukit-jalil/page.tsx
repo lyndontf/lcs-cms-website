@@ -23,7 +23,7 @@ const nearestCentre = {
   slug: 'nursing-home-in-puchong',
   phone: '+6019 759 0457',
   phoneCTA: '+6019-759-0457',
-  address: 'No.33, Jalan TPP 1/1, Taman Perindustrian Puchong, 47100 Puchong, Selangor',
+  address: '16, Jln TPP 1/1, Taman Perindustrian Puchong, 47100 Puchong, Selangor',
   rating: '4.8',
   reviews: 58,
   beds: '120+',
@@ -108,10 +108,10 @@ const jsonLd = {
       name: 'Genesis Life Care 巴生谷中心',
       description: 'Genesis Life Care 布城附近的专业老年护理和养老院。',
       url: 'https://genesiscare.com.my/zh/elderly-care-in-bukit-jalil',
-      telephone: '+6019-759-0457',
+      telephone: '+60197590457',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'No.33, Jalan TPP 1/1, Taman Perindustrian Puchong',
+        streetAddress: '16, Jln TPP 1/1, Taman Perindustrian Puchong',
         addressLocality: 'Puchong',
         addressRegion: 'Selangor',
         postalCode: '47100',
@@ -158,7 +158,7 @@ export default function ElderlyCareButikJalilZh() {
       ` }} />
 
       {/* ── 英雄部分 ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
 

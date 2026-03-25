@@ -6,9 +6,6 @@ import FacilityGallery from '@/components/sections/FacilityGallery';
 import Testimonials from '@/components/sections/Testimonials';
 import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
-import GlcHireSection from '@/components/sections/GlcHireSection';
-import FaqSection from '@/components/sections/FaqSection';
-import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Dementia Care in Kajang | Genesis Life Care',
@@ -32,7 +29,7 @@ const centre = {
   slug: 'nursing-home-kajang',
   phone: '+6019 334 0457',
   phoneCTA: '+6019-334-0457',
-  address: 'No. 16, Jalan Reko Sentral 1, Reko Sentral, 43000 Kajang, Selangor',
+  address: '41, Jalan Ria 1, Kawasan Perindustrian Ria, 43500 Kajang, Selangor',
   rating: '4.7',
   reviews: 32,
   beds: '120+',
@@ -135,7 +132,7 @@ const faqs = [
   },
   {
     q: 'Which areas near Kajang does Genesis Life Care serve?',
-    a: 'Our Kajang centre serves families across the southern Klang Valley, including Kajang, Bangi, Semenyih, Serdang, south Cheras, and surrounding areas. We are conveniently located in Reko Sentral with easy access from major highways.',
+    a: 'Our Kajang centre serves families across the southern Klang Valley, including Kajang, Bangi, Semenyih, Serdang, south Cheras, and surrounding areas. We are conveniently located in Kawasan Perindustrian Ria with easy access from major highways.',
   },
 ];
 
@@ -152,13 +149,13 @@ const jsonLd = {
       name: 'Genesis Life Care Kajang — Dementia Care',
       description: 'Specialised dementia and memory care in Kajang, Selangor.',
       url: 'https://genesiscare.com.my/dementia-care-in-kajang',
-      telephone: '+6019-334-0457',
+      telephone: '+60193340457',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'No. 16, Jalan Reko Sentral 1, Reko Sentral',
+        streetAddress: '41, Jalan Ria 1, Kawasan Perindustrian Ria',
         addressLocality: 'Kajang',
         addressRegion: 'Selangor',
-        postalCode: '43000',
+        postalCode: '43500',
         addressCountry: 'MY',
       },
       areaServed: [
@@ -206,7 +203,7 @@ export default function DementiaCareKajang() {
       ` }} />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
 
@@ -252,7 +249,7 @@ export default function DementiaCareKajang() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-gray-800">Reko Sentral</p>
+                  <p className="text-sm font-bold text-gray-800">Kawasan Perindustrian Ria</p>
                   <p className="text-xs text-gray-500">Kajang, Selangor</p>
                 </div>
               </div>
@@ -428,32 +425,26 @@ export default function DementiaCareKajang() {
 
       <OtherCentres centres={otherCentres} currentCentreName={centreData.name} />
 
-      <GlcHireSection />
-
-      <FaqSection faqs={[
-        {
-          q: 'What psychologist-led dementia programmes are available at your Kajang centre?',
-          a: 'Our Kajang centre offers psychologist-led dementia care with structured cognitive stimulation activities, memory exercises, therapeutic music, and art therapy. Our programme is designed to slow cognitive decline and maintain quality of life for residents living with dementia.',
-        },
-        {
-          q: 'How is the dementia care environment designed at your Kajang facility?',
-          a: 'Our dementia care units are designed with a safe and secure environment, including fall-prevention measures, clear signage, colour-coded areas, and comfortable common spaces for activities. The environment promotes independence while ensuring resident safety.',
-        },
-        {
-          q: 'What staff training does your dementia care centre have in Kajang?',
-          a: 'All dementia care staff at our Kajang centre have completed specialist dementia care training and regular updates. Our team includes a psychologist, registered nurses, care assistants, and activity coordinators trained in person-centred dementia care approaches.',
-        },
-        {
-          q: 'Can family members be involved in dementia care planning at your Kajang centre?',
-          a: 'Yes. Family involvement is central to our care approach. We hold regular care planning meetings, encourage family visits during activities, and provide family support programmes to help relatives understand and cope with dementia care.',
-        },
-        {
-          q: 'How much does dementia care cost at your Kajang facility?',
-          a: 'Dementia care costs vary based on care level and room type. We offer flexible payment options including monthly billing, advance discounts, and tailored packages. Contact us for a personalised quotation and payment arrangements.',
-        },
-      ]} />
-
-      <FinalCtaSection heading="Ready for Specialised Dementia Care in Kajang?" description="Visit our Kajang centre for a free tour. See our dementia care spaces, meet the psychologist and care team, and learn how we support families living with dementia." />
+      {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
+      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">Specialised Dementia Care in Kajang</h2>
+          <p className="text-lg text-white mb-8 max-w-2xl mx-auto" style={{ color: 'white' }}>
+            Visit our Kajang centre for a free tour. See our dementia care spaces,
+            meet the psychologist and care team, and learn how we support families living with dementia.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/contact" className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap">
+              Book a Free Tour <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            </Link>
+            <a href={`tel:${centre.phone.replace(/\s/g, '')}`} className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+              Call {centre.phoneCTA}
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

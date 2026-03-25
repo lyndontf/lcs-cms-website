@@ -15,7 +15,7 @@ const centre = {
   slug: 'nursing-home-in-petaling-jaya',
   phone: '+6019 295 0457',
   phoneCTA: '+6019-295-0457',
-  address: 'No. 33-1, Jalan PJU 5/9, Dataran Sunway, Kota Damansara, 47810 Petaling Jaya, Selangor',
+  address: 'Lot 1, Petaling Utama Avenue, Jalan PJS 1/50, Taman Petaling Utama, 46150 Petaling Jaya, Selangor',
   rating: '4.9',
   reviews: 155,
   beds: '50+',
@@ -77,7 +77,7 @@ export default function DementiaCarePJZh() {
       <style dangerouslySetInnerHTML={{ __html: `.hero-dark { color: inherit; } .hero-dark * { color: inherit; } .hero-dark .text-white { color: #ffffff !important; }` }} />
 
       {/* HERO */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden py-16 sm:py-20 lg:py-24">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden py-16 sm:py-20 lg:py-24">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
@@ -168,7 +168,7 @@ export default function DementiaCarePJZh() {
             <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">我们的设施</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {centreData.facilityImages?.map((img, i) => (
-                <img key={i} src={img.src} alt={img.alt} className="rounded-xl h-64 object-cover shadow-sm" />
+                <img key={i} src={img} alt={`设施 ${i + 1}`} className="rounded-xl h-64 object-cover shadow-sm" />
               )) || null}
             </div>
           </div>
@@ -177,7 +177,7 @@ export default function DementiaCarePJZh() {
             <div className="grid sm:grid-cols-2 gap-6">
               {centreData.testimonials?.map((t, i) => (
                 <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                  <p className="font-bold text-gray-900 text-sm mb-2">{t.name}</p>
+                  <p className="font-bold text-gray-900 text-sm mb-2">{t.author}</p>
                   <p className="text-sm text-gray-600">{t.text}</p>
                 </div>
               )) || null}

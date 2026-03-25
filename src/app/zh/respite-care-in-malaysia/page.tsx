@@ -23,7 +23,7 @@ const centres = [
     name: 'Petaling Jaya',
     fullName: 'Genesis Life Care Petaling Jaya',
     slug: 'nursing-home-in-petaling-jaya',
-    address: 'No. 33-1, Jalan PJU 5/9, Dataran Sunway, Kota Damansara, 47810 Petaling Jaya, Selangor',
+    address: 'Lot 1, Petaling Utama Avenue, Jalan PJS 1/50, Taman Petaling Utama, 46150 Petaling Jaya, Selangor',
     rating: '4.9',
     reviews: 155,
     beds: '50+',
@@ -34,7 +34,7 @@ const centres = [
     name: 'Klang',
     fullName: 'Genesis Life Care Klang',
     slug: 'nursing-home-in-klang',
-    address: 'No.3, Jalan Istana, Amverton Business Centre, 41500 Klang, Selangor',
+    address: 'No.3, Jalan Istana, Amverton Business Centre, 41000 Klang, Selangor',
     rating: '4.8',
     reviews: 45,
     beds: '120+',
@@ -45,7 +45,7 @@ const centres = [
     name: 'Kajang',
     fullName: 'Genesis Life Care Kajang',
     slug: 'nursing-home-kajang',
-    address: 'No. 16, Jalan Reko Sentral 1, Reko Sentral, 43000 Kajang, Selangor',
+    address: '41, Jalan Ria 1, Kawasan Perindustrian Ria, 43500 Kajang, Selangor',
     rating: '4.7',
     reviews: 32,
     beds: '120+',
@@ -56,7 +56,7 @@ const centres = [
     name: 'Puchong',
     fullName: 'Genesis Life Care Puchong',
     slug: 'nursing-home-in-puchong',
-    address: 'No.33, Jalan TPP 1/1, Taman Perindustrian Puchong, 47100 Puchong, Selangor',
+    address: '16, Jln TPP 1/1, Taman Perindustrian Puchong, 47100 Puchong, Selangor',
     rating: '4.8',
     reviews: 58,
     beds: '120+',
@@ -67,7 +67,7 @@ const centres = [
     name: 'Johor Bahru',
     fullName: 'Genesis Life Care Johor Bahru',
     slug: 'nursing-home-in-johor-bahru',
-    address: 'No. 41, Jalan Harmonium 23/10, Taman Desa Tebrau, 81100 Johor Bahru, Johor',
+    address: 'Level 6, Holiday Plaza Tower, Jalan Dato Sulaiman, Taman Century, 80250 Johor Bahru, Johor Darul Ta’zim',
     rating: '4.8',
     reviews: 40,
     beds: '120+',
@@ -181,7 +181,7 @@ export default function RespiteCareZh() {
         .hero-dark .text-gold { color: #FAB515 !important; }
       ` }} />
 
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{

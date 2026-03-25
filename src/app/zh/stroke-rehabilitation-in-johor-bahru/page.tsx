@@ -29,7 +29,7 @@ const centre = {
   slug: 'nursing-home-in-johor-bahru',
   phone: '+6019 282 0457',
   phoneCTA: '+6019-282-0457',
-  address: 'No. 16, Jalan Reko Sentral 1, Reko Sentral, 43000 Kajang, Selangor',
+  address: 'Level 6, Holiday Plaza Tower, Jalan Dato Sulaiman, Taman Century, 80250 Johor Bahru, Johor Darul Ta’zim',
   rating: '4.8',
   reviews: 40,
   beds: '120+',
@@ -183,7 +183,7 @@ const jsonLd = {
 export default function StrokeRehabilitationJohorBahruZh() {
   return (
     <main className="bg-white">
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{ __html: \`
         .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div { color: inherit; }
         .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div,
         .hero-dark .text-4xl, .hero-dark .text-5xl, .hero-dark .sm\:text-5xl,
@@ -192,7 +192,7 @@ export default function StrokeRehabilitationJohorBahruZh() {
         .hero-dark .text-gray-900 { color: rgb(17 24 39) !important; }
         .hero-dark .text-gray-800 { color: rgb(31 41 55) !important; }
         .hero-dark .text-gold { color: #FAB515 !important; }
-      ` }} />
+      \` }} />
 
       <script
         type="application/ld+json"
@@ -202,7 +202,7 @@ export default function StrokeRehabilitationJohorBahruZh() {
       />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -269,7 +269,7 @@ export default function StrokeRehabilitationJohorBahruZh() {
                 我们的多学科方法汇集了物理治疗以恢复力量和协调、职业治疗以帮助患者在日常活动中恢复信心，以及言语治疗为那些受沟通或吞咽困难影响的患者提供服务。每位患者都会获得个性化的恢复计划，其中有明确的里程碑由我们的护理团队定期审查。
               </p>
               <p className="text-gray-600 leading-relaxed mb-6">
-                我们位于Reko Sentral的柔佛巴鲁中心服务来自柔佛巴鲁、伊斯干达沛城及周边地区的家人。拥有{centre.beds}张床位和全天候护理，我们为中风恢复提供舒适和支持的环境。创世纪生命护理柔佛巴鲁在谷歌上评分{centre.rating}星，拥有{centre.reviews}条来自信任我们照顾其亲人的家人的评价。
+                我们的柔佛巴鲁中心服务来自柔佛巴鲁、伊斯干达沛城及周边地区的家人。拥有{centre.beds}张床位和全天候护理，我们为中风恢复提供舒适和支持的环境。创世纪生命护理柔佛巴鲁在谷歌上评分{centre.rating}星，拥有{centre.reviews}条来自信任我们照顾其亲人的家人的评价。
               </p>
             </div>
             <div>
@@ -335,11 +335,11 @@ export default function StrokeRehabilitationJohorBahruZh() {
               <Link
                 key={i}
                 href={svc.link}
-                className={`bg-white rounded-xl p-6 shadow-sm border hover:shadow-md transition-all group \${
+                className={\`bg-white rounded-xl p-6 shadow-sm border hover:shadow-md transition-all group \${
                   svc.highlight
                     ? 'border-2 shadow-md'
                     : 'border-gray-100 hover:border-primary/20'
-                }`}
+                }\`}
                 style={svc.highlight ? { borderColor: '#229CD0' } : undefined}>
                 <div className="bg-primary/10 rounded-lg w-12 h-12 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                   <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -496,7 +496,7 @@ export default function StrokeRehabilitationJohorBahruZh() {
               </svg>
             </Link>
             <a
-              href={`tel:\${centre.phone.replace(/\s/g, '')}`}
+              href={\`tel:\${centre.phone.replace(/\s/g, '')}\`}
               className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

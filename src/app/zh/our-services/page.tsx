@@ -31,7 +31,7 @@ export default function OurServicesZh() {
         .hero-dark .text-gold { color: #FAB515 !important; }
       ` }} />
 
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{

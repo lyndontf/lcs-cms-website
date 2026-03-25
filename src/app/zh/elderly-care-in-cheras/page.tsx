@@ -25,7 +25,7 @@ const nearestCentre = {
   slug: 'nursing-home-kajang',
   phone: '+6019 334 0457',
   phoneCTA: '+6019-334-0457',
-  address: '41500 加影，Reko Sentral，芝拉斯-加影高速公路，Jalan Reko Sentral 1，No. 16，雪兰莪州',
+  address: '41500 加影，Kawasan Perindustrian Ria，芝拉斯-加影高速公路，Jalan Kawasan Perindustrian Ria 1，No. 16，雪兰莪州',
   rating: '4.7',
   reviews: 32,
   beds: '120+',
@@ -94,7 +94,7 @@ const faqs = [
   },
   {
     q: '我如何从芝拉斯到达Genesis Life Care加影？',
-    a: '我们的加影中心从芝拉斯经芝拉斯-加影高速公路（大厦高速公路）可轻松到达。通常需要约15分钟的车程。该中心位于Reko Sentral，靠近主要高速公路。',
+    a: '我们的加影中心从芝拉斯经芝拉斯-加影高速公路（大厦高速公路）可轻松到达。通常需要约15分钟的车程。该中心位于Kawasan Perindustrian Ria，靠近主要高速公路。',
   },
   {
     q: 'Genesis Life Care与芝拉斯附近的其他养老院有什么不同？',
@@ -112,13 +112,13 @@ const jsonLd = {
       name: 'Genesis Life Care Kajang',
       description: 'Genesis Life Care 加影提供专业的老年护理和养老服务。',
       url: 'https://genesiscare.com.my/zh/elderly-care-in-cheras',
-      telephone: '+6019-334-0457',
+      telephone: '+60193340457',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'No. 16, Jalan Reko Sentral 1, Reko Sentral',
+        streetAddress: '41, Jalan Ria 1, Kawasan Perindustrian Ria',
         addressLocality: '加影',
         addressRegion: '雪兰莪州',
-        postalCode: '43000',
+        postalCode: '43500',
         addressCountry: 'MY',
       },
       areaServed: [
@@ -164,7 +164,7 @@ export default function ElderlyCareZhCheras() {
       ` }} />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -260,7 +260,7 @@ export default function ElderlyCareZhCheras() {
                 芝拉斯是吉隆坡最大和人口最多的郊区之一，拥有多代同堂的繁华社区。随着父母和祖父母年龄增长，对芝拉斯居民来说，找到可靠和专业的老年护理变成了一个优先事项。
               </p>
               <p>
-                Genesis Life Care 加影是离芝拉斯最近的Genesis中心 — 位于Reko Sentral加影，经芝拉斯-加影高速公路（大厦高速公路）仅短距离。我们的设施提供24小时护理、周期性驻场医生咨询、心理学家主导的失智症项目，以及包括物理治疗和职业治疗的完整康复部门。
+                Genesis Life Care 加影是离芝拉斯最近的Genesis中心 — 位于Kawasan Perindustrian Ria加影，经芝拉斯-加影高速公路（大厦高速公路）仅短距离。我们的设施提供24小时护理、周期性驻场医生咨询、心理学家主导的失智症项目，以及包括物理治疗和职业治疗的完整康复部门。
               </p>
               <p>
                 无论您的亲人需要长期住宅护理、手术后康复或专业失智症支持，我们的加影中心都提供安全和关怀的环境，价格经济实惠。我们获得{nearestCentre.rating}星谷歌评分，来自克隆谷{nearestCentre.reviews}条评价。
@@ -392,7 +392,7 @@ export default function ElderlyCareZhCheras() {
               参观我们的加影中心
             </h2>
             <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
-              距芝拉斯仅{nearestCentre.distance} — 我们的中心位于Reko Sentral，加影。
+              距芝拉斯仅{nearestCentre.distance} — 我们的中心位于Kawasan Perindustrian Ria，加影。
             </p>
           </div>
 

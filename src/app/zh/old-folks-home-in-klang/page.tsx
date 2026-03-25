@@ -16,7 +16,7 @@ const centre = {
   fullName: 'Genesis Life Care Klang',
   phone: '+6012 321 0457',
   phoneCTA: '+6012-321-0457',
-  address: 'No.3, Jalan Istana, Amverton Business Centre, 41500 Klang, Selangor',
+  address: 'No.3, Jalan Istana, Amverton Business Centre, 41000 Klang, Selangor',
   rating: '4.8',
   reviews: 45,
   established: '2018',
@@ -150,7 +150,7 @@ export default function OldFolksHomeZh() {
               streetAddress: 'No.3, Jalan Istana, Amverton Business Centre',
               addressLocality: 'Klang',
               addressRegion: 'Selangor',
-              postalCode: '41500',
+              postalCode: '41000',
               addressCountry: 'MY',
             },
             geo: { '@type': 'GeoCoordinates', latitude: centre.lat, longitude: centre.lng },
@@ -179,7 +179,7 @@ export default function OldFolksHomeZh() {
       />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }}

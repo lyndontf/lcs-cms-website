@@ -6,9 +6,6 @@ import FacilityGallery from '@/components/sections/FacilityGallery';
 import Testimonials from '@/components/sections/Testimonials';
 import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
-import GlcHireSection from '@/components/sections/GlcHireSection';
-import FaqSection from '@/components/sections/FaqSection';
-import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Stroke Rehabilitation in Kajang | Genesis Life Care',
@@ -32,7 +29,7 @@ const centre = {
   slug: 'nursing-home-kajang',
   phone: '+6019 334 0457',
   phoneCTA: '+6019-334-0457',
-  address: 'No. 16, Jalan Reko Sentral 1, Reko Sentral, 43000 Kajang, Selangor',
+  address: '41, Jalan Ria 1, Kawasan Perindustrian Ria, 43500 Kajang, Selangor',
   rating: '4.7',
   reviews: 32,
   beds: '120+',
@@ -152,13 +149,13 @@ const jsonLd = {
       name: 'Genesis Life Care Kajang',
       description: 'Professional stroke rehabilitation centre in Kajang offering physiotherapy, occupational therapy, and speech therapy for stroke recovery.',
       url: 'https://genesiscare.com.my/stroke-rehabilitation-in-kajang',
-      telephone: '+6019-334-0457',
+      telephone: '+60193340457',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'No. 16, Jalan Reko Sentral 1, Reko Sentral',
+        streetAddress: '41, Jalan Ria 1, Kawasan Perindustrian Ria',
         addressLocality: 'Kajang',
         addressRegion: 'Selangor',
-        postalCode: '43000',
+        postalCode: '43500',
         addressCountry: 'MY',
       },
       areaServed: { '@type': 'City', name: 'Kajang' },
@@ -201,7 +198,7 @@ export default function StrokeRehabKajang() {
       ` }} />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -307,7 +304,7 @@ export default function StrokeRehabKajang() {
                 recovery plan with measurable milestones reviewed regularly by our care team.
               </p>
               <p>
-                Our Kajang centre at Reko Sentral serves families from Kajang, Bangi, Semenyih,
+                Our Kajang centre at Kawasan Perindustrian Ria serves families from Kajang, Bangi, Semenyih,
                 and surrounding areas. With {centre.beds} beds and round-the-clock nursing care,
                 we provide a comfortable and supportive environment for stroke recovery. Genesis
                 Life Care Kajang is rated {centre.rating} stars on Google with {centre.reviews} reviews
@@ -470,34 +467,78 @@ export default function StrokeRehabKajang() {
 
       <LocationContact centre={sharedCentre} />
 
-      <GlcHireSection />
+      {/* ── FAQ ────────────────────────────────────────────────────────── */}
+      <section className="py-16 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">FAQ</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
+              Common questions about stroke rehabilitation in Kajang.
+            </p>
+          </div>
 
-      <FaqSection faqs={[
-        {
-          q: 'What stroke rehabilitation services are available in Kajang?',
-          a: 'Genesis Life Care Kajang offers comprehensive stroke rehabilitation including physiotherapy, occupational therapy, and speech and language therapy. Our multidisciplinary team designs personalised recovery plans to help stroke survivors regain mobility, independence, and communication skills.',
-        },
-        {
-          q: 'How soon after a stroke should rehabilitation begin?',
-          a: 'Stroke rehabilitation should ideally begin as soon as the patient is medically stable, typically within 24 to 48 hours after the stroke. Early rehabilitation has been shown to significantly improve recovery outcomes. Our team works closely with hospitals in the Kajang and Bangi area to ensure a smooth transition into our rehab programme.',
-        },
-        {
-          q: 'How long does stroke rehabilitation take at Genesis Life Care Kajang?',
-          a: 'The duration of stroke rehabilitation varies depending on the severity of the stroke and individual recovery progress. Some patients see significant improvement within weeks, while others may require several months of therapy. We set personalised milestones and regularly reassess each patient\'s plan.',
-        },
-        {
-          q: 'Does Genesis Life Care Kajang provide speech therapy for stroke patients?',
-          a: 'Yes, our Kajang centre provides speech and language therapy as part of our stroke rehabilitation programme. This includes therapy for communication difficulties such as aphasia, as well as swallowing therapy for patients with dysphagia following a stroke.',
-        },
-        {
-          q: 'Can family members be involved in the stroke recovery process?',
-          a: 'Absolutely. Family involvement is a key part of our stroke rehabilitation approach. We provide caregiver training sessions, regular progress updates, and family counselling to help you support your loved one\'s recovery journey both during and after their stay with us.',
-        },
-      ]} />
+          <div className="max-w-3xl mx-auto space-y-4">
+            {faqs.map((faq, i) => (
+              <details key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm group">
+                <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
+                  <h3 className="text-base font-semibold text-gray-900 pr-4">{faq.q}</h3>
+                  <svg className="w-5 h-5 text-gray-400 flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-6 text-sm text-gray-600 leading-relaxed">
+                  {faq.a}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <OtherCentres centres={otherCentres} currentCentreName={sharedCentre.name} />
 
-      <FinalCtaSection heading="Start Your Stroke Recovery Journey in Kajang" description="Visit our Kajang centre for a free consultation. Meet our rehabilitation team and discover how we can help your loved one recover from stroke." centre={centre} />
+      {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
+      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+            Start Your Stroke Recovery Journey in Kajang
+          </h2>
+          <p className="text-lg text-white mb-8 max-w-2xl mx-auto" style={{ color: 'white' }}>
+            Visit our Kajang centre for a free consultation. Meet our rehabilitation team
+            and discover how we can help your loved one recover from stroke.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap"
+            >
+              Book a Free Consultation
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <a
+              href={`tel:${centre.phone.replace(/\s/g, '')}`}
+              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Call {centre.phoneCTA}
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

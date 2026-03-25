@@ -25,7 +25,7 @@ const nearestCentre = {
   slug: 'nursing-home-in-klang',
   phone: '+6012 321 0457',
   phoneCTA: '+6012-321-0457',
-  address: 'No.3, Jalan Istana, Amverton Business Centre, 41500 Klang, Selangor',
+  address: 'No.3, Jalan Istana, Amverton Business Centre, 41000 Klang, Selangor',
   rating: '4.8',
   reviews: 45,
   beds: '120+',
@@ -112,13 +112,13 @@ const jsonLd = {
       name: 'Genesis Life Care Klang',
       description: 'Professional elderly care and nursing home near Shah Alam, Klang.',
       url: 'https://genesiscare.com.my/zh/elderly-care-in-shah-alam',
-      telephone: '+6012-321-0457',
+      telephone: '+60123210457',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'No.3, Jalan Istana, Amverton Business Centre',
         addressLocality: 'Klang',
         addressRegion: 'Selangor',
-        postalCode: '41500',
+        postalCode: '41000',
         addressCountry: 'MY',
       },
       areaServed: [
@@ -164,7 +164,7 @@ export default function ElderlyCareShahAlamZh() {
       ` }} />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{

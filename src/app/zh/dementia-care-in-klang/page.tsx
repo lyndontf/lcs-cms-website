@@ -20,7 +20,7 @@ const centre = {
   slug: 'nursing-home-in-klang',
   phone: '+6012 321 0457',
   phoneCTA: '+6012-321-0457',
-  address: 'No.3, Jalan Istana, Amverton Business Centre, 41500 Klang, Selangor',
+  address: 'No.3, Jalan Istana, Amverton Business Centre, 41000 Klang, Selangor',
   rating: '4.8',
   reviews: 45,
   beds: '120+',
@@ -138,13 +138,13 @@ const jsonLd = {
       name: 'Genesis Life Care 巴生 — 失智症护理',
       description: '雪兰莪州巴生专业失智症和记忆护理。',
       url: 'https://genesiscare.com.my/zh/dementia-care-in-klang',
-      telephone: '+6012-321-0457',
+      telephone: '+60123210457',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'No.3, Jalan Istana, Amverton Business Centre',
         addressLocality: 'Klang',
         addressRegion: 'Selangor',
-        postalCode: '41500',
+        postalCode: '41000',
         addressCountry: 'MY',
       },
       areaServed: [
@@ -170,7 +170,7 @@ export default function DementiaCareKlangZh() {
       <style dangerouslySetInnerHTML={{ __html: `.hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div { color: inherit; } .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div, .hero-dark .text-4xl, .hero-dark .text-5xl, .hero-dark .sm\\:text-5xl, .hero-dark .text-3xl, .hero-dark .text-lg, .hero-dark .text-sm, .hero-dark .text-white { color: #ffffff !important; }` }} />
 
       {/* HERO */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
 
@@ -327,7 +327,7 @@ export default function DementiaCareKlangZh() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {centreData.facilityImages?.map((img, i) => (
               <div key={i} className="rounded-xl overflow-hidden shadow-sm border border-gray-100 h-64">
-                <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+                <img src={img} alt={`设施 ${i + 1}`} className="w-full h-full object-cover" />
               </div>
             )) || null}
           </div>
@@ -345,7 +345,7 @@ export default function DementiaCareKlangZh() {
           <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {centreData.testimonials?.map((t, i) => (
               <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                <p className="font-bold text-gray-900 text-sm mb-2">{t.name}</p>
+                <p className="font-bold text-gray-900 text-sm mb-2">{t.author}</p>
                 <p className="text-sm text-gray-600 leading-relaxed">{t.text}</p>
               </div>
             )) || null}

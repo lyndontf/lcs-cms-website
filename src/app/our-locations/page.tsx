@@ -1,8 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import GlcHireSection from '@/components/sections/GlcHireSection';
-import FaqSection from '@/components/sections/FaqSection';
-import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Nursing Home Locations in Malaysia — PJ, Klang, Kajang, Puchong & JB | Genesis Life Care',
@@ -39,7 +36,7 @@ const centres = [
     name: 'Klang',
     slug: 'nursing-home-in-klang',
     phone: '+6012 321 0457',
-    address: 'No.3, Jalan Istana, Amverton Business Centre, 41500 Klang, Selangor',
+    address: 'No.3, Jalan Istana, Amverton Business Centre, 41000 Klang, Selangor',
     rating: '4.8',
     reviews: 45,
     img: '/images/klang-centre.jpg',
@@ -49,8 +46,8 @@ const centres = [
   {
     name: 'Kajang',
     slug: 'nursing-home-kajang',
-    phone: '+6012 321 0457',
-    address: 'Jalan Bukit, Taman Kajang Baru, 43000 Kajang, Selangor',
+    phone: '+6019 334 0457',
+    address: '41, Jalan Ria 1, Kawasan Perindustrian Ria, 43500 Kajang, Selangor',
     rating: '4.7',
     reviews: 32,
     img: '/images/kajang-centre.jpeg',
@@ -60,8 +57,8 @@ const centres = [
   {
     name: 'Puchong',
     slug: 'nursing-home-in-puchong',
-    phone: '+6012 321 0457',
-    address: 'Bandar Puteri, 47100 Puchong, Selangor',
+    phone: '+6019 759 0457',
+    address: '16, Jln TPP 1/1, Taman Perindustrian Puchong, 47100 Puchong, Selangor',
     rating: '4.8',
     reviews: 38,
     img: '/images/puchong-centre.jpeg',
@@ -71,8 +68,8 @@ const centres = [
   {
     name: 'Johor Bahru',
     slug: 'nursing-home-in-johor-bahru',
-    phone: '+6012 321 0457',
-    address: 'Holiday Plaza, Jalan Dato Sulaiman, 80250 Johor Bahru, Johor',
+    phone: '+6019 282 0457',
+    address: 'Level 6, Holiday Plaza Tower, Jalan Dato Sulaiman, Taman Century, 80250 Johor Bahru, Johor Darul Ta’zim',
     rating: '4.8',
     reviews: 24,
     img: '/images/jb-centre.jpeg',
@@ -262,42 +259,37 @@ export default function OurLocationsPage() {
         </div>
       </section>
 
-      {/* ─── GLC HIRE SECTION ─── */}
-      <GlcHireSection />
-
-      {/* ─── FAQ SECTION ─── */}
-      <FaqSection
-        faqs={[
-          {
-            q: "Which Genesis centre is closest to me?",
-            a: "We have 5 centres strategically located across Malaysia: Petaling Jaya and Klang in the northern Klang Valley, Kajang and Puchong in the south, and Johor Bahru in the southern region. Check our locations page for contact details and directions to each centre."
-          },
-          {
-            q: "How accessible are the centres by public transport?",
-            a: "All our centres are conveniently located near major highways and transportation routes. Most have easy access from main roads and KTM stations. When you call to schedule a tour, we can provide detailed directions and transport guidance specific to your location."
-          },
-          {
-            q: "Can I visit anytime, or are there set visiting hours?",
-            a: "We maintain open visiting hours so families can visit freely. We encourage regular visits and involvement in your loved one's care. If you're unable to visit in person, we offer video call updates so you can stay connected."
-          },
-          {
-            q: "What if I need to transfer my loved one between centres?",
-            a: "Transfers between Genesis centres are straightforward thanks to our standardised care operating system. We handle all documentation, ensure care plan continuity, and make the transition as smooth as possible for your loved one and family."
-          },
-          {
-            q: "Are there parking facilities at the centres?",
-            a: "Yes, all our centres have parking available for visitors. When you book a tour, we can provide specific details about parking arrangements and accessibility at each location."
-          }
-        ]}
-        heading="Questions About Our Locations?"
-        label="LOCATIONS & VISITING"
-      />
-
-      {/* ─── FINAL CTA ─── */}
-      <FinalCtaSection
-        heading="Find the Right Home for Your Loved One"
-        description="Book a free, personalised tour at any of our 5 centres. Our care consultants will show you around, answer all your questions, and help you find the perfect fit for your family."
-      />
+      {/* ─── CTA ─── */}
+      <section className="loc-cta relative bg-gradient-to-r from-primary to-secondary py-14 sm:py-20">
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
+            Not Sure Which Centre is Right?
+          </h2>
+          <p className="text-lg text-white/85 mb-8 max-w-xl mx-auto">
+            Our care consultants can help you find the best fit for your loved one. Book a free tour at any of our centres &mdash; no obligations, no pressure.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-gold text-gray-900 px-6 py-3.5 rounded-lg font-bold text-base hover:bg-yellow-400 transition-colors shadow-lg whitespace-nowrap"
+            >
+              Book a Free Tour
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <a
+              href="tel:+60123210457"
+              className="inline-flex items-center gap-2 border-2 border-white/40 text-white px-6 py-3.5 rounded-lg font-bold text-base hover:bg-white/10 transition-colors whitespace-nowrap"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Call +6012-321 0457
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

@@ -24,7 +24,7 @@ const centre = {
   slug: 'nursing-home-in-johor-bahru',
   phone: '+6019 282 0457',
   phoneCTA: '+6019-282-0457',
-  address: 'No. 41, Jalan Harmonium 23/10, Taman Desa Tebrau, 81100 Johor Bahru, Johor',
+  address: 'Level 6, Holiday Plaza Tower, Jalan Dato Sulaiman, Taman Century, 80250 Johor Bahru, Johor Darul Ta’zim',
   rating: '4.8',
   reviews: 40,
   beds: '120+',
@@ -144,13 +144,13 @@ const jsonLd = {
       name: 'Genesis Life Care 新山 — 失智症护理',
       description: '柔佛州新山专业失智症和记忆护理。',
       url: 'https://genesiscare.com.my/zh/dementia-care-in-johor-bahru',
-      telephone: '+6019-282-0457',
+      telephone: '+60192820457',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'No. 41, Jalan Harmonium 23/10, Taman Desa Tebrau',
+        streetAddress: 'Level 6, Holiday Plaza Tower, Jalan Dato Sulaiman, Taman Century',
         addressLocality: 'Johor Bahru',
         addressRegion: 'Johor',
-        postalCode: '81100',
+        postalCode: '80250',
         addressCountry: 'MY',
       },
       areaServed: [
@@ -198,7 +198,7 @@ export default function DementiaCareJBZh() {
       ` }} />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
 
@@ -359,7 +359,7 @@ export default function DementiaCareJBZh() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {centreData.facilityImages?.map((img, i) => (
               <div key={i} className="rounded-xl overflow-hidden shadow-sm border border-gray-100 h-64">
-                <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+                <img src={img} alt={`设施 ${i + 1}`} className="w-full h-full object-cover" />
               </div>
             )) || (
               <div className="col-span-3 text-center text-gray-500 py-8">
@@ -383,7 +383,7 @@ export default function DementiaCareJBZh() {
               <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
                 <div className="flex items-start gap-3 mb-3">
                   <div className="flex-1">
-                    <p className="font-bold text-gray-900 text-sm">{t.name}</p>
+                    <p className="font-bold text-gray-900 text-sm">{t.author}</p>
                     <div className="flex gap-0.5 mt-1">
                       {[...Array(5)].map((_, j) => (
                         <svg key={j} className={`w-3.5 h-3.5 ${j < Math.floor(parseFloat(centre.rating)) ? 'text-gold' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">

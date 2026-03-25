@@ -6,9 +6,6 @@ import FacilityGallery from '@/components/sections/FacilityGallery';
 import Testimonials from '@/components/sections/Testimonials';
 import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
-import GlcHireSection from '@/components/sections/GlcHireSection';
-import FaqSection from '@/components/sections/FaqSection';
-import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Dementia Care in Petaling Jaya - Memory Care PJ | Genesis Life Care',
@@ -32,7 +29,7 @@ const centre = {
   slug: 'nursing-home-in-petaling-jaya',
   phone: '+6019 295 0457',
   phoneCTA: '+6019-295-0457',
-  address: 'No. 33-1, Jalan PJU 5/9, Dataran Sunway, Kota Damansara, 47810 Petaling Jaya, Selangor',
+  address: 'Lot 1, Petaling Utama Avenue, Jalan PJS 1/50, Taman Petaling Utama, 46150 Petaling Jaya, Selangor',
   rating: '4.9',
   reviews: 155,
   beds: '50+',
@@ -152,13 +149,13 @@ const jsonLd = {
       name: 'Genesis Life Care Petaling Jaya — Dementia Care',
       description: 'Specialised dementia and memory care in Petaling Jaya, Selangor.',
       url: 'https://genesiscare.com.my/dementia-care-in-petaling-jaya',
-      telephone: '+6019-295-0457',
+      telephone: '+60192950457',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'No. 33-1, Jalan PJU 5/9, Dataran Sunway, Kota Damansara',
+        streetAddress: 'Lot 1, Petaling Utama Avenue, Jalan PJS 1/50, Taman Petaling Utama',
         addressLocality: 'Petaling Jaya',
         addressRegion: 'Selangor',
-        postalCode: '47810',
+        postalCode: '46150',
         addressCountry: 'MY',
       },
       areaServed: [
@@ -206,7 +203,7 @@ export default function DementiaCarePJ() {
       ` }} />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -476,34 +473,79 @@ export default function DementiaCarePJ() {
 
       <LocationContact centre={centreData} />
 
-      <GlcHireSection />
+      {/* ── FAQ ────────────────────────────────────────────────────────── */}
+      <section className="py-16 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">FAQ</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
+              Common questions about dementia care in Petaling Jaya.
+            </p>
+          </div>
 
-      <FaqSection faqs={[
-        {
-          q: 'What dementia care services does Genesis Life Care PJ offer?',
-          a: 'Our Petaling Jaya centre provides comprehensive dementia care including psychologist-led cognitive stimulation therapy, structured daily activities, art and music therapy, a safe and secure environment with fall prevention, and personalised care plans tailored to each resident\'s stage of dementia.',
-        },
-        {
-          q: 'How does Genesis Life Care approach dementia care differently?',
-          a: 'Genesis Life Care employs a psychologist-led approach to dementia care. Our programmes are designed and supervised by qualified psychologists who create structured cognitive stimulation activities. Combined with 24/7 nursing care and on-site doctor consultations, we provide holistic dementia support.',
-        },
-        {
-          q: 'What are the early signs of dementia I should look for?',
-          a: 'Common early warning signs include persistent memory loss affecting daily life, difficulty with familiar tasks, confusion about time or place, problems with language or conversation, misplacing things frequently, changes in mood or personality, and withdrawal from social activities. If you notice these signs, consult a doctor.',
-        },
-        {
-          q: 'Is the Petaling Jaya centre secure for dementia patients?',
-          a: 'Yes. Our PJ centre is purpose-designed with dementia safety in mind. We have secure premises to prevent wandering, fall prevention measures throughout, 24-hour supervision by trained nursing staff, and a safe, structured environment that helps residents feel comfortable and oriented.',
-        },
-        {
-          q: 'How much does dementia care cost in Petaling Jaya?',
-          a: 'Genesis Life Care offers affordable dementia care rates at our PJ centre. Costs vary based on the level of care required and room type. Contact us for a personalised quotation — we are happy to discuss options that suit your family\'s needs and budget.',
-        },
-      ]} />
+          <div className="max-w-3xl mx-auto space-y-4">
+            {faqs.map((faq, i) => (
+              <details key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm group">
+                <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
+                  <h3 className="text-base font-semibold text-gray-900 pr-4">{faq.q}</h3>
+                  <svg className="w-5 h-5 text-gray-400 flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-6 text-sm text-gray-600 leading-relaxed">
+                  {faq.a}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <OtherCentres centres={otherCentres} currentCentreName={centreData.name} />
 
-      <FinalCtaSection heading="Specialised Dementia Care in Petaling Jaya" description="Visit our PJ centre for a free tour. See our dementia care spaces, meet the psychologist and care team, and learn how we support families living with dementia." centre={centre} />
+      {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
+      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+            Specialised Dementia Care in Petaling Jaya
+          </h2>
+          <p className="text-lg text-white mb-8 max-w-2xl mx-auto" style={{ color: 'white' }}>
+            Visit our PJ centre for a free tour. See our dementia care spaces,
+            meet the psychologist and care team, and learn how we support families
+            living with dementia.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap"
+            >
+              Book a Free Tour
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <a
+              href={`tel:${centre.phone.replace(/\s/g, '')}`}
+              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Call {centre.phoneCTA}
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

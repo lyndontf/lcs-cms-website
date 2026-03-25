@@ -128,7 +128,7 @@ export default function NursingHomePJZh() {
   return (
     <main className="bg-white">
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="pj-hero relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="pj-hero relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         {/* Decorative pattern */}
         <div
           className="absolute inset-0 opacity-[0.04]"

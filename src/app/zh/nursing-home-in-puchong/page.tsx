@@ -16,7 +16,7 @@ const centre = {
   fullName: 'Genesis Life Care Puchong',
   phone: '+6019 759 0457',
   phoneCTA: '+6019-759-0457',
-  address: 'Bandar Puteri, 47100 Puchong, Selangor',
+  address: '16, Jln TPP 1/1, Taman Perindustrian Puchong, 47100 Puchong, Selangor',
   rating: '4.8',
   reviews: 38,
   established: '2022',
@@ -148,7 +148,7 @@ export default function NursingHomePuchongZh() {
         .team-card h3 { font-size: 0.75rem !important; line-height: 1rem !important; }
       ` }} />
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{

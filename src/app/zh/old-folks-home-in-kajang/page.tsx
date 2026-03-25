@@ -16,7 +16,7 @@ const centre = {
   fullName: 'Genesis Life Care Kajang',
   phone: '+6019 334 0457',
   phoneCTA: '+6019-334-0457',
-  address: 'Jalan Bukit, Taman Kajang Baru, 43000 Kajang, Selangor',
+  address: '41, Jalan Ria 1, Kawasan Perindustrian Ria, 43500 Kajang, Selangor',
   rating: '4.7',
   reviews: 32,
   established: '2021',
@@ -147,10 +147,10 @@ export default function OldFolksHomeZh() {
             telephone: centre.phone,
             address: {
               '@type': 'PostalAddress',
-              streetAddress: 'Jalan Bukit, Taman Kajang Baru',
+              streetAddress: '41, Jalan Ria 1, Kawasan Perindustrian Ria',
               addressLocality: 'Kajang',
               addressRegion: 'Selangor',
-              postalCode: '43000',
+              postalCode: '43500',
               addressCountry: 'MY',
             },
             geo: { '@type': 'GeoCoordinates', latitude: centre.lat, longitude: centre.lng },
@@ -179,7 +179,7 @@ export default function OldFolksHomeZh() {
       />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }}

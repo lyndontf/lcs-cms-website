@@ -6,9 +6,6 @@ import FacilityGallery from '@/components/sections/FacilityGallery';
 import Testimonials from '@/components/sections/Testimonials';
 import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
-import GlcHireSection from '@/components/sections/GlcHireSection';
-import FaqSection from '@/components/sections/FaqSection';
-import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
   title: 'Dementia Care in Johor Bahru - Memory Care JB | Genesis Life Care',
@@ -32,7 +29,7 @@ const centre = {
   slug: 'nursing-home-in-johor-bahru',
   phone: '+6019 282 0457',
   phoneCTA: '+6019-282-0457',
-  address: 'No. 41, Jalan Harmonium 23/10, Taman Desa Tebrau, 81100 Johor Bahru, Johor',
+  address: 'Level 6, Holiday Plaza Tower, Jalan Dato Sulaiman, Taman Century, 80250 Johor Bahru, Johor Darul Ta’zim',
   rating: '4.8',
   reviews: 40,
   beds: '120+',
@@ -135,7 +132,7 @@ const faqs = [
   },
   {
     q: 'Which areas in Johor does Genesis Life Care serve for dementia care?',
-    a: 'Our Johor Bahru centre serves families across Johor, including Johor Bahru city, Iskandar Puteri, Skudai, Kulai, Pasir Gudang, Masai, and surrounding areas. We are conveniently located in Taman Desa Tebrau with easy highway access.',
+    a: 'Our Johor Bahru centre serves families across Johor, including Johor Bahru city, Iskandar Puteri, Skudai, Kulai, Pasir Gudang, Masai, and surrounding areas. We are conveniently located in Taman Century with easy highway access.',
   },
 ];
 
@@ -152,13 +149,13 @@ const jsonLd = {
       name: 'Genesis Life Care Johor Bahru — Dementia Care',
       description: 'Specialised dementia and memory care in Johor Bahru, Johor.',
       url: 'https://genesiscare.com.my/dementia-care-in-johor-bahru',
-      telephone: '+6019-282-0457',
+      telephone: '+60192820457',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'No. 41, Jalan Harmonium 23/10, Taman Desa Tebrau',
+        streetAddress: 'Level 6, Holiday Plaza Tower, Jalan Dato Sulaiman, Taman Century',
         addressLocality: 'Johor Bahru',
         addressRegion: 'Johor',
-        postalCode: '81100',
+        postalCode: '80250',
         addressCountry: 'MY',
       },
       areaServed: [
@@ -206,7 +203,7 @@ export default function DementiaCareJB() {
       ` }} />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
 
@@ -253,7 +250,7 @@ export default function DementiaCareJB() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-gray-800">Taman Desa Tebrau</p>
+                  <p className="text-sm font-bold text-gray-800">Taman Century</p>
                   <p className="text-xs text-gray-500">Johor Bahru, Johor</p>
                 </div>
               </div>
@@ -404,34 +401,51 @@ export default function DementiaCareJB() {
 
       <LocationContact centre={centreData} />
 
-      <GlcHireSection />
+      {/* ── FAQ ────────────────────────────────────────────────────────── */}
+      <section className="py-16 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">FAQ</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">Frequently Asked Questions</h2>
+            <p className="text-gray-500 mt-3 max-w-2xl mx-auto">Common questions about dementia care in Johor Bahru.</p>
+          </div>
 
-      <FaqSection faqs={[
-        {
-          q: 'What dementia care services does Genesis Life Care Johor Bahru offer?',
-          a: 'Our Johor Bahru centre provides comprehensive dementia care including psychologist-led cognitive stimulation therapy, structured daily activities, art and music therapy, a safe and secure environment with fall prevention, and personalised care plans tailored to each resident\'s stage of dementia.',
-        },
-        {
-          q: 'How does Genesis Life Care approach dementia care in JB?',
-          a: 'Genesis Life Care employs a psychologist-led approach to dementia care at our JB centre. Our programmes are designed and supervised by qualified psychologists who create structured cognitive stimulation activities. Combined with 24/7 nursing care and on-site doctor consultations, we provide holistic dementia support.',
-        },
-        {
-          q: 'Which areas in Johor does Genesis Life Care serve for dementia care?',
-          a: 'Our Johor Bahru centre serves families across Johor, including Johor Bahru city, Iskandar Puteri, Skudai, Kulai, Pasir Gudang, Masai, and surrounding areas. We are conveniently located in Taman Desa Tebrau with easy highway access.',
-        },
-        {
-          q: 'Is the Johor Bahru centre secure for dementia patients?',
-          a: 'Yes. Our JB centre is designed with dementia safety in mind. We have secure premises to prevent wandering, fall prevention measures throughout, 24-hour supervision by trained nursing staff, and a safe, structured environment that helps residents feel comfortable and oriented.',
-        },
-        {
-          q: 'What are the costs for dementia care in Johor Bahru?',
-          a: 'Genesis Life Care offers competitive dementia care rates at our JB centre. Pricing varies based on the level of care and room type. Contact us for a personalised quote and to discuss payment options that work for your family.',
-        },
-      ]} />
+          <div className="max-w-3xl mx-auto space-y-4">
+            {faqs.map((faq, i) => (
+              <details key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm group">
+                <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
+                  <h3 className="text-base font-semibold text-gray-900 pr-4">{faq.q}</h3>
+                  <svg className="w-5 h-5 text-gray-400 flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </summary>
+                <div className="px-6 pb-6 text-sm text-gray-600 leading-relaxed">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <OtherCentres centres={otherCentres} currentCentreName={centreData.name} />
 
-      <FinalCtaSection heading="Specialised Dementia Care in Johor Bahru" description="Visit our JB centre for a free tour. See our dementia care spaces, meet the psychologist and care team, and learn how we support families living with dementia." centre={centre} />
+      {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
+      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">Specialised Dementia Care in Johor Bahru</h2>
+          <p className="text-lg text-white mb-8 max-w-2xl mx-auto" style={{ color: 'white' }}>
+            Visit our JB centre for a free tour. See our dementia care spaces,
+            meet the psychologist and care team, and learn how we support families living with dementia.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/contact" className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap">
+              Book a Free Tour <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            </Link>
+            <a href={`tel:${centre.phone.replace(/\s/g, '')}`} className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+              Call {centre.phoneCTA}
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

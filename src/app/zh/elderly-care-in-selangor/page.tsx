@@ -29,7 +29,7 @@ const selangorCentres = [
     beds: '50+',
     tag: '旗舰中心',
     img: '/images/pj-centre.jpg',
-    address: 'No. 33-1, Jalan PJU 5/9, Dataran Sunway, Kota Damansara, 47810 Petaling Jaya, Selangor',
+    address: 'Lot 1, Petaling Utama Avenue, Jalan PJS 1/50, Taman Petaling Utama, 46150 Petaling Jaya, Selangor',
     areas: '八打灵再也、哥打白沙罗、大山脚、邦莎、蒙地基亚拉',
   },
   {
@@ -41,7 +41,7 @@ const selangorCentres = [
     beds: '120+',
     tag: '创始中心',
     img: '/images/klang-centre.jpg',
-    address: 'No.3, Jalan Istana, Amverton Business Centre, 41500 Klang, Selangor',
+    address: 'No.3, Jalan Istana, Amverton Business Centre, 41000 Klang, Selangor',
     areas: '巴生、沙亚南、美茹、甲邦、巴生港',
   },
   {
@@ -53,7 +53,7 @@ const selangorCentres = [
     beds: '120+',
     tag: '南巴生谷',
     img: '/images/kajang-centre.jpeg',
-    address: 'No. 16, Jalan Reko Sentral 1, Reko Sentral, 43000 Kajang, Selangor',
+    address: '41, Jalan Ria 1, Kawasan Perindustrian Ria, 43500 Kajang, Selangor',
     areas: '加影、万宜、三面、沙登、芝星南部',
   },
   {
@@ -65,13 +65,13 @@ const selangorCentres = [
     beds: '120+',
     tag: '现代化设施',
     img: '/images/puchong-centre.jpeg',
-    address: 'No.33, Jalan TPP 1/1, Taman Perindustrian Puchong, 47100 Puchong, Selangor',
+    address: '16, Jln TPP 1/1, Taman Perindustrian Puchong, 47100 Puchong, Selangor',
     areas: '蒲种、梳邦再也、USJ、阳光城、金拉拉',
   },
 ];
 
-const phone = '+6019 295 0457';
-const phoneCTA = '+6019-295-0457';
+const phone = '+6012 321 0457';
+const phoneCTA = '+6012-321-0457';
 
 const centre = centres['johor-bahru'];
 const otherCentres = getOtherCentres(centre.name);
@@ -134,7 +134,7 @@ const faqs = [
   },
   {
     q: '我可以在做出决定前参观 Genesis Life Care 分院吗？',
-    a: '当然可以。我们鼓励家庭预约免费参观我们四个雪兰莪分院中的任何一个。您可以查看生活空间、见面护理团队并提出问题 — 没有任何义务。请致电 +6019-295-0457 安排参访。',
+    a: '当然可以。我们鼓励家庭预约免费参观我们四个雪兰莪分院中的任何一个。您可以查看生活空间、见面护理团队并提出问题 — 没有任何义务。请致电 +6012-321-0457 安排参访。',
   },
   {
     q: 'Genesis Life Care 服务雪兰莪的哪些地区？',
@@ -152,7 +152,7 @@ const jsonLd = {
       name: 'Genesis Life Care Selangor',
       description: 'Professional elderly care and nursing homes across Selangor, Malaysia.',
       url: 'https://genesiscare.com.my/zh/elderly-care-in-selangor',
-      telephone: '+6019-295-0457',
+      telephone: '+60123210457',
       areaServed: { '@type': 'State', name: 'Selangor' },
       location: selangorCentres.map((c) => ({
         '@type': 'Place',
@@ -204,7 +204,7 @@ export default function ElderlyCarSelangorZh() {
       ` }} />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -575,7 +575,7 @@ export default function ElderlyCarSelangorZh() {
                   </svg>
                 </Link>
                 <a
-                  href="https://wa.me/60192950457"
+                  href="https://wa.me/60123210457"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-600 transition-colors text-sm"

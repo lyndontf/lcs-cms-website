@@ -15,7 +15,7 @@ const centre = {
   slug: 'nursing-home-in-puchong',
   phone: '+6019 759 0457',
   phoneCTA: '+6019-759-0457',
-  address: 'No.33, Jalan TPP 1/1, Taman Perindustrian Puchong, 47100 Puchong, Selangor',
+  address: '16, Jln TPP 1/1, Taman Perindustrian Puchong, 47100 Puchong, Selangor',
   rating: '4.8',
   reviews: 58,
   beds: '120+',
@@ -48,7 +48,7 @@ export default function DementiaCarePuchongZh() {
       <style dangerouslySetInnerHTML={{ __html: `.hero-dark { color: #ffffff; } .hero-dark * { color: inherit; }` }} />
 
       {/* HERO */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary py-16 sm:py-20 lg:py-24">
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary py-16 sm:py-20 lg:py-24">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
         <div className="relative max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
@@ -116,7 +116,7 @@ export default function DementiaCarePuchongZh() {
             <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">我们的设施</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {centreData.facilityImages?.map((img, i) => (
-                <img key={i} src={img.src} alt={img.alt} className="rounded-xl h-64 object-cover shadow-sm" />
+                <img key={i} src={img} alt={`设施 ${i}`} className="rounded-xl h-64 object-cover shadow-sm" />
               ))}
             </div>
           </div>
@@ -125,7 +125,7 @@ export default function DementiaCarePuchongZh() {
             <div className="grid sm:grid-cols-2 gap-6">
               {centreData.testimonials?.map((t, i) => (
                 <div key={i} className="bg-white rounded-xl p-6 shadow-sm border">
-                  <p className="font-bold text-gray-900 text-sm mb-2">{t.name}</p>
+                  <p className="font-bold text-gray-900 text-sm mb-2">{t.author}</p>
                   <p className="text-sm text-gray-600">{t.text}</p>
                 </div>
               ))}
