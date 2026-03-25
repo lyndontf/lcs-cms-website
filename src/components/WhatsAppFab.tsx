@@ -17,7 +17,7 @@ export default function WhatsAppFab() {
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
       {/* Centre picker popover */}
       {open && (
-        <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden w-64 animate-in fade-in slide-in-from-bottom-2 mb-1">
+        <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden w-64 mb-1">
           <div className="bg-[#25D366] px-4 py-3">
             <p className="text-white text-sm font-bold">Chat with us on WhatsApp</p>
             <p className="text-white/80 text-xs">Select your nearest centre</p>
@@ -45,19 +45,30 @@ export default function WhatsAppFab() {
         </div>
       )}
 
-      {/* FAB button */}
+      {/* FAB — WhatsApp icon shape (no circle bg) */}
       <button
         onClick={() => setOpen(!open)}
         aria-label="Chat on WhatsApp"
-        className="w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center"
+        className="group relative hover:scale-110 transition-transform drop-shadow-lg hover:drop-shadow-xl"
       >
         {open ? (
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <div className="w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center">
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </div>
         ) : (
-          <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          <svg className="w-14 h-14" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Outer speech-bubble shape */}
+            <path
+              d="M30 2C14.536 2 2 13.984 2 28.78c0 5.08 1.472 9.8 4.016 13.848L2.104 56.2a1.5 1.5 0 001.82 1.868l14.14-3.596A28.42 28.42 0 0030 57.56c15.464 0 28-11.984 28-26.78S45.464 2 30 2z"
+              fill="#25D366"
+            />
+            {/* Inner phone icon */}
+            <path
+              d="M42.34 35.276c-.594-.298-3.516-1.734-4.06-1.934-.546-.198-.942-.296-1.34.3-.394.594-1.534 1.932-1.88 2.328-.346.398-.694.446-1.288.15-.594-.3-2.51-.926-4.78-2.95-1.766-1.576-2.96-3.522-3.306-4.118-.346-.594-.036-.916.26-1.212.268-.266.596-.694.892-1.04.298-.348.396-.596.596-.994.198-.396.1-.742-.05-1.04-.15-.298-1.338-3.224-1.832-4.414-.484-1.158-.974-1-.34-1.02-.346-.016-.742-.02-1.14-.02-.396 0-1.04.148-1.584.744-.544.594-2.08 2.032-2.08 4.958 0 2.924 2.13 5.75 2.426 6.148.298.396 4.192 6.4 10.154 8.974 1.418.612 2.524.978 3.388 1.25 1.424.454 2.72.39 3.742.236 1.142-.17 3.516-1.438 4.012-2.826.496-1.388.496-2.578.346-2.826-.148-.248-.544-.396-1.14-.694z"
+              fill="#fff"
+            />
           </svg>
         )}
       </button>
