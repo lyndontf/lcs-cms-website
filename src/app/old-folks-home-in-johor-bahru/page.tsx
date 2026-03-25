@@ -4,6 +4,7 @@ import FaqSection from '../../components/sections/FaqSection';
 import FinalCtaSection from '../../components/sections/FinalCtaSection';
 import GlcHireSection from '../../components/sections/GlcHireSection';
 import CostCalculatorSection from '../../components/sections/CostCalculatorSection';
+import HeroEnquiryForm from '@/components/HeroEnquiryForm';
 
 export const metadata: Metadata = {
   title: 'Old Folks Home in Johor Bahru - Genesis Life Care JB',
@@ -191,7 +192,8 @@ export default function OldFolksHomeJB() {
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full translate-y-1/2 -translate-x-1/3" />
 
         <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24">
-          <div className="lg:max-w-2xl">
+          <div className="grid lg:grid-cols-5 gap-10 items-start">
+            <div className="lg:col-span-3">
             <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6">
               <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
               <span className="text-gold text-xs font-semibold tracking-wide uppercase">Rated {centre.rating} ★ on Google</span>
@@ -222,6 +224,11 @@ export default function OldFolksHomeJB() {
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                 Call {centre.phoneCTA}
               </a>
+            </div>
+          </div>
+            {/* ── Enquiry Form ── */}
+            <div className="lg:col-span-2 hidden lg:block">
+              <HeroEnquiryForm centreName="Johor Bahru" pageUrl="/old-folks-home-in-johor-bahru" />
             </div>
           </div>
         </div>
@@ -360,17 +367,17 @@ export default function OldFolksHomeJB() {
       {/* ── CHOOSING THE RIGHT HOME ───────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-[#f4f8fb]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div>
             <div>
-              <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Helpful Guide</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">
+              <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2 text-center">Helpful Guide</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6 text-center">
                 How to Choose the Right Old Folks Home
               </h2>
-              <p className="text-gray-600 leading-relaxed mb-8">
+              <p className="text-gray-600 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
                 Choosing an old folks home is a big decision. Here is a simple checklist of what to look for — and how Genesis Life Care measures up.
               </p>
             </div>
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {checklist.map((item, i) => (
                 <div key={i} className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
                   <div className="flex items-start gap-3">
