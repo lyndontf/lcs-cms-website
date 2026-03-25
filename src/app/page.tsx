@@ -847,13 +847,13 @@ export default async function HomePage() {
               </div>
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { value: 'GLC', label: 'Facility Trained' },
-                  { value: 'JTKSM', label: 'Licensed' },
-                  { value: '5★', label: 'Satisfaction' },
+                  { value: 'GLC', label: 'Facility Trained', gold: false },
+                  { value: 'JTKSM', label: 'Licensed', gold: false },
+                  { value: '5★', label: 'Satisfaction', gold: true },
                 ].map((s, i) => (
-                  <div key={i} className="bg-white rounded-xl p-4 text-center shadow-sm">
-                    <span className="block text-xl font-extrabold text-gray-900">{s.value}</span>
-                    <span className="text-[10px] text-gray-500 font-medium">{s.label}</span>
+                  <div key={i} className={`rounded-xl p-4 text-center shadow-sm ${s.gold ? 'bg-gold' : 'bg-white'}`}>
+                    <span className={`block text-xl font-extrabold ${s.gold ? 'text-white' : 'text-gray-900'}`}>{s.value}</span>
+                    <span className={`text-[10px] font-medium ${s.gold ? 'text-white/80' : 'text-gray-500'}`}>{s.label}</span>
                   </div>
                 ))}
               </div>
@@ -968,8 +968,8 @@ export default async function HomePage() {
             <div className="flex flex-col gap-6 lg:sticky lg:top-24">
               <div className="rounded-2xl overflow-hidden">
                 <img
-                  src="/images/general/comprehensive-care.png"
-                  alt="Caregiver providing compassionate care to elderly resident at Genesis Life Care"
+                  src="/images/general/comprehensive-care-2.png"
+                  alt="Professional caregiver assisting elderly resident at Genesis Life Care"
                   className="w-full h-auto object-cover"
                 />
               </div>
