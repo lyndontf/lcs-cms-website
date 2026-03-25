@@ -9,7 +9,7 @@ import HeroEnquiryForm from '@/components/HeroEnquiryForm';
 export const metadata: Metadata = {
   title: '蒲种老人院 - Genesis Life Care Puchong',
   description:
-    'Modern old folks home 在蒲种, Bandar Puteri. 24/7 nursing care, rehabilitation, dementia care & nutritious meals. Affordable rates. Rated 4.8\u2605. Visit today.',
+    '蒲种现代化老人院，Bandar Puteri。24/7专业护理、康复治疗、失智症护理和营养餐食。价格合理，谷歌评分4.8。立即参观！'',
 };
 
 export const revalidate = 60;
@@ -86,26 +86,26 @@ const checklist = [
   { title: '合格的护理人员', desc: '我们的团队包括训练有素的护士、物理治疗师、心理学家和经验丰富的护理人员，全天候可用。' },
   { title: '清洁卫生', desc: '我们遵守严格的卫生标准，定期深度清洁、感染控制协议和设施维护良好。' },
   { title: '探访政策', desc: '我们鼓励家属参与，灵活的探访时间和舒适的空间可供共同享受高质量的时间。' },
-  { title: '位置与便利性', desc: 'Our Puchong centre in Bandar Puteri is easily accessible via LDP Expressway and ELITE Highway, with ample parking for visitors.' },
+  { title: '位置与便利性', desc: '我们位于Bandar Puteri的蒲种中心通过LDP快速公路和ELITE高速公路轻松到达，设有充足的停车位，方便家人定期探访。' },
   { title: '可用的专科护理', desc: '除了基本护理，我们提供失智症计划、中风康复、临终关怀和术后康复。' },
 ];
 
 const faqs = [
   {
-    q: 'How much does an old folks home cost 在蒲种?',
-    a: 'Costs at Genesis Life Care Puchong vary depending on the level of care required and room type. We offer competitive rates for our Bandar Puteri location. Contact us for a personalised quote based on your loved one\'s needs.',
+    q: '蒲种老人院费用是多少？',
+    a: '蒲种Genesis Life Care的费用根据护理级别和房间类型而异。我们Bandar Puteri的价格具有竞争力。请联系我们获取根据您亲人需求定制的报价。's needs.',
   },
   {
     q: '老人院和护理院有什么区别?',
-    a: 'In Malaysia, "old folks home" and "nursing home" are often used interchangeably. At Genesis Life Care, we provide professional nursing care alongside a warm, home-like environment \u2014 combining the best of both. Our residents receive 24/7 medical support while enjoying daily activities and social engagement.',
+    a: '在马来西亚，“老人院”和“护理院”经常互换使用。在Genesis Life Care，我们在温馨的家庭化环境中提供专业护理——两者兼得。我们的居民享受24/7医疗支持，同时享受日常活动和社交参与。',
   },
   {
-    q: 'Is Genesis Life Care Puchong affordable?',
+    q: 'Genesis Life Care蒲种价格实惠吗？',
     a: '是的。我们在所有中心提供具有竞争力和透明的费率。我们的团队与每个家族合作，推荐适合其需求和预算的护理计划。联系我们获取个性化报价。',
   },
   {
-    q: 'What are visiting hours at the Puchong old folks home?',
-    a: 'We maintain flexible visiting hours to encourage family involvement. General visiting hours are from 10am to 6pm daily. Special arrangements can be made for families who need to visit outside these hours \u2014 just speak with our care team.',
+    q: '蒲种老人院的探访时间是什么？',
+    a: '我们保持灵活的探访时间以鼓励家人参与。一般探访时间为每天上午10点至下午6点。特殊情况可安排其他时间探访。',
   },
 ];
 
@@ -201,13 +201,10 @@ export default function OldFolksHomeZh() {
 
             <p className="text-sm font-bold uppercase tracking-widest text-white/70 mb-3" style={{ color: 'rgba(255,255,255,0.7)' }}>Old Folks Home in {centre.name}</p>
             <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6" style={{ color: 'white' }}>
-              Best Old Folks Home<br className="hidden sm:block" /> in {centre.name}
+              最佳老人院<br className="hidden sm:block" /> in {centre.name}
             </h1>
             <p className="text-lg text-white/90 mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.9)' }}>
-              A modern, purpose-built facility where your loved ones receive professional care with dignity and
-              compassion. Our Puchong centre in Bandar Puteri features rehabilitation facilities, nutritious meals,
-              and a caring team available around the clock.
-            </p>
+              一家现代化、专业建造的护理设施，让您的亲人获得有尊严和关爱的专业护理。我们位于Bandar Puteri的蒲种中心提供康复设施、营养餐食和全天候护理团队。</p>
 
             <div className="flex flex-col sm:flex-row items-start gap-4">
               <Link
@@ -240,19 +237,19 @@ export default function OldFolksHomeZh() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center items-center">
             <div>
               <span className="block text-3xl font-extrabold text-primary">500+</span>
-              <span className="block text-sm font-semibold text-gray-900 mt-1">Residents Cared</span>
+              <span className="block text-sm font-semibold text-gray-900 mt-1">已护理居民</span>
             </div>
             <div>
               <span className="block text-3xl font-extrabold text-primary">5</span>
-              <span className="block text-sm font-semibold text-gray-900 mt-1">Centres</span>
+              <span className="block text-sm font-semibold text-gray-900 mt-1">中心</span>
             </div>
             <div>
               <span className="block text-3xl font-extrabold text-primary">24/7</span>
-              <span className="block text-sm font-semibold text-gray-900 mt-1">Care Support</span>
+              <span className="block text-sm font-semibold text-gray-900 mt-1">护理支持</span>
             </div>
             <div>
               <span className="block text-3xl font-extrabold text-primary">{centre.rating} ★</span>
-              <span className="block text-sm font-semibold text-gray-900 mt-1">Google Rating</span>
+              <span className="block text-sm font-semibold text-gray-900 mt-1">谷歌评分</span>
             </div>
             <div className="col-span-2 sm:col-span-1">
               <div className="flex items-center justify-center gap-2">
@@ -270,30 +267,21 @@ export default function OldFolksHomeZh() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Why Puchong</p>
+              <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">为什么选择蒲种</p>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">
-                Why Choose Our 蒲种老人院?
+                为什么选择我们的蒲种老人院？
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  Located in Bandar Puteri, one of Puchong's most well-established and family-friendly townships,
-                  our modern facility offers contemporary amenities and purpose-built spaces designed for elderly
-                  comfort. Genesis Life Care Puchong is ideal for families seeking high-quality senior care in a
-                  convenient, accessible location.
+                  位于Bandar Puteri，蒲种最成熟、最适合家庭的住宅区之一 住宅区之一，我们的现代化设施提供当代设施和专为老年人舒适设计的空间。Genesis Life Care Puchong是寻求便利位置高质量老年护理的家庭的理想选择。
                 </p>
                 <p>
-                  What sets our Puchong old folks home apart is the combination of round-the-clock nursing care,
-                  nutritious meals, rehabilitation services, dedicated activities, and dementia support — ensuring
-                  your loved one receives holistic care in a comfortable, respectful environment.
-                </p>
+                  我们蒲种老人院的与众不同之处在于全天候护理、现代化设施和真正关心居民福祉的团队的完美结合。</p>
                 <p>
-                  Easy highway access via the LDP Expressway and ELITE Highway makes our centre central to many
-                  Klang Valley families. We are near Columbia Asia Hospital Puchong and KPJ Damansara Specialist
-                  Hospital, and ideal for families from Puchong, Subang Jaya, USJ, Cyberjaya, and Putrajaya.
-                </p>
+                  通过LDP快速公路和ELITE高速公路轻松到达，交通便利，方便家人探访。</p>
               </div>
               <div className="flex flex-wrap gap-2 mt-6">
-                {['现代化设施', '优质餐饮', 'LDP & ELITE Access', 'Bandar Puteri', 'Near Hospitals'].map((t) => (
+                {['现代化设施', '优质餐饮', 'LDP和ELITE高速公路', 'Bandar Puteri', '靠近医院'].map((t) => (
                   <span key={t} className="bg-primary-50 text-primary-700 text-xs font-semibold px-3 py-1.5 rounded-full">{t}</span>
                 ))}
               </div>
@@ -301,7 +289,7 @@ export default function OldFolksHomeZh() {
             <div>
               <img
                 src="/images/services/common-area-scenic.jpg"
-                alt="Common area at our old folks home 在蒲种"
+                alt="蒲种老人院的公共区域"
                 className="rounded-2xl shadow-lg w-full object-cover"
                 style={{ maxHeight: '400px' }}
               />
@@ -314,11 +302,10 @@ export default function OldFolksHomeZh() {
       <section className="py-16 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Life at Our Home</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">What Daily Life Looks Like</h2>
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">我们的家园生活</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">日常生活是什么样的</h2>
             <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-              Every day at our old folks home is designed to be comfortable, meaningful, and safe. Here is what your loved one can expect.
-            </p>
+              我们老人院的每一天都旨在让居民感到舒适、有意义和安全。从早晨的锻炼到营养餐食，每个细节都经过精心设计。</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {dailyLife.map((item) => (
@@ -338,11 +325,10 @@ export default function OldFolksHomeZh() {
       <section className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Our Care Services</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">Specialist Care Under One Roof</h2>
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">我们的护理服务</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">一站式专业护理</h2>
             <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-              Beyond everyday care, our old folks home 在蒲种 offers a full range of specialist services.
-            </p>
+              除了日常护理，我们在蒲种的老人院提供全面的专业服务，由训练有素的护理人员提供。</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {careServices.map((svc) => (
@@ -364,13 +350,12 @@ export default function OldFolksHomeZh() {
       <section className="py-16 sm:py-20 bg-[#f4f8fb]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Helpful Guide</p>
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">实用指南</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">
-              How to Choose the Right Old Folks Home
+              如何选择合适的老人院
             </h2>
             <p className="text-gray-600 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
-              Choosing an old folks home is a big decision. Here is a simple checklist of what to look for — and how Genesis Life Care measures up.
-            </p>
+              选择老人院是一个重大决定。以下是一个简单的清单，帮助您了解需要注意的事项：</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
             {checklist.map((item, i) => (
@@ -394,16 +379,15 @@ export default function OldFolksHomeZh() {
       <section className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Getting Started</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">Simple Admission Process</h2>
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">开始入住</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">简单的入住流程</h2>
             <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-              Moving into our old folks home is straightforward. We guide you every step of the way.
-            </p>
+              入住我们的老人院非常简单。我们将在每一步为您提供指导。</p>
           </div>
           <div className="grid sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {[
               { step: '1', title: '联系我们', desc: '致电我们或填写在线表格。我们的护理顾问将回答您的问题并安排方便的访问时间。' },
-              { step: '2', title: '免费评估与参观', desc: '访问我们的 Puchong centre, meet the care team, and we will assess your loved one\'s needs at no charge.' },
+              { step: '2', title: '免费评估与参观', desc: '访问我们的蒲种中心，与护理团队见面，我们将免费评估您亲人的需求。' },
               { step: '3', title: '搬入', desc: '一旦您准备好，我们将准备个性化护理计划并帮助您的亲人舒适地安顿在新家中。' },
             ].map((s) => (
               <div key={s.step} className="text-center">
@@ -417,7 +401,7 @@ export default function OldFolksHomeZh() {
           </div>
           <div className="text-center mt-10">
             <Link href="/zh/contact" className="whitespace-nowrap inline-flex items-center gap-2 bg-primary hover:bg-primary-700 text-white font-bold px-6 py-3.5 rounded-full transition shadow-lg">
-              Schedule a Visit
+              预约参观
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </Link>
           </div>
@@ -431,14 +415,14 @@ export default function OldFolksHomeZh() {
       <section className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">More Locations</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">Visit Our Other Old Folks Homes</h2>
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">更多地点</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">参观我们的其他老人院</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {otherHomes.map((home) => (
               <Link key={home.slug} href={`/${home.slug}`} className="group bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-all">
                 <div className="aspect-[4/3] overflow-hidden">
-                  <img src={home.img} alt={`Old folks home in ${home.name}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src={home.img} alt={`老人院在${home.name}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <div className="p-4">
                   <span className="inline-block bg-primary-50 text-primary text-xs font-semibold px-2 py-0.5 rounded-full mb-2">{home.tag}</span>
@@ -464,9 +448,9 @@ export default function OldFolksHomeZh() {
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
       <FinalCtaSection
-        heading="Ready to Take the Next Step?"
-        description="Contact us today for a free consultation. Our care advisors speak to dozens of families every week and can help find the perfect care solution for your loved one."
-        primaryLabel="Schedule a Visit"
+        heading="准备好迈出下一步了吗？"
+        description="今天就联系我们进行免费咨询。我们的护理顾问每周与数十个家庭交流，可以帮助您找到完美的护理方案。"
+        primaryLabel="预约参观"
         primaryHref="/zh/contact"
         phone="+6012-321 0457"
       />
