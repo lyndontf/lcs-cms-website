@@ -33,7 +33,7 @@ const centre = {
 };
 
 const highlights = [
-  { label: '服务年限', value: '3+', sub: 'Since 2022' },
+  { label: '服务年限', value: '3+', sub: '自2022年' },
   { label: '居民容量', value: '120+', sub: '舒适的床位' },
   { label: '谷歌评分', value: '4.8 \u2605', sub: '38 条评价' },
   { label: '收费合理', value: '\u2713', sub: '所有中心' },
@@ -43,7 +43,7 @@ const highlights = [
 const dailyLife = [
   {
     title: '个性化日常计划',
-    desc: 'Every resident follows a tailored schedule designed around their preferences, abilities, and medical needs \u2014 from wake-up to bedtime.',
+    desc: '每位居民都有根据他们的喜好、能力和医疗需求量身定制的日程安排\u2014\u2014从起床到就寝。',
     icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
   },
   {
@@ -142,7 +142,7 @@ export default function OldFolksHomeZh() {
             '@type': 'LocalBusiness',
             '@id': 'https://genesiscare.com.my/zh/old-folks-home-in-puchong',
             name: centre.fullName,
-            description: 'Modern old folks home 在蒲种, Bandar Puteri with 24/7 nursing care, rehabilitation and dementia care.',
+            description: '蒲种现代化老人院，Bandar Puteri，提供24/7专业护理、康复治疗和失智症护理服务。',
             url: 'https://genesiscare.com.my/zh/old-folks-home-in-puchong',
             telephone: centre.phone,
             address: {
@@ -196,10 +196,10 @@ export default function OldFolksHomeZh() {
             <div className="lg:col-span-3">
             <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6">
               <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
-              <span className="text-gold text-xs font-semibold tracking-wide uppercase">Rated {centre.rating} ★ on Google</span>
+              <span className="text-gold text-xs font-semibold tracking-wide uppercase">谷歌评分 {centre.rating} ★</span>
             </div>
 
-            <p className="text-sm font-bold uppercase tracking-widest text-white/70 mb-3" style={{ color: 'rgba(255,255,255,0.7)' }}>Old Folks Home in {centre.name}</p>
+            <p className="text-sm font-bold uppercase tracking-widest text-white/70 mb-3" style={{ color: 'rgba(255,255,255,0.7)' }}>{centre.name}老人院</p>
             <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6" style={{ color: 'white' }}>
               最佳老人院<br className="hidden sm:block" /> in {centre.name}
             </h1>
@@ -426,15 +426,15 @@ export default function OldFolksHomeZh() {
                 </div>
                 <div className="p-4">
                   <span className="inline-block bg-primary-50 text-primary text-xs font-semibold px-2 py-0.5 rounded-full mb-2">{home.tag}</span>
-                  <h3 className="text-base font-bold text-gray-900 group-hover:text-primary transition-colors">Old Folks Home in {home.name}</h3>
-                  <span className="text-sm text-gray-500">Rated {home.rating} ★</span>
+                  <h3 className="text-base font-bold text-gray-900 group-hover:text-primary transition-colors">{home.name}老人院</h3>
+                  <span className="text-sm text-gray-500">评分 {home.rating} ★</span>
                 </div>
               </Link>
             ))}
           </div>
           <div className="text-center mt-8">
             <Link href={centre.nursingHomeSlug} className="text-primary font-semibold text-sm hover:underline">
-              View full centre details for {centre.name} →
+              查看{centre.name}的完整详情 →
             </Link>
           </div>
         </div>
