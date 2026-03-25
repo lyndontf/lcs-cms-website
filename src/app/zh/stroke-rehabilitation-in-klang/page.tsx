@@ -335,11 +335,11 @@ export default function StrokeRehabilitationKlangZh() {
               <Link
                 key={i}
                 href={svc.link}
-                className={\`bg-white rounded-xl p-6 shadow-sm border hover:shadow-md transition-all group \${
+                className={`bg-white rounded-xl p-6 shadow-sm border hover:shadow-md transition-all group ${
                   svc.highlight
                     ? 'border-2 shadow-md'
                     : 'border-gray-100 hover:border-primary/20'
-                }\`}
+                }`}
                 style={svc.highlight ? { borderColor: '#229CD0' } : undefined}>
                 <div className="bg-primary/10 rounded-lg w-12 h-12 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                   <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">

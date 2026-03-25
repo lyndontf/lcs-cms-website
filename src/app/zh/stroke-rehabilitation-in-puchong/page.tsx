@@ -183,7 +183,7 @@ const jsonLd = {
 export default function StrokeRehabilitationPuchongZh() {
   return (
     <main className="bg-white">
-      <style dangerouslySetInnerHTML={{ __html: \`
+      <style dangerouslySetInnerHTML={{ __html: `
         .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div { color: inherit; }
         .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div,
         .hero-dark .text-4xl, .hero-dark .text-5xl, .hero-dark .sm\:text-5xl,
@@ -192,7 +192,7 @@ export default function StrokeRehabilitationPuchongZh() {
         .hero-dark .text-gray-900 { color: rgb(17 24 39) !important; }
         .hero-dark .text-gray-800 { color: rgb(31 41 55) !important; }
         .hero-dark .text-gold { color: #FAB515 !important; }
-      \` }} />
+      ` }} />
 
       <script
         type="application/ld+json"
@@ -335,11 +335,11 @@ export default function StrokeRehabilitationPuchongZh() {
               <Link
                 key={i}
                 href={svc.link}
-                className={\`bg-white rounded-xl p-6 shadow-sm border hover:shadow-md transition-all group \${
+                className={`bg-white rounded-xl p-6 shadow-sm border hover:shadow-md transition-all group ${
                   svc.highlight
                     ? 'border-2 shadow-md'
                     : 'border-gray-100 hover:border-primary/20'
-                }\`}
+                }`}
                 style={svc.highlight ? { borderColor: '#229CD0' } : undefined}>
                 <div className="bg-primary/10 rounded-lg w-12 h-12 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                   <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -496,7 +496,7 @@ export default function StrokeRehabilitationPuchongZh() {
               </svg>
             </Link>
             <a
-              href={\`tel:\${centre.phone.replace(/\s/g, '')}\`}
+              href={`tel:${centre.phone.replace(/\s/g, '')}`}
               className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
