@@ -383,22 +383,22 @@ export default async function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-8">
             <div className="text-center flex-1 min-w-[120px]">
-              <span className="block text-2xl sm:text-3xl font-extrabold text-primary leading-none">500+</span>
+              <span className="block text-4xl sm:text-5xl font-extrabold text-primary leading-none">500+</span>
               <span className="text-xs text-gray-500 mt-1 font-medium">Families Served</span>
             </div>
             <div className="hidden sm:block w-px h-12 bg-gray-200" />
             <div className="text-center flex-1 min-w-[120px]">
-              <span className="block text-2xl sm:text-3xl font-extrabold text-primary leading-none">5</span>
+              <span className="block text-4xl sm:text-5xl font-extrabold text-primary leading-none">5</span>
               <span className="text-xs text-gray-500 mt-1 font-medium">Care Centres</span>
             </div>
             <div className="hidden sm:block w-px h-12 bg-gray-200" />
             <div className="text-center flex-1 min-w-[120px]">
-              <span className="block text-2xl sm:text-3xl font-extrabold text-primary leading-none">24/7</span>
+              <span className="block text-4xl sm:text-5xl font-extrabold text-primary leading-none">24/7</span>
               <span className="text-xs text-gray-500 mt-1 font-medium">Professional Care</span>
             </div>
             <div className="hidden sm:block w-px h-12 bg-gray-200" />
             <div className="text-center flex-1 min-w-[120px]">
-              <span className="block text-2xl sm:text-3xl font-extrabold text-primary leading-none">4.8</span>
+              <span className="block text-4xl sm:text-5xl font-extrabold text-primary leading-none">4.8</span>
               <span className="text-xs text-gray-500 mt-1 font-medium">Google Rating ★</span>
             </div>
             <div className="hidden sm:block w-px h-12 bg-gray-200" />
