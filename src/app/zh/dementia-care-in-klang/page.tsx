@@ -170,7 +170,7 @@ export default function DementiaCareKlangZh() {
       <style dangerouslySetInnerHTML={{ __html: `.hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div { color: inherit; } .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div, .hero-dark .text-4xl, .hero-dark .text-5xl, .hero-dark .sm\\:text-5xl, .hero-dark .text-3xl, .hero-dark .text-lg, .hero-dark .text-sm, .hero-dark .text-white { color: #ffffff !important; }` }} />
 
       {/* HERO */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
+      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
 

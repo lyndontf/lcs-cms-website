@@ -89,7 +89,7 @@ export default async function HomePage() {
             ) : (
               <article>
                 {/* Hero section */}
-                <section className="cms-hero relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
+                <section className="cms-hero relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
                   {page.featured_image_url && (
                     <img
                       src={page.featured_image_url}
