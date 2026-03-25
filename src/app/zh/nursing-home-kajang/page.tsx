@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: '加影老年护理中心 - Genesis Life Care Kajang',
   description:
-    'Genesis Life Care Kajang — 南部巴生谷的家庭友好型老年护理中心。24/7护理服务、康复服务、失智症护理及老年日间护理。费用合理。谷歌评分4.7★。预约免费参观。',
+    'Genesis Life Care Kajang — 南部巴生谷的家庭友好型老年护理中心。24/7护理服务、康复服务、失智症护理及老年日间护理。费用合理。谷歌评分4.9★。预约免费参观。',
 };
 
 export const revalidate = 60;
@@ -17,18 +17,18 @@ const centre = {
   phone: '+6019 334 0457',
   phoneCTA: '+6019-334-0457',
   address: '41, Jalan Ria 1, Kawasan Perindustrian Ria, 43500 Kajang, Selangor',
-  rating: '4.7',
+  rating: '4.9',
   reviews: 32,
   established: '2021',
-  beds: '120+',
+  beds: '120',
   mapEmbed:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.8!2d101.7897!3d2.9927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdcb3a3a3a3a3a%3A0x3a3a3a3a3a3a3a3a!2sGenesis+Life+Care+Kajang!5e0!3m2!1sen!2smy!4v1700000000000',
   heroImg: '/images/kajang-centre.jpeg',
 };
 
 const highlights = [
-  { label: '谷歌评分', value: '4.7 ★', sub: `${centre.reviews} 条评价` },
-  { label: '床位', value: '120+', sub: '容量' },
+  { label: '谷歌评分', value: '4.9 ★', sub: `${centre.reviews} 条评价` },
+  { label: '床位', value: '120', sub: '容量' },
   { label: '成立年份', value: '2021', sub: '南巴生谷' },
   { label: '收费合理', value: '✓', sub: '全部中心' },
   { label: '护理团队', value: '20+', sub: '专业人员' },

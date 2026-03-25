@@ -4,14 +4,14 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Nursing Home in Kajang — Genesis Life Care Kajang | 24/7 Elderly Care',
   description:
-    'Genesis Life Care Kajang — family-friendly nursing home in the southern Klang Valley. 24/7 nursing care, rehab services, dementia care & Senior Daycare. Affordable rates from RM 2,500/month. Rated 4.7★ on Google. Book a free tour.',
+    'Genesis Life Care Kajang — family-friendly nursing home in the southern Klang Valley. 24/7 nursing care, rehab services, dementia care & Senior Daycare. Affordable rates from RM 2,500/month. Rated 4.9★ on Google. Book a free tour.',
   alternates: {
     canonical: 'https://genesiscare.com.my/nursing-home-kajang',
     languages: { 'zh-Hans': 'https://genesiscare.com.my/zh/nursing-home-kajang' },
   },
   openGraph: {
     title: 'Nursing Home in Kajang | Genesis Life Care',
-    description: '24/7 nursing care, rehab, dementia care in Kajang. Affordable rates. Rated 4.7★ on Google.',
+    description: '24/7 nursing care, rehab, dementia care in Kajang. Affordable rates. Rated 4.9★ on Google.',
     url: 'https://genesiscare.com.my/nursing-home-kajang',
     siteName: 'Genesis Life Care',
     locale: 'en_MY',
@@ -30,18 +30,18 @@ const centre = {
   phone: '+6019 334 0457',
   phoneCTA: '+6019-334-0457',
   address: '41, Jalan Ria 1, Kawasan Perindustrian Ria, 43500 Kajang, Selangor',
-  rating: '4.7',
+  rating: '4.9',
   reviews: 32,
   established: '2021',
-  beds: '120+',
+  beds: '120',
   mapEmbed:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.8!2d101.7897!3d2.9927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdcb3a3a3a3a3a%3A0x3a3a3a3a3a3a3a3a!2sGenesis+Life+Care+Kajang!5e0!3m2!1sen!2smy!4v1700000000000',
   heroImg: '/images/kajang-centre.jpeg',
 };
 
 const highlights = [
-  { label: 'Google Rating', value: '4.7 ★', sub: `${centre.reviews} reviews` },
-  { label: 'Beds', value: '120+', sub: 'Capacity' },
+  { label: 'Google Rating', value: '4.9 ★', sub: `${centre.reviews} reviews` },
+  { label: 'Beds', value: '120', sub: 'Capacity' },
   { label: 'Established', value: '2021', sub: 'Southern KV' },
   { label: 'Affordable Rates', value: '✓', sub: 'All Centres' },
   { label: 'Care Team', value: '20+', sub: 'Professionals' },
@@ -142,7 +142,7 @@ export default function NursingHomeKajang() {
     '@context': 'https://schema.org',
     '@type': 'MedicalBusiness',
     name: 'Genesis Life Care Kajang',
-    description: 'Family-friendly nursing home in Kajang offering 24/7 nursing care, dementia care, stroke rehabilitation & senior daycare. Rated 4.7★ on Google.',
+    description: 'Family-friendly nursing home in Kajang offering 24/7 nursing care, dementia care, stroke rehabilitation & senior daycare. Rated 4.9★ on Google.',
     url: 'https://genesiscare.com.my/nursing-home-kajang',
     telephone: '+6019-334-0457',
     address: {
@@ -157,7 +157,7 @@ export default function NursingHomeKajang() {
     image: 'https://genesiscare.com.my/images/kajang-centre.jpeg',
     priceRange: 'From RM 2,500/month',
     openingHoursSpecification: { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '00:00', closes: '23:59' },
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.7', reviewCount: '32', bestRating: '5' },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '32', bestRating: '5' },
     medicalSpecialty: ['Geriatric Medicine', 'Rehabilitation', 'Palliative Care'],
     areaServed: [{ '@type': 'City', name: 'Kajang' }, { '@type': 'City', name: 'Bangi' }, { '@type': 'City', name: 'Semenyih' }],
     parentOrganization: { '@type': 'Organization', name: 'Genesis Life Care', url: 'https://genesiscare.com.my' },

@@ -231,16 +231,16 @@ export const centres: Record<string, CentreData> = {
     phone: '+6019 334 0457',
     phoneCTA: '+6019-334-0457',
     address: '41, Jalan Ria 1, Kawasan Perindustrian Ria, 43500 Kajang, Selangor',
-    rating: '4.7',
+    rating: '4.9',
     reviews: 32,
     established: '2021',
-    beds: '120+',
+    beds: '120',
     heroImg: '/images/kajang-centre.jpeg',
     mapEmbed:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.6!2d101.7900!3d2.9900!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4f9e5b7a3d1c%3A0x8e3f2a4b6c5d7e1a!2sGenesis+Life+Care+Kajang!5e0!3m2!1sen!2smy!4v1700000000000',
     highlights: [
-      { label: 'Google Rating', value: '4.7 ★', sub: '32 reviews' },
-      { label: 'Beds', value: '120+', sub: 'Capacity' },
+      { label: 'Google Rating', value: '4.9 ★', sub: '32 reviews' },
+      { label: 'Beds', value: '120', sub: 'Capacity' },
       { label: 'Established', value: '2021', sub: 'Southern KV' },
       { label: 'Affordable Rates', value: '✓', sub: 'All Centres' },
       { label: 'Care Team', value: '20+', sub: 'Professionals' },
@@ -366,7 +366,7 @@ export const centres: Record<string, CentreData> = {
 export const allCentreCards = [
   { name: 'Petaling Jaya', slug: 'nursing-home-in-petaling-jaya', rating: '4.9', tag: 'Flagship Centre', img: '/images/pj-centre.jpg' },
   { name: 'Klang', slug: 'nursing-home-in-klang', rating: '4.8', tag: 'Original Centre', img: '/images/klang-centre.jpg' },
-  { name: 'Kajang', slug: 'nursing-home-kajang', rating: '4.7', tag: 'Southern KV', img: '/images/kajang-centre.jpeg' },
+  { name: 'Kajang', slug: 'nursing-home-kajang', rating: '4.9', tag: 'Southern KV', img: '/images/kajang-centre.jpeg' },
   { name: 'Puchong', slug: 'nursing-home-in-puchong', rating: '4.8', tag: 'Modern Facility', img: '/images/puchong-centre.jpeg' },
   { name: 'Johor Bahru', slug: 'nursing-home-in-johor-bahru', rating: '4.8', tag: 'Southern Region', img: '/images/jb-centre.jpeg' },
 ];
