@@ -125,7 +125,7 @@ export default function DementiaCarePuchongZh() {
             <div className="grid sm:grid-cols-2 gap-6">
               {centreData.testimonials?.map((t, i) => (
                 <div key={i} className="bg-white rounded-xl p-6 shadow-sm border">
-                  <p className="font-bold text-gray-900 text-sm mb-2">{t.author}</p>
+                  <p className="font-bold text-gray-900 text-sm mb-2">{t.name}</p>
                   <p className="text-sm text-gray-600">{t.text}</p>
                 </div>
               ))}
