@@ -17,19 +17,19 @@ export default function FinalCtaSection({
   phone = '+6012-321 0457',
 }: FinalCtaSectionProps) {
   return (
-    <section className="relative bg-gradient-to-br from-[#229CD0] via-[#3db8e0] to-[#09B7D3] overflow-hidden">
+    <section className="hp-cta relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
       <div className="absolute -top-[40%] -right-[10%] w-[60%] pb-[60%] rounded-full bg-white/[.06] pointer-events-none" />
       <div className="absolute -bottom-[50%] -left-[5%] w-[50%] pb-[50%] rounded-full bg-black/[.06] pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">{heading}</h2>
-        <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4">{heading}</h2>
+        <p className="hp-sub text-lg mb-8 max-w-2xl mx-auto">
           {description}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href={primaryHref}
-            className="inline-flex items-center justify-center gap-2 bg-[#FAB515] text-gray-900 px-8 py-3.5 rounded-full text-base font-bold shadow-lg hover:shadow-xl hover:brightness-110 transition-all"
+            className="hp-gold-btn inline-flex items-center justify-center gap-2 bg-gold text-gray-900 px-8 py-3.5 rounded-full text-base font-bold shadow-lg hover:shadow-xl hover:brightness-110 transition-all"
           >
             {primaryLabel}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
