@@ -582,96 +582,93 @@ export default async function HomePage() {
       {/* ─── WHY GENESIS ─── */}
       <section className="bg-white py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div>
-              <span className="inline-block text-xs font-bold tracking-[.14em] uppercase text-primary mb-3">Why Choose Us</span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-5">
-                Why Families Trust Genesis Life Care
-              </h2>
-              <p className="text-gray-500 text-lg leading-relaxed mb-8">
-                With over a decade of experience in elderly care, we combine medical expertise with genuine compassion. Every family receives personalised attention from our dedicated team of nurses and caregivers.
-              </p>
-              <div className="flex flex-col gap-4">
-                <div className="flex items-start gap-4 p-4 bg-primary-50 rounded-xl border-l-[3px] border-primary">
-                  <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  <div>
-                    <strong className="block text-sm font-bold text-gray-900">Affordable &amp; Quality Care</strong>
-                    <span className="text-sm text-gray-500">Competitive rates with transparent pricing across all centres. No hidden costs.</span>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4 p-4 bg-primary-50 rounded-xl border-l-[3px] border-primary">
-                  <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  <div>
-                    <strong className="block text-sm font-bold text-gray-900">Personalised Care Plans</strong>
-                    <span className="text-sm text-gray-500">Every resident receives a tailored care plan reviewed regularly with family members.</span>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4 p-4 bg-primary-50 rounded-xl border-l-[3px] border-primary">
-                  <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  <div>
-                    <strong className="block text-sm font-bold text-gray-900">Transparent &amp; Affordable Pricing</strong>
-                    <span className="text-sm text-gray-500">No hidden charges. Packages from RM 2,500/month with flexible payment options.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* Section header — centred */}
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="inline-block text-xs font-bold tracking-[.14em] uppercase text-primary mb-3">Why Choose Us</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Why Families Trust Genesis Life Care
+            </h2>
+            <p className="text-gray-500 text-lg leading-relaxed">
+              With over a decade of experience in elderly care, we combine medical expertise with genuine compassion. Every family receives personalised attention from our dedicated team of nurses and caregivers.
+            </p>
+          </div>
 
-            {/* Right — Video thumbnail + stats */}
-            <div className="flex flex-col gap-4">
-              <a
-                href="https://youtu.be/Shmrvy-_b9U?si=dBv-B-8IpE1H4MJx"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block rounded-2xl overflow-hidden aspect-[16/10] relative group"
-              >
-                <img
-                  src="/images/general/staff-care.jpg"
-                  alt="Genesis Life Care virtual tour video"
-                  className="absolute inset-0 w-full h-full object-cover object-top"
-                />
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
-                {/* Play button */}
-                <div className="hp-video-overlay absolute inset-0 flex flex-col items-center justify-center gap-3">
-                  <div className="w-16 h-16 rounded-full bg-white/90 group-hover:bg-white group-hover:scale-110 transition-all flex items-center justify-center shadow-lg">
-                    <svg className="w-7 h-7 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                  </div>
-                  <span className="text-sm font-bold">Take a Virtual Tour</span>
-                  <span className="hp-muted text-xs">See life inside a Genesis centre</span>
+          {/* Video + stat cards row */}
+          <div className="grid lg:grid-cols-5 gap-6 mb-12">
+            {/* Video — spans 3 cols */}
+            <a
+              href="https://youtu.be/Shmrvy-_b9U?si=dBv-B-8IpE1H4MJx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lg:col-span-3 block rounded-2xl overflow-hidden aspect-[16/10] relative group"
+            >
+              <img
+                src="/images/general/staff-care.jpg"
+                alt="Genesis Life Care virtual tour video"
+                className="absolute inset-0 w-full h-full object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
+              <div className="hp-video-overlay absolute inset-0 flex flex-col items-center justify-center gap-3">
+                <div className="w-16 h-16 rounded-full bg-white/90 group-hover:bg-white group-hover:scale-110 transition-all flex items-center justify-center shadow-lg">
+                  <svg className="w-7 h-7 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 </div>
-              </a>
-              <div className="grid grid-cols-3 gap-3">
-                <div className="bg-primary-50 rounded-xl p-4 text-center">
-                  <svg className="w-7 h-7 text-primary mx-auto mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                  <span className="block text-xl font-extrabold text-primary">10+</span>
-                  <span className="text-[10px] text-gray-500 font-medium">Years Experience</span>
-                </div>
-                <div className="bg-primary-50 rounded-xl p-4 text-center">
-                  <svg className="w-7 h-7 text-primary mx-auto mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                  <span className="block text-xl font-extrabold text-primary">150+</span>
-                  <span className="text-[10px] text-gray-500 font-medium">Care Staff</span>
-                </div>
-                <div className="bg-primary-50 rounded-xl p-4 text-center">
-                  <svg className="w-7 h-7 text-primary mx-auto mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
-                  <span className="block text-xl font-extrabold text-primary">5</span>
-                  <span className="text-[10px] text-gray-500 font-medium">Care Centres</span>
-                </div>
-                <div className="bg-primary-50 rounded-xl p-4 text-center">
-                  <svg className="w-7 h-7 text-primary mx-auto mb-1.5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
-                  <span className="block text-xl font-extrabold text-primary">4.8★</span>
-                  <span className="text-[10px] text-gray-500 font-medium">Google Rating</span>
-                </div>
-                <div className="bg-primary-50 rounded-xl p-4 text-center">
-                  <svg className="w-7 h-7 text-primary mx-auto mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                  <span className="block text-xl font-extrabold text-primary">500+</span>
-                  <span className="text-[10px] text-gray-500 font-medium">Families Served</span>
-                </div>
-                <div className="bg-primary-50 rounded-xl p-4 text-center">
-                  <svg className="w-7 h-7 text-primary mx-auto mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-                  <span className="block text-xl font-extrabold text-primary">JKM</span>
-                  <span className="text-[10px] text-gray-500 font-medium">Govt Approved</span>
-                </div>
+                <span className="text-sm font-bold">Take a Virtual Tour</span>
+                <span className="hp-muted text-xs">See life inside a Genesis centre</span>
               </div>
+            </a>
+
+            {/* Stat cards — 2 cols, 3 rows */}
+            <div className="lg:col-span-2 grid grid-cols-2 gap-3">
+              {[
+                { value: '10+', label: 'Years Experience', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', color: 'from-primary to-primary-600' },
+                { value: '150+', label: 'Care Staff', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z', color: 'from-secondary to-cyan-600' },
+                { value: '5', label: 'Care Centres', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4', color: 'from-primary to-primary-600' },
+                { value: '4.8★', label: 'Google Rating', icon: 'M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z', color: 'from-amber-400 to-amber-500', filled: true },
+                { value: '500+', label: 'Families Served', icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z', color: 'from-secondary to-cyan-600' },
+                { value: 'JKM', label: 'Govt Approved', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z', color: 'from-emerald-500 to-emerald-600' },
+              ].map((s, i) => (
+                <div key={i} className="bg-white rounded-xl p-4 text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${s.color} flex items-center justify-center mx-auto mb-2`}>
+                    <svg className="w-5 h-5 text-white" fill={s.filled ? 'currentColor' : 'none'} stroke={s.filled ? 'none' : 'currentColor'} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={s.icon} /></svg>
+                  </div>
+                  <span className="block text-2xl font-extrabold text-gray-900">{s.value}</span>
+                  <span className="text-[11px] text-gray-500 font-medium">{s.label}</span>
+                </div>
+              ))}
             </div>
+          </div>
+
+          {/* Feature cards row */}
+          <div className="grid sm:grid-cols-3 gap-5">
+            {[
+              {
+                title: 'Affordable & Quality Care',
+                desc: 'Competitive rates with transparent pricing across all centres. No hidden costs.',
+                icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+                gradient: 'from-primary to-primary-600',
+              },
+              {
+                title: 'Personalised Care Plans',
+                desc: 'Every resident receives a tailored care plan reviewed regularly with family members.',
+                icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4',
+                gradient: 'from-secondary to-cyan-600',
+              },
+              {
+                title: 'Transparent & Affordable Pricing',
+                desc: 'No hidden charges. Packages from RM 2,500/month with flexible payment options.',
+                icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+                gradient: 'from-emerald-500 to-emerald-600',
+              },
+            ].map((item, i) => (
+              <div key={i} className="relative bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-lg transition-all group overflow-hidden">
+                <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${item.gradient}`} />
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} /></svg>
+                </div>
+                <strong className="block text-base font-bold text-gray-900 mb-2">{item.title}</strong>
+                <span className="text-sm text-gray-500 leading-relaxed">{item.desc}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
