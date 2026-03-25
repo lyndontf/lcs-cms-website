@@ -583,7 +583,7 @@ export default async function HomePage() {
       {/* ─── WHY GENESIS ─── */}
       <section className="bg-white py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <span className="inline-block text-xs font-bold tracking-[.14em] uppercase text-primary mb-3">Why Choose Us</span>
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-5">
@@ -598,13 +598,6 @@ export default async function HomePage() {
                   <div>
                     <strong className="block text-sm font-bold text-gray-900">Affordable &amp; Quality Care</strong>
                     <span className="text-sm text-gray-500">Competitive rates with transparent pricing across all centres. No hidden costs.</span>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4 p-4 bg-primary-50 rounded-xl border-l-[3px] border-primary">
-                  <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  <div>
-                    <strong className="block text-sm font-bold text-gray-900">Qualified Medical Staff On-Site</strong>
-                    <span className="text-sm text-gray-500">Registered nurses, physiotherapists, and trained caregivers available around the clock.</span>
                   </div>
                 </div>
                 <div className="flex items-start gap-4 p-4 bg-primary-50 rounded-xl border-l-[3px] border-primary">
