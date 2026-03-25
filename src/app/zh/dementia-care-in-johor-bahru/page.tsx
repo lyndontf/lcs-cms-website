@@ -359,7 +359,7 @@ export default function DementiaCareJBZh() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {centreData.facilityImages?.map((img, i) => (
               <div key={i} className="rounded-xl overflow-hidden shadow-sm border border-gray-100 h-64">
-                <img src={img} alt={`设施 ${i + 1}`} className="w-full h-full object-cover" />
+                <img src={img.src} alt={img.alt || `设施 ${i + 1}`} className="w-full h-full object-cover" />
               </div>
             )) || (
               <div className="col-span-3 text-center text-gray-500 py-8">

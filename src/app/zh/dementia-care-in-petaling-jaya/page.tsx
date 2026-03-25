@@ -168,7 +168,7 @@ export default function DementiaCarePJZh() {
             <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">我们的设施</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {centreData.facilityImages?.map((img, i) => (
-                <img key={i} src={img} alt={`设施 ${i + 1}`} className="rounded-xl h-64 object-cover shadow-sm" />
+                <img key={i} src={img.src} alt={img.alt || `设施 ${i + 1}`} className="rounded-xl h-64 object-cover shadow-sm" />
               )) || null}
             </div>
           </div>
