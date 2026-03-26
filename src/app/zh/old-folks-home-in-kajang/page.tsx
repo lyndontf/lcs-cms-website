@@ -248,16 +248,6 @@ export default function OldFolksHomeZh() {
               </Fragment>
             ))}
           </div>
-          <div className="flex justify-center items-center gap-8 mt-8 flex-wrap">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold text-gray-600">Accredited by</span>
-              <img src="/images/logos/jkm-logo.png" alt="JKM" className="h-6" />
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold text-gray-600">Partner</span>
-              <img src="/images/logos/agecope-logo.png" alt="AgeCope" className="h-6" />
-            </div>
-          </div>
         </div>
       </section>
 

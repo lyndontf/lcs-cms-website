@@ -247,12 +247,6 @@ export default function OldFolksHomeZh() {
             ))}
           </div>
         </div>
-            <div className="col-span-2 sm:col-span-4 lg:col-span-1 flex items-center justify-center gap-3">
-              <img src="/images/logos/jkm-logo.png" alt="JKM" className="h-8 opacity-70" />
-              <img src="/images/logos/agecope-logo.png" alt="AgeCope" className="h-8 opacity-70" />
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* ── WHY CHOOSE US ─────────────────────────────────────────────── */}
