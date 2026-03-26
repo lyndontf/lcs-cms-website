@@ -298,7 +298,7 @@ export default function OurServices() {
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Full-width intro row */}
-            <div className="max-w-3xl mb-10">
+            <div className="mb-10">
               <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Our Services</p>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
                 {svc.title}
