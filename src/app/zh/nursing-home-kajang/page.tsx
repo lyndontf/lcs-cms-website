@@ -1,4 +1,5 @@
-import { Fragment, Metadata } from 'next';
+import { Fragment } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import QuickEnquiryCard from '@/components/QuickEnquiryCard';
 import { getCurrentSiteId } from '@/lib/site-context';

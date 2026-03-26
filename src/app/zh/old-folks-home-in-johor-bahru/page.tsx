@@ -1,4 +1,5 @@
-import { Fragment, Metadata } from 'next';
+import { Fragment } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import FaqSection from '../../../components/sections/FaqSection';
 import FinalCtaSection from '../../../components/sections/FinalCtaSection';
