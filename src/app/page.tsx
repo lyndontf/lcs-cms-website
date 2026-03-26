@@ -324,13 +324,13 @@ export default async function HomePage() {
                 </p>
               )}
               <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                <a
-                  href="#enquiry"
+                <Link
+                  href="/booking"
                   className="hp-gold-btn inline-flex items-center justify-center gap-2 bg-gold text-gray-900 px-7 py-3.5 rounded-full text-base font-bold shadow-lg hover:shadow-xl hover:brightness-110 transition-all"
                 >
-                  Book a Free Consultation
+                  Book a Free Visit
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                </a>
+                </Link>
                 <Link
                   href="/about-us"
                   className="inline-flex items-center justify-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 text-white px-7 py-3.5 rounded-full text-base font-semibold hover:bg-white/25 transition-all"
@@ -976,7 +976,7 @@ export default async function HomePage() {
                     Contact Us
                   </a>
                   <Link
-                    href="/contact"
+                    href="/booking"
                     className="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary px-5 py-2.5 rounded-full text-sm font-bold hover:bg-primary hover:text-white transition-all"
                   >
                     Book a Free Visit

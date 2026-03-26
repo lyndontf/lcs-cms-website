@@ -268,3 +268,114 @@ export async function submitContactForm(formData: {
   });
   return !error;
 }
+
+// ─── Booking ───
+
+export interface BookingCentre {
+  id: string;
+  name: string;
+  slug: string;
+  address: string;
+  marketing_phone_no: string | null;
+}
+
+export interface SlotConfig {
+  id: string;
+  day_of_week: number | null;
+  start_time: string;
+  end_time: string;
+  max_bookings: number;
+}
+
+export interface CareType {
+  id: string;
+  display_text: string;
+}
+
+export async function getBookingCentres(): Promise<BookingCentre[]> {
+  const { data } = await supabase
+    .from('centre')
+    .select('id, name, slug, address, marketing_phone_no')
+    .in('slug', ['genesis-klang', 'genesis-pjs', 'genesis-kajang', 'genesis-tpp', 'genesis-jb'])
+    .order('name');
+  return (data || []) as BookingCentre[];
+}
+
+export async function getSlotConfigs(centreId: string): Promise<SlotConfig[]> {
+  const { data } = await supabase
+    .from('booking_slot_config')
+    .select('id, day_of_week, start_time, end_time, max_bookings')
+    .eq('centre_id', centreId)
+    .eq('is_active', true)
+    .order('start_time');
+  return (data || []) as SlotConfig[];
+}
+
+export async function getBlockedDates(centreId: string): Promise<string[]> {
+  const { data } = await supabase
+    .from('booking_blocked_date')
+    .select('blocked_date')
+    .eq('centre_id', centreId);
+  return (data || []).map((d: { blocked_date: string }) => d.blocked_date);
+}
+
+export async function getCareTypes(): Promise<CareType[]> {
+  const { data } = await supabase
+    .from('enquiry_type_of_care')
+    .select('id, display_text')
+    .order('display_text');
+  return (data || []) as CareType[];
+}
+
+export async function getPendingStatusId(): Promise<string | null> {
+  const { data } = await supabase
+    .from('booking_status')
+    .select('id, display_text')
+    .ilike('display_text', 'Pending')
+    .limit(1)
+    .single();
+  return data?.id ?? null;
+}
+
+export async function getBookedSlotCounts(
+  centreId: string,
+  date: string
+): Promise<Record<string, number>> {
+  const { data } = await supabase.rpc('get_booked_slot_counts', {
+    p_centre_id: centreId,
+    p_date: date,
+  });
+  const counts: Record<string, number> = {};
+  if (Array.isArray(data)) {
+    for (const row of data) {
+      const st = row.start_time?.toString() ?? '';
+      const et = row.end_time?.toString() ?? '';
+      const count = Number(row.booked_count ?? 0);
+      if (st) counts[`${st}|${et}`] = count;
+    }
+  }
+  return counts;
+}
+
+export async function submitBooking(booking: {
+  centre_id: string;
+  booking_slot_config_id: string;
+  booking_date: string;
+  start_time: string;
+  end_time: string;
+  visitor_name: string;
+  visitor_phone: string;
+  visitor_email?: string | null;
+  resident_name?: string | null;
+  relationship_to_resident?: string | null;
+  type_of_care_id?: string | null;
+  booking_status_id?: string | null;
+}): Promise<{ success: boolean; duplicate?: boolean }> {
+  const { error } = await supabase.from('booking').insert(booking);
+  if (!error) return { success: true };
+  const msg = error.message?.toLowerCase() ?? '';
+  if (msg.includes('duplicate') || msg.includes('unique') || msg.includes('already')) {
+    return { success: false, duplicate: true };
+  }
+  return { success: false };
+}
