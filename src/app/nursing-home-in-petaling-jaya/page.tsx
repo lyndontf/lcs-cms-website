@@ -8,6 +8,7 @@ import { getPublishedPosts } from '@/lib/supabase';
 import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 import WhyChooseUsSection from '@/components/sections/WhyChooseUsSection';
 import LatestNewsSection from '@/components/sections/LatestNewsSection';
+import { Fragment } from 'react';
 
 export const metadata: Metadata = {
   title: 'Nursing Home in Petaling Jaya — Genesis Life Care PJ | 24/7 Elderly Care',
@@ -51,7 +52,6 @@ const highlights = [
   { label: 'Google Rating', value: '4.9 ★', sub: '58 reviews' },
   { label: 'Beds', value: '50+', sub: 'Capacity' },
   { label: 'Established', value: '2020', sub: 'Petaling Jaya' },
-  { label: 'Affordable Rates', value: '✓', sub: 'All Centres' },
   { label: 'Care Team', value: '30+', sub: 'Professionals' },
 ];
 
@@ -195,18 +195,24 @@ export default async function NursingHomePJ() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       <main className="bg-white">
+      <style dangerouslySetInnerHTML={{ __html: `
+        .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div { color: inherit; }
+        .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div,
+        .hero-dark .text-4xl, .hero-dark .text-5xl, .hero-dark .sm\\:text-5xl,
+        .hero-dark .text-3xl, .hero-dark .text-lg, .hero-dark .text-sm,
+        .hero-dark .text-white { color: #ffffff !important; }
+        .hero-dark .text-gray-900 { color: rgb(17 24 39) !important; }
+        .hero-dark .text-gray-800 { color: rgb(31 41 55) !important; }
+        .hero-dark .text-gold { color: #FAB515 !important; }
+        .bed-badge p { color: #ffffff !important; }
+        .bed-badge p:last-child { color: rgba(255,255,255,0.8) !important; }
+      ` }} />
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="pj-hero relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
-        {/* Decorative pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-            backgroundSize: '28px 28px',
-          }}
-        />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
+      <section className="hero-dark relative overflow-hidden">
+        <img src="/images/general/hero-main.jpeg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary/85 to-secondary/80" />
+        <div className="absolute -top-[20%] -right-[10%] w-[55%] pb-[55%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.08)_0%,transparent_70%)] pointer-events-none" />
+        <div className="absolute -bottom-[30%] -left-[5%] w-[40%] pb-[40%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.05)_0%,transparent_70%)] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
@@ -294,15 +300,17 @@ export default async function NursingHomePJ() {
       </section>
 
       {/* ── AT A GLANCE ──────────────────────────────────────────────── */}
-      <section className="bg-gray-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+      <section className="bg-white border-b border-gray-200 py-6 sm:py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-8">
             {highlights.map((h, i) => (
-              <div key={i} className="text-center">
-                <p className="text-2xl sm:text-3xl font-extrabold text-primary">{h.value}</p>
-                <p className="text-sm font-semibold text-gray-700 mt-1">{h.label}</p>
-                <p className="text-xs text-gray-400">{h.sub}</p>
-              </div>
+              <Fragment key={i}>
+                {i > 0 && <div className="hidden sm:block w-px h-12 bg-gray-200" />}
+                <div className="text-center flex-1 min-w-[100px]">
+                  <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">{h.value}</span>
+                  <span className="text-xs text-gray-500 mt-1 font-medium">{h.label}</span>
+                </div>
+              </Fragment>
             ))}
           </div>
         </div>

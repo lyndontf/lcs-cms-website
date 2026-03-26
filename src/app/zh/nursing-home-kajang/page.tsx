@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { Fragment, Metadata } from 'next';
 import Link from 'next/link';
 import QuickEnquiryCard from '@/components/QuickEnquiryCard';
 import { getCurrentSiteId } from '@/lib/site-context';
@@ -33,7 +33,6 @@ const highlights = [
   { label: '谷歌评分', value: '4.9 ★', sub: `${centre.reviews} 条评价` },
   { label: '床位', value: '120', sub: '容量' },
   { label: '成立年份', value: '2021', sub: '南巴生谷' },
-  { label: '收费合理', value: '✓', sub: '全部中心' },
   { label: '护理团队', value: '20+', sub: '专业人员' },
 ];
 
@@ -227,15 +226,17 @@ export default async function NursingHomeKajangZh() {
       </section>
 
       {/* ── AT A GLANCE ──────────────────────────────────────────────── */}
-      <section className="bg-gray-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+      <section className="bg-white border-b border-gray-200 py-6 sm:py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-8">
             {highlights.map((h, i) => (
-              <div key={i} className="text-center">
-                <p className="text-2xl sm:text-3xl font-extrabold text-primary">{h.value}</p>
-                <p className="text-sm font-semibold text-gray-700 mt-1">{h.label}</p>
-                <p className="text-xs text-gray-400">{h.sub}</p>
-              </div>
+              <Fragment key={i}>
+                {i > 0 && <div className="hidden sm:block w-px h-12 bg-gray-200" />}
+                <div className="text-center flex-1 min-w-[100px]">
+                  <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">{h.value}</span>
+                  <span className="text-xs text-gray-500 mt-1 font-medium">{h.label}</span>
+                </div>
+              </Fragment>
             ))}
           </div>
         </div>

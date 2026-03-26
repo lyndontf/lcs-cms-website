@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Fragment } from 'react';
 import Link from 'next/link';
 import FaqSection from '../../components/sections/FaqSection';
 import FinalCtaSection from '../../components/sections/FinalCtaSection';
@@ -36,7 +37,6 @@ const highlights = [
   { label: 'Years Caring', value: '4+', sub: 'Since 2021' },
   { label: 'Residents Capacity', value: '120+', sub: 'Comfortable Beds' },
   { label: 'Google Rating', value: '4.7 \u2605', sub: '32 Reviews' },
-  { label: 'Affordable Rates', value: '\u2713', sub: 'All Centres' },
   { label: 'Care Staff', value: '24/7', sub: 'Round the Clock' },
 ];
 
@@ -184,15 +184,8 @@ export default function OldFolksHomeKajang() {
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="hero-dark relative overflow-hidden">
-        {/* Background image */}
-        <img
-          src="/images/general/hero-main.jpeg"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        {/* Gradient overlay */}
+        <img src="/images/general/hero-main.jpeg" alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary/85 to-secondary/80" />
-        {/* Decorative circles */}
         <div className="absolute -top-[20%] -right-[10%] w-[55%] pb-[55%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.08)_0%,transparent_70%)] pointer-events-none" />
         <div className="absolute -bottom-[30%] -left-[5%] w-[40%] pb-[40%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.05)_0%,transparent_70%)] pointer-events-none" />
 
@@ -243,34 +236,19 @@ export default function OldFolksHomeKajang() {
         </div>
       </section>
 
-      {/* ── TRUST BAR ──────────────────────────────────────────────── */}
+      {/* ── TRUST BAR ─────────────────────────────────────────────────── */}
       <section className="bg-white border-b border-gray-200 py-6 sm:py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-8">
-            <div className="text-center flex-1 min-w-[120px]">
-              <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">500+</span>
-              <span className="text-xs text-gray-500 mt-1 font-medium">Families Served</span>
-            </div>
-            <div className="hidden sm:block w-px h-12 bg-gray-200" />
-            <div className="text-center flex-1 min-w-[120px]">
-              <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">5</span>
-              <span className="text-xs text-gray-500 mt-1 font-medium">Care Centres</span>
-            </div>
-            <div className="hidden sm:block w-px h-12 bg-gray-200" />
-            <div className="text-center flex-1 min-w-[120px]">
-              <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">24/7</span>
-              <span className="text-xs text-gray-500 mt-1 font-medium">Professional Care</span>
-            </div>
-            <div className="hidden sm:block w-px h-12 bg-gray-200" />
-            <div className="text-center flex-1 min-w-[120px]">
-              <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">{centre.rating}</span>
-              <span className="text-xs text-gray-500 mt-1 font-medium">Google Rating ★</span>
-            </div>
-            <div className="hidden sm:block w-px h-12 bg-gray-200" />
-            <div className="flex items-center justify-center gap-4 flex-1 min-w-[200px]">
-              <img src="/images/logos/jkm-logo.webp" alt="JKM approved elderly care" className="h-10 w-auto" />
-              <img src="/images/logos/agecope-logo.webp" alt="AgeCope certification" className="h-10 w-auto" />
-            </div>
+            {highlights.map((h, i) => (
+              <Fragment key={i}>
+                {i > 0 && <div className="hidden sm:block w-px h-12 bg-gray-200" />}
+                <div className="text-center flex-1 min-w-[100px]">
+                  <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">{h.value}</span>
+                  <span className="text-xs text-gray-500 mt-1 font-medium">{h.label}</span>
+                </div>
+              </Fragment>
+            ))}
           </div>
         </div>
       </section>

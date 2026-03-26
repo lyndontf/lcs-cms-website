@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { Fragment, Metadata } from 'next';
 import Link from 'next/link';
 import FaqSection from '../../../components/sections/FaqSection';
 import FinalCtaSection from '../../../components/sections/FinalCtaSection';
@@ -36,7 +36,6 @@ const highlights = [
   { label: '服务年限', value: '4+', sub: '自2021年' },
   { label: '居民容量', value: '120+', sub: '舒适的床位' },
   { label: '谷歌评分', value: '4.7 \u2605', sub: '32 条评价' },
-  { label: '收费合理', value: '\u2713', sub: '所有中心' },
   { label: '护理团队', value: '24/7', sub: '全天候' },
 ];
 
@@ -235,25 +234,18 @@ export default function OldFolksHomeZh() {
       </section>
 
       {/* ── TRUST BAR ─────────────────────────────────────────────────── */}
-      <section className="bg-gray-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-6 text-center">
-            <div>
-              <span className="block text-2xl sm:text-3xl font-extrabold text-primary">500+</span>
-              <span className="block text-sm font-semibold text-gray-900 mt-1">Families Served</span>
-            </div>
-            <div>
-              <span className="block text-2xl sm:text-3xl font-extrabold text-primary">5</span>
-              <span className="block text-sm font-semibold text-gray-900 mt-1">Care Centres</span>
-            </div>
-            <div>
-              <span className="block text-2xl sm:text-3xl font-extrabold text-primary">24/7</span>
-              <span className="block text-sm font-semibold text-gray-900 mt-1">Professional Care</span>
-            </div>
-            <div>
-              <span className="block text-2xl sm:text-3xl font-extrabold text-primary">{centre.rating} ★</span>
-              <span className="block text-sm font-semibold text-gray-900 mt-1">Google Rating</span>
-            </div>
+      <section className="bg-white border-b border-gray-200 py-6 sm:py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-8">
+            {highlights.map((h, i) => (
+              <Fragment key={i}>
+                {i > 0 && <div className="hidden sm:block w-px h-12 bg-gray-200" />}
+                <div className="text-center flex-1 min-w-[100px]">
+                  <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">{h.value}</span>
+                  <span className="text-xs text-gray-500 mt-1 font-medium">{h.label}</span>
+                </div>
+              </Fragment>
+            ))}
           </div>
           <div className="flex justify-center items-center gap-8 mt-8 flex-wrap">
             <div className="flex items-center gap-2">

@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { Fragment, Metadata } from 'next';
 import Link from 'next/link';
 import FaqSection from '../../../components/sections/FaqSection';
 import FinalCtaSection from '../../../components/sections/FinalCtaSection';
@@ -36,7 +36,6 @@ const highlights = [
   { label: '服务年限', value: '7+', sub: 'Since 2018' },
   { label: '居民容量', value: '120+', sub: '舒适的床位' },
   { label: '谷歌评分', value: '4.8 ★', sub: '45 条评价' },
-  { label: '收费合理', value: '✓', sub: '所有中心' },
   { label: '护理团队', value: '24/7', sub: '全天候' },
 ];
 
@@ -183,20 +182,11 @@ export default function OldFolksHomeZh() {
       />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section
-        className="hero-dark relative overflow-hidden bg-cover bg-center"
-        style={{
-          backgroundImage: `linear-gradient(135deg, rgba(46, 114, 184, 0.85) 0%, rgba(9, 183, 211, 0.75) 100%), url('${centre.heroImg}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }}
-        />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full translate-y-1/2 -translate-x-1/3" />
+      <section className="hero-dark relative overflow-hidden">
+        <img src="/images/general/hero-main.jpeg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary/85 to-secondary/80" />
+        <div className="absolute -top-[20%] -right-[10%] w-[55%] pb-[55%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.08)_0%,transparent_70%)] pointer-events-none" />
+        <div className="absolute -bottom-[30%] -left-[5%] w-[40%] pb-[40%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.05)_0%,transparent_70%)] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24">
           <div className="grid lg:grid-cols-1 gap-10 items-center">
@@ -244,36 +234,18 @@ export default function OldFolksHomeZh() {
       </section>
 
       {/* ── TRUST BAR ─────────────────────────────────────────────────── */}
-      <section className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center items-center">
-            <div>
-              <span className="block text-3xl sm:text-4xl font-extrabold text-primary">500+</span>
-              <span className="block text-xs font-semibold text-gray-600 mt-1 uppercase">Residents Cared</span>
-            </div>
-            <div>
-              <span className="block text-3xl sm:text-4xl font-extrabold text-primary">5</span>
-              <span className="block text-xs font-semibold text-gray-600 mt-1 uppercase">Centres</span>
-            </div>
-            <div>
-              <span className="block text-3xl sm:text-4xl font-extrabold text-primary">24/7</span>
-              <span className="block text-xs font-semibold text-gray-600 mt-1 uppercase">Nursing Care</span>
-            </div>
-            <div>
-              <span className="block text-3xl sm:text-4xl font-extrabold text-primary">{centre.rating} ★</span>
-              <span className="block text-xs font-semibold text-gray-600 mt-1 uppercase">Google Rating</span>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <div className="flex gap-3">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" style={{ color: '#2E72B8' }}>
-                  <text x="2" y="18" fontSize="12" fontWeight="bold" fill="currentColor">JKM</text>
-                </svg>
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" style={{ color: '#2E72B8' }}>
-                  <text x="2" y="18" fontSize="8" fontWeight="bold" fill="currentColor">AgeCope</text>
-                </svg>
-              </div>
-              <span className="block text-xs font-semibold text-gray-600 uppercase">Certified</span>
-            </div>
+      <section className="bg-white border-b border-gray-200 py-6 sm:py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-8">
+            {highlights.map((h, i) => (
+              <Fragment key={i}>
+                {i > 0 && <div className="hidden sm:block w-px h-12 bg-gray-200" />}
+                <div className="text-center flex-1 min-w-[100px]">
+                  <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">{h.value}</span>
+                  <span className="text-xs text-gray-500 mt-1 font-medium">{h.label}</span>
+                </div>
+              </Fragment>
+            ))}
           </div>
         </div>
       </section>

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Fragment } from 'react';
 import Link from 'next/link';
 import FaqSection from '../../components/sections/FaqSection';
 import FinalCtaSection from '../../components/sections/FinalCtaSection';
@@ -36,7 +37,6 @@ const highlights = [
   { label: 'Years Caring', value: '2+', sub: 'Since 2023' },
   { label: 'Residents Capacity', value: '120+', sub: 'Comfortable Beds' },
   { label: 'Google Rating', value: '4.8 ★', sub: '24 Reviews' },
-  { label: 'Affordable Rates', value: '✓', sub: 'All Centres' },
   { label: 'Care Staff', value: '24/7', sub: 'Round the Clock' },
 ];
 
@@ -235,34 +235,18 @@ export default function OldFolksHomeJB() {
       </section>
 
       {/* ── TRUST BAR ─────────────────────────────────────────────────── */}
-      <section className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 py-10">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-center">
-            <div className="flex flex-col items-center">
-              <span className="text-2xl sm:text-3xl font-extrabold text-primary">500+</span>
-              <span className="text-sm font-semibold text-gray-600">Families Trusted</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <span className="text-2xl sm:text-3xl font-extrabold text-primary">5</span>
-              <span className="text-sm font-semibold text-gray-600">Care Centres</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <span className="text-2xl sm:text-3xl font-extrabold text-primary">24/7</span>
-              <span className="text-sm font-semibold text-gray-600">Care Available</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <span className="text-2xl sm:text-3xl font-extrabold text-gold">{centre.rating} ★</span>
-              <span className="text-sm font-semibold text-gray-600">Google Rating</span>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold text-gray-600">Trusted by</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold text-gray-500">JKM</span>
-                <span className="text-xs font-semibold text-gray-500">AgeCope</span>
-              </div>
-            </div>
+      <section className="bg-white border-b border-gray-200 py-6 sm:py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-8">
+            {highlights.map((h, i) => (
+              <Fragment key={i}>
+                {i > 0 && <div className="hidden sm:block w-px h-12 bg-gray-200" />}
+                <div className="text-center flex-1 min-w-[100px]">
+                  <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">{h.value}</span>
+                  <span className="text-xs text-gray-500 mt-1 font-medium">{h.label}</span>
+                </div>
+              </Fragment>
+            ))}
           </div>
         </div>
       </section>

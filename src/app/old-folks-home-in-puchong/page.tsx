@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Fragment } from 'react';
 import Link from 'next/link';
 import FaqSection from '../../components/sections/FaqSection';
 import FinalCtaSection from '../../components/sections/FinalCtaSection';
@@ -36,7 +37,6 @@ const highlights = [
   { label: 'Years Caring', value: '3+', sub: 'Since 2022' },
   { label: 'Residents Capacity', value: '120+', sub: 'Comfortable Beds' },
   { label: 'Google Rating', value: '4.8 \u2605', sub: '38 Reviews' },
-  { label: 'Affordable Rates', value: '\u2713', sub: 'All Centres' },
   { label: 'Care Staff', value: '24/7', sub: 'Round the Clock' },
 ];
 
@@ -186,8 +186,7 @@ export default function OldFolksHomePuchong() {
         <div className="absolute -bottom-[30%] -left-[5%] w-[40%] pb-[40%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.05)_0%,transparent_70%)] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
-            <div className="grid lg:grid-cols-5 gap-10 items-start">
+          <div className="grid lg:grid-cols-5 gap-10 items-start">
             <div className="lg:col-span-3">
               <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6">
                 <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
@@ -221,7 +220,6 @@ export default function OldFolksHomePuchong() {
                 </a>
               </div>
             </div>
-          </div>
             {/* ── Enquiry Form ── */}
             <div className="lg:col-span-2 hidden lg:block">
               <HeroEnquiryForm centreName="Puchong" pageUrl="/old-folks-home-in-puchong" />
@@ -231,32 +229,18 @@ export default function OldFolksHomePuchong() {
       </section>
 
       {/* ── TRUST BAR ─────────────────────────────────────────────────── */}
-      <section className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 py-8">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 text-center sm:text-left">
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-bold text-primary">500+</span>
-              <span className="text-sm text-gray-600">Families Served</span>
-            </div>
-            <div className="h-8 hidden sm:block border-l border-gray-200" />
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-bold text-primary">5</span>
-              <span className="text-sm text-gray-600">Centres</span>
-            </div>
-            <div className="h-8 hidden sm:block border-l border-gray-200" />
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-bold text-primary">24/7</span>
-              <span className="text-sm text-gray-600">Care Available</span>
-            </div>
-            <div className="h-8 hidden sm:block border-l border-gray-200" />
-            <div className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-              <span className="text-sm text-gray-600">4.8 Rating</span>
-            </div>
-            <div className="h-8 hidden sm:block border-l border-gray-200" />
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold text-gray-600">JKM & AgeCope Certified</span>
-            </div>
+      <section className="bg-white border-b border-gray-200 py-6 sm:py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-8">
+            {highlights.map((h, i) => (
+              <Fragment key={i}>
+                {i > 0 && <div className="hidden sm:block w-px h-12 bg-gray-200" />}
+                <div className="text-center flex-1 min-w-[100px]">
+                  <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">{h.value}</span>
+                  <span className="text-xs text-gray-500 mt-1 font-medium">{h.label}</span>
+                </div>
+              </Fragment>
+            ))}
           </div>
         </div>
       </section>
