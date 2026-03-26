@@ -448,33 +448,6 @@ export default function OldFolksHomePJ() {
 
       <GlcHireSection />
 
-      <FaqSection
-        faqs={[
-          {
-            q: 'What makes our Petaling Jaya centre our flagship location?',
-            a: 'As our oldest and largest centre, our Petaling Jaya facility in Kota Damansara has 50+ beds, the highest Google rating (4.9 stars with 155+ reviews), and is where we pioneered our psychologist-led dementia care programs.'
-          },
-          {
-            q: 'Is the Petaling Jaya centre easily accessible from highways?',
-            a: 'Yes, our PJ centre is strategically located in Kota Damansara with easy access via LDP, NKVE, and Sprint highways. Street parking and ample visitor parking are available.'
-          },
-          {
-            q: 'Can family members work with therapists at the Petaling Jaya home?',
-            a: 'Absolutely. We involve families in rehabilitation and care planning. Our therapists provide training and guidance so family members can support their loved ones at home.'
-          },
-          {
-            q: 'Does the flagship Petaling Jaya centre accept short-term respite care?',
-            a: 'Yes, we offer respite care for families who need temporary care solutions. This gives primary caregivers a break while ensuring your loved one receives professional care.'
-          },
-          {
-            q: 'What specialists are available on-site at the Petaling Jaya centre?',
-            a: 'Our PJ centre has on-site doctors, psychologists, physiotherapists, occupational therapists, and trained nurses. Specialist consultations are arranged as needed.'
-          }
-        ]}
-        heading="Location-Specific FAQs"
-        label="Petaling Jaya Flagship"
-      />
-
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
       <FinalCtaSection
         heading="Ready to Take the Next Step?"
