@@ -4,7 +4,6 @@ import { centres, getOtherCentres } from '@/data/centres';
 import AtAGlance from '@/components/sections/AtAGlance';
 import FacilityGallery from '@/components/sections/FacilityGallery';
 import Testimonials from '@/components/sections/Testimonials';
-import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
 
@@ -336,7 +335,7 @@ export default function StrokeRehabilitationPuchongZh() {
               <Link
                 key={i}
                 href={svc.link}
-                className={`bg-white rounded-xl p-6 shadow-sm border hover:shadow-md transition-all group ${
+                className={`bg-white rounded-xl p-6 shadow-sm border hover:shadow-md transition-all group \${
                   svc.highlight
                     ? 'border-2 shadow-md'
                     : 'border-gray-100 hover:border-primary/20'
@@ -363,9 +362,9 @@ export default function StrokeRehabilitationPuchongZh() {
         </div>
       </section>
 
-      <FacilityGallery images={sharedCentre.facilityImages} centreName={sharedCentre.name} />
+      <FacilityGallery images={sharedCentre.facilityImages} centreName={sharedCentre.name} lang="zh" />
 
-      <Testimonials testimonials={sharedCentre.testimonials} rating={sharedCentre.rating} reviews={String(sharedCentre.reviews)} />
+      <Testimonials testimonials={sharedCentre.testimonials} rating={sharedCentre.rating} reviews={String(sharedCentre.reviews)} lang="zh" />
 
       {/* ── CENTRE INFO ────────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-gray-50">
@@ -434,7 +433,7 @@ export default function StrokeRehabilitationPuchongZh() {
         </div>
       </section>
 
-      <LocationContact centre={sharedCentre} />
+      <LocationContact centre={sharedCentre} lang="zh" />
 
       {/* ── FAQ ────────────────────────────────────────────────────────── */}
       <section className="py-16 sm:py-20">
@@ -467,9 +466,7 @@ export default function StrokeRehabilitationPuchongZh() {
         </div>
       </section>
 
-      <OtherCentres centres={otherCentres} currentCentreName={sharedCentre.name} />
-
-      <CostCalculatorSection />
+      <OtherCentres centres={otherCentres} currentCentreName={sharedCentre.name} lang="zh" />
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
       <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
@@ -499,7 +496,7 @@ export default function StrokeRehabilitationPuchongZh() {
               </svg>
             </Link>
             <a
-              href={`tel:${centre.phone.replace(/\s/g, '')}`}
+              href={`tel:\${centre.phone.replace(/\s/g, '')}`}
               className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

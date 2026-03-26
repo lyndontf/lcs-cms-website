@@ -33,42 +33,73 @@ const nearestCentre = {
 const centre = centres['johor-bahru'];
 const otherCentres = getOtherCentres(centre.name);
 
+// Translate highlights to Mandarin
+const zhHighlights = centre.highlights.map(h => ({
+  ...h,
+  label: {
+    'Google Rating': '谷歌评分',
+    'Beds': '床位',
+    'Capacity': '容量',
+    'Established': '成立年份',
+    'Our Original Centre': '创始中心',
+    'Flagship Centre': '旗舰中心',
+    'Southern KV': '南巴生谷',
+    'Modern Facility': '现代化设施',
+    'Southern Region': '南部地区',
+    'Affordable Rates': '收费合理',
+    'All Centres': '所有中心',
+    'Care Team': '护理团队',
+    'Professionals': '专业人员',
+  }[h.label] || h.label,
+  sub: {
+    'reviews': '条评价',
+    'Capacity': '容量',
+    'Our Original Centre': '创始中心',
+    'Flagship Centre': '旗舰中心',
+    'Southern KV': '南巴生谷',
+    'Modern Facility': '现代化设施',
+    'Southern Region': '南部地区',
+    'All Centres': '所有中心',
+    'Professionals': '专业人员',
+  }[h.sub] || h.sub,
+}));
+
 const services = [
   {
     title: '老年护理',
     desc: '全天候专业护理，为每位住户提供个性化护理计划。',
     icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
-    link: '/our-services',
+    link: '/zh/our-services',
   },
   {
     title: '失智症与记忆护理',
     desc: '由心理学家主导的失智症护理，配以结构化认知刺激活动。',
     icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z',
-    link: '/dementia-care',
+    link: '/zh/dementia-care',
   },
   {
     title: '中风康复',
     desc: '全面的物理治疗和职业治疗，帮助中风患者恢复独立生活能力。',
     icon: 'M13 10V3L4 14h7v7l9-11h-7z',
-    link: '/stroke-rehabilitation-centre',
+    link: '/zh/stroke-rehabilitation-centre',
   },
   {
     title: '临终关怀',
     desc: '以舒适、尊严和家庭支持为重点的人道终期护理。',
     icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
-    link: '/palliative-care-malaysia',
+    link: '/zh/palliative-care-malaysia',
   },
   {
     title: '术后康复',
     desc: '手术后的短期康复 — 在专家护理下快速恢复。',
     icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4',
-    link: '/post-op-care-malaysia',
+    link: '/zh/post-op-care-malaysia',
   },
   {
     title: '老年日托',
     desc: '为长者提供日间护理项目，包括社交活动、膳食和监督。',
     icon: 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z',
-    link: '/senior-daycare',
+    link: '/zh/senior-daycare',
   },
 ];
 
@@ -239,7 +270,7 @@ export default function ElderlyCareZhJohor() {
         </div>
       </section>
 
-      <AtAGlance highlights={centre.highlights} />
+      <AtAGlance highlights={zhHighlights} />
 
       {/* ── ABOUT ────────────────────────────────────────────────────── */}
       <section className="py-16 sm:py-20">

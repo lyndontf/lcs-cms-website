@@ -52,6 +52,37 @@ const puchongCentre = {
 const centre = centres['petaling-jaya'];
 const otherCentres = getOtherCentres(centre.name);
 
+// Translate highlights to Mandarin
+const zhHighlights = centre.highlights.map(h => ({
+  ...h,
+  label: {
+    'Google Rating': '谷歌评分',
+    'Beds': '床位',
+    'Capacity': '容量',
+    'Established': '成立年份',
+    'Our Original Centre': '创始中心',
+    'Flagship Centre': '旗舰中心',
+    'Southern KV': '南巴生谷',
+    'Modern Facility': '现代化设施',
+    'Southern Region': '南部地区',
+    'Affordable Rates': '收费合理',
+    'All Centres': '所有中心',
+    'Care Team': '护理团队',
+    'Professionals': '专业人员',
+  }[h.label] || h.label,
+  sub: {
+    'reviews': '条评价',
+    'Capacity': '容量',
+    'Our Original Centre': '创始中心',
+    'Flagship Centre': '旗舰中心',
+    'Southern KV': '南巴生谷',
+    'Modern Facility': '现代化设施',
+    'Southern Region': '南部地区',
+    'All Centres': '所有中心',
+    'Professionals': '专业人员',
+  }[h.sub] || h.sub,
+}));
+
 const services = [
   {
     title: '老年护理',
@@ -285,7 +316,7 @@ export default function ElderlyCareSubangJayaZh() {
         </div>
       </section>
 
-      <AtAGlance highlights={centre.highlights} />
+      <AtAGlance highlights={zhHighlights} />
 
       {/* ── ABOUT ELDERLY CARE IN SUBANG JAYA ──────────────────────────── */}
       <section className="py-16 sm:py-20">

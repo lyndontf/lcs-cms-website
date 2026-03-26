@@ -1,14 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import GlcHireSection from '@/components/sections/GlcHireSection';
-import FaqSection from '@/components/sections/FaqSection';
-import FinalCtaSection from '@/components/sections/FinalCtaSection';
-import { getCurrentSiteId } from '@/lib/site-context';
-import { getPublishedPosts } from '@/lib/supabase';
-import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
-import WhyChooseUsSection from '@/components/sections/WhyChooseUsSection';
-import LatestNewsSection from '@/components/sections/LatestNewsSection';
-import { Fragment } from 'react';
 
 export const metadata: Metadata = {
   title: 'Nursing Home in Petaling Jaya — Genesis Life Care PJ | 24/7 Elderly Care',
@@ -52,6 +43,7 @@ const highlights = [
   { label: 'Google Rating', value: '4.9 ★', sub: '58 reviews' },
   { label: 'Beds', value: '50+', sub: 'Capacity' },
   { label: 'Established', value: '2020', sub: 'Petaling Jaya' },
+  { label: 'Affordable Rates', value: '✓', sub: 'All Centres' },
   { label: 'Care Team', value: '30+', sub: 'Professionals' },
 ];
 
@@ -145,9 +137,7 @@ const otherCentres = [
 
 /* ─── Page component ─────────────────────────────────────────────────── */
 
-export default async function NursingHomePJ() {
-  const siteId = await getCurrentSiteId();
-  const recentPosts = await getPublishedPosts(siteId || undefined);
+export default function NursingHomePJ() {
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'MedicalBusiness',
@@ -195,24 +185,18 @@ export default async function NursingHomePJ() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       <main className="bg-white">
-      <style dangerouslySetInnerHTML={{ __html: `
-        .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div { color: inherit; }
-        .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div,
-        .hero-dark .text-4xl, .hero-dark .text-5xl, .hero-dark .sm\\:text-5xl,
-        .hero-dark .text-3xl, .hero-dark .text-lg, .hero-dark .text-sm,
-        .hero-dark .text-white { color: #ffffff !important; }
-        .hero-dark .text-gray-900 { color: rgb(17 24 39) !important; }
-        .hero-dark .text-gray-800 { color: rgb(31 41 55) !important; }
-        .hero-dark .text-gold { color: #FAB515 !important; }
-        .bed-badge p { color: #ffffff !important; }
-        .bed-badge p:last-child { color: rgba(255,255,255,0.8) !important; }
-      ` }} />
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative overflow-hidden">
-        <img src="/images/general/hero-main.jpeg" alt="" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary/85 to-secondary/80" />
-        <div className="absolute -top-[20%] -right-[10%] w-[55%] pb-[55%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.08)_0%,transparent_70%)] pointer-events-none" />
-        <div className="absolute -bottom-[30%] -left-[5%] w-[40%] pb-[40%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.05)_0%,transparent_70%)] pointer-events-none" />
+      <section className="pj-hero relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
+        {/* Decorative pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
@@ -300,17 +284,15 @@ export default async function NursingHomePJ() {
       </section>
 
       {/* ── AT A GLANCE ──────────────────────────────────────────────── */}
-      <section className="bg-white border-b border-gray-200 py-6 sm:py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-8">
+      <section className="bg-gray-50 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
             {highlights.map((h, i) => (
-              <Fragment key={i}>
-                {i > 0 && <div className="hidden sm:block w-px h-12 bg-gray-200" />}
-                <div className="text-center flex-1 min-w-[100px]">
-                  <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">{h.value}</span>
-                  <span className="text-xs text-gray-500 mt-1 font-medium">{h.label}</span>
-                </div>
-              </Fragment>
+              <div key={i} className="text-center">
+                <p className="text-2xl sm:text-3xl font-extrabold text-primary">{h.value}</p>
+                <p className="text-sm font-semibold text-gray-700 mt-1">{h.label}</p>
+                <p className="text-xs text-gray-400">{h.sub}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -516,9 +498,6 @@ export default async function NursingHomePJ() {
         </div>
       </section>
 
-      <CostCalculatorSection />
-      <WhyChooseUsSection />
-
       {/* ── LOCATION & CONTACT ────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -679,30 +658,46 @@ export default async function NursingHomePJ() {
         </div>
       </section>
 
-      {/* ── GLC HIRE SECTION ──────────────────────────────────────────── */}
-      <GlcHireSection />
-
-      <LatestNewsSection posts={recentPosts} />
-
-      {/* ── FAQ SECTION ────────────────────────────────────────────────── */}
-      <FaqSection
-        faqs={[
-          { q: 'How much does elderly care cost at the Petaling Jaya centre?', a: 'Our flagship PJ centre offers premium care starting from RM 2,800/month for standard rooms. We provide various accommodation and care level options with flexible payment terms.' },
-          { q: 'Where is the Genesis Life Care Petaling Jaya centre?', a: 'Our flagship centre is located in Petaling Jaya with excellent proximity to major highways and medical facilities. The modern facility offers a garden setting with convenient access for family visits.' },
-          { q: 'What makes the PJ centre our flagship?', a: 'The Petaling Jaya centre is our newest and most comprehensive facility with specialized Memory Care Wing, advanced rehabilitation equipment, and experienced multidisciplinary care team.' },
-          { q: 'What specialized care programs does PJ offer?', a: 'We provide comprehensive 24/7 nursing, specialized dementia & memory care, stroke & occupational rehabilitation, palliative care, post-op recovery, and active Senior Daycare programmes.' },
-          { q: 'How do I book a tour of the PJ centre?', a: 'Contact us at +6019-295-0457 or complete our online contact form. Tours are available daily from 9:00 AM to 6:00 PM and include a full facility walkthrough.' },
-        ]}
-        heading="Frequently Asked Questions"
-        label="PETALING JAYA CENTRE"
-      />
-
-      {/* ── FINAL CTA ────────────────────────────────────────────────── */}
-      <FinalCtaSection
-        heading="Ready to Visit Our Petaling Jaya Centre?"
-        description="Book a free tour of our flagship PJ facility. See the Memory Care Wing, rehabilitation area, and meet our care team — no obligations."
-        primaryLabel="Book a Free Tour"
-      />
+      {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
+      <section className="pj-cta relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+            Ready to Visit Our PJ Centre?
+          </h2>
+          <p className="text-lg text-white/85 mb-8 max-w-2xl mx-auto">
+            Book a free tour of our Petaling Jaya facility. See the Memory Care Wing,
+            rehabilitation area, and meet our care team — no obligations.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap"
+            >
+              Book a Free Tour
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <a
+              href={`tel:${centre.phone.replace(/\s/g, '')}`}
+              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Call {centre.phoneCTA}
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
     </>
   );

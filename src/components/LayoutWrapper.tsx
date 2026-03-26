@@ -7,13 +7,15 @@ interface LayoutWrapperProps {
   children: ReactNode;
   footer: ReactNode;
   isCmsSite?: boolean;
+  isZh?: boolean;
 }
 
-export default function LayoutWrapper({ children, footer, isCmsSite }: LayoutWrapperProps) {
+export default function LayoutWrapper({ children, footer, isCmsSite, isZh }: LayoutWrapperProps) {
   const pathname = usePathname();
   const isLandingPage = pathname.startsWith('/lp/');
   // CMS sites embed their own nav/footer in the HTML content
-  const hideFooter = isLandingPage || isCmsSite;
+  // zh/ pages have their own header/footer via zh/layout.tsx
+  const hideFooter = isLandingPage || isCmsSite || isZh;
   return (
     <>
       <main className="flex-1 bg-white">{children}</main>

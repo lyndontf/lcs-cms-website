@@ -1,8 +1,5 @@
-import { Fragment } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
-import FaqSection from '@/components/sections/FaqSection';
 
 export const metadata: Metadata = {
   title: 'Respite Care in Malaysia - Short-Term Elderly Care | Genesis Life Care',
@@ -191,11 +188,15 @@ export default function RespiteCareMalaysia() {
       ` }} />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative overflow-hidden">
-        <img src="/images/general/hero-main.jpeg" alt="" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary/85 to-secondary/80" />
-        <div className="absolute -top-[20%] -right-[10%] w-[55%] pb-[55%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.08)_0%,transparent_70%)] pointer-events-none" />
-        <div className="absolute -bottom-[30%] -left-[5%] w-[40%] pb-[40%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.05)_0%,transparent_70%)] pointer-events-none" />
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
@@ -393,9 +394,35 @@ export default function RespiteCareMalaysia() {
       </section>
 
       {/* ── FAQ ────────────────────────────────────────────────────────── */}
-      <FaqSection faqs={faqs} />
+      <section className="py-16 sm:py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">FAQ</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
+              Common questions about respite care and short-term elderly care in Malaysia.
+            </p>
+          </div>
 
-      <CostCalculatorSection />
+          <div className="max-w-3xl mx-auto space-y-4">
+            {faqs.map((faq, i) => (
+              <details key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm group">
+                <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
+                  <h3 className="text-base font-semibold text-gray-900 pr-4">{faq.q}</h3>
+                  <svg className="w-5 h-5 text-gray-400 flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-6 text-sm text-gray-600 leading-relaxed">
+                  {faq.a}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
       <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">

@@ -1,16 +1,11 @@
-import { Fragment } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import FaqSection from '../../../components/sections/FaqSection';
-import FinalCtaSection from '../../../components/sections/FinalCtaSection';
-import GlcHireSection from '../../../components/sections/GlcHireSection';
-import CostCalculatorSection from '../../../components/sections/CostCalculatorSection';
 import HeroEnquiryForm from '@/components/HeroEnquiryForm';
 
 export const metadata: Metadata = {
   title: '蒲种老人院 - Genesis Life Care Puchong',
   description:
-    '蒲种现代化老人院，Bandar Puteri。24/7专业护理、康复治疗、失智症护理和营养餐食。价格合理，谷歌评分4.8。立即参观！',
+    'Modern old folks home 在蒲种, Bandar Puteri. 24/7 nursing care, rehabilitation, dementia care & nutritious meals. Affordable rates. Rated 4.8\u2605. Visit today.',
 };
 
 export const revalidate = 60;
@@ -34,16 +29,17 @@ const centre = {
 };
 
 const highlights = [
-  { label: '服务年限', value: '3+', sub: '自2022年' },
+  { label: '服务年限', value: '3+', sub: 'Since 2022' },
   { label: '居民容量', value: '120+', sub: '舒适的床位' },
   { label: '谷歌评分', value: '4.8 \u2605', sub: '38 条评价' },
+  { label: '收费合理', value: '\u2713', sub: '所有中心' },
   { label: '护理团队', value: '24/7', sub: '全天候' },
 ];
 
 const dailyLife = [
   {
     title: '个性化日常计划',
-    desc: '每位居民都有根据他们的喜好、能力和医疗需求量身定制的日程安排\u2014\u2014从起床到就寝。',
+    desc: '每位居民都遵循根据其偏好、能力和医疗需求设计的定制日程——从起床到就寝。',
     icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
   },
   {
@@ -85,27 +81,28 @@ const checklist = [
   { title: '透明定价', desc: 'Genesis Life Care提供有竞争力和透明的定价，无隐藏成本。我们与家属合作，找到适合其预算的护理计划。' },
   { title: '合格的护理人员', desc: '我们的团队包括训练有素的护士、物理治疗师、心理学家和经验丰富的护理人员，全天候可用。' },
   { title: '清洁卫生', desc: '我们遵守严格的卫生标准，定期深度清洁、感染控制协议和设施维护良好。' },
+  { title: '膳食质量与选择', desc: '新鲜制备的营养膳食、医疗条件的膳食调整和多样菜单。' },
   { title: '探访政策', desc: '我们鼓励家属参与，灵活的探访时间和舒适的空间可供共同享受高质量的时间。' },
-  { title: '位置与便利性', desc: '我们位于Bandar Puteri的蒲种中心通过LDP快速公路和ELITE高速公路轻松到达，设有充足的停车位，方便家人定期探访。' },
+  { title: '位置与便利性', desc: '我们蒲种中心位于班达普特里，通过LDP高速公路和ELITE高速公路轻松抵达，访客停车充足。' },
   { title: '可用的专科护理', desc: '除了基本护理，我们提供失智症计划、中风康复、临终关怀和术后康复。' },
 ];
 
 const faqs = [
   {
-    q: '蒲种老人院费用是多少？',
-    a: '蒲种Genesis Life Care的费用根据护理级别和房间类型而异。我们Bandar Puteri的价格具有竞争力。请联系我们获取根据您亲人需求定制的报价。',
+    q: '蒲种老人院需要多少费用?',
+    a: 'Genesis Life Care蒲种的费用因所需护理水平和房间类型而异。我们为班达普特里地区提供具有竞争力的费率。请与我们联系，获取基于您亲人需求的个性化报价。',
   },
   {
     q: '老人院和护理院有什么区别?',
-    a: '在马来西亚，“老人院”和“护理院”经常互换使用。在Genesis Life Care，我们在温馨的家庭化环境中提供专业护理——两者兼得。我们的居民享受24/7医疗支持，同时享受日常活动和社交参与。',
+    a: '在马来西亚，"老人院"和"护理院"经常互换使用。在Genesis Life Care，我们提供专业护理护理和温暖、家庭式的环境——结合两者的优点。我们的居民在享受日常活动和社交互动的同时获得24/7医疗支持。',
   },
   {
-    q: 'Genesis Life Care蒲种价格实惠吗？',
+    q: 'Genesis Life Care蒲种负担得起吗?',
     a: '是的。我们在所有中心提供具有竞争力和透明的费率。我们的团队与每个家族合作，推荐适合其需求和预算的护理计划。联系我们获取个性化报价。',
   },
   {
-    q: '蒲种老人院的探访时间是什么？',
-    a: '我们保持灵活的探访时间以鼓励家人参与。一般探访时间为每天上午10点至下午6点。特殊情况可安排其他时间探访。',
+    q: '蒲种老人院的探访时间是多少?',
+    a: '我们维持灵活的探访时间，以鼓励家属参与。一般探访时间为每日上午10点至下午6点。可以为需要在这些时间之外探访的家族进行特殊安排——请与我们的护理团队交流。',
   },
 ];
 
@@ -142,7 +139,7 @@ export default function OldFolksHomeZh() {
             '@type': 'LocalBusiness',
             '@id': 'https://genesiscare.com.my/zh/old-folks-home-in-puchong',
             name: centre.fullName,
-            description: '蒲种现代化老人院，Bandar Puteri，提供24/7专业护理、康复治疗和失智症护理服务。',
+            description: 'Modern old folks home 在蒲种, Bandar Puteri with 24/7 nursing care, rehabilitation and dementia care.',
             url: 'https://genesiscare.com.my/zh/old-folks-home-in-puchong',
             telephone: centre.phone,
             address: {
@@ -179,64 +176,65 @@ export default function OldFolksHomeZh() {
       />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative overflow-hidden">
-        <img src="/images/general/hero-main.jpeg" alt="" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary/85 to-secondary/80" />
-        <div className="absolute -top-[20%] -right-[10%] w-[55%] pb-[55%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.08)_0%,transparent_70%)] pointer-events-none" />
-        <div className="absolute -bottom-[30%] -left-[5%] w-[40%] pb-[40%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.05)_0%,transparent_70%)] pointer-events-none" />
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }}
+        />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full translate-y-1/2 -translate-x-1/3" />
 
         <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24">
-          <div className="grid lg:grid-cols-5 gap-10 items-start">
-            <div className="lg:col-span-3">
-            <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6">
-              <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
-              <span className="text-gold text-xs font-semibold tracking-wide uppercase">谷歌评分 {centre.rating} ★</span>
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6">
+                <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
+                <span className="text-gold text-xs font-semibold tracking-wide uppercase">谷歌评分 {centre.rating} ★</span>
+              </div>
+
+              <p className="text-sm font-bold uppercase tracking-widest text-white/70 mb-3" style={{ color: 'rgba(255,255,255,0.7)' }}>{centre.name}的老人院</p>
+              <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6" style={{ color: 'white' }}>
+                最佳{centre.name}<br className="hidden sm:block" />老人院
+              </h1>
+              <p className="text-lg text-white/90 max-w-xl mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.9)' }}>
+                一个现代化的专业设施，您的亲人以尊严和同情心获得专业护理。我们蒲种班达普特里中心配有康复设施、营养膳食和全天候可用的关怀团队。
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-start gap-4">
+                <Link
+                  href="/zh/contact"
+                  className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl"
+                >
+                  访问我们的家
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                </Link>
+                <a
+                  href={`tel:${centre.phone.replace(/\s/g, '')}`}
+                  className="whitespace-nowrap inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3.5 rounded-full transition"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                  致电 {centre.phoneCTA}
+                </a>
+              </div>
             </div>
 
-            <p className="text-sm font-bold uppercase tracking-widest text-white/70 mb-3" style={{ color: 'rgba(255,255,255,0.7)' }}>{centre.name}老人院</p>
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6" style={{ color: 'white' }}>
-              最佳老人院<br className="hidden sm:block" /> in {centre.name}
-            </h1>
-            <p className="text-lg text-white/90 mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.9)' }}>
-              一家现代化、专业建造的护理设施，让您的亲人获得有尊严和关爱的专业护理。我们位于Bandar Puteri的蒲种中心提供康复设施、营养餐食和全天候护理团队。</p>
-
-            <div className="flex flex-col sm:flex-row items-start gap-4">
-              <Link
-                href="/zh/contact"
-                className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl"
-              >
-                访问我们的家
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-              </Link>
-              <a
-                href={`tel:${centre.phone.replace(/\s/g, '')}`}
-                className="whitespace-nowrap inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3.5 rounded-full transition"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                致电 {centre.phoneCTA}
-              </a>
-            </div>
-          </div>
-            {/* ── Enquiry Form ── */}
-            <div className="lg:col-span-2 hidden lg:block">
+            <div>
               <HeroEnquiryForm centreName="蒲种" pageUrl="/zh/old-folks-home-in-puchong" lang="zh" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── TRUST BAR ─────────────────────────────────────────────────── */}
-      <section className="bg-white border-b border-gray-200 py-6 sm:py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-8">
-            {highlights.map((h, i) => (
-              <Fragment key={i}>
-                {i > 0 && <div className="hidden sm:block w-px h-12 bg-gray-200" />}
-                <div className="text-center flex-1 min-w-[100px]">
-                  <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">{h.value}</span>
-                  <span className="text-xs text-gray-500 mt-1 font-medium">{h.label}</span>
-                </div>
-              </Fragment>
+      {/* ── STATS BAR ─────────────────────────────────────────────────── */}
+      <section className="bg-gray-50 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+            {highlights.map((h) => (
+              <div key={h.label}>
+                <span className="block text-2xl sm:text-3xl font-extrabold text-primary">{h.value}</span>
+                <span className="block text-sm font-semibold text-gray-900 mt-1">{h.label}</span>
+                <span className="block text-xs text-gray-500">{h.sub}</span>
+              </div>
             ))}
           </div>
         </div>
@@ -249,19 +247,21 @@ export default function OldFolksHomeZh() {
             <div>
               <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">为什么选择蒲种</p>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">
-                为什么选择我们的蒲种老人院？
+                为什么选择我们的 蒲种老人院?
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  位于Bandar Puteri，蒲种最成熟、最适合家庭的住宅区之一 住宅区之一，我们的现代化设施提供当代设施和专为老年人舒适设计的空间。Genesis Life Care Puchong是寻求便利位置高质量老年护理的家庭的理想选择。
+                  位于班达普特里，蒲种最成熟和家庭友好的镇之一，我们的现代化设施提供当代便利设施和专为老年人舒适设计的专用空间。Genesis Life Care蒲种是寻求便利、易达位置的高质量老年护理的家族的理想选择。
                 </p>
                 <p>
-                  我们蒲种老人院的与众不同之处在于全天候护理、现代化设施和真正关心居民福祉的团队的完美结合。</p>
+                  我们蒲种老人院的独特之处在于全天候护理、营养膳食、康复服务、专门活动和失智症支持的结合——确保您的亲人在舒适、尊重的环境中获得整体护理。
+                </p>
                 <p>
-                  通过LDP快速公路和ELITE高速公路轻松到达，交通便利，方便家人探访。</p>
+                  通过LDP高速公路和ELITE高速公路的便捷高速公路通道使我们的中心对许多巴生谷家族位置优越。我们靠近Columbia Asia Hospital蒲种和KPJ丹绒specialist医院，是蒲种、梳邦再也、USJ、网城和布城家族的理想选择。
+                </p>
               </div>
               <div className="flex flex-wrap gap-2 mt-6">
-                {['现代化设施', '优质餐饮', 'LDP和ELITE高速公路', 'Bandar Puteri', '靠近医院'].map((t) => (
+                {['现代化设施', '优质餐饮', 'LDP & ELITE高速通道', '班达普特里', '靠近医院'].map((t) => (
                   <span key={t} className="bg-primary-50 text-primary-700 text-xs font-semibold px-3 py-1.5 rounded-full">{t}</span>
                 ))}
               </div>
@@ -269,7 +269,7 @@ export default function OldFolksHomeZh() {
             <div>
               <img
                 src="/images/services/common-area-scenic.jpg"
-                alt="蒲种老人院的公共区域"
+                alt="Common area at our old folks home 在蒲种"
                 className="rounded-2xl shadow-lg w-full object-cover"
                 style={{ maxHeight: '400px' }}
               />
@@ -282,10 +282,11 @@ export default function OldFolksHomeZh() {
       <section className="py-16 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">我们的家园生活</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">日常生活是什么样的</h2>
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Life at Our Home</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">日常生活什么样</h2>
             <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-              我们老人院的每一天都旨在让居民感到舒适、有意义和安全。从早晨的锻炼到营养餐食，每个细节都经过精心设计。</p>
+              我们老人院的每一天都设计为舒适、有意义和安全。以下是您的亲人可以期待的。
+            </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {dailyLife.map((item) => (
@@ -306,9 +307,10 @@ export default function OldFolksHomeZh() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">我们的护理服务</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">一站式专业护理</h2>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">一屋檐下的专科护理</h2>
             <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-              除了日常护理，我们在蒲种的老人院提供全面的专业服务，由训练有素的护理人员提供。</p>
+              除了日常护理，我们蒲种老人院提供全面的专科服务。
+            </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {careServices.map((svc) => (
@@ -329,28 +331,31 @@ export default function OldFolksHomeZh() {
       {/* ── CHOOSING THE RIGHT HOME ───────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-[#f4f8fb]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">实用指南</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">
-              如何选择合适的老人院
-            </h2>
-            <p className="text-gray-600 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
-              选择老人院是一个重大决定。以下是一个简单的清单，帮助您了解需要注意的事项：</p>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {checklist.map((item, i) => (
-              <div key={i} className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-gray-900">{item.title}</h3>
-                    <p className="text-sm text-gray-600 mt-1 leading-relaxed">{item.desc}</p>
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div>
+              <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">有用指南</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">
+                如何选择合适的老人院
+              </h2>
+              <p className="text-gray-600 leading-relaxed mb-8">
+                选择老人院是一个大决定。这是一个简单的检查清单，说明您应该寻找什么——以及Genesis Life Care的评价如何。
+              </p>
+            </div>
+            <div className="space-y-4">
+              {checklist.map((item, i) => (
+                <div key={i} className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-bold text-gray-900">{item.title}</h3>
+                      <p className="text-sm text-gray-600 mt-1 leading-relaxed">{item.desc}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -359,15 +364,16 @@ export default function OldFolksHomeZh() {
       <section className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">开始入住</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">简单的入住流程</h2>
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">入门指南</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">简单入住流程</h2>
             <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-              入住我们的老人院非常简单。我们将在每一步为您提供指导。</p>
+              搬入我们的老人院很简单。我们在每一步都指导您。
+            </p>
           </div>
           <div className="grid sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {[
               { step: '1', title: '联系我们', desc: '致电我们或填写在线表格。我们的护理顾问将回答您的问题并安排方便的访问时间。' },
-              { step: '2', title: '免费评估与参观', desc: '访问我们的蒲种中心，与护理团队见面，我们将免费评估您亲人的需求。' },
+              { step: '2', title: '免费评估与参观', desc: '访问我们的 Puchong centre, meet the care team, and we will assess your loved one\'s needs at no charge.' },
               { step: '3', title: '搬入', desc: '一旦您准备好，我们将准备个性化护理计划并帮助您的亲人舒适地安顿在新家中。' },
             ].map((s) => (
               <div key={s.step} className="text-center">
@@ -381,7 +387,7 @@ export default function OldFolksHomeZh() {
           </div>
           <div className="text-center mt-10">
             <Link href="/zh/contact" className="whitespace-nowrap inline-flex items-center gap-2 bg-primary hover:bg-primary-700 text-white font-bold px-6 py-3.5 rounded-full transition shadow-lg">
-              预约参观
+              预约参访
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </Link>
           </div>
@@ -389,7 +395,22 @@ export default function OldFolksHomeZh() {
       </section>
 
       {/* ── FAQS ──────────────────────────────────────────────────────── */}
-      <FaqSection faqs={faqs} />
+      <section className="py-16 sm:py-20 bg-[#f4f8fb]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">常见问题</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">常见问题解答</h2>
+          </div>
+          <div className="space-y-6">
+            {faqs.map((faq, i) => (
+              <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                <h3 className="text-base font-bold text-gray-900 mb-3">{faq.q}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── OTHER LOCATIONS ───────────────────────────────────────────── */}
       <section className="py-16 sm:py-20">
@@ -402,11 +423,11 @@ export default function OldFolksHomeZh() {
             {otherHomes.map((home) => (
               <Link key={home.slug} href={`/${home.slug}`} className="group bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-all">
                 <div className="aspect-[4/3] overflow-hidden">
-                  <img src={home.img} alt={`老人院在${home.name}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src={home.img} alt={`Old folks home in ${home.name}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <div className="p-4">
                   <span className="inline-block bg-primary-50 text-primary text-xs font-semibold px-2 py-0.5 rounded-full mb-2">{home.tag}</span>
-                  <h3 className="text-base font-bold text-gray-900 group-hover:text-primary transition-colors">{home.name}老人院</h3>
+                  <h3 className="text-base font-bold text-gray-900 group-hover:text-primary transition-colors">{home.name}的老人院</h3>
                   <span className="text-sm text-gray-500">评分 {home.rating} ★</span>
                 </div>
               </Link>
@@ -414,26 +435,43 @@ export default function OldFolksHomeZh() {
           </div>
           <div className="text-center mt-8">
             <Link href={centre.nursingHomeSlug} className="text-primary font-semibold text-sm hover:underline">
-              查看{centre.name}的完整详情 →
+              查看{centre.name}的完整中心详情 →
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── COST CALCULATOR ───────────────────────────────────────────── */}
-      <CostCalculatorSection />
-
-      {/* ── GLC HIRE SECTION ──────────────────────────────────────────── */}
-      <GlcHireSection />
-
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
-      <FinalCtaSection
-        heading="准备好迈出下一步了吗？"
-        description="今天就联系我们进行免费咨询。我们的护理顾问每周与数十个家庭交流，可以帮助您找到完美的护理方案。"
-        primaryLabel="预约参观"
-        primaryHref="/zh/contact"
-        phone="+6012-321 0457"
-      />
+      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }}
+        />
+        <div className="relative max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4" style={{ color: 'white' }}>
+            参观我们的{centre.name}老人院
+          </h2>
+          <p className="text-lg text-white/90 mb-8 max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.9)' }}>
+            预约我们蒲种中心的免费参观。见见团队，参观设施，了解我们是否是您亲人的合适家园。无承诺。
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/zh/contact"
+              className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl"
+            >
+              Schedule a Visit
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </Link>
+            <a
+              href={`tel:${centre.phone.replace(/\s/g, '')}`}
+              className="whitespace-nowrap inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-bold px-6 py-3.5 rounded-full transition"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+              致电 {centre.phoneCTA}
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

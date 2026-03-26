@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { centres, getOtherCentres } from '@/data/centres';
-import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 
 export const metadata: Metadata = {
   title: '加影失智症护理 - Genesis Life Care',
@@ -133,6 +132,20 @@ const faqs = [
 const centreData = centres['kajang'];
 const otherCentres = getOtherCentres(centreData.name);
 
+const zhHighlights = [
+  { label: '谷歌评分', value: '4.7 ★', sub: '32 条评价' },
+  { label: '床位', value: '120', sub: '容量' },
+  { label: '成立于', value: '2021', sub: '南部谷' },
+  { label: '经济实惠', value: '✓', sub: '所有中心' },
+  { label: '护理团队', value: '20+', sub: '专业人员' },
+];
+
+const zhTestimonials = [
+  { author: 'Nurul Aisyah', text: '加影中心为我祖母提供了极好的护理。工作人员很周到，设施很舒适。' },
+  { author: 'David Wong', text: '对这里的专业护理印象深刻。团队定期与我们家人沟通进展情况。' },
+  { author: 'Priya Raman', text: '康复方案很好，工作人员很关心。我父亲在这里住以来有所改善。' },
+];
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -202,7 +215,7 @@ export default function DementiaCareKajangZh() {
             <div>
               <div className="flex items-center gap-3 mb-5">
                 <span className="bg-gold text-gray-900 text-xs font-bold tracking-wide px-3 py-1 rounded-full uppercase">失智症护理</span>
-                <span className="bg-white/15 text-white text-xs font-semibold px-3 py-1 rounded-full" style={{ color: 'white' }}>★ {centre.rating} Google Rating</span>
+                <span className="bg-white/15 text-white text-xs font-semibold px-3 py-1 rounded-full" style={{ color: 'white' }}>★ {centre.rating} 谷歌评分</span>
               </div>
 
               <p className="text-white text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: 'white' }}>加影失智症护理</p>
@@ -252,7 +265,7 @@ export default function DementiaCareKajangZh() {
       <section className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-            {centreData.highlights.map((h, i) => (
+            {zhHighlights.map((h, i) => (
               <div key={i} className="text-center">
                 <p className="text-2xl sm:text-3xl font-extrabold text-primary">{h.value}</p>
                 <p className="text-sm font-semibold text-gray-700 mt-1">{h.label}</p>
@@ -367,17 +380,17 @@ export default function DementiaCareKajangZh() {
           <div className="text-center mb-12">
             <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">评价</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">家属心声</h2>
-            <p className="text-gray-500 mt-3">★ {centreData.rating} 评分 ({centreData.reviews} 评价)</p>
+            <p className="text-gray-500 mt-3">★ {centre.rating} 评分 ({centre.reviews} 评价)</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {centreData.testimonials?.map((t, i) => (
+            {zhTestimonials.map((t, i) => (
               <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
                 <div className="flex items-start gap-3 mb-3">
                   <div className="flex-1">
-                    <p className="font-bold text-gray-900 text-sm">{t.name}</p>
+                    <p className="font-bold text-gray-900 text-sm">{t.author}</p>
                     <div className="flex gap-0.5 mt-1">
                       {[...Array(5)].map((_, j) => (
-                        <svg key={j} className={`w-3.5 h-3.5 ${j < Math.floor(parseFloat(centre.rating)) ? 'text-gold' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
+                        <svg key={j} className={`w-3.5 h-3.5 ${j < 5 ? 'text-gold' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
                       ))}
@@ -386,7 +399,7 @@ export default function DementiaCareKajangZh() {
                 </div>
                 <p className="text-sm text-gray-600 leading-relaxed">{t.text}</p>
               </div>
-            )) || null}
+            ))}
           </div>
         </div>
       </section>
@@ -504,8 +517,6 @@ export default function DementiaCareKajangZh() {
           </div>
         </div>
       </section>
-
-      <CostCalculatorSection />
 
       {/* ── OTHER CENTRES ────────────────────────────────────────────– */}
       <section className="py-16 sm:py-20">

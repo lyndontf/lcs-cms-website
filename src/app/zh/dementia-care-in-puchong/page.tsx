@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { centres, getOtherCentres } from '@/data/centres';
-import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 
 export const metadata: Metadata = {
   title: '布城失智症护理 - Genesis Life Care',
@@ -43,6 +42,29 @@ const faqs = [
 const centreData = centres['puchong'];
 const otherCentres = getOtherCentres(centreData.name);
 
+const zhHighlights = [
+  { label: '谷歌评分', value: '4.8 ★', sub: '58 条评价' },
+  { label: '床位', value: '120+', sub: '容量' },
+  { label: '成立于', value: '2022', sub: '现代设施' },
+  { label: '经济实惠', value: '✓', sub: '所有中心' },
+  { label: '护理团队', value: '20+', sub: '专业人员' },
+];
+
+const zhTestimonials = [
+  {
+    author: '莎拉·陈',
+    text: '布城中心维护得很好，员工非常关心。我的父亲在这里感到非常舒适。',
+  },
+  {
+    author: '艾哈迈德·拉扎克',
+    text: '专业的护理服务，充满个人关怀。团队为每位住户竭尽全力。',
+  },
+  {
+    author: '米歇尔·林',
+    text: '我们感谢他们定期提供关于母亲的更新。护理团队反应迅速，始终可用。',
+  },
+];
+
 export default function DementiaCarePuchongZh() {
   return (
     <main className="bg-white">
@@ -76,7 +98,7 @@ export default function DementiaCarePuchongZh() {
       <section className="bg-gray-50 py-8">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
-            {centreData.highlights?.map((h, i) => (
+            {zhHighlights.map((h, i) => (
               <div key={i} className="text-center">
                 <p className="text-2xl font-extrabold text-primary">{h.value}</p>
                 <p className="text-sm font-semibold text-gray-700 mt-1">{h.label}</p>
@@ -124,9 +146,9 @@ export default function DementiaCarePuchongZh() {
           <div>
             <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">家属心声</h2>
             <div className="grid sm:grid-cols-2 gap-6">
-              {centreData.testimonials?.map((t, i) => (
+              {zhTestimonials.map((t, i) => (
                 <div key={i} className="bg-white rounded-xl p-6 shadow-sm border">
-                  <p className="font-bold text-gray-900 text-sm mb-2">{t.name}</p>
+                  <p className="font-bold text-gray-900 text-sm mb-2">{t.author}</p>
                   <p className="text-sm text-gray-600">{t.text}</p>
                 </div>
               ))}
@@ -180,8 +202,6 @@ export default function DementiaCarePuchongZh() {
           </div>
         </div>
       </section>
-
-      <CostCalculatorSection />
 
       {/* CTA */}
       <section className="hero-dark bg-gradient-to-r from-primary via-primary-800 to-secondary py-16">

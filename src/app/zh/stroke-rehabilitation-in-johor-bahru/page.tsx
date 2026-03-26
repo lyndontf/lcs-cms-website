@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { centres, getOtherCentres } from '@/data/centres';
 import AtAGlance from '@/components/sections/AtAGlance';
 import FacilityGallery from '@/components/sections/FacilityGallery';
-import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 import Testimonials from '@/components/sections/Testimonials';
 import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
@@ -187,7 +186,7 @@ export default function StrokeRehabilitationJohorBahruZh() {
       <style dangerouslySetInnerHTML={{ __html: `
         .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div { color: inherit; }
         .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div,
-        .hero-dark .text-4xl, .hero-dark .text-5xl, .hero-dark .sm\:text-5xl,
+        .hero-dark .text-4xl, .hero-dark .text-5xl, .hero-dark .sm\\:text-5xl,
         .hero-dark .text-3xl, .hero-dark .text-lg, .hero-dark .text-sm,
         .hero-dark .text-white { color: #ffffff !important; }
         .hero-dark .text-gray-900 { color: rgb(17 24 39) !important; }
@@ -363,9 +362,9 @@ export default function StrokeRehabilitationJohorBahruZh() {
         </div>
       </section>
 
-      <FacilityGallery images={sharedCentre.facilityImages} centreName={sharedCentre.name} />
+      <FacilityGallery images={sharedCentre.facilityImages} centreName={sharedCentre.name} lang="zh" />
 
-      <Testimonials testimonials={sharedCentre.testimonials} rating={sharedCentre.rating} reviews={String(sharedCentre.reviews)} />
+      <Testimonials testimonials={sharedCentre.testimonials} rating={sharedCentre.rating} reviews={String(sharedCentre.reviews)} lang="zh" />
 
       {/* ── CENTRE INFO ────────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-gray-50">
@@ -434,7 +433,7 @@ export default function StrokeRehabilitationJohorBahruZh() {
         </div>
       </section>
 
-      <LocationContact centre={sharedCentre} />
+      <LocationContact centre={sharedCentre} lang="zh" />
 
       {/* ── FAQ ────────────────────────────────────────────────────────── */}
       <section className="py-16 sm:py-20">
@@ -467,9 +466,7 @@ export default function StrokeRehabilitationJohorBahruZh() {
         </div>
       </section>
 
-      <OtherCentres centres={otherCentres} currentCentreName={sharedCentre.name} />
-
-      <CostCalculatorSection />
+      <OtherCentres centres={otherCentres} currentCentreName={sharedCentre.name} lang="zh" />
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
       <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">

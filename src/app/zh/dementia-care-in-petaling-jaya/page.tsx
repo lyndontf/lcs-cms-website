@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { centres, getOtherCentres } from '@/data/centres';
-import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 
 export const metadata: Metadata = {
   title: '八打灵再也失智症护理 - Genesis Life Care',
@@ -72,6 +71,29 @@ const faqs = [
 const centreData = centres['petaling-jaya'];
 const otherCentres = getOtherCentres(centreData.name);
 
+const zhHighlights = [
+  { label: '谷歌评分', value: '4.9 ★', sub: '155 条评价' },
+  { label: '床位', value: '50+', sub: '容量' },
+  { label: '成立于', value: '2020', sub: '旗舰中心' },
+  { label: '经济实惠', value: '✓', sub: '所有中心' },
+  { label: '护理团队', value: '30+', sub: '专业人员' },
+];
+
+const zhTestimonials = [
+  {
+    author: '梅玲 T.',
+    text: '八打灵再也中心非常出色。员工真心关心每位住户，设施现代且维护得很好。',
+  },
+  {
+    author: '艾哈迈德 R.',
+    text: '我们为父亲选择了 Genesis 八打灵再也中心，这是最好的决定。团队专业，护理卓越。',
+  },
+  {
+    author: '莎拉 L.',
+    text: '八打灵再也中心的失智症护理计划对我母亲产生了真正的影响。心理学家主导的方法非常有效。',
+  },
+];
+
 export default function DementiaCarePJZh() {
   return (
     <main className="bg-white">
@@ -109,7 +131,7 @@ export default function DementiaCarePJZh() {
       <section className="bg-gray-50 border-b py-8">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-            {centreData.highlights.map((h, i) => (
+            {zhHighlights.map((h, i) => (
               <div key={i} className="text-center">
                 <p className="text-2xl font-extrabold text-primary">{h.value}</p>
                 <p className="text-sm font-semibold text-gray-700 mt-1">{h.label}</p>
@@ -176,12 +198,12 @@ export default function DementiaCarePJZh() {
           <div>
             <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">家属心声</h2>
             <div className="grid sm:grid-cols-2 gap-6">
-              {centreData.testimonials?.map((t, i) => (
+              {zhTestimonials.map((t, i) => (
                 <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                  <p className="font-bold text-gray-900 text-sm mb-2">{t.name}</p>
+                  <p className="font-bold text-gray-900 text-sm mb-2">{t.author}</p>
                   <p className="text-sm text-gray-600">{t.text}</p>
                 </div>
-              )) || null}
+              ))}
             </div>
           </div>
         </div>
@@ -233,8 +255,6 @@ export default function DementiaCarePJZh() {
           </div>
         </div>
       </section>
-
-      <CostCalculatorSection />
 
       {/* BOTTOM CTA */}
       <section className="hero-dark bg-gradient-to-r from-primary via-primary-800 to-secondary py-16">

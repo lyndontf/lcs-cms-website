@@ -1,10 +1,5 @@
 import { Metadata } from 'next';
-import { Fragment } from 'react';
 import Link from 'next/link';
-import FaqSection from '../../components/sections/FaqSection';
-import FinalCtaSection from '../../components/sections/FinalCtaSection';
-import GlcHireSection from '../../components/sections/GlcHireSection';
-import CostCalculatorSection from '../../components/sections/CostCalculatorSection';
 import HeroEnquiryForm from '@/components/HeroEnquiryForm';
 
 export const metadata: Metadata = {
@@ -37,6 +32,7 @@ const highlights = [
   { label: 'Years Caring', value: '2+', sub: 'Since 2023' },
   { label: 'Residents Capacity', value: '120+', sub: 'Comfortable Beds' },
   { label: 'Google Rating', value: '4.8 ★', sub: '24 Reviews' },
+  { label: 'Affordable Rates', value: '✓', sub: 'All Centres' },
   { label: 'Care Staff', value: '24/7', sub: 'Round the Clock' },
 ];
 
@@ -85,6 +81,7 @@ const checklist = [
   { title: 'Transparent Pricing', desc: 'Genesis Life Care offers competitive and transparent pricing with no hidden costs. We work with families to find care plans that suit their budget.' },
   { title: 'Qualified Care Staff', desc: 'Our team includes trained nurses, physiotherapists, psychologists, and experienced caregivers available around the clock.' },
   { title: 'Cleanliness & Hygiene', desc: 'We maintain strict hygiene standards with regular deep cleaning, infection control protocols, and well-maintained facilities.' },
+  { title: 'Meal Quality & Options', desc: 'Freshly prepared nutritious meals, dietary accommodations for medical conditions, and varied menus.' },
   { title: 'Visiting Policy', desc: 'We encourage family involvement with flexible visiting hours and comfortable spaces for quality time together.' },
   { title: 'Location & Accessibility', desc: 'Our JB centre at Holiday Plaza on Jalan Dato Sulaiman is a well-known landmark, easily accessible from across Johor Bahru and Iskandar Malaysia.' },
   { title: 'Specialist Care Available', desc: 'Beyond basic care, we offer dementia programmes, stroke rehabilitation, palliative care, and post-surgery recovery.' },
@@ -183,74 +180,71 @@ export default function OldFolksHomeJB() {
       />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative overflow-hidden" style={{
-        backgroundImage: `linear-gradient(135deg, rgba(46, 114, 184, 0.95) 0%, rgba(46, 114, 184, 0.85) 100%), url('${centre.heroImg}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}>
+      <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }}
+        />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full translate-y-1/2 -translate-x-1/3" />
 
         <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24">
-          <div className="grid lg:grid-cols-5 gap-10 items-start">
-            <div className="lg:col-span-3">
-            <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6">
-              <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
-              <span className="text-gold text-xs font-semibold tracking-wide uppercase">Rated {centre.rating} ★ on Google</span>
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6">
+                <svg className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
+                <span className="text-gold text-xs font-semibold tracking-wide uppercase">Rated {centre.rating} ★ on Google</span>
+              </div>
+
+              <p className="text-sm font-bold uppercase tracking-widest text-white/70 mb-3" style={{ color: 'rgba(255,255,255,0.7)' }}>Old Folks Home in {centre.name}</p>
+              <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6" style={{ color: 'white' }}>
+                Best Old Folks Home<br className="hidden sm:block" /> in {centre.name}
+              </h1>
+              <p className="text-lg text-white/90 max-w-xl mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.9)' }}>
+                A warm, home-like environment where your loved ones receive professional care with dignity and
+                compassion. Our Johor Bahru centre at Holiday Plaza features dementia care programmes, rehabilitation facilities,
+                and a caring team available around the clock.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-start gap-4">
+                <Link
+                  href="/contact"
+                  className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl"
+                >
+                  Visit Our Home
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                </Link>
+                <a
+                  href={`tel:${centre.phone.replace(/\s/g, '')}`}
+                  className="whitespace-nowrap inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3.5 rounded-full transition"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                  Call {centre.phoneCTA}
+                </a>
+              </div>
             </div>
 
-            <p className="text-sm font-bold uppercase tracking-widest text-white/70 mb-3" style={{ color: 'rgba(255,255,255,0.7)' }}>Old Folks Home in {centre.name}</p>
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6" style={{ color: 'white' }}>
-              Best Old Folks Home<br className="hidden sm:block" /> in {centre.name}
-            </h1>
-            <p className="text-lg text-white/90 max-w-xl mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.9)' }}>
-              A warm, home-like environment where your loved ones receive professional care with dignity and
-              compassion. Our Johor Bahru centre at Holiday Plaza features dementia care programmes, rehabilitation facilities,
-              and a caring team available around the clock.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-start gap-4">
-              <Link
-                href="/contact"
-                className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl"
-              >
-                Visit Our Home
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-              </Link>
-              <a
-                href={`tel:${centre.phone.replace(/\s/g, '')}`}
-                className="whitespace-nowrap inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3.5 rounded-full transition"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                Call {centre.phoneCTA}
-              </a>
-            </div>
-          </div>
-            {/* ── Enquiry Form ── */}
-            <div className="lg:col-span-2 hidden lg:block">
+            <div>
               <HeroEnquiryForm centreName="Johor Bahru" pageUrl="/old-folks-home-in-johor-bahru" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── TRUST BAR ─────────────────────────────────────────────────── */}
-      <section className="bg-white border-b border-gray-200 py-6 sm:py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-8">
-            {highlights.map((h, i) => (
-              <Fragment key={i}>
-                {i > 0 && <div className="hidden sm:block w-px h-12 bg-gray-200" />}
-                <div className="text-center flex-1 min-w-[100px]">
-                  <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">{h.value}</span>
-                  <span className="text-xs text-gray-500 mt-1 font-medium">{h.label}</span>
-                </div>
-              </Fragment>
+      {/* ── STATS BAR ─────────────────────────────────────────────────── */}
+      <section className="bg-gray-50 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+            {highlights.map((h) => (
+              <div key={h.label}>
+                <span className="block text-2xl sm:text-3xl font-extrabold text-primary">{h.value}</span>
+                <span className="block text-sm font-semibold text-gray-900 mt-1">{h.label}</span>
+                <span className="block text-xs text-gray-500">{h.sub}</span>
+              </div>
             ))}
           </div>
         </div>
       </section>
-      {/* ── Removed old highlights ── */}
 
       {/* ── WHY CHOOSE US ─────────────────────────────────────────────── */}
       <section className="py-16 sm:py-20">
@@ -351,17 +345,17 @@ export default function OldFolksHomeJB() {
       {/* ── CHOOSING THE RIGHT HOME ───────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-[#f4f8fb]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div>
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2 text-center">Helpful Guide</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6 text-center">
+              <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Helpful Guide</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">
                 How to Choose the Right Old Folks Home
               </h2>
-              <p className="text-gray-600 leading-relaxed mb-8 text-center max-w-3xl mx-auto">
+              <p className="text-gray-600 leading-relaxed mb-8">
                 Choosing an old folks home is a big decision. Here is a simple checklist of what to look for — and how Genesis Life Care measures up.
               </p>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="space-y-4">
               {checklist.map((item, i) => (
                 <div key={i} className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
                   <div className="flex items-start gap-3">
@@ -415,13 +409,22 @@ export default function OldFolksHomeJB() {
       </section>
 
       {/* ── FAQS ──────────────────────────────────────────────────────── */}
-      <FaqSection faqs={faqs} />
-
-      {/* ── COST CALCULATOR ───────────────────────────────────────────── */}
-      <CostCalculatorSection />
-
-      {/* ── GLC HIRE SECTION ──────────────────────────────────────────── */}
-      <GlcHireSection />
+      <section className="py-16 sm:py-20 bg-[#f4f8fb]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Common Questions</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">Frequently Asked Questions</h2>
+          </div>
+          <div className="space-y-6">
+            {faqs.map((faq, i) => (
+              <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                <h3 className="text-base font-bold text-gray-900 mb-3">{faq.q}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── OTHER LOCATIONS ───────────────────────────────────────────── */}
       <section className="py-16 sm:py-20">
@@ -453,13 +456,37 @@ export default function OldFolksHomeJB() {
       </section>
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
-      <FinalCtaSection
-        heading="Ready to Take the Next Step?"
-        description="Contact us today for a free consultation. Our care advisors speak to dozens of families every week and can help find the perfect care solution for your loved one."
-        primaryLabel="Schedule a Visit"
-        primaryHref="/contact"
-        phone="+6012-321 0457"
-      />
+      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }}
+        />
+        <div className="relative max-w-3xl mx-auto px-4 py-16 sm:py-20 text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4" style={{ color: 'white' }}>
+            Visit Our Old Folks Home in {centre.name}
+          </h2>
+          <p className="text-lg text-white/90 mb-8 max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.9)' }}>
+            Schedule a free walkthrough of our Johor Bahru centre. Meet the team, see the facilities, and find out
+            if we are the right home for your loved one. No obligations.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/contact"
+              className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl"
+            >
+              Schedule a Visit
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </Link>
+            <a
+              href={`tel:${centre.phone.replace(/\s/g, '')}`}
+              className="whitespace-nowrap inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-bold px-6 py-3.5 rounded-full transition"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+              Call {centre.phoneCTA}
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

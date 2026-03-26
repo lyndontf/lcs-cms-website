@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { centres, getOtherCentres } from '@/data/centres';
-import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 
 export const metadata: Metadata = {
   title: '柔佛州新山失智症护理 - Genesis Life Care',
@@ -135,6 +134,29 @@ const faqs = [
 const centreData = centres['johor-bahru'];
 const otherCentres = getOtherCentres(centreData.name);
 
+const zhHighlights = [
+  { label: '谷歌评分', value: '4.8 ★', sub: '40 条评价' },
+  { label: '床位', value: '120+', sub: '容量' },
+  { label: '成立于', value: '2023', sub: '南部地区' },
+  { label: '经济实惠', value: '✓', sub: '所有中心' },
+  { label: '护理团队', value: '20+', sub: '专业人员' },
+];
+
+const zhTestimonials = [
+  {
+    author: '林伟山',
+    text: '新山中心非常棒。员工非常专业，我的母亲每天都得到卓越的护理。',
+  },
+  {
+    author: '陈女士',
+    text: '对新山中心的专业护理印象深刻。团队关心每位住户，环境温暖而专业。',
+  },
+  {
+    author: '库玛',
+    text: '护理标准高，员工响应迅速。我的祖母非常喜欢在这里的时光。',
+  },
+];
+
 /* ─── JSON-LD Structured Data ───────────────────────────────────────── */
 
 const jsonLd = {
@@ -208,7 +230,7 @@ export default function DementiaCareJBZh() {
             <div>
               <div className="flex items-center gap-3 mb-5">
                 <span className="bg-gold text-gray-900 text-xs font-bold tracking-wide px-3 py-1 rounded-full uppercase">失智症护理</span>
-                <span className="bg-white/15 text-white text-xs font-semibold px-3 py-1 rounded-full" style={{ color: 'white' }}>★ {centre.rating} Google Rating</span>
+                <span className="bg-white/15 text-white text-xs font-semibold px-3 py-1 rounded-full" style={{ color: 'white' }}>★ {centre.rating} 谷歌评分</span>
               </div>
 
               <p className="text-white text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: 'white' }}>新山失智症护理</p>
@@ -258,7 +280,7 @@ export default function DementiaCareJBZh() {
       <section className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-            {centreData.highlights.map((h, i) => (
+            {zhHighlights.map((h, i) => (
               <div key={i} className="text-center">
                 <p className="text-2xl sm:text-3xl font-extrabold text-primary">{h.value}</p>
                 <p className="text-sm font-semibold text-gray-700 mt-1">{h.label}</p>
@@ -380,11 +402,11 @@ export default function DementiaCareJBZh() {
             <p className="text-gray-500 mt-3">★ {centreData.rating} 评分 ({centreData.reviews} 评价)</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {centreData.testimonials?.map((t, i) => (
+            {zhTestimonials.map((t, i) => (
               <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
                 <div className="flex items-start gap-3 mb-3">
                   <div className="flex-1">
-                    <p className="font-bold text-gray-900 text-sm">{t.name}</p>
+                    <p className="font-bold text-gray-900 text-sm">{t.author}</p>
                     <div className="flex gap-0.5 mt-1">
                       {[...Array(5)].map((_, j) => (
                         <svg key={j} className={`w-3.5 h-3.5 ${j < Math.floor(parseFloat(centre.rating)) ? 'text-gold' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
@@ -518,8 +540,6 @@ export default function DementiaCareJBZh() {
           </div>
         </div>
       </section>
-
-      <CostCalculatorSection />
 
       {/* ── OTHER CENTRES ────────────────────────────────────────────– */}
       <section className="py-16 sm:py-20">

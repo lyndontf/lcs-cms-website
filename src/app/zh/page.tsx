@@ -51,7 +51,7 @@ export default async function ZhHomePage() {
   return (
     <article>
       <style dangerouslySetInnerHTML={{ __html: `.cms-hero h1, .cms-hero p, .cms-hero span, .cms-hero div { color: #ffffff !important; }` }} />
-      <section className="cms-hero relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
+      <section className="cms-hero relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <img src={page.featured_image_url || '/images/general/staff-care.jpg'} alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary/85 to-secondary/80" />
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />

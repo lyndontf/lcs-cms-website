@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { headers } from 'next/headers';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import LayoutWrapper from '@/components/LayoutWrapper';
 import TrackingScript from '@/components/TrackingScript';
-import WhatsAppFab from '@/components/WhatsAppFab';
 import { getMenus, getSiteSettings } from '@/lib/supabase';
 import { getCurrentSiteId, getCurrentSiteSlug } from '@/lib/site-context';
 
@@ -39,8 +39,13 @@ export default async function RootLayout({
   const headerMenu = menus.find((m) => m.location === 'header');
   const footerMenu = menus.find((m) => m.location === 'footer');
 
+  // Detect zh/ path — zh/layout.tsx provides its own Mandarin header/footer
+  const headersList = await headers();
+  const pathname = headersList.get('x-invoke-path') || headersList.get('x-nextjs-page') || '';
+  const isZh = pathname.startsWith('/zh');
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={isZh ? 'zh-Hans' : 'en'} suppressHydrationWarning>
       <head suppressHydrationWarning>
         {settings?.custom_head_html && (
           <meta name="custom-head" content="" suppressHydrationWarning />
@@ -68,15 +73,15 @@ export default async function RootLayout({
         )}
       </head>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
-        {!isCmsSite && <Header settings={settings} menuItems={headerMenu?.items || []} />}
+        {!isCmsSite && !isZh && <Header settings={settings} menuItems={headerMenu?.items || []} />}
         <LayoutWrapper
           isCmsSite={isCmsSite}
+          isZh={isZh}
           footer={<Footer settings={settings} menuItems={footerMenu?.items || headerMenu?.items || []} />}
         >
           {children}
         </LayoutWrapper>
         <TrackingScript />
-        {!isCmsSite && <WhatsAppFab />}
         {settings?.custom_css && (
           <style dangerouslySetInnerHTML={{ __html: settings.custom_css }} />
         )}

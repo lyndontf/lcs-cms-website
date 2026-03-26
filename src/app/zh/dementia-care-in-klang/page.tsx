@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { centres, getOtherCentres } from '@/data/centres';
-import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 
 export const metadata: Metadata = {
   title: '巴生失智症护理 - Genesis Life Care',
@@ -131,6 +130,20 @@ const faqs = [
 const centreData = centres['klang'];
 const otherCentres = getOtherCentres(centreData.name);
 
+const zhHighlights = [
+  { label: '谷歌评分', value: '4.8 ★', sub: '45 条评价' },
+  { label: '床位', value: '120+', sub: '容量' },
+  { label: '成立于', value: '2018', sub: '我们的原始中心' },
+  { label: '经济实惠', value: '✓', sub: '所有中心' },
+  { label: '护理团队', value: '25+', sub: '专业人员' },
+];
+
+const zhTestimonials = [
+  { author: 'Alyse Cheong', text: '我妈妈在 Genesis Life Care 巴生中心住了两个多月进行术后康复。她很喜欢住在那里。' },
+  { author: 'Kenneth Ng', text: '我妈妈髋关节手术后在这里住了两个月，他们照顾得非常好，绝对推荐这个老年护理之家。' },
+  { author: 'Lee Steffi', text: 'Dr Phoon，感谢您和您的团队对我妈妈的温柔照顾。虽然她在那里住的时间很短，但她平静地离世了，我对此深表感谢。' },
+];
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -180,7 +193,7 @@ export default function DementiaCareKlangZh() {
             <div>
               <div className="flex items-center gap-3 mb-5">
                 <span className="bg-gold text-gray-900 text-xs font-bold tracking-wide px-3 py-1 rounded-full uppercase">失智症护理</span>
-                <span className="bg-white/15 text-white text-xs font-semibold px-3 py-1 rounded-full">★ {centre.rating} Google Rating</span>
+                <span className="bg-white/15 text-white text-xs font-semibold px-3 py-1 rounded-full">★ {centre.rating} 谷歌评分</span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight text-white mb-5">
@@ -227,7 +240,7 @@ export default function DementiaCareKlangZh() {
       <section className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-            {centreData.highlights.map((h, i) => (
+            {zhHighlights.map((h, i) => (
               <div key={i} className="text-center">
                 <p className="text-2xl sm:text-3xl font-extrabold text-primary">{h.value}</p>
                 <p className="text-sm font-semibold text-gray-700 mt-1">{h.label}</p>
@@ -341,15 +354,15 @@ export default function DementiaCareKlangZh() {
           <div className="text-center mb-12">
             <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">评价</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">家属心声</h2>
-            <p className="text-gray-500 mt-3">★ {centreData.rating} 评分 ({centreData.reviews} 评价)</p>
+            <p className="text-gray-500 mt-3">★ {centre.rating} 评分 ({centre.reviews} 评价)</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {centreData.testimonials?.map((t, i) => (
+            {zhTestimonials.map((t, i) => (
               <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                <p className="font-bold text-gray-900 text-sm mb-2">{t.name}</p>
+                <p className="font-bold text-gray-900 text-sm mb-2">{t.author}</p>
                 <p className="text-sm text-gray-600 leading-relaxed">{t.text}</p>
               </div>
-            )) || null}
+            ))}
           </div>
         </div>
       </section>
@@ -416,8 +429,6 @@ export default function DementiaCareKlangZh() {
           </div>
         </div>
       </section>
-
-      <CostCalculatorSection />
 
       {/* BOTTOM CTA */}
       <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden py-16 sm:py-20">
