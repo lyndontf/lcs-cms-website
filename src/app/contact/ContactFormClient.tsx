@@ -149,7 +149,7 @@ export default function ContactFormClient() {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-gray-900">Phone</p>
-                    <p className="text-sm text-gray-600">Call us for immediate assistance</p>
+                    <a href="tel:+60123210457" className="text-sm text-primary hover:underline">+6012-321 0457</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -160,7 +160,7 @@ export default function ContactFormClient() {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-gray-900">Email</p>
-                    <p className="text-sm text-gray-600">Send us a detailed enquiry</p>
+                    <a href="mailto:enquiries@genesiscare.com.my" className="text-sm text-primary hover:underline">enquiries@genesiscare.com.my</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -178,12 +178,12 @@ export default function ContactFormClient() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-primary to-primary-600 rounded-xl p-6 text-white">
-              <h3 className="text-lg font-bold mb-2">Need Immediate Help?</h3>
+            <div className="bg-gradient-to-br from-primary to-primary-600 rounded-xl p-6">
+              <h3 className="text-lg font-bold text-white mb-2">Need Immediate Help?</h3>
               <p className="text-sm text-primary-100 mb-4">
                 Our care team is available to answer your questions and help you find the right care solution.
               </p>
-              <p className="text-2xl font-bold">Call us today</p>
+              <a href="tel:+60123210457" className="text-2xl font-bold text-white hover:underline">Call us today: +6012-321 0457</a>
             </div>
           </div>
         </div>
