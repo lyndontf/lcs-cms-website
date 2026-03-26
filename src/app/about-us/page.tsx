@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getSiteSettings } from '@/lib/supabase';
@@ -91,7 +92,6 @@ const stats = [
   { value: '530+', label: 'Beds Under Management' },
   { value: '150+', label: 'Trained Professionals' },
   { value: '5', label: 'Care Centres' },
-  { value: '✓', label: 'Affordable Rates' },
   { value: '600', label: 'Scholarships Funded' },
 ];
 
@@ -134,16 +134,19 @@ export default async function AboutPage() {
       </section>
 
       {/* ─── STATS BAR ─── */}
-      <section className="bg-white border-b border-gray-200 py-8">
+      <section className="bg-white border-b border-gray-200 py-6 sm:py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-8">
             {stats.map((s, i) => (
-              <div key={i} className="text-center flex-1 min-w-[100px]">
-                <span className="block text-2xl sm:text-3xl font-extrabold text-primary leading-none">
-                  {s.value}
-                </span>
-                <span className="text-xs text-gray-500 mt-1 font-medium">{s.label}</span>
-              </div>
+              <Fragment key={i}>
+                {i > 0 && <div className="hidden sm:block w-px h-12 bg-gray-200" />}
+                <div className="text-center flex-1 min-w-[100px]">
+                  <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">
+                    {s.value}
+                  </span>
+                  <span className="text-xs text-gray-500 mt-1 font-medium">{s.label}</span>
+                </div>
+              </Fragment>
             ))}
           </div>
         </div>

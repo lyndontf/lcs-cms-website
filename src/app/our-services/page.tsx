@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import GlcHireSection from '@/components/sections/GlcHireSection';
@@ -154,7 +155,6 @@ const highlights = [
   { label: 'Centres', value: '5', sub: 'Across Malaysia' },
   { label: 'Nursing Care', value: '24/7', sub: 'Round the clock' },
   { label: 'Professionals', value: '150+', sub: 'Qualified staff' },
-  { label: 'Affordable Rates', value: '✓', sub: 'All Centres' },
 ];
 
 const centres = [
@@ -183,17 +183,18 @@ export default function OurServices() {
       ` }} />
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="hero-dark relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-            backgroundSize: '28px 28px',
-          }}
+      <section className="hero-dark relative overflow-hidden">
+        {/* Background image */}
+        <img
+          src="/images/general/hero-main.jpeg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full translate-y-1/2 -translate-x-1/3" />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary/85 to-secondary/80" />
+        {/* Decorative circles */}
+        <div className="absolute -top-[20%] -right-[10%] w-[55%] pb-[55%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.08)_0%,transparent_70%)] pointer-events-none" />
+        <div className="absolute -bottom-[30%] -left-[5%] w-[40%] pb-[40%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.05)_0%,transparent_70%)] pointer-events-none" />
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center">
           <span className="inline-block bg-gold text-gray-900 text-xs font-bold tracking-wide px-4 py-1.5 rounded-full uppercase mb-6">
@@ -231,15 +232,17 @@ export default function OurServices() {
       </section>
 
       {/* ── AT A GLANCE ──────────────────────────────────────────────── */}
-      <section className="bg-gray-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+      <section className="bg-white border-b border-gray-200 py-6 sm:py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-8">
             {highlights.map((h, i) => (
-              <div key={i} className="text-center">
-                <p className="text-2xl sm:text-3xl font-extrabold text-primary">{h.value}</p>
-                <p className="text-sm font-semibold text-gray-700 mt-1">{h.label}</p>
-                <p className="text-xs text-gray-400">{h.sub}</p>
-              </div>
+              <Fragment key={i}>
+                {i > 0 && <div className="hidden sm:block w-px h-12 bg-gray-200" />}
+                <div className="text-center flex-1 min-w-[100px]">
+                  <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">{h.value}</span>
+                  <span className="text-xs text-gray-500 mt-1 font-medium">{h.label}</span>
+                </div>
+              </Fragment>
             ))}
           </div>
         </div>
@@ -294,21 +297,24 @@ export default function OurServices() {
           className={`py-16 sm:py-20 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className={`grid lg:grid-cols-2 gap-12 lg:gap-16 items-center`}>
-              {/* Text column */}
-              <div className={i % 2 !== 0 ? 'lg:order-2' : ''}>
-                <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Our Services</p>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
-                  {svc.title}
-                </h2>
-                <div className="space-y-4 text-gray-600 leading-relaxed">
-                  {svc.longDesc.map((p, j) => (
-                    <p key={j}>{p}</p>
-                  ))}
-                </div>
+            {/* Full-width intro row */}
+            <div className="max-w-3xl mb-10">
+              <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">Our Services</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+                {svc.title}
+              </h2>
+              <div className="space-y-4 text-gray-600 leading-relaxed">
+                {svc.longDesc.map((p, j) => (
+                  <p key={j}>{p}</p>
+                ))}
+              </div>
+            </div>
 
+            {/* Two-column row: feature list (left) + image (right) */}
+            <div className={`grid lg:grid-cols-2 gap-12 lg:gap-16 items-center`}>
+              <div className={i % 2 !== 0 ? 'lg:order-2' : ''}>
                 {/* Feature list */}
-                <div className="flex flex-col gap-3 mt-8">
+                <div className="flex flex-col gap-3">
                   {svc.features.map((feature, j) => (
                     <div key={j} className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

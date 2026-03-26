@@ -68,12 +68,6 @@ export default function Header({ settings, menuItems }: HeaderProps) {
                 )}
               </div>
             ))}
-            <Link
-              href="/contact"
-              className="ml-3 bg-primary text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-primary-600 transition-colors"
-            >
-              Contact Us
-            </Link>
           </nav>
 
           {/* Mobile menu button */}
@@ -120,13 +114,6 @@ export default function Header({ settings, menuItems }: HeaderProps) {
                 ))}
               </div>
             ))}
-            <Link
-              href="/contact"
-              className="block mx-3 mt-3 bg-primary text-white px-5 py-2.5 rounded-lg text-sm font-semibold text-center hover:bg-primary-600"
-              onClick={() => setMobileOpen(false)}
-            >
-              Contact Us
-            </Link>
           </div>
         )}
       </div>
