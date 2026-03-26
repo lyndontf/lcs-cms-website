@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import FaqSection from '@/components/sections/FaqSection';
 
 export const metadata: Metadata = {
   title: 'Respite Care in Malaysia - Short-Term Elderly Care | Genesis Life Care',
@@ -391,35 +392,7 @@ export default function RespiteCareMalaysia() {
       </section>
 
       {/* ── FAQ ────────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">FAQ</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
-              Common questions about respite care and short-term elderly care in Malaysia.
-            </p>
-          </div>
-
-          <div className="max-w-3xl mx-auto space-y-4">
-            {faqs.map((faq, i) => (
-              <details key={i} className="bg-white rounded-xl border border-gray-100 shadow-sm group">
-                <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
-                  <h3 className="text-base font-semibold text-gray-900 pr-4">{faq.q}</h3>
-                  <svg className="w-5 h-5 text-gray-400 flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-6 pb-6 text-sm text-gray-600 leading-relaxed">
-                  {faq.a}
-                </div>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FaqSection faqs={faqs} />
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
       <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
