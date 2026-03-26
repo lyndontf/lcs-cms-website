@@ -91,12 +91,6 @@ export default function Footer({ settings, menuItems }: FooterProps) {
             <p className="text-sm text-gray-400 mb-4">
               Looking for quality care for your loved ones? We are here to help.
             </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-primary-600 transition-colors"
-            >
-              Contact Us
-            </Link>
           </div>
         </div>
 
