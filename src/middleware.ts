@@ -49,12 +49,14 @@ export function middleware(request: NextRequest) {
       url.pathname = stripped;
       const response = NextResponse.rewrite(url);
       response.headers.set('x-site-slug', siteSlug);
+      response.headers.set('x-pathname', pathname);
       return response;
     }
   }
 
   const response = NextResponse.next();
   response.headers.set('x-site-slug', siteSlug || 'centre');
+  response.headers.set('x-pathname', pathname);
   return response;
 }
 

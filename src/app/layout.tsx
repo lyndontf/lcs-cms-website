@@ -41,7 +41,7 @@ export default async function RootLayout({
 
   // Detect zh/ path — zh/layout.tsx provides its own Mandarin header/footer
   const headersList = await headers();
-  const pathname = headersList.get('x-invoke-path') || headersList.get('x-nextjs-page') || '';
+  const pathname = headersList.get('x-pathname') || headersList.get('x-invoke-path') || headersList.get('x-nextjs-page') || '';
   const isZh = pathname.startsWith('/zh');
 
   return (
