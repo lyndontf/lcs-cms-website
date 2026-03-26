@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 import FaqSection from '@/components/sections/FaqSection';
 
 export const metadata: Metadata = {
@@ -393,6 +394,8 @@ export default function RespiteCareMalaysia() {
 
       {/* ── FAQ ────────────────────────────────────────────────────────── */}
       <FaqSection faqs={faqs} />
+
+      <CostCalculatorSection />
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
       <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">

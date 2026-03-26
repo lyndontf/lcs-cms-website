@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 
 export const metadata: Metadata = {
   title: '马来西亚中风康复中心 | 创世纪生命护理',
@@ -521,6 +522,8 @@ export default function StrokeRehabilitationZh() {
           </div>
         </div>
       </section>
+
+      <CostCalculatorSection />
 
       {/* ── FAQs ──────────────────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-[#f4f8fb]">

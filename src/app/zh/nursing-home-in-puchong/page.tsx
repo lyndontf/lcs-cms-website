@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getCurrentSiteId } from '@/lib/site-context';
 import { getPublishedPosts } from '@/lib/supabase';
+import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 
 export const metadata: Metadata = {
   title: '普城老年护理中心 - Genesis Life Care Puchong',
@@ -676,6 +677,8 @@ export default async function NursingHomePuchongZh() {
           </div>
         </section>
       )}
+
+      <CostCalculatorSection />
 
       {/* ── FAQ SECTION ──────────────────────────────────────────────── */}
       <section className="bg-white py-14 sm:py-20">

@@ -4,6 +4,7 @@ import { centres, getOtherCentres } from '@/data/centres';
 import AtAGlance from '@/components/sections/AtAGlance';
 import FacilityGallery from '@/components/sections/FacilityGallery';
 import Testimonials from '@/components/sections/Testimonials';
+import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
 
@@ -467,6 +468,8 @@ export default function StrokeRehabilitationPuchongZh() {
       </section>
 
       <OtherCentres centres={otherCentres} currentCentreName={sharedCentre.name} />
+
+      <CostCalculatorSection />
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
       <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">

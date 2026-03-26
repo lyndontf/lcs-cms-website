@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { centres, getOtherCentres } from '@/data/centres';
+import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 
 export const metadata: Metadata = {
   title: '八打灵再也失智症护理 - Genesis Life Care',
@@ -232,6 +233,8 @@ export default function DementiaCarePJZh() {
           </div>
         </div>
       </section>
+
+      <CostCalculatorSection />
 
       {/* BOTTOM CTA */}
       <section className="hero-dark bg-gradient-to-r from-primary via-primary-800 to-secondary py-16">

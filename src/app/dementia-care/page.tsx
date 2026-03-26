@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 import GlcHireSection from '@/components/sections/GlcHireSection';
 import FaqSection from '@/components/sections/FaqSection';
 import FinalCtaSection from '@/components/sections/FinalCtaSection';
@@ -568,6 +569,8 @@ export default function DementiaCare() {
       </section>
 
       {/* ── GLC HIRE SECTION ──────────────────────────────────────────── */}
+      <CostCalculatorSection />
+
       <GlcHireSection />
 
       {/* ── FAQs ──────────────────────────────────────────────────────── */}

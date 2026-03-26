@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { centres, getOtherCentres } from '@/data/centres';
+import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 import AtAGlance from '@/components/sections/AtAGlance';
 import FacilityGallery from '@/components/sections/FacilityGallery';
 import Testimonials from '@/components/sections/Testimonials';
@@ -502,6 +503,8 @@ export default function StrokeRehabJohorBahru() {
       </section>
 
       <OtherCentres centres={otherCentres} currentCentreName={sharedCentre.name} />
+
+      <CostCalculatorSection />
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
       <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">

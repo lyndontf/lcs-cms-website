@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Fragment } from 'react';
+import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 import { getCurrentSiteId } from '@/lib/site-context';
 import { getPublishedPosts } from '@/lib/supabase';
 
@@ -1043,6 +1044,8 @@ export default async function NursingHomeJB() {
           </div>
         </div>
       </section>
+
+      <CostCalculatorSection />
 
       {/* ── FINAL CTA ────────────────────────────────────────────────── */}
       <section className="hp-cta relative bg-gradient-to-br from-primary via-primary-400 to-secondary overflow-hidden">

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import CostCalculatorSection from '@/components/sections/CostCalculatorSection';
 
 export const metadata: Metadata = {
   title: '马来西亚暂托护理 - 短期老年护理 | Genesis Life Care',
@@ -373,6 +374,8 @@ export default function RespiteCareZh() {
           </div>
         </div>
       </section>
+
+      <CostCalculatorSection />
 
       <section className="py-16 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
