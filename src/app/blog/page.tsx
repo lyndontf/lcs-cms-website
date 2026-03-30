@@ -1,12 +1,18 @@
 import { Metadata } from 'next';
 import { getPublishedPosts, getPageBySlug } from '@/lib/supabase';
-import { getCurrentSiteId, getCurrentSiteSlug } from '@/lib/site-context';
+import { getCurrentSiteId, getCurrentSiteSlug, getCurrentSiteBaseUrl } from '@/lib/site-context';
 import BlogClient from './BlogClient';
 
-export const metadata: Metadata = {
-  title: 'Blog',
-  description: 'News and updates from Genesis Life Care',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const baseUrl = await getCurrentSiteBaseUrl();
+  return {
+    title: 'Blog',
+    description: 'News and updates from Genesis Life Care',
+    alternates: {
+      canonical: `${baseUrl}/blog`,
+    },
+  };
+}
 
 export const revalidate = 60;
 

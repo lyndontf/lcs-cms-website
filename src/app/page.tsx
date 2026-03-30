@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getPageBySlug, getSiteSettings, getPublishedPosts } from '@/lib/supabase';
-import { getCurrentSiteId, getCurrentSiteSlug } from '@/lib/site-context';
+import { getCurrentSiteId, getCurrentSiteSlug, getCurrentSiteBaseUrl } from '@/lib/site-context';
 import ContentRenderer from '@/components/ContentRenderer';
 import QuickEnquiryCard from '@/components/QuickEnquiryCard';
 
@@ -57,9 +57,13 @@ export async function generateMetadata(): Promise<Metadata> {
     };
   }
 
+  const baseUrl = await getCurrentSiteBaseUrl();
   return {
     title: page?.meta_title || page?.title || 'Home',
     description: page?.meta_description || 'Quality healthcare and aged care services in Malaysia',
+    alternates: {
+      canonical: baseUrl,
+    },
   };
 }
 

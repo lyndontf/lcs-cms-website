@@ -15,6 +15,16 @@ const DOMAIN_TO_SITE: Record<string, string> = {
   'www.projectdeo.com.my': 'project-deo',
 };
 
+// Canonical (non-www) domain for each www variant — 301 redirect targets
+const WWW_TO_CANONICAL: Record<string, string> = {
+  'www.lifecaresystems.com.my': 'lifecaresystems.com.my',
+  'www.gtacademy.com.my': 'gtacademy.com.my',
+  'www.glchire.com': 'glchire.com',
+  'www.agency.genesiscare.com.my': 'agency.genesiscare.com.my',
+  'www.projectdeo.com.my': 'projectdeo.com.my',
+  'www.genesiscare.com.my': 'genesiscare.com.my',
+};
+
 // Path prefix to site slug mapping (for shared-domain hosting / dev)
 const PATH_TO_SITE: Record<string, string> = {
   '/lcs': 'lcs',
@@ -26,6 +36,16 @@ const PATH_TO_SITE: Record<string, string> = {
 export function middleware(request: NextRequest) {
   const hostname = request.headers.get('host')?.split(':')[0] || '';
   const pathname = request.nextUrl.pathname;
+
+  // ── 1. Redirect www → non-www with permanent 301 ──
+  const canonicalHost = WWW_TO_CANONICAL[hostname];
+  if (canonicalHost) {
+    const url = request.nextUrl.clone();
+    url.host = canonicalHost;
+    url.port = '';
+    return NextResponse.redirect(url, 301);
+  }
+
   let siteSlug = DOMAIN_TO_SITE[hostname];
 
   // If no domain match, check path prefix (e.g. /lcs/features → 'lcs')

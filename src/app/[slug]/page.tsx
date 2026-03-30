@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getPageBySlug, getPublishedPages } from '@/lib/supabase';
-import { getCurrentSiteId } from '@/lib/site-context';
+import { getCurrentSiteId, getCurrentSiteBaseUrl } from '@/lib/site-context';
 import ContentRenderer from '@/components/ContentRenderer';
 
 interface PageProps {
@@ -18,12 +18,15 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const siteId = await getCurrentSiteId();
+  const [siteId, baseUrl] = await Promise.all([getCurrentSiteId(), getCurrentSiteBaseUrl()]);
   const page = await getPageBySlug(slug, siteId || undefined);
   if (!page) return { title: 'Page Not Found' };
   return {
     title: page.meta_title || page.title,
     description: page.meta_description || undefined,
+    alternates: {
+      canonical: `${baseUrl}/${slug}`,
+    },
   };
 }
 

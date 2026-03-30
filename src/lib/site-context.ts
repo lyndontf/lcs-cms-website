@@ -16,3 +16,16 @@ export async function getCurrentSiteId(): Promise<string> {
     .single();
   return data?.id || '';
 }
+
+/** Returns the canonical base URL for the current site (e.g. "https://gtacademy.com.my") */
+export async function getCurrentSiteBaseUrl(): Promise<string> {
+  const siteId = await getCurrentSiteId();
+  if (!siteId) return 'https://genesiscare.com.my';
+  const supabase = createClient();
+  const { data: settings } = await supabase
+    .from('cms_site_settings')
+    .select('website_url')
+    .eq('site_id', siteId)
+    .single();
+  return settings?.website_url || 'https://genesiscare.com.my';
+}

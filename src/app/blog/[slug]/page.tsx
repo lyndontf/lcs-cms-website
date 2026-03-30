@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPostBySlug, getPublishedPosts } from '@/lib/supabase';
-import { getCurrentSiteId } from '@/lib/site-context';
+import { getCurrentSiteId, getCurrentSiteBaseUrl } from '@/lib/site-context';
 import ContentRenderer from '@/components/ContentRenderer';
 
 interface PostPageProps {
@@ -17,12 +17,15 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const siteId = await getCurrentSiteId();
+  const [siteId, baseUrl] = await Promise.all([getCurrentSiteId(), getCurrentSiteBaseUrl()]);
   const post = await getPostBySlug(slug, siteId || undefined);
   if (!post) return { title: 'Post Not Found' };
   return {
     title: post.meta_title || post.title,
     description: post.meta_description || post.excerpt || undefined,
+    alternates: {
+      canonical: `${baseUrl}/blog/${slug}`,
+    },
   };
 }
 
