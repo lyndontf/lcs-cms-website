@@ -1,43 +1,57 @@
 import { MetadataRoute } from 'next';
+import { headers } from 'next/headers';
 import { createClient } from '@/lib/supabase';
 
 /**
- * Dynamic sitemap generation.
- * Generates entries for all published pages and blog posts across all sites.
- * Each entry uses the site's canonical domain (from cms_site_settings.website_url).
+ * Domain-aware dynamic sitemap.
+ * Only includes URLs belonging to the site that matches the current request's
+ * domain (via the x-site-slug header set by middleware). This prevents
+ * "URL not allowed" errors in Google Search Console when each domain's
+ * sitemap is submitted to its own Search Console property.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const supabase = createClient();
+  const headersList = await headers();
+  const siteSlug = headersList.get('x-site-slug') || 'centre';
 
-  // Get site settings with website URLs
-  const { data: siteSettings } = await supabase
+  // Resolve the current site's ID and canonical URL
+  const { data: site } = await supabase
+    .from('cms_sites')
+    .select('id')
+    .eq('slug', siteSlug)
+    .single();
+
+  if (!site) return [];
+
+  const siteId = site.id;
+
+  const { data: settings } = await supabase
     .from('cms_site_settings')
-    .select('site_id, website_url');
+    .select('website_url')
+    .eq('site_id', siteId)
+    .single();
 
-  const settingsMap = new Map(
-    (siteSettings || []).map((s: { site_id: string; website_url: string }) => [s.site_id, s.website_url])
-  );
+  const baseUrl = settings?.website_url || 'https://genesiscare.com.my';
 
-  // Get all published pages
+  // Get published pages for this site only
   const { data: pages } = await supabase
     .from('cms_pages')
-    .select('slug, site_id, updated_at')
+    .select('slug, updated_at')
     .eq('status', 'published')
+    .eq('site_id', siteId)
     .order('sort_order', { ascending: true });
 
-  // Get all published posts
+  // Get published posts for this site only
   const { data: posts } = await supabase
     .from('cms_posts')
-    .select('slug, site_id, updated_at')
+    .select('slug, updated_at')
     .eq('status', 'published')
+    .eq('site_id', siteId)
     .order('published_at', { ascending: false });
 
   const entries: MetadataRoute.Sitemap = [];
 
   for (const page of pages || []) {
-    const baseUrl = settingsMap.get(page.site_id);
-    if (!baseUrl) continue;
-
     const url =
       page.slug === 'home'
         ? baseUrl
@@ -52,9 +66,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   for (const post of posts || []) {
-    const baseUrl = settingsMap.get(post.site_id);
-    if (!baseUrl) continue;
-
     entries.push({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: new Date(post.updated_at),
