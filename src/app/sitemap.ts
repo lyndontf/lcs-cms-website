@@ -2,6 +2,10 @@ import { MetadataRoute } from 'next';
 import { headers } from 'next/headers';
 import { createClient } from '@/lib/supabase';
 
+// Force dynamic rendering — never statically generate or cache this route
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 /**
  * Domain-aware dynamic sitemap.
  * Only includes URLs belonging to the site that matches the current request's
