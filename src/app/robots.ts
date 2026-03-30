@@ -1,17 +1,14 @@
 import { MetadataRoute } from 'next';
-import { getCurrentSiteBaseUrl } from '@/lib/site-context';
 
-export default async function robots(): Promise<MetadataRoute.Robots> {
-  const baseUrl = await getCurrentSiteBaseUrl();
-
+export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/preview/', '/api/', '/_next/'],
+        disallow: ['/api/', '/lcs/', '/gta/', '/glc-hire/', '/project-deo/'],
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: 'https://genesiscare.com.my/sitemap.xml',
   };
 }

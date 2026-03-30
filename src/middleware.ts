@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const DOMAIN_TO_SITE: Record<string, string> = {
+  'genesiscare.com.my': 'centre',
+  'www.genesiscare.com.my': 'centre',
   'lifecaresystems.com.my': 'lcs',
   'www.lifecaresystems.com.my': 'lcs',
   'gtacademy.com.my': 'gta',
@@ -9,13 +11,11 @@ const DOMAIN_TO_SITE: Record<string, string> = {
   'www.glchire.com': 'glc-hire',
   'agency.genesiscare.com.my': 'glc-hire',
   'www.agency.genesiscare.com.my': 'glc-hire',
-  'genesiscare.com.my': 'centre',
-  'www.genesiscare.com.my': 'centre',
   'projectdeo.com.my': 'project-deo',
   'www.projectdeo.com.my': 'project-deo',
 };
 
-// Canonical (non-www) domain for each www variant — 301 redirect targets
+// Canonical (non-www) domain for each www variant — used for 301 redirects
 const WWW_TO_CANONICAL: Record<string, string> = {
   'www.lifecaresystems.com.my': 'lifecaresystems.com.my',
   'www.gtacademy.com.my': 'gtacademy.com.my',
@@ -37,7 +37,7 @@ export function middleware(request: NextRequest) {
   const hostname = request.headers.get('host')?.split(':')[0] || '';
   const pathname = request.nextUrl.pathname;
 
-  // ── 1. Redirect www → non-www with permanent 301 ──
+  // ── 1. Redirect www → non-www (permanent 301) ──
   const canonicalHost = WWW_TO_CANONICAL[hostname];
   if (canonicalHost) {
     const url = request.nextUrl.clone();
@@ -69,14 +69,12 @@ export function middleware(request: NextRequest) {
       url.pathname = stripped;
       const response = NextResponse.rewrite(url);
       response.headers.set('x-site-slug', siteSlug);
-      response.headers.set('x-pathname', pathname);
       return response;
     }
   }
 
   const response = NextResponse.next();
   response.headers.set('x-site-slug', siteSlug || 'centre');
-  response.headers.set('x-pathname', pathname);
   return response;
 }
 
