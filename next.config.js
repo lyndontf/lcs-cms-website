@@ -107,7 +107,6 @@ const nextConfig = {
       { source: '/retirement-home-in-johor-bahru/', destination: '/elderly-care-in-johor', permanent: true },
 
       // Post-op / rehab (old slug → new or closest)
-      { source: '/post-op-care-malaysia', destination: '/post-op-care-malaysia', permanent: true },
       { source: '/post-op-care-in-petaling-jaya', destination: '/post-op-care-malaysia', permanent: true },
       { source: '/post-op-care-in-petaling-jaya/', destination: '/post-op-care-malaysia', permanent: true },
       { source: '/post-op-care-in-klang', destination: '/post-op-care-malaysia', permanent: true },
@@ -226,8 +225,9 @@ const nextConfig = {
       // Old WordPress category pages → blog
       { source: '/category/:path*', destination: '/blog', permanent: true },
 
-      // Old WordPress /wp-content paths → homepage
+      // Old WordPress /wp-content and /wp-includes paths → homepage
       { source: '/wp-content/:path*', destination: '/', permanent: true },
+      { source: '/wp-includes/:path*', destination: '/', permanent: true },
 
       // Old Elementor floating buttons
       { source: '/e-floating-buttons/:path*', destination: '/', permanent: true },
