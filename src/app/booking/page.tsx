@@ -64,4 +64,7 @@ export default function BookingPage() {
             <p className="text-xs text-gray-500">Meet our care team, see the rooms, and ask all the questions you need.</p>
           </div>
         </div>
-      </secti
+      </section>
+    </div>
+  );
+}
