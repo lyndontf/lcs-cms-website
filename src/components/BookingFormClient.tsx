@@ -13,8 +13,20 @@ import {
   type SlotConfig,
   type CareType,
 } from '@/lib/supabase';
+import { sendEnquiryEmail, buildBookingEmail, buildBookingConfirmationEmail } from '@/lib/email';
 
 /* ─── helpers ─────────────────────────────────────────────────── */
+
+/** Extract plain address string — the DB may store it as `{"address":"..."}` JSON */
+function parseAddress(raw: string | null): string {
+  if (!raw) return '';
+  try {
+    const parsed = JSON.parse(raw);
+    return parsed.address ?? raw;
+  } catch {
+    return raw;
+  }
+}
 
 function formatTime(t: string): string {
   const [h, m] = t.split(':').map(Number);
@@ -278,9 +290,42 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
     setSubmitting(false);
 
     if (result.success) {
+      const displayDate = fmtDisplay(selectedDate);
+      const displayTime = `${formatTime(selectedSlot.start_time)} – ${formatTime(selectedSlot.end_time)}`;
       setSubmitted(true);
-      setConfirmedDate(fmtDisplay(selectedDate));
-      setConfirmedTime(`${formatTime(selectedSlot.start_time)} – ${formatTime(selectedSlot.end_time)}`);
+      setConfirmedDate(displayDate);
+      setConfirmedTime(displayTime);
+
+      // Fire-and-forget email notifications
+      const careTypeName = form.careTypeId
+        ? careTypes.find((ct) => ct.id === form.careTypeId)?.display_text
+        : undefined;
+      const bookingEmailData = {
+        centre: selectedCentre.name,
+        date: displayDate,
+        time: displayTime,
+        visitorName: form.name.trim(),
+        visitorPhone: form.phone.trim(),
+        visitorEmail: form.email.trim() || null,
+        residentName: form.residentName.trim() || null,
+        relationship: form.relationship.trim() || null,
+        careType: careTypeName,
+      };
+
+      // 1. Admin notification → enquiries@genesiscare.com.my
+      const { subject, html } = buildBookingEmail(bookingEmailData);
+      sendEnquiryEmail(subject, html);
+
+      // 2. Submitter confirmation (only if visitor provided their email)
+      const visitorEmail = form.email.trim();
+      if (visitorEmail) {
+        const { subject: confSubject, html: confHtml } = buildBookingConfirmationEmail({
+          ...bookingEmailData,
+          centrePhone: selectedCentre.marketing_phone_no,
+          centreAddress: parseAddress(selectedCentre.address),
+        });
+        sendEnquiryEmail(confSubject, confHtml, visitorEmail);
+      }
     } else if (result.duplicate) {
       setError(l.duplicateError);
       handleDateSelect(selectedDate);
@@ -356,8 +401,8 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-3xl mx-auto">
       {/* ── header ── */}
       <div className="bg-gradient-to-r from-[#2E72B8] to-[#09B7D3] px-6 py-5 text-white">
-        <h2 className="text-xl font-extrabold">{l.title}</h2>
-        <p className="text-sm text-white/80 mt-1">{l.subtitle}</p>
+        <h2 className="text-xl font-extrabold text-white">{l.title}</h2>
+        <p className="text-sm text-white mt-1">{l.subtitle}</p>
       </div>
 
       {/* ── progress steps ── */}
@@ -419,7 +464,7 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
                   <div className={`text-sm font-bold ${isSelected ? 'text-[#2E72B8]' : 'text-gray-900'}`}>
                     {short}
                   </div>
-                  <div className="text-[11px] text-gray-500 mt-0.5 line-clamp-1">{c.address}</div>
+                  <div className="text-[11px] text-gray-500 mt-0.5 line-clamp-1">{parseAddress(c.address)}</div>
                 </button>
               );
             })}
