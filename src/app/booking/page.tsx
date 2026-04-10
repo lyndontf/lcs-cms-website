@@ -19,10 +19,10 @@ export default function BookingPage() {
       {/* Hero banner */}
       <section className="bg-gradient-to-r from-[#2E72B8] to-[#09B7D3] py-12 sm:py-16">
         <div className="max-w-3xl mx-auto px-4 text-center text-white">
-          <h1 className="text-3xl sm:text-4xl font-extrabold mb-3">
+          <h1 className="text-3xl sm:text-4xl font-extrabold mb-3" style={{ color: '#ffffff' }}>
             Book a Free Visit
           </h1>
-          <p className="text-base sm:text-lg text-white/85 max-w-xl mx-auto">
+          <p className="text-base sm:text-lg max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.85)' }}>
             Experience our world-class elderly care first-hand. Tour our facilities, meet our care team, and see why families trust Genesis Life Care.
           </p>
         </div>
@@ -64,7 +64,4 @@ export default function BookingPage() {
             <p className="text-xs text-gray-500">Meet our care team, see the rooms, and ask all the questions you need.</p>
           </div>
         </div>
-      </section>
-    </div>
-  );
-}
+      </secti

@@ -401,8 +401,8 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-3xl mx-auto">
       {/* ── header ── */}
       <div className="bg-gradient-to-r from-[#2E72B8] to-[#09B7D3] px-6 py-5 text-white">
-        <h2 className="text-xl font-extrabold text-white">{l.title}</h2>
-        <p className="text-sm text-white mt-1">{l.subtitle}</p>
+        <h2 className="text-xl font-extrabold" style={{ color: '#ffffff' }}>{l.title}</h2>
+        <p className="text-sm mt-1" style={{ color: 'rgba(255,255,255,0.9)' }}>{l.subtitle}</p>
       </div>
 
       {/* ── progress steps ── */}
@@ -747,22 +747,4 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full bg-[#2E72B8] text-white py-3 rounded-xl font-bold text-sm hover:bg-[#245d9a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md mt-2"
-              >
-                {submitting ? l.submitting : l.submit}
-              </button>
-            </div>
-
-            <p className="text-center text-[11px] text-gray-400 mt-3 flex items-center justify-center gap-2">
-              <span>{l.trust1}</span>
-              <span className="text-gray-300">·</span>
-              <span>{l.trust2}</span>
-              <span className="text-gray-300">·</span>
-              <span>{l.trust3}</span>
-            </p>
-          </form>
-        )}
-      </div>
-    </div>
-  );
-}
+        
