@@ -20,3 +20,12 @@
   }
 }
 
+/* Override legacy WordPress stylesheet !important rules for white-text sections */
+.force-white-text h1,
+.force-white-text h2,
+.force-white-text h3,
+.force-white-text p,
+.force-white-text span {
+  color: #ffffff !important;
+}
+

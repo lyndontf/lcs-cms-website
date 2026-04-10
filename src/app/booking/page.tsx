@@ -17,7 +17,7 @@ export default function BookingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero banner */}
-      <section className="bg-gradient-to-r from-[#2E72B8] to-[#09B7D3] py-12 sm:py-16">
+      <section className="bg-gradient-to-r from-[#2E72B8] to-[#09B7D3] py-12 sm:py-16 force-white-text">
         <div className="max-w-3xl mx-auto px-4 text-center text-white">
           <h1 className="text-3xl sm:text-4xl font-extrabold mb-3" style={{ color: '#ffffff' }}>
             Book a Free Visit

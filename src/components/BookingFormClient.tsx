@@ -400,7 +400,7 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-3xl mx-auto">
       {/* ── header ── */}
-      <div className="bg-gradient-to-r from-[#2E72B8] to-[#09B7D3] px-6 py-5 text-white">
+      <div className="bg-gradient-to-r from-[#2E72B8] to-[#09B7D3] px-6 py-5 text-white force-white-text">
         <h2 className="text-xl font-extrabold text-white" style={{ color: '#ffffff' }}>{l.title}</h2>
         <p className="text-sm text-white mt-1" style={{ color: 'rgba(255,255,255,0.9)' }}>{l.subtitle}</p>
       </div>
