@@ -1,17 +1,24 @@
 /**
  * Fire-and-forget helper — sends an email via /api/send-email.
  * Pass `to` to override the default admin inbox (enquiries@genesiscare.com.my).
- * Never throws; failures are logged but do not block the user.
+ * Never throws; failures are logged to console (visible in Vercel function logs).
  */
 export async function sendEnquiryEmail(subject: string, html: string, to?: string): Promise<void> {
+  const recipient = to ?? 'enquiries@genesiscare.com.my';
   try {
-    await fetch('/api/send-email', {
+    const res = await fetch('/api/send-email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ subject, html, ...(to ? { to } : {}) }),
     });
+    if (!res.ok) {
+      const errText = await res.text().catch(() => '(unreadable)');
+      console.error(`[sendEnquiryEmail] FAILED (HTTP ${res.status}) to=${recipient} subject="${subject}" body=${errText}`);
+    } else {
+      console.log(`[sendEnquiryEmail] sent OK to=${recipient} subject="${subject}"`);
+    }
   } catch (err) {
-    console.error('sendEnquiryEmail failed:', err);
+    console.error(`[sendEnquiryEmail] NETWORK ERROR to=${recipient} subject="${subject}"`, err);
   }
 }
 
