@@ -204,7 +204,7 @@ export default function PostOpCareZh() {
                   alt="术后护理专业护理站"
                   className="rounded-2xl shadow-2xl w-full object-cover"
                 />
-                <div className="absolute -bottom-5 -right-5 bg-primary text-white rounded-xl px-6 py-4 shadow-lg hidden sm:block">
+                <div className="absolute -bottom-5 -right-5 bg-secondary text-white text-center rounded-xl px-6 py-4 shadow-lg hidden sm:block">
                   <p className="text-3xl font-extrabold" style={{ color: 'white' }}>2wk+</p>
                   <p className="text-xs" style={{ color: 'rgba(255,255,255,0.8)' }}>灵活住宿</p>
                 </div>

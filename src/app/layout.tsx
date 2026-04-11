@@ -66,7 +66,7 @@ export default async function RootLayout({
             />
             <script
               dangerouslySetInnerHTML={{
-                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${settings.google_analytics_id}');`,
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${settings.google_analytics_id}');${settings.google_ads_id ? `gtag('config','${settings.google_ads_id}');` : ''}`,
               }}
             />
           </>
@@ -77,15 +77,4 @@ export default async function RootLayout({
         <LayoutWrapper
           isCmsSite={isCmsSite}
           isZh={isZh}
-          footer={<Footer settings={settings} menuItems={footerMenu?.items || headerMenu?.items || []} />}
-        >
-          {children}
-        </LayoutWrapper>
-        <TrackingScript />
-        {settings?.custom_css && (
-          <style dangerouslySetInnerHTML={{ __html: settings.custom_css }} />
-        )}
-      </body>
-    </html>
-  );
-}
+          footer={<Footer settings={settings} men

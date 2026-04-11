@@ -359,7 +359,7 @@ export default function NursingHomePuchong() {
                 alt="Genesis Life Care Puchong building"
                 className="rounded-2xl shadow-lg w-full h-[400px] object-cover"
               />
-              <div className="bed-badge absolute -bottom-5 -right-5 bg-primary text-white rounded-xl px-6 py-4 shadow-lg hidden sm:block">
+              <div className="bed-badge absolute -bottom-5 -right-5 bg-secondary text-white text-center rounded-xl px-6 py-4 shadow-lg hidden sm:block">
                 <p className="text-3xl font-extrabold">{centre.beds}</p>
                 <p className="text-sm font-medium">Bed capacity</p>
               </div>

@@ -222,7 +222,7 @@ export default function PalliativeCare() {
                   alt="Comfortable single room for palliative care at Genesis Life Care"
                   className="rounded-2xl shadow-2xl w-full object-cover"
                 />
-                <div className="absolute -bottom-5 -right-5 bg-primary text-white rounded-xl px-6 py-4 shadow-lg hidden sm:block">
+                <div className="absolute -bottom-5 -right-5 bg-secondary text-white text-center rounded-xl px-6 py-4 shadow-lg hidden sm:block">
                   <p className="text-3xl font-extrabold" style={{ color: 'white' }}>24/7</p>
                   <p className="text-xs" style={{ color: 'rgba(255,255,255,0.8)' }}>Comfort Care</p>
                 </div>
