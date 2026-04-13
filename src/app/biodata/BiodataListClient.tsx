@@ -84,7 +84,7 @@ export default function BiodataListClient({ candidates }: { candidates: BiodataC
             <Link
               key={c.id}
               href={`/biodata/${c.id}`}
-              className="group bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-[#09B7D3]/30 transition-all duration-200 overflow-hidden"
+              className="group bg-[#F0F7FF] rounded-xl border border-blue-100 shadow-sm hover:shadow-lg hover:border-[#09B7D3]/30 transition-all duration-200 overflow-hidden"
             >
               {/* Card content */}
               <div className="p-6">

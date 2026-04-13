@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 import { getAvailableBiodata, getBiodataById } from '@/lib/supabase';
 import { getCurrentSiteBaseUrl } from '@/lib/site-context';
 import type { BiodataCandidate, BiodataSkill } from '@/lib/supabase';
+import GlcHireNav from '@/components/GlcHireNav';
+import GlcHireFooter from '@/components/GlcHireFooter';
 
 export const revalidate = 60;
 
@@ -73,6 +75,8 @@ export default async function BiodataDetailPage({ params }: { params: Promise<{ 
   const willingSkills = (c.skills || []).filter((s: BiodataSkill) => s.willing && !s.experienced);
 
   return (
+    <>
+    <GlcHireNav />
     <article className="bg-gray-50 min-h-screen">
       {/* ─── HERO STRIP ─── */}
       <section className="bg-gradient-to-r from-[#2E72B8] to-[#09B7D3] text-white">
@@ -316,6 +320,8 @@ export default async function BiodataDetailPage({ params }: { params: Promise<{ 
         </div>
       </div>
     </article>
+    <GlcHireFooter />
+    </>
   );
 }
 

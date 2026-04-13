@@ -252,13 +252,34 @@ export async function submitJobApplication(formData: {
   return !error;
 }
 
+export async function uploadBiodataPhoto(file: File): Promise<string | null> {
+  const ext = file.name.split('.').pop() || 'jpg';
+  const filename = `applications/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+  const { error } = await supabase.storage
+    .from('biodata-photos')
+    .upload(filename, file, { contentType: file.type, upsert: false });
+  if (error) return null;
+  const { data: urlData } = supabase.storage.from('biodata-photos').getPublicUrl(filename);
+  return urlData?.publicUrl || null;
+}
+
 export async function submitBiodataApplication(formData: {
   full_name: string;
   applicant_email: string;
   applicant_phone?: string;
   job_category?: string;
   nationality?: string;
+  date_of_birth?: string;
+  age?: number;
+  marital_status?: string;
+  education_level?: string;
+  religion?: string;
+  height_cm?: number;
+  weight_kg?: number;
+  food_preference?: string;
+  languages?: { name: string; level: string }[];
   cover_letter?: string;
+  photo_url?: string;
   job_listing_id?: string;
   organization_id: string;
 }): Promise<boolean> {
@@ -266,7 +287,7 @@ export async function submitBiodataApplication(formData: {
     ...formData,
     status: 'pending',
     application_source: 'website',
-    languages: [],
+    languages: formData.languages || [],
     skills: [],
     helper_experience: {},
     previous_employers: [],
