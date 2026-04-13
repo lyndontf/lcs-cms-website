@@ -140,8 +140,8 @@ export default async function HomePage() {
           </div>
         )}
 
-        {/* Recent blog posts */}
-        {recentPosts.length > 0 && (
+        {/* Recent blog posts — skip for full-HTML pages which embed their own footer */}
+        {recentPosts.length > 0 && !(page?.content?.length === 1 && page?.content?.[0]?.type === 'html') && (
           <section className="bg-white py-14 sm:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12">
