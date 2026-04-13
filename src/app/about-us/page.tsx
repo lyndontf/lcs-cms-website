@@ -1,7 +1,9 @@
 import { Fragment } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { getSiteSettings } from '@/lib/supabase';
+import { notFound } from 'next/navigation';
+import { getSiteSettings, getPageBySlug } from '@/lib/supabase';
+import { getCurrentSiteSlug, getCurrentSiteId } from '@/lib/site-context';
 import GlcHireSection from '@/components/sections/GlcHireSection';
 import FaqSection from '@/components/sections/FaqSection';
 import FinalCtaSection from '@/components/sections/FinalCtaSection';
@@ -104,6 +106,25 @@ const milestones = [
 ];
 
 export default async function AboutPage() {
+  // For non-centre sites (e.g. GLC Hire), this static route shadows the [slug] dynamic route.
+  // Detect the current site and serve the CMS about page instead.
+  const siteSlug = await getCurrentSiteSlug();
+  if (siteSlug !== 'centre') {
+    const siteId = await getCurrentSiteId();
+    // Try 'about-us' slug first, then fall back to 'about'
+    let page = await getPageBySlug('about-us', siteId || undefined);
+    if (!page) page = await getPageBySlug('about', siteId || undefined);
+    if (!page) notFound();
+    if (page.content?.length === 1 && page.content[0].type === 'html') {
+      return (
+        <div
+          className="cms-html-page"
+          dangerouslySetInnerHTML={{ __html: page.content[0].content || '' }}
+        />
+      );
+    }
+  }
+
   const settings = await getSiteSettings();
 
   return (

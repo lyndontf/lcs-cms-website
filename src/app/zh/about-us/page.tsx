@@ -1,7 +1,9 @@
 import { Fragment } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { getSiteSettings } from '@/lib/supabase';
+import { notFound } from 'next/navigation';
+import { getSiteSettings, getPageBySlug } from '@/lib/supabase';
+import { getCurrentSiteSlug, getCurrentSiteId } from '@/lib/site-context';
 
 export const metadata: Metadata = {
   title: '关于Genesis Life Care — 马来西亚值得信赖的护老院运营商',
@@ -96,6 +98,25 @@ const milestones = [
 ];
 
 export default async function AboutPageZh() {
+  // For non-centre sites (e.g. GLC Hire), this static route shadows the [slug] dynamic route.
+  // Detect the current site and serve the CMS zh-about page instead.
+  const siteSlug = await getCurrentSiteSlug();
+  if (siteSlug !== 'centre') {
+    const siteId = await getCurrentSiteId();
+    // Try 'zh-about-us' slug first, then fall back to 'zh-about'
+    let page = await getPageBySlug('zh-about-us', siteId || undefined);
+    if (!page) page = await getPageBySlug('zh-about', siteId || undefined);
+    if (!page) notFound();
+    if (page.content?.length === 1 && page.content[0].type === 'html') {
+      return (
+        <div
+          className="cms-html-page"
+          dangerouslySetInnerHTML={{ __html: page.content[0].content || '' }}
+        />
+      );
+    }
+  }
+
   const settings = await getSiteSettings();
 
   return (
