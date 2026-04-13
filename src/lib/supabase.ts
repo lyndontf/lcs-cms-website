@@ -374,4 +374,9 @@ export async function submitBooking(booking: {
 }): Promise<{ success: boolean; duplicate?: boolean }> {
   const { error } = await supabase.from('booking').insert(booking);
   if (!error) return { success: true };
-  const msg = error.message?.toLowerCase() ?
+  const msg = error.message?.toLowerCase() ?? '';
+  if (msg.includes('duplicate') || msg.includes('unique') || msg.includes('already')) {
+    return { success: false, duplicate: true };
+  }
+  return { success: false };
+}
