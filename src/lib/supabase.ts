@@ -252,6 +252,86 @@ export async function submitJobApplication(formData: {
   return !error;
 }
 
+// ─── Biodata (GLC Hire Candidates) ───
+
+export interface BiodataLanguage {
+  name: string;
+  level: string;
+}
+
+export interface BiodataSkill {
+  area: string;
+  willing: boolean;
+  experienced: boolean;
+  stars: number;
+  note?: string;
+}
+
+export interface BiodataPreviousEmployer {
+  country?: string;
+  period_from?: string;
+  period_to?: string;
+  housing_type?: string;
+  family_composition?: string;
+  termination_reason?: string;
+  duties?: string;
+  remarks?: string;
+}
+
+export interface BiodataCandidate {
+  id: string;
+  organization_id: string;
+  reference_no: string | null;
+  status: 'available' | 'unavailable' | 'placed';
+  job_category: string | null;
+  photo_url: string | null;
+  pdf_url: string | null;
+  full_name: string;
+  date_of_birth: string | null;
+  age: number | null;
+  nationality: string | null;
+  height_cm: number | null;
+  weight_kg: number | null;
+  education_level: string | null;
+  religion: string | null;
+  food_preference: string | null;
+  diet: string | null;
+  siblings_count: number | null;
+  sibling_position: number | null;
+  marital_status: string | null;
+  children_info: string | null;
+  monthly_salary_myr: number | null;
+  rest_days_per_month: number | null;
+  off_day_compensation_myr: number | null;
+  languages: BiodataLanguage[];
+  skills: BiodataSkill[];
+  helper_experience: Record<string, string>;
+  previous_employers: BiodataPreviousEmployer[];
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export async function getAvailableBiodata(): Promise<BiodataCandidate[]> {
+  const { data } = await supabase
+    .from('glc_biodata')
+    .select('*')
+    .eq('status', 'available')
+    .order('created_at', { ascending: false });
+  return (data || []) as BiodataCandidate[];
+}
+
+export async function getBiodataById(id: string): Promise<BiodataCandidate | null> {
+  const { data } = await supabase
+    .from('glc_biodata')
+    .select('*')
+    .eq('id', id)
+    .eq('status', 'available')
+    .limit(1)
+    .single();
+  return data as BiodataCandidate | null;
+}
+
 // ─── Contact Forms ───
 
 export async function submitContactForm(formData: {
@@ -374,9 +454,4 @@ export async function submitBooking(booking: {
 }): Promise<{ success: boolean; duplicate?: boolean }> {
   const { error } = await supabase.from('booking').insert(booking);
   if (!error) return { success: true };
-  const msg = error.message?.toLowerCase() ?? '';
-  if (msg.includes('duplicate') || msg.includes('unique') || msg.includes('already')) {
-    return { success: false, duplicate: true };
-  }
-  return { success: false };
-}
+  const msg = error.message?.toLowerCase() ?
