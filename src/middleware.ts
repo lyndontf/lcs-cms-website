@@ -58,6 +58,8 @@ export function middleware(request: NextRequest) {
     }
   }
 
+  const effectiveSlug = siteSlug || 'centre';
+
   // For path-prefix access in dev (e.g. /lcs/features), strip the prefix
   // and rewrite to the generic route (/ or /[slug]) so CMS content is served.
   // e.g. /lcs → / (home), /lcs/features → /features (dynamic [slug] route)
@@ -67,14 +69,21 @@ export function middleware(request: NextRequest) {
       const stripped = pathname.slice(matchedPrefix.length) || '/';
       const url = request.nextUrl.clone();
       url.pathname = stripped;
-      const response = NextResponse.rewrite(url);
-      response.headers.set('x-site-slug', siteSlug);
+      // Set on request headers so server components can read it via headers()
+      const reqHeaders = new Headers(request.headers);
+      reqHeaders.set('x-site-slug', effectiveSlug);
+      const response = NextResponse.rewrite(url, { request: { headers: reqHeaders } });
+      response.headers.set('x-site-slug', effectiveSlug);
       return response;
     }
   }
 
-  const response = NextResponse.next();
-  response.headers.set('x-site-slug', siteSlug || 'centre');
+  // Set on BOTH request headers (readable by server components via headers())
+  // AND response headers (for compatibility with other consumers)
+  const reqHeaders = new Headers(request.headers);
+  reqHeaders.set('x-site-slug', effectiveSlug);
+  const response = NextResponse.next({ request: { headers: reqHeaders } });
+  response.headers.set('x-site-slug', effectiveSlug);
   return response;
 }
 
