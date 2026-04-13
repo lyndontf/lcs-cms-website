@@ -12,7 +12,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export const revalidate = 60;
+// force-dynamic: same reason as zh/[slug]/page.tsx — ISR has no request context,
+// causing the layout to default to 'centre' and bake HeaderZh into cached HTML.
+export const dynamic = 'force-dynamic';
 
 export default async function ZhHomePage() {
   const [siteId, siteSlug] = await Promise.all([getCurrentSiteId(), getCurrentSiteSlug()]);

@@ -26,7 +26,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export const revalidate = 60;
+// force-dynamic: layout uses headers() to detect site slug (glc-hire vs centre).
+// ISR background re-renders have no request context, causing headers() to return
+// empty and the layout to default to 'centre', baking HeaderZh into cached HTML.
+// force-dynamic ensures every render has real request headers available.
+export const dynamic = 'force-dynamic';
 
 export default async function ZhDynamicPage({ params }: PageProps) {
   const { slug } = await params;
