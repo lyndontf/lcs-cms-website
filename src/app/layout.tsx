@@ -77,4 +77,15 @@ export default async function RootLayout({
         <LayoutWrapper
           isCmsSite={isCmsSite}
           isZh={isZh}
-          footer={<Footer settings={settings} men
+          footer={<Footer settings={settings} menuItems={footerMenu?.items || headerMenu?.items || []} />}
+        >
+          {children}
+        </LayoutWrapper>
+        <TrackingScript />
+        {settings?.custom_css && (
+          <style dangerouslySetInnerHTML={{ __html: settings.custom_css }} />
+        )}
+      </body>
+    </html>
+  );
+}
