@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const LOGO_URL =
   'https://hztfeqfnvwzkaeiwldmd.supabase.co/storage/v1/object/public/cms-media/glc-hire/logo.png';
@@ -20,6 +21,14 @@ const NAV_LINKS = [
 
 export default function GlcHireNav() {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+
+  // Close menu then navigate (waits for slide-out animation)
+  const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setOpen(false);
+    setTimeout(() => { window.location.href = href; }, 320);
+  }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -151,10 +160,10 @@ export default function GlcHireNav() {
 
         {/* Nav links — each separated by a thin line */}
         {NAV_LINKS.map((link) => (
-          <Link
+          <a
             key={link.href}
             href={link.href}
-            onClick={() => setOpen(false)}
+            onClick={(e) => handleNavClick(e, link.href)}
             style={{
               display: 'block',
               fontSize: '1rem',
@@ -166,7 +175,7 @@ export default function GlcHireNav() {
             }}
           >
             {link.label}
-          </Link>
+          </a>
         ))}
 
         {/* CTA buttons at bottom */}
