@@ -119,9 +119,11 @@ export default function GlcHireNav() {
 
       {/* Slide-in panel */}
       <div
-        className={`md:hidden fixed top-0 right-0 h-full w-[85%] max-w-[320px] bg-white z-[60] shadow-2xl transition-transform duration-300 ease-out ${
-          open ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className="md:hidden fixed top-0 right-0 h-full w-[85%] max-w-[320px] bg-white z-[60] shadow-2xl"
+        style={{
+          transform: open ? 'translateX(0)' : 'translateX(100%)',
+          transition: 'transform 0.3s ease-out',
+        }}
       >
         {/* Panel header */}
         <div className="flex items-center justify-between h-16 px-5 border-b border-gray-100">
