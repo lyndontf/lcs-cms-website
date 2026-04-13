@@ -25,24 +25,26 @@
    even when .cms-html-page wrapper is absent (ISR cache edge case)
    ═══════════════════════════════════════════════════════════════ */
 .mobile-menu {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 80%;
-  max-width: 320px;
-  height: 100vh;
+  position: fixed !important;
+  top: 0 !important;
+  left: auto !important;
+  right: 0 !important;
+  width: 80% !important;
+  max-width: 320px !important;
+  height: 100vh !important;
   background: #ffffff;
   z-index: 200;
   display: flex;
   flex-direction: column;
   padding: 5rem 1.5rem 2rem;
   box-shadow: -4px 0 24px rgba(0,0,0,0.12);
-  transition: right 0.3s ease;
+  transform: translateX(100%) !important;
+  transition: transform 0.3s ease !important;
   overflow-y: auto;
 }
 
 .mobile-menu.open {
-  right: 0;
+  transform: translateX(0) !important;
 }
 
 /* Also hide desktop nav-links/nav-actions on mobile globally */
@@ -153,27 +155,7 @@
 }
 
 /* ── Mobile Menu overlay (hidden by default) ── */
-.cms-html-page .mobile-menu {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 80%;
-  max-width: 320px;
-  height: 100vh;
-  background: #ffffff;
-  z-index: 200;
-  display: flex;
-  flex-direction: column;
-  padding: 5rem 1.5rem 2rem;
-  gap: 0;
-  box-shadow: -4px 0 24px rgba(0,0,0,0.12);
-  transition: right 0.3s ease;
-  overflow-y: auto;
-}
-
-.cms-html-page .mobile-menu.open {
-  right: 0;
-}
+/* Now handled by global .mobile-menu rule above using transform */
 
 .cms-html-page .mobile-menu a {
   font-size: 1rem;
