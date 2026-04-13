@@ -333,7 +333,7 @@ export default function ForWorkersClient() {
             ))}
             <option value="__other">Other...</option>
           </select>
-          <select value={langLevel} onChange={(e) => setLangLevel(e.target.value)} className={`${INPUT_CLASS} w-36`}>
+          <select value={langLevel} onChange={(e) => setLangLevel(e.target.value)} className={`${INPUT_CLASS} flex-1`}>
             {LANG_LEVELS.map((l) => <option key={l} value={l}>{l}</option>)}
           </select>
           <button
