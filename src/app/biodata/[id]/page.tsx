@@ -101,7 +101,7 @@ export default async function BiodataDetailPage({ params }: { params: Promise<{ 
               </div>
             )}
             <div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold">{name}</h1>
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-white">{name}</h1>
               <p className="text-white/80 text-sm sm:text-base mt-1">{c.job_category || 'Candidate'}</p>
               <div className="flex items-center gap-3 mt-2">
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-400/20 text-emerald-100 border border-emerald-300/30">
