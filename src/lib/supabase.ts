@@ -252,6 +252,39 @@ export async function submitJobApplication(formData: {
   return !error;
 }
 
+export async function submitBiodataApplication(formData: {
+  full_name: string;
+  applicant_email: string;
+  applicant_phone?: string;
+  job_category?: string;
+  nationality?: string;
+  cover_letter?: string;
+  job_listing_id?: string;
+  organization_id: string;
+}): Promise<boolean> {
+  const { error } = await supabase.from('glc_biodata').insert({
+    ...formData,
+    status: 'pending',
+    application_source: 'website',
+    languages: [],
+    skills: [],
+    helper_experience: {},
+    previous_employers: [],
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  });
+  return !error;
+}
+
+export async function getPublishedJobListingsForSite(orgId: string): Promise<JobListing[]> {
+  const { data } = await supabase
+    .from('job_listings')
+    .select('*')
+    .eq('organization_id', orgId)
+    .eq('status', 'published')
+    .order('published_at', { ascending: false });
+  return (data || []) as JobListing[];
+}
 
 // ─── Biodata (GLC Hire Candidates) ───
 
