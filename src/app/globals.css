@@ -21,6 +21,44 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   Global safety net — hide CMS embedded mobile menus by default
+   even when .cms-html-page wrapper is absent (ISR cache edge case)
+   ═══════════════════════════════════════════════════════════════ */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 320px;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 1.5rem 2rem;
+  box-shadow: -4px 0 24px rgba(0,0,0,0.12);
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+/* Also hide desktop nav-links/nav-actions on mobile globally */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none !important;
+  }
+  .nav-actions {
+    display: none !important;
+  }
+  .hamburger {
+    display: flex !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
    CMS HTML Page — embedded nav/header responsive styles
    Applies to GLC Hire, GTA, Project DEO, etc.
    ═══════════════════════════════════════════════════════════════ */
