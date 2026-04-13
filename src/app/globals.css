@@ -20,6 +20,192 @@
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   CMS HTML Page — embedded nav/header responsive styles
+   Applies to GLC Hire, GTA, Project DEO, etc.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Header / Nav ── */
+.cms-html-page header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.cms-html-page header .container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.cms-html-page header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: 1rem;
+}
+
+.cms-html-page .nav-logo {
+  flex-shrink: 0;
+}
+
+.cms-html-page .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.cms-html-page .nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #475569;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.cms-html-page .nav-links a:hover,
+.cms-html-page .nav-links a.active {
+  color: #2E72B8;
+}
+
+.cms-html-page .nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.cms-html-page .nav-phone {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #334155;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* ── Hamburger (hidden on desktop) ── */
+.cms-html-page .hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 101;
+}
+
+.cms-html-page .hamburger span {
+  display: block;
+  width: 22px;
+  height: 2.5px;
+  background: #334155;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* ── Mobile Menu overlay (hidden by default) ── */
+.cms-html-page .mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 320px;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 1.5rem 2rem;
+  gap: 0;
+  box-shadow: -4px 0 24px rgba(0,0,0,0.12);
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+
+.cms-html-page .mobile-menu.open {
+  right: 0;
+}
+
+.cms-html-page .mobile-menu a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #334155;
+  text-decoration: none;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f1f5f9;
+  transition: color 0.2s;
+}
+
+.cms-html-page .mobile-menu a:hover,
+.cms-html-page .mobile-menu a.active {
+  color: #2E72B8;
+}
+
+.cms-html-page .mobile-menu-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.cms-html-page .mobile-menu-ctas {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 1.5rem;
+}
+
+.cms-html-page .mobile-menu-ctas .btn-mobile-full {
+  display: block;
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cms-html-page .mobile-menu-ctas .btn-outline {
+  color: #334155;
+  border: 1.5px solid #cbd5e1;
+}
+
+.cms-html-page .mobile-menu-ctas .btn-green {
+  background: #22c55e;
+  color: #ffffff;
+}
+
+/* ── Mobile breakpoint ── */
+@media (max-width: 768px) {
+  .cms-html-page .nav-links {
+    display: none !important;
+  }
+  .cms-html-page .nav-actions {
+    display: none !important;
+  }
+  .cms-html-page .hamburger {
+    display: flex !important;
+  }
+}
+
 /* Override legacy WordPress stylesheet !important rules for white-text sections */
 .force-white-text h1,
 .force-white-text h2,
