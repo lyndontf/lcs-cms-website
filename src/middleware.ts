@@ -72,6 +72,7 @@ export function middleware(request: NextRequest) {
       // Set on request headers so server components can read it via headers()
       const reqHeaders = new Headers(request.headers);
       reqHeaders.set('x-site-slug', effectiveSlug);
+      reqHeaders.set('x-pathname', pathname);
       const response = NextResponse.rewrite(url, { request: { headers: reqHeaders } });
       response.headers.set('x-site-slug', effectiveSlug);
       return response;
@@ -82,6 +83,7 @@ export function middleware(request: NextRequest) {
   // AND response headers (for compatibility with other consumers)
   const reqHeaders = new Headers(request.headers);
   reqHeaders.set('x-site-slug', effectiveSlug);
+  reqHeaders.set('x-pathname', pathname);
   const response = NextResponse.next({ request: { headers: reqHeaders } });
   response.headers.set('x-site-slug', effectiveSlug);
   return response;
