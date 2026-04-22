@@ -760,4 +760,28 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
               </div>
 
               {error && (
-           
+                <p className="text-xs text-red-600 bg-red-50 px-3 py-2 rounded-lg">{error}</p>
+              )}
+
+              <button
+                type="submit"
+                disabled={submitting}
+                className="w-full bg-[#2E72B8] text-white py-3 rounded-xl font-bold text-sm hover:bg-[#245d9a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md mt-2"
+              >
+                {submitting ? l.submitting : l.submit}
+              </button>
+            </div>
+
+            <p className="text-center text-[11px] text-gray-400 mt-3 flex items-center justify-center gap-2">
+              <span>{l.trust1}</span>
+              <span className="text-gray-300">·</span>
+              <span>{l.trust2}</span>
+              <span className="text-gray-300">·</span>
+              <span>{l.trust3}</span>
+            </p>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}
