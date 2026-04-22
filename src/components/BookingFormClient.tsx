@@ -81,6 +81,7 @@ const t = {
     blocked: 'This date is not available.',
     full: 'Full',
     available: 'Available',
+    tooSoon: 'Too soon',
     successTitle: 'Booking Confirmed!',
     successMsg: 'We\'ve received your booking and will contact you to confirm.',
     successDate: 'Date',
@@ -123,6 +124,7 @@ const t = {
     blocked: '该日期不可用。',
     full: '已满',
     available: '可用',
+    tooSoon: '时间过近',
     successTitle: '预约成功！',
     successMsg: '我们已收到您的预约，将与您联系确认。',
     successDate: '日期',
@@ -227,9 +229,24 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
 
   const isPast = (d: Date) => fmtISO(d) < todayISO;
   const isBlocked = (d: Date) => blockedDates.has(fmtISO(d));
+
+  /** Returns true if a slot on the given date starts within 6 hours of now. */
+  const isSlotTooSoon = (slot: SlotConfig, date: Date): boolean => {
+    if (fmtISO(date) !== todayISO) return false;
+    const now = new Date();
+    const [slotHour, slotMin] = slot.start_time.split(':').map(Number);
+    const slotDateTime = new Date(date.getFullYear(), date.getMonth(), date.getDate(), slotHour, slotMin, 0);
+    const sixHoursFromNow = new Date(now.getTime() + 6 * 60 * 60 * 1000);
+    return slotDateTime < sixHoursFromNow;
+  };
+
   const hasSlots = (d: Date) => {
     const dow = d.getDay(); // 0=Sun
-    return slotConfigs.some(c => c.day_of_week === null || c.day_of_week === dow);
+    return slotConfigs.some(c => {
+      const matchesDow = c.day_of_week === null || c.day_of_week === dow;
+      if (!matchesDow) return false;
+      return !isSlotTooSoon(c, d);
+    });
   };
 
   /* ── date selection ── */
@@ -594,31 +611,33 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
                 {availableSlots.map((slot) => {
                   const full = isSlotFull(slot);
+                  const tooSoon = selectedDate ? isSlotTooSoon(slot, selectedDate) : false;
+                  const disabled = full || tooSoon;
                   const isSelected = selectedSlot?.id === slot.id;
 
                   return (
                     <button
                       key={slot.id}
                       type="button"
-                      disabled={full}
-                      onClick={() => { setSelectedSlot(slot); setError(''); }}
+                      disabled={disabled}
+                      onClick={() => { if (!disabled) { setSelectedSlot(slot); setError(''); } }}
                       className={`p-2.5 rounded-xl border-2 text-center transition-all ${
                         isSelected
                           ? 'border-[#2E72B8] bg-blue-50 shadow-sm'
-                          : full
+                          : disabled
                           ? 'border-gray-100 bg-gray-50 cursor-not-allowed'
                           : 'border-gray-200 hover:border-[#2E72B8]/40 bg-white'
                       }`}
                     >
                       <div
                         className={`text-sm font-bold ${
-                          isSelected ? 'text-[#2E72B8]' : full ? 'text-gray-400' : 'text-gray-800'
+                          isSelected ? 'text-[#2E72B8]' : disabled ? 'text-gray-400' : 'text-gray-800'
                         }`}
                       >
                         {formatTime(slot.start_time)}
                       </div>
-                      <div className={`text-[10px] mt-0.5 ${full ? 'text-red-400' : 'text-green-600'} font-semibold`}>
-                        {full ? l.full : l.available}
+                      <div className={`text-[10px] mt-0.5 ${tooSoon ? 'text-orange-400' : full ? 'text-red-400' : 'text-green-600'} font-semibold`}>
+                        {tooSoon ? l.tooSoon : full ? l.full : l.available}
                       </div>
                     </button>
                   );
@@ -741,28 +760,4 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
               </div>
 
               {error && (
-                <p className="text-xs text-red-600 bg-red-50 px-3 py-2 rounded-lg">{error}</p>
-              )}
-
-              <button
-                type="submit"
-                disabled={submitting}
-                className="w-full bg-[#2E72B8] text-white py-3 rounded-xl font-bold text-sm hover:bg-[#245d9a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md mt-2"
-              >
-                {submitting ? l.submitting : l.submit}
-              </button>
-            </div>
-
-            <p className="text-center text-[11px] text-gray-400 mt-3 flex items-center justify-center gap-2">
-              <span>{l.trust1}</span>
-              <span className="text-gray-300">·</span>
-              <span>{l.trust2}</span>
-              <span className="text-gray-300">·</span>
-              <span>{l.trust3}</span>
-            </p>
-          </form>
-        )}
-      </div>
-    </div>
-  );
-}
+           
