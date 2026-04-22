@@ -134,7 +134,7 @@ export default function LocationContact({ centre, lang = 'en' }: { centre: Conta
                 </svg>
               </Link>
               <a
-                href="https://wa.me/60123210457"
+                href="https://wa.me/60193250457"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-600 transition-colors text-sm"

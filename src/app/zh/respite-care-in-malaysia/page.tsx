@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 
 export const revalidate = 60;
 
-const phone = '+6012 321 0457';
-const phoneCTA = '+6012-321-0457';
+const phone = '+6019 325 0457';
+const phoneCTA = '+6019-325-0457';
 
 const centres = [
   {
@@ -134,7 +134,7 @@ const jsonLd = {
       name: 'Genesis Life Care',
       description: '马来西亚全国短期暂托护理服务。5家中心的专业老年护理 — Petaling Jaya、Klang、Kajang、Puchong和Johor Bahru。',
       url: 'https://genesiscare.com.my/zh/respite-care-in-malaysia',
-      telephone: '+60123210457',
+      telephone: '+60193250457',
       areaServed: { '@type': 'Country', name: 'Malaysia' },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',

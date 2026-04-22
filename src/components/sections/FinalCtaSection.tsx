@@ -9,7 +9,7 @@ interface FinalCtaSectionProps {
 export default function FinalCtaSection({ heading, description, lang = 'en' }: FinalCtaSectionProps) {
   const contactHref = lang === 'zh' ? '/zh/contact' : '/contact';
   const btnText = lang === 'zh' ? '预约免费咨询' : 'Book a Free Consultation';
-  const phoneText = lang === 'zh' ? '致电 +6012-321-0457' : 'Call +6012-321-0457';
+  const phoneText = lang === 'zh' ? '致电 +6019-325-0457' : 'Call +6019-325-0457';
 
   return (
     <section className="relative bg-gradient-to-r from-primary via-primary-800 to-secondary py-16 sm:py-20 overflow-hidden">
@@ -29,7 +29,7 @@ export default function FinalCtaSection({ heading, description, lang = 'en' }: F
             </svg>
           </Link>
           <a
-            href="tel:+60123210457"
+            href="tel:+60193250457"
             className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-bold px-6 py-4 rounded-full transition-colors"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

@@ -15,8 +15,8 @@ export const revalidate = 60;
 const centre = {
   name: 'Klang',
   fullName: 'Genesis Life Care Klang',
-  phone: '+6012 321 0457',
-  phoneCTA: '+6012-321-0457',
+  phone: '+6019 325 0457',
+  phoneCTA: '+6019-325-0457',
   address: 'No.3, Jalan Istana, Amverton Business Centre, 41000 Klang, Selangor',
   rating: '4.8',
   reviews: 45,

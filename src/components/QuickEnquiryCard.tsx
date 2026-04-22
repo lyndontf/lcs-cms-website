@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const CENTRES = [
-  { name: 'Klang', phone: '+6012 321 0457', phoneCTA: '+6012-321-0457', wa: '60123210457' },
+  { name: 'Klang', phone: '+6019 325 0457', phoneCTA: '+6019-325-0457', wa: '60193250457' },
   { name: 'Petaling Jaya', phone: '+6019 295 0457', phoneCTA: '+6019-295-0457', wa: '60192950457' },
   { name: 'Kajang', phone: '+6019 334 0457', phoneCTA: '+6019-334-0457', wa: '60193340457' },
   { name: 'Puchong', phone: '+6019 759 0457', phoneCTA: '+6019-759-0457', wa: '60197590457' },

@@ -74,8 +74,8 @@ const selangorCentres = [
   },
 ];
 
-const phone = '+6012 321 0457';
-const phoneCTA = '+6012-321-0457';
+const phone = '+6019 325 0457';
+const phoneCTA = '+6019-325-0457';
 
 const centre = centres['johor-bahru'];
 const otherCentres = getOtherCentres(centre.name);
@@ -156,7 +156,7 @@ const jsonLd = {
       name: 'Genesis Life Care Selangor',
       description: 'Professional elderly care and nursing homes across Selangor, Malaysia.',
       url: 'https://genesiscare.com.my/elderly-care-in-selangor',
-      telephone: '+60123210457',
+      telephone: '+60193250457',
       areaServed: { '@type': 'State', name: 'Selangor' },
       location: selangorCentres.map((c) => ({
         '@type': 'Place',

@@ -199,7 +199,7 @@ export default async function HomePage() {
     logo: 'https://genesiscare.com.my/images/general/logo.png',
     description:
       'Genesis Life Care operates 5 nursing homes across Malaysia, providing 24/7 professional nursing care, dementia care, stroke rehabilitation, and post-operative recovery services.',
-    telephone: settings?.contact_phone || '+6012-321 0457',
+    telephone: settings?.contact_phone || '+6019-325 0457',
     email: settings?.contact_email || 'enquiries@genesiscare.com.my',
     address: {
       '@type': 'PostalAddress',
@@ -279,7 +279,7 @@ export default async function HomePage() {
         name: 'Can I visit a Genesis Life Care centre before making a decision?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Absolutely. We encourage families to book a free tour and consultation at any of our 5 centres. Our care advisors will walk you through the facilities, explain our care programmes, and help you find the right solution. Call +6012-321 0457 or visit our contact page to schedule a visit.',
+          text: 'Absolutely. We encourage families to book a free tour and consultation at any of our 5 centres. Our care advisors will walk you through the facilities, explain our care programmes, and help you find the right solution. Call +6019-325 0457 or visit our contact page to schedule a visit.',
         },
       },
     ],
@@ -817,7 +817,7 @@ export default async function HomePage() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                 </a>
                 <a
-                  href="https://wa.me/60123210457?text=Hi%2C%20I%20would%20like%20to%20enquire%20about%20hiring%20a%20domestic%20helper%20for%20home%20care."
+                  href="https://wa.me/60193250457?text=Hi%2C%20I%20would%20like%20to%20enquire%20about%20hiring%20a%20domestic%20helper%20for%20home%20care."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 border-2 border-secondary text-secondary px-6 py-3 rounded-full text-sm font-bold hover:bg-secondary hover:text-white transition-all"
@@ -1022,11 +1022,11 @@ export default async function HomePage() {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
             </Link>
             <a
-              href={`tel:${settings?.contact_phone || '+6012-321 0457'}`}
+              href={`tel:${settings?.contact_phone || '+6019-325 0457'}`}
               className="inline-flex items-center justify-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 text-white px-8 py-3.5 rounded-full text-base font-semibold hover:bg-white/25 transition-all"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-              Call {settings?.contact_phone || '+6012-321 0457'}
+              Call {settings?.contact_phone || '+6019-325 0457'}
             </a>
           </div>
         </div>
