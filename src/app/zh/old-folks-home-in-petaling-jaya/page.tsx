@@ -206,7 +206,7 @@ export default function OldFolksHomeZh() {
 
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <Link
-                  href="/zh/contact"
+                  href="/zh/booking"
                   className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl"
                 >
                   访问我们的家
@@ -390,7 +390,7 @@ export default function OldFolksHomeZh() {
             ))}
           </div>
           <div className="text-center mt-10">
-            <Link href="/zh/contact" className="whitespace-nowrap inline-flex items-center gap-2 bg-primary hover:bg-primary-700 text-white font-bold px-6 py-3.5 rounded-full transition shadow-lg">
+            <Link href="/zh/booking" className="whitespace-nowrap inline-flex items-center gap-2 bg-primary hover:bg-primary-700 text-white font-bold px-6 py-3.5 rounded-full transition shadow-lg">
               预约参访
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </Link>
@@ -460,7 +460,7 @@ export default function OldFolksHomeZh() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/zh/contact"
+              href="/zh/booking"
               className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl"
             >
               预约参访

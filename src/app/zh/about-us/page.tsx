@@ -519,7 +519,7 @@ export default async function AboutPageZh() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/zh/contact"
+              href="/zh/booking"
               className="hp-gold-btn inline-flex items-center justify-center gap-2 bg-gold text-gray-900 px-6 py-3.5 rounded-full text-base font-bold shadow-lg hover:shadow-xl hover:brightness-110 transition-all whitespace-nowrap"
             >
               预约免费参观

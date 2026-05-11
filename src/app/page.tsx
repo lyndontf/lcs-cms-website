@@ -232,9 +232,11 @@ export default async function HomePage() {
     numberOfEmployees: { '@type': 'QuantitativeValue', value: 150, unitText: 'staff' },
     foundingDate: '2018',
     sameAs: [
-      'https://www.facebook.com/genesislifecare/',
-      'https://www.instagram.com/genesislifecare/',
+      'https://www.facebook.com/share/16cjRPK2U5/',
+      'https://www.instagram.com/genesislifecaremalaysia',
+      'https://www.tiktok.com/@genesislifecaremalaysia',
       'https://www.youtube.com/@genesislifecarecentre1443',
+      'https://xhslink.com/m/1QUVGpuQcFM',
     ],
   };
 
@@ -530,7 +532,7 @@ export default async function HomePage() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 mb-6">
                   <a
-                    href="https://web.lifecaresystems.com.my/cost-calculator"
+                    href="https://web.lifecaresystems.com.my/#/cost-calculator"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 bg-primary text-white px-7 py-3.5 rounded-full text-base font-bold shadow-md hover:bg-primary-600 hover:shadow-lg transition-all whitespace-nowrap"
@@ -972,13 +974,13 @@ export default async function HomePage() {
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Still have questions?</h3>
                 <p className="text-sm text-gray-500 mb-4">Our care advisors are happy to help. Speak to us directly or schedule a free visit to any of our centres.</p>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <a
-                    href="#enquiry"
+                  <Link
+                    href="/contact"
                     className="inline-flex items-center justify-center gap-2 bg-primary text-white px-5 py-2.5 rounded-full text-sm font-bold hover:brightness-110 transition-all shadow-sm"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                     Contact Us
-                  </a>
+                  </Link>
                   <Link
                     href="/booking"
                     className="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary px-5 py-2.5 rounded-full text-sm font-bold hover:bg-primary hover:text-white transition-all"
@@ -1015,7 +1017,7 @@ export default async function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href="/booking"
               className="hp-gold-btn inline-flex items-center justify-center gap-2 bg-gold text-gray-900 px-8 py-3.5 rounded-full text-base font-bold shadow-lg hover:shadow-xl hover:brightness-110 transition-all"
             >
               Schedule a Visit

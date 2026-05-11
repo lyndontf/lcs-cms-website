@@ -225,7 +225,7 @@ export default function StrokeRehabilitationPuchongZh() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  href="/zh/contact"
+                  href="/zh/booking"
                   className="inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3 rounded-full transition shadow-lg whitespace-nowrap"
                 >
                   预约免费咨询
@@ -412,7 +412,7 @@ export default function StrokeRehabilitationPuchongZh() {
 
                 <div className="flex flex-wrap gap-3">
                   <Link
-                    href="/zh/contact"
+                    href="/zh/booking"
                     className="inline-flex items-center gap-2 bg-primary text-white font-bold px-5 py-3 rounded-lg hover:bg-primary-600 transition-colors text-sm"
                   >
                     预约免费咨询
@@ -487,7 +487,7 @@ export default function StrokeRehabilitationPuchongZh() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/zh/contact"
+              href="/zh/booking"
               className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap"
             >
               预约免费咨询

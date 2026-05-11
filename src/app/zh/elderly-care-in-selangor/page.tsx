@@ -269,7 +269,7 @@ export default function ElderlyCarSelangorZh() {
 
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href="/zh/contact"
+                  href="/zh/booking"
                   className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-3.5 rounded-xl hover:bg-yellow-400 transition-colors text-sm whitespace-nowrap"
                 >
                   预约免费参观
@@ -597,7 +597,7 @@ export default function ElderlyCarSelangorZh() {
 
               <div className="flex flex-wrap gap-3 mt-8">
                 <Link
-                  href="/zh/contact"
+                  href="/zh/booking"
                   className="inline-flex items-center gap-2 bg-primary text-white font-bold px-6 py-3 rounded-lg hover:bg-primary-600 transition-colors text-sm"
                 >
                   预约免费参观
@@ -671,7 +671,7 @@ export default function ElderlyCarSelangorZh() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/zh/contact"
+              href="/zh/booking"
               className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap"
             >
               预约免费参观

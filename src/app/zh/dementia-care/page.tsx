@@ -95,7 +95,7 @@ export default function DementiaCareZh() {
                 5 个中心的心理学家主导的认知刺激计划。每个中心都有专业记忆护理部，为阿尔茨海默病、失智症和帕金森病患者提供安全、结构化和同情的环境。
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/zh/contact" className="inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full shadow-lg">
+                <Link href="/zh/booking" className="inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full shadow-lg">
                   预约免费咨询
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -252,7 +252,7 @@ export default function DementiaCareZh() {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">为您的亲人找到合适的失智症护理</h2>
           <p className="text-white/80 mb-8">预约免费咨询。访问我们的任何中心，与团队会面，了解我们的记忆护理计划 — 不承诺任何承诺。</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/zh/contact" className="inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-4 rounded-full">
+            <Link href="/zh/booking" className="inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-4 rounded-full">
               预约免费咨询 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </Link>
             <a href="tel:+60193250457" className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-bold px-6 py-4 rounded-full">

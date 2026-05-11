@@ -216,7 +216,7 @@ export default function RespiteCareZh() {
 
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href="/zh/contact"
+                  href="/zh/booking"
                   className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-3.5 rounded-xl hover:bg-yellow-400 transition-colors text-sm whitespace-nowrap"
                 >
                   预约免费咨询
@@ -422,7 +422,7 @@ export default function RespiteCareZh() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/zh/contact"
+              href="/zh/booking"
               className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap"
             >
               预约免费咨询

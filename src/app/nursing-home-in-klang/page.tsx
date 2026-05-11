@@ -424,6 +424,24 @@ export default function NursingHomeKlang() {
             </p>
           </div>
 
+          {/* Virtual Tour Video */}
+          <div className="mb-10">
+            <div className="relative w-full max-w-4xl mx-auto rounded-xl overflow-hidden shadow-lg" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/fFARigps4EE"
+                title="Genesis Life Care Klang — Virtual Tour"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+            <p className="text-center text-sm text-gray-500 mt-3">
+              Take a virtual tour of our Klang centre.
+            </p>
+          </div>
+
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {facilityImages.map((img, i) => (
               <div
@@ -702,7 +720,7 @@ export default function NursingHomeKlang() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/contact"
+              href="/booking"
               className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap"
             >
               Book a Free Tour

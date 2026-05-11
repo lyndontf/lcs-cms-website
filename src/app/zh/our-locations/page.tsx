@@ -249,7 +249,7 @@ export default function OurLocationsPageZh() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/zh/contact"
+              href="/zh/booking"
               className="inline-flex items-center gap-2 bg-gold text-gray-900 px-6 py-3.5 rounded-lg font-bold text-base hover:bg-yellow-400 transition-colors shadow-lg whitespace-nowrap"
             >
               预约免费参观

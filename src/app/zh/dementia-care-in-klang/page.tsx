@@ -204,7 +204,7 @@ export default function DementiaCareKlangZh() {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <Link href="/zh/contact" className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-3.5 rounded-xl hover:bg-yellow-400 transition-colors text-sm whitespace-nowrap">
+                <Link href="/zh/booking" className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-3.5 rounded-xl hover:bg-yellow-400 transition-colors text-sm whitespace-nowrap">
                   预约免费参观
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                 </Link>
@@ -377,7 +377,7 @@ export default function DementiaCareKlangZh() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">{centre.fullName}</h3>
                 <p className="text-sm text-gray-500 mb-6">{centre.address}</p>
                 <div className="flex gap-3">
-                  <Link href="/zh/contact" className="inline-flex items-center gap-2 bg-primary text-white font-bold px-5 py-3 rounded-lg hover:bg-primary-600 transition-colors text-sm">
+                  <Link href="/zh/booking" className="inline-flex items-center gap-2 bg-primary text-white font-bold px-5 py-3 rounded-lg hover:bg-primary-600 transition-colors text-sm">
                     预约免费参观 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                   </Link>
                 </div>
@@ -401,7 +401,7 @@ export default function DementiaCareKlangZh() {
                 </div>
               </div>
               <div className="space-y-3">
-                <Link href="/zh/contact" className="w-full inline-flex items-center justify-center gap-2 bg-primary text-white font-bold px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors text-sm">
+                <Link href="/zh/booking" className="w-full inline-flex items-center justify-center gap-2 bg-primary text-white font-bold px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors text-sm">
                   预约免费参观 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                 </Link>
               </div>
@@ -437,7 +437,7 @@ export default function DementiaCareKlangZh() {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">巴生专业失智症护理</h2>
           <p className="text-lg text-white mb-8">访问我们的巴生中心进行免费参观。查看我们的失智症护理空间、与心理学家和护理团队见面。</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/zh/contact" className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors">
+            <Link href="/zh/booking" className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors">
               预约免费参观 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
             </Link>
             <a href={`tel:${centre.phone.replace(/\s/g, '')}`} className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors">

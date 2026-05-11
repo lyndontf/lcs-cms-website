@@ -177,7 +177,7 @@ export default function PostOpCareZh() {
 
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <Link
-                  href="/zh/contact"
+                  href="/zh/booking"
                   className="inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl whitespace-nowrap"
                 >
                   预约免费咨询
@@ -434,7 +434,7 @@ export default function PostOpCareZh() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/zh/contact"
+              href="/zh/booking"
               className="inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl whitespace-nowrap"
             >
               预约免费咨询

@@ -196,7 +196,7 @@ export default function NursingHomeKlangZh() {
               {/* CTAs */}
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href="/zh/contact"
+                  href="/zh/booking"
                   className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-3.5 rounded-xl hover:bg-yellow-400 transition-colors text-sm whitespace-nowrap"
                 >
                   预约免费参观
@@ -353,6 +353,24 @@ export default function NursingHomeKlangZh() {
             </h2>
             <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
               我们的巴生中心以舒适、安全和温馨的环境为特色。
+            </p>
+          </div>
+
+          {/* Virtual Tour Video */}
+          <div className="mb-10">
+            <div className="relative w-full max-w-4xl mx-auto rounded-xl overflow-hidden shadow-lg" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/fFARigps4EE"
+                title="Genesis Life Care Klang — 虚拟参观"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+            <p className="text-center text-sm text-gray-500 mt-3">
+              带您虚拟参观我们的巴生中心。
             </p>
           </div>
 
@@ -536,7 +554,7 @@ export default function NursingHomeKlangZh() {
 
               <div className="flex flex-wrap gap-3 mt-8">
                 <Link
-                  href="/zh/contact"
+                  href="/zh/booking"
                   className="inline-flex items-center gap-2 bg-primary text-white font-bold px-6 py-3 rounded-lg hover:bg-primary-600 transition-colors text-sm"
                 >
                   预约免费参观
@@ -634,7 +652,7 @@ export default function NursingHomeKlangZh() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/zh/contact"
+              href="/zh/booking"
               className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap"
             >
               预约免费参观

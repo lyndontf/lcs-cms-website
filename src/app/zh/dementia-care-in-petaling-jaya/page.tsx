@@ -112,7 +112,7 @@ export default function DementiaCarePJZh() {
               <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-5">八打灵再也失智症护理</h1>
               <p className="text-lg text-white mb-8">Genesis Life Care 八打灵再也提供专业失智症护理，采用心理学家主导的计划、24/7 护理和安全环境。</p>
               <div className="flex flex-wrap gap-4">
-                <Link href="/zh/contact" className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-3.5 rounded-xl hover:bg-yellow-400 text-sm">
+                <Link href="/zh/booking" className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-3.5 rounded-xl hover:bg-yellow-400 text-sm">
                   预约免费参观 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                 </Link>
                 <a href={`tel:${centre.phone.replace(/\s/g, '')}`} className="inline-flex items-center gap-2 border-2 border-white/30 text-white px-6 py-3.5 rounded-xl text-sm">
@@ -229,7 +229,7 @@ export default function DementiaCarePJZh() {
                     <p className="text-xs text-gray-500">护理</p>
                   </div>
                 </div>
-                <Link href="/zh/contact" className="inline-flex items-center gap-2 bg-primary text-white font-bold px-5 py-3 rounded-lg text-sm">
+                <Link href="/zh/booking" className="inline-flex items-center gap-2 bg-primary text-white font-bold px-5 py-3 rounded-lg text-sm">
                   预约免费参观 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                 </Link>
               </div>
@@ -262,7 +262,7 @@ export default function DementiaCarePJZh() {
           <h2 className="text-3xl font-extrabold text-white mb-4">八打灵再也专业失智症护理</h2>
           <p className="text-white mb-8">访问我们的中心进行免费参观。与心理学家和护理团队见面，了解我们如何支持家庭。</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/zh/contact" className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl">
+            <Link href="/zh/booking" className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl">
               预约免费参观 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
             </Link>
             <a href={`tel:${centre.phone.replace(/\s/g, '')}`} className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl">
