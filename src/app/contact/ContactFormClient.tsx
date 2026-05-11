@@ -178,12 +178,12 @@ export default function ContactFormClient() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-primary to-primary-600 rounded-xl p-6 text-white">
-              <h3 className="text-lg font-bold mb-2 text-white">Need Immediate Help?</h3>
-              <p className="text-sm text-white/80 mb-4">
+            <div className="bg-gradient-to-br from-primary to-primary-600 rounded-xl p-6">
+              <h3 className="text-lg font-bold mb-2" style={{ color: '#ffffff' }}>Need Immediate Help?</h3>
+              <p className="text-sm mb-4" style={{ color: 'rgba(255,255,255,0.85)' }}>
                 Our care team is available to answer your questions and help you find the right care solution.
               </p>
-              <p className="text-2xl font-bold text-white">Call us today</p>
+              <p className="text-2xl font-bold" style={{ color: '#ffffff' }}>Call us today</p>
             </div>
           </div>
         </div>
