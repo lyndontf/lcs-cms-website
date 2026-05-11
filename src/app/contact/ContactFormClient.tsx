@@ -178,7 +178,7 @@ export default function ContactFormClient() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-primary to-primary-600 rounded-xl p-6">
+            <div className="bg-gradient-to-br from-primary to-primary-600 rounded-xl p-6 force-white-text">
               <h3 className="text-lg font-bold mb-2" style={{ color: '#ffffff' }}>Need Immediate Help?</h3>
               <p className="text-sm mb-4" style={{ color: 'rgba(255,255,255,0.85)' }}>
                 Our care team is available to answer your questions and help you find the right care solution.
