@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import {
+  supabase,
   getBookingCentres,
   getSlotConfigs,
   getBlockedDates,
