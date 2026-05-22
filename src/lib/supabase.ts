@@ -477,10 +477,11 @@ export async function getBookedSlotCounts(
   centreId: string,
   date: string
 ): Promise<Record<string, number>> {
-  const { data } = await supabase.rpc('get_booked_slot_counts', {
+  const { data, error } = await supabase.rpc('get_booked_slot_counts', {
     p_centre_id: centreId,
     p_date: date,
   });
+  if (error) console.error('[getBookedSlotCounts]', error.message);
   const counts: Record<string, number> = {};
   if (Array.isArray(data)) {
     for (const row of data) {
@@ -506,12 +507,27 @@ export async function submitBooking(booking: {
   relationship_to_resident?: string | null;
   type_of_care_id?: string | null;
   booking_status_id?: string | null;
-}): Promise<{ success: boolean; duplicate?: boolean }> {
-  const { error } = await supabase.from('booking').insert(booking);
-  if (!error) return { success: true };
-  const msg = error.message?.toLowerCase() ?? '';
-  if (msg.includes('duplicate') || msg.includes('unique') || msg.includes('already')) {
-    return { success: false, duplicate: true };
+}): Promise<{ success: boolean; duplicate?: boolean; full?: boolean }> {
+  const { data, error } = await supabase.rpc('submit_booking_safe', {
+    p_centre_id: booking.centre_id,
+    p_booking_slot_config_id: booking.booking_slot_config_id,
+    p_booking_date: booking.booking_date,
+    p_start_time: booking.start_time,
+    p_end_time: booking.end_time,
+    p_visitor_name: booking.visitor_name,
+    p_visitor_phone: booking.visitor_phone,
+    p_visitor_email: booking.visitor_email ?? null,
+    p_resident_name: booking.resident_name ?? null,
+    p_relationship_to_resident: booking.relationship_to_resident ?? null,
+    p_type_of_care_id: booking.type_of_care_id ?? null,
+    p_booking_status_id: booking.booking_status_id ?? null,
+  });
+  if (error) {
+    console.error('[submitBooking]', error.message);
+    return { success: false };
   }
-  return { success: false };
+  const result = data as { success: boolean; full?: boolean; error?: string };
+  if (result?.full) return { success: false, full: true, duplicate: true };
+  if (!result?.success) return { success: false };
+  return { success: true };
 }

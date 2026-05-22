@@ -277,6 +277,43 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
     return (bookedCounts[key] ?? 0) >= slot.max_bookings;
   };
 
+  /* ── refresh counts on window focus (catches stale tabs) ── */
+  useEffect(() => {
+    if (!selectedCentre || !selectedDate) return;
+    const refresh = async () => {
+      const counts = await getBookedSlotCounts(selectedCentre.id, fmtISO(selectedDate));
+      setBookedCounts(counts);
+    };
+    const onVisible = () => { if (!document.hidden) refresh(); };
+    document.addEventListener('visibilitychange', onVisible);
+    window.addEventListener('focus', refresh);
+    return () => {
+      document.removeEventListener('visibilitychange', onVisible);
+      window.removeEventListener('focus', refresh);
+    };
+  }, [selectedCentre, selectedDate]);
+
+  /* ── real-time: refresh counts when any booking is created/updated (cross-device) ── */
+  useEffect(() => {
+    if (!selectedCentre || !selectedDate) return;
+    const dateStr = fmtISO(selectedDate);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const channel = (supabase.channel(`booking-signals-${selectedCentre.id}-${dateStr}`) as any)
+      .on('postgres_changes', {
+        event: 'INSERT',
+        schema: 'public',
+        table: 'booking_change_signal',
+        filter: `centre_id=eq.${selectedCentre.id}`,
+      }, async (payload: { new: { booking_date: string } }) => {
+        if (payload.new.booking_date === dateStr) {
+          const counts = await getBookedSlotCounts(selectedCentre.id, dateStr);
+          setBookedCounts(counts);
+        }
+      })
+      .subscribe();
+    return () => { supabase.removeChannel(channel); };
+  }, [selectedCentre, selectedDate]);
+
   /* ── submit ── */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -343,7 +380,7 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
         });
         sendEnquiryEmail(confSubject, confHtml, visitorEmail);
       }
-    } else if (result.duplicate) {
+    } else if (result.full || result.duplicate) {
       setError(l.duplicateError);
       handleDateSelect(selectedDate);
     } else {
