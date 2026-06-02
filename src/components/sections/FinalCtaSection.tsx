@@ -13,7 +13,7 @@ export default function FinalCtaSection({ heading, description, lang = 'en' }: F
 
   return (
     <section className="relative bg-gradient-to-r from-primary via-primary-800 to-secondary py-16 sm:py-20 overflow-hidden">
-      <style dangerouslySetInnerHTML={{ __html: `.final-cta .text-white { color: #ffffff !important; }` }} />
+      <style dangerouslySetInnerHTML={{ __html: `.final-cta .text-white { color: #ffffff !important; } .final-cta p { color: rgba(255, 255, 255, 0.8) !important; }` }} />
       <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
       <div className="final-cta relative max-w-3xl mx-auto px-4 text-center">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">{heading}</h2>
