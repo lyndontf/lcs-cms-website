@@ -12,7 +12,7 @@ export default function Footer({ settings, menuItems }: FooterProps) {
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-1">
             <h3 className="text-xl font-bold mb-3" style={{ color: '#ffffff' }}>
@@ -54,18 +54,6 @@ export default function Footer({ settings, menuItems }: FooterProps) {
                 </a>
               )}
             </div>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Company</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="/presentation.html" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-white transition-colors">
-                  Presentation
-                </a>
-              </li>
-            </ul>
           </div>
 
           {/* Quick Links */}
@@ -110,15 +98,9 @@ export default function Footer({ settings, menuItems }: FooterProps) {
           {/* CTA */}
           <div>
             <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Get in Touch</h4>
-            <p className="text-sm text-gray-400 mb-4">
+            <p className="text-sm text-gray-400">
               Looking for quality care for your loved ones? We are here to help.
             </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-primary-600 transition-colors"
-            >
-              Contact Us
-            </Link>
           </div>
         </div>
 
