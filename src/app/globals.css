@@ -235,3 +235,11 @@
   color: #ffffff !important;
 }
 
+/* The injected CMS theme sets `footer span { color:#fff !important }`, which
+   renders the address pure white — brighter (and so visually heavier) than the
+   80%-white phone/email links (`footer a`). Match the address to the links.
+   The extra class beats `footer span` (0,0,2) on specificity. */
+footer span.footer-address {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
