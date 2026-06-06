@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Respite Care in Malaysia - Short-Term Elderly Care | Genesis Life Care',
+  title: "Respite Care in Malaysia",
   description:
     'Respite care services across Malaysia. Short-term elderly care for caregiver relief, post-hospital recovery & family vacations. 5 centres nationwide. Genesis Life Care — book a free consultation.',
   openGraph: {

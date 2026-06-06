@@ -8,7 +8,7 @@ import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
 
 export const metadata: Metadata = {
-  title: 'Stroke Rehabilitation in Petaling Jaya - Stroke Recovery PJ | Genesis Life Care',
+  title: "Stroke Rehabilitation in Petaling Jaya",
   description:
     'Professional stroke rehabilitation in Petaling Jaya. Physiotherapy, occupational therapy & speech therapy for stroke recovery. Personalised rehab plans at Genesis Life Care PJ. Rated 4.9★. Book a free consultation.',
   openGraph: {

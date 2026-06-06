@@ -4,15 +4,15 @@ import Link from 'next/link';
 import { centres, getOtherCentres } from '@/data/centres';
 
 export const metadata: Metadata = {
-  title: '布城失智症护理 - Genesis Life Care',
-  description: '布城专业失智症护理。心理学家主导的记忆护理计划、认知刺激、安全环境和个性化护理计划。评分 4.8★。在 Genesis Life Care 布城预约免费参观。',
+  title: "蒲种失智症护理",
+  description: '蒲种专业失智症护理。心理学家主导的记忆护理计划、认知刺激、安全环境和个性化护理计划。评分 4.8★。在 Genesis Life Care 蒲种预约免费参观。',
 };
 
 export const revalidate = 60;
 
 const centre = {
   name: 'Puchong',
-  fullName: 'Genesis Life Care 布城',
+  fullName: 'Genesis Life Care 蒲种',
   slug: 'nursing-home-in-puchong',
   phone: '+6019 759 0457',
   phoneCTA: '+6019-759-0457',
@@ -32,12 +32,12 @@ const dementiaFeatures = [
 ];
 
 const faqs = [
-  { q: 'Genesis Life Care 布城提供哪些失智症护理服务？', a: '我们的布城中心提供全面的失智症护理，包括心理学家主导的认知刺激疗法、结构化日常活动、艺术和音乐治疗、安全环保和个性化护理计划。' },
-  { q: 'Genesis Life Care 如何对待布城的失智症护理？', a: 'Genesis Life Care 在我们的布城中心采用心理学家主导的失智症护理方法。我们的计划由合格的心理学家设计和监督。结合 24/7 护理，我们提供全面的失智症支持。' },
+  { q: 'Genesis Life Care 蒲种提供哪些失智症护理服务？', a: '我们的蒲种中心提供全面的失智症护理，包括心理学家主导的认知刺激疗法、结构化日常活动、艺术和音乐治疗、安全环保和个性化护理计划。' },
+  { q: 'Genesis Life Care 如何对待蒲种的失智症护理？', a: 'Genesis Life Care 在我们的蒲种中心采用心理学家主导的失智症护理方法。我们的计划由合格的心理学家设计和监督。结合 24/7 护理，我们提供全面的失智症支持。' },
   { q: '我应该注意哪些早期失智症迹象？', a: '常见的早期警示迹象包括持久的记忆丧失、执行熟悉任务的困难、对时间或地点的困惑、情绪变化和社交活动退缩。如果您注意到这些迹象，请咨询医生。' },
-  { q: '布城中心对失智症患者是否安全？', a: '是的。我们的布城中心是一个现代设施，在设计时就考虑了失智症的安全性。我们有安全的场所防止走失、跌倒预防措施、24 小时监督和安全的结构化环境。' },
-  { q: '在布城的失智症护理费用是多少？', a: 'Genesis Life Care 在我们的布城中心提供经济实惠的失智症护理费用。费用因护理水平和房间类型而异。请联系我们获取个性化报价。' },
-  { q: 'Genesis Life Care 为布城附近的哪些地区提供失智症护理服务？', a: '我们的布城中心为中部吉隆坡谷的家庭提供服务，包括布城、梳邦再也、USJ、晋中、格灵芝和周围地区。' },
+  { q: '蒲种中心对失智症患者是否安全？', a: '是的。我们的蒲种中心是一个现代设施，在设计时就考虑了失智症的安全性。我们有安全的场所防止走失、跌倒预防措施、24 小时监督和安全的结构化环境。' },
+  { q: '在蒲种的失智症护理费用是多少？', a: 'Genesis Life Care 在我们的蒲种中心提供经济实惠的失智症护理费用。费用因护理水平和房间类型而异。请联系我们获取个性化报价。' },
+  { q: 'Genesis Life Care 为蒲种附近的哪些地区提供失智症护理服务？', a: '我们的蒲种中心为中部吉隆坡谷的家庭提供服务，包括蒲种、梳邦再也、USJ、晋中、格灵芝和周围地区。' },
 ];
 
 const centreData = centres['puchong'];
@@ -54,7 +54,7 @@ const zhHighlights = [
 const zhTestimonials = [
   {
     author: '莎拉·陈',
-    text: '布城中心维护得很好，员工非常关心。我的父亲在这里感到非常舒适。',
+    text: '蒲种中心维护得很好，员工非常关心。我的父亲在这里感到非常舒适。',
   },
   {
     author: '艾哈迈德·拉扎克',
@@ -78,8 +78,8 @@ export default function DementiaCarePuchongZh() {
         <div className="relative max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div>
-              <h1 className="text-4xl sm:text-5xl font-extrabold mb-5">布城失智症护理</h1>
-              <p className="text-lg mb-8">Genesis Life Care 布城提供专业失智症护理，采用心理学家主导的计划、24/7 护理和安全现代环境，服务于布城、梳邦再也和周围地区的家庭。</p>
+              <h1 className="text-4xl sm:text-5xl font-extrabold mb-5">蒲种失智症护理</h1>
+              <p className="text-lg mb-8">Genesis Life Care 蒲种提供专业失智症护理，采用心理学家主导的计划、24/7 护理和安全现代环境，服务于蒲种、梳邦再也和周围地区的家庭。</p>
               <div className="flex flex-wrap gap-4">
                 <Link href="/zh/booking" className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-3.5 rounded-xl text-sm">
                   预约免费参观 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -115,7 +115,7 @@ export default function DementiaCarePuchongZh() {
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl font-extrabold text-gray-900 mb-6">理解失智症与专业护理</h2>
           <p className="text-gray-600 mb-4">失智症是一种进行性疾病。早期迹象包括记忆丧失、任务困难和情绪变化。</p>
-          <p className="text-gray-600">在 Genesis Life Care 布城 — 我们的现代设施 — 我们的失智症护理由合格的心理学家主导，设计结构化的认知刺激计划。结合 24 小时护理，我们帮助住户保持尊严和生活质量。</p>
+          <p className="text-gray-600">在 Genesis Life Care 蒲种 — 我们的现代设施 — 我们的失智症护理由合格的心理学家主导，设计结构化的认知刺激计划。结合 24 小时护理，我们帮助住户保持尊严和生活质量。</p>
         </div>
       </section>
 
@@ -162,7 +162,7 @@ export default function DementiaCarePuchongZh() {
       {/* CENTRE DETAILS */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">访问我们的布城中心</h2>
+          <h2 className="text-3xl font-extrabold text-gray-900 mb-8 text-center">访问我们的蒲种中心</h2>
           <div className="bg-white rounded-2xl shadow overflow-hidden">
             <div className="grid md:grid-cols-2">
               <img src={centre.img} alt={centre.fullName} className="h-64 md:h-auto object-cover" />
@@ -208,7 +208,7 @@ export default function DementiaCarePuchongZh() {
       {/* CTA */}
       <section className="hero-dark bg-gradient-to-r from-primary via-primary-800 to-secondary py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-extrabold mb-4">布城专业失智症护理</h2>
+          <h2 className="text-3xl font-extrabold mb-4">蒲种专业失智症护理</h2>
           <p className="mb-8">访问我们的中心进行免费参观。与心理学家和护理团队见面。</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/zh/booking" className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl">

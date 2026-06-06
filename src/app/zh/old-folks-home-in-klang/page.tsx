@@ -3,7 +3,7 @@ import Link from 'next/link';
 import HeroEnquiryForm from '@/components/HeroEnquiryForm';
 
 export const metadata: Metadata = {
-  title: '巴生老人院 - Genesis Life Care Klang',
+  title: "巴生老人院",
   description:
     'Trusted old folks home 在巴生 since 2018. Genesis Life Care offers 24/7 nursing, dementia care, rehabilitation & nutritious meals. Affordable rates. Rated 4.8★. Book a free tour.',
 };

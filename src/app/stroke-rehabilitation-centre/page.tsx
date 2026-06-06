@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Stroke Rehabilitation Centre in Malaysia | Genesis Life Care',
+  title: "Stroke Rehabilitation Centre in Malaysia",
   description:
     'Comprehensive stroke rehabilitation across 5 centres in Selangor & Johor Bahru. Physiotherapy, occupational therapy & speech therapy with individualised recovery plans. 24/7 nursing support. Book a free consultation.',
   alternates: {

@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: '马来西亚临终关怀 | Genesis Life Care',
+  title: "马来西亚临终关怀",
   description:
-    '马来西亚全国5家中心的同情临终关怀。专业疼痛管理、情感和精神支持、家庭咨询和尊严末期护理。预约免费咨询。',
+    '创世生命关怀在马来西亚5家中心提供有温度的临终关怀：专业疼痛与症状管理、情感与精神支持、家属咨询及有尊严的末期护理。由跨专业团队全程照护，预约免费咨询。',
 };
 
 export const revalidate = 60;

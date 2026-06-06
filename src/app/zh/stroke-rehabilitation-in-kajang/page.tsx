@@ -8,9 +8,9 @@ import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
 
 export const metadata: Metadata = {
-  title: '加影中风康复 | 创世纪生命护理',
+  title: '加影中风康复',
   description:
-    '加影专业中风康复。物理治疗、职业治疗和言语治疗。创世纪生命护理加影中心的个性化康复计划。评分4.7★。预约免费咨询。',
+    '创世生命关怀加影中心提供专业中风康复：物理治疗、职业治疗与言语治疗，由多学科团队量身定制康复计划，全天候护理支持，助力中风后恢复。预约免费咨询。',
   openGraph: {
     title: '加影中风康复 - 创世纪生命护理',
     description:

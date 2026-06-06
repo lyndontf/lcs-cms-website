@@ -4,13 +4,13 @@ import { centres, getOtherCentres } from '@/data/centres';
 import AtAGlance from '@/components/sections/AtAGlance';
 
 export const metadata: Metadata = {
-  title: '吧生附近的老年护理 - 吧生附近的养老院 | Genesis Life Care',
+  title: "孟沙附近的老年护理",
   description:
-    '寻找吧生附近的老年护理？Genesis Life Care 巴生谷中心距离仅需约15分钟车程 — 提供24/7护理、失智症护理计划、中风康复和驻院医生。评分4.9★。预约免费参观。',
+    '寻找孟沙附近的老年护理？Genesis Life Care 巴生谷中心距离仅需约15分钟车程 — 提供24/7护理、失智症护理计划、中风康复和驻院医生。评分4.9★。预约免费参观。',
   openGraph: {
-    title: '吧生附近的老年护理 - Genesis Life Care',
+    title: '孟沙附近的老年护理 - Genesis Life Care',
     description:
-      '吧生附近的专业老年护理。24/7护理、失智症护理、中风康复。参观我们的巴生谷中心 — 距离吧生仅需几分钟。',
+      '孟沙附近的专业老年护理。24/7护理、失智症护理、中风康复。参观我们的巴生谷中心 — 距离孟沙仅需几分钟。',
     images: [{ url: '/images/pj-centre.jpg', width: 1200, height: 630, alt: 'Genesis Life Care 巴生谷中心' }],
   },
 };
@@ -108,15 +108,15 @@ const services = [
 
 const faqs = [
   {
-    q: '吧生附近有养老院吗？',
-    a: '有。Genesis Life Care 巴生谷中心位于 Kota Damansara，距离吧生约15分钟车程。我们提供24/7护理、失智症护理计划和中风康复服务。',
+    q: '孟沙附近有养老院吗？',
+    a: '有。Genesis Life Care 巴生谷中心位于 Kota Damansara，距离孟沙约15分钟车程。我们提供24/7护理、失智症护理计划和中风康复服务。',
   },
   {
-    q: '吧生附近的老年护理费用是多少？',
+    q: '孟沙附近的老年护理费用是多少？',
     a: 'Genesis Life Care 提供经济实惠的专业老年护理费率。费用根据护理级别和房间类型而异。请联系我们获取个性化报价 — 我们很乐意讨论适合您家庭预算的选项。',
   },
   {
-    q: '来自吧生的老年住户可以获得什么服务？',
+    q: '来自孟沙的老年住户可以获得什么服务？',
     a: '我们巴生谷中心提供老年护理、失智症和记忆护理、中风康复、临终关怀、术后康复和老年日间护理计划。所有服务均包括驻院医生咨询。',
   },
   {
@@ -124,11 +124,11 @@ const faqs = [
     a: '当然可以。我们鼓励家庭在承诺前预约免费参观我们的巴生谷设施。您可以看到生活空间、见到护理团队并提出任何问题 — 没有任何义务。',
   },
   {
-    q: 'Genesis Life Care 是否提供来自吧生的交通服务？',
-    a: '虽然我们不提供定期交通服务，但我们的巴生谷中心可通过主要高速公路（LDP、Sprint、NKVE）从吧生轻松到达。车程通常约15分钟。',
+    q: 'Genesis Life Care 是否提供来自孟沙的交通服务？',
+    a: '虽然我们不提供定期交通服务，但我们的巴生谷中心可通过主要高速公路（LDP、Sprint、NKVE）从孟沙轻松到达。车程通常约15分钟。',
   },
   {
-    q: '与吧生附近的其他养老院相比，Genesis Life Care 有什么不同？',
+    q: '与孟沙附近的其他养老院相比，Genesis Life Care 有什么不同？',
     a: 'Genesis Life Care 通过驻院医生、心理学家主导的失智症计划、专业物理治疗团队和经济实惠的费率而脱颖而出。我们在Google上评分4.9星，超过155条来自满意家庭的评价。',
   },
 ];
@@ -141,7 +141,7 @@ const jsonLd = {
     {
       '@type': 'MedicalBusiness',
       name: 'Genesis Life Care 巴生谷中心',
-      description: 'Genesis Life Care 吧生附近的专业老年护理和养老院。',
+      description: 'Genesis Life Care 孟沙附近的专业老年护理和养老院。',
       url: 'https://genesiscare.com.my/zh/elderly-care-in-bangsar',
       telephone: '+60192950457',
       address: {
@@ -153,7 +153,7 @@ const jsonLd = {
         addressCountry: 'MY',
       },
       areaServed: [
-        { '@type': 'City', name: '吧生' },
+        { '@type': 'City', name: '孟沙' },
         { '@type': 'City', name: '巴生谷' },
       ],
       aggregateRating: {
@@ -210,7 +210,7 @@ export default function ElderlyCareBangsarZh() {
             <div>
               <div className="flex items-center gap-3 mb-5">
                 <span className="bg-gold text-gray-900 text-xs font-bold tracking-wide px-3 py-1 rounded-full uppercase">
-                  吧生附近
+                  孟沙附近
                 </span>
                 <span className="bg-white/15 text-white text-xs font-semibold px-3 py-1 rounded-full" style={{ color: 'white' }}>
                   ★ {nearestCentre.rating} Google 评分
@@ -218,13 +218,13 @@ export default function ElderlyCareBangsarZh() {
               </div>
 
               <p className="text-white text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: 'white' }}>
-                吧生附近的老年护理
+                孟沙附近的老年护理
               </p>
               <h1 className="text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight text-white mb-5" style={{ color: 'white' }}>
-                吧生附近的专业<br />老年护理
+                孟沙附近的专业<br />老年护理
               </h1>
               <p className="text-lg text-white leading-relaxed mb-8 max-w-xl" style={{ color: 'white' }}>
-                吧生的家庭相信 Genesis Life Care 提供的优质养老院服务。我们的巴生谷中心距离仅需{nearestCentre.distance}车程 — 提供24/7护理、驻院医生咨询、失智症护理和综合康复。
+                孟沙的家庭相信 Genesis Life Care 提供的优质养老院服务。我们的巴生谷中心距离仅需{nearestCentre.distance}车程 — 提供24/7护理、驻院医生咨询、失智症护理和综合康复。
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -253,7 +253,7 @@ export default function ElderlyCareBangsarZh() {
               <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
                 <img
                   src={nearestCentre.img}
-                  alt="Genesis Life Care 巴生谷中心 — 吧生附近的老年护理"
+                  alt="Genesis Life Care 巴生谷中心 — 孟沙附近的老年护理"
                   className="w-full h-[420px] object-cover"
                 />
               </div>
@@ -266,7 +266,7 @@ export default function ElderlyCareBangsarZh() {
                 </div>
                 <div>
                   <p className="text-sm font-bold text-gray-800">{nearestCentre.distance}</p>
-                  <p className="text-xs text-gray-500">距离吧生</p>
+                  <p className="text-xs text-gray-500">距离孟沙</p>
                 </div>
               </div>
             </div>
@@ -276,20 +276,20 @@ export default function ElderlyCareBangsarZh() {
 
       <AtAGlance highlights={zhHighlights} />
 
-      {/* ── 关于吧生的老年护理 ─────────────────────────────── */}
+      {/* ── 关于孟沙的老年护理 ─────────────────────────────── */}
       <section className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">吧生附近的老年护理</p>
+            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">孟沙附近的老年护理</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
-              为吧生家庭提供优质养老院服务
+              为孟沙家庭提供优质养老院服务
             </h2>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                吧生是吉隆坡最成熟的居住区之一，拥有许多多代同堂的家庭。随着父母年岁增长，为吧生居民寻找靠近家园的可靠且专业的老年护理成为首要优先事项。
+                孟沙是吉隆坡最成熟的居住区之一，拥有许多多代同堂的家庭。随着父母年岁增长，为孟沙居民寻找靠近家园的可靠且专业的老年护理成为首要优先事项。
               </p>
               <p>
-                Genesis Life Care 巴生谷中心是距离吧生最近的 Genesis 中心 — 位于 Kota Damansara，可通过 LDP 或 Sprint 高速公路方便前往。我们的设施提供24小时护理、每周驻院医生咨询、心理学家主导的失智症计划和完整的康复部门，包括物理治疗和职业治疗。
+                Genesis Life Care 巴生谷中心是距离孟沙最近的 Genesis 中心 — 位于 Kota Damansara，可通过 LDP 或 Sprint 高速公路方便前往。我们的设施提供24小时护理、每周驻院医生咨询、心理学家主导的失智症计划和完整的康复部门，包括物理治疗和职业治疗。
               </p>
               <p>
                 无论您的亲人需要长期住宅护理、手术后康复还是专业失智症支持，我们的巴生谷中心都提供安全、温暖的环境和经济实惠的费率。我们在Google上评分{nearestCentre.rating}星，来自巴生谷地区家庭的评价超过{nearestCentre.reviews}条。
@@ -305,7 +305,7 @@ export default function ElderlyCareBangsarZh() {
           <div className="text-center mb-12">
             <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">我们的服务</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-              吧生附近可用的老年护理服务
+              孟沙附近可用的老年护理服务
             </h2>
             <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
               在我们的巴生谷中心提供的全面护理服务。
@@ -349,7 +349,7 @@ export default function ElderlyCareBangsarZh() {
               参访我们的巴生谷中心
             </h2>
             <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
-              距离吧生仅需{nearestCentre.distance} — 我们位于 Kota Damansara 的旗舰中心。
+              距离孟沙仅需{nearestCentre.distance} — 我们位于 Kota Damansara 的旗舰中心。
             </p>
           </div>
 
@@ -380,7 +380,7 @@ export default function ElderlyCareBangsarZh() {
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
                     <p className="text-2xl font-extrabold text-primary">{nearestCentre.distance}</p>
-                    <p className="text-xs text-gray-500">距离吧生</p>
+                    <p className="text-xs text-gray-500">距离孟沙</p>
                   </div>
                 </div>
 
@@ -528,7 +528,7 @@ export default function ElderlyCareBangsarZh() {
               常见问题
             </h2>
             <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
-              关于吧生附近老年护理选项的常见问题。
+              关于孟沙附近老年护理选项的常见问题。
             </p>
           </div>
 
@@ -561,10 +561,10 @@ export default function ElderlyCareBangsarZh() {
         />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            在吧生找到优质老年护理
+            在孟沙找到优质老年护理
           </h2>
           <p className="text-lg text-white mb-8 max-w-2xl mx-auto" style={{ color: 'white' }}>
-            参访我们的巴生谷中心进行免费参观。查看我们的护理空间、与团队见面，并了解为什么吧生的家庭相信 Genesis Life Care。
+            参访我们的巴生谷中心进行免费参观。查看我们的护理空间、与团队见面，并了解为什么孟沙的家庭相信 Genesis Life Care。
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link

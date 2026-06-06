@@ -3,9 +3,9 @@ import Link from 'next/link';
 import HeroEnquiryForm from '@/components/HeroEnquiryForm';
 
 export const metadata: Metadata = {
-  title: '古来老人院 - Genesis Life Care JB',
+  title: "新山老人院",
   description:
-    'Premier old folks home 乔豪州古来 at Holiday Plaza. 24/7 nursing, dementia care, rehabilitation & nutritious meals. Affordable rates. Rated 4.8★. 访问我们的 JB centre today.',
+    'Premier old folks home 柔佛州新山 at Holiday Plaza. 24/7 nursing, dementia care, rehabilitation & nutritious meals. Affordable rates. Rated 4.8★. 访问我们的 JB centre today.',
 };
 
 export const revalidate = 60;
@@ -143,7 +143,7 @@ export default function OldFolksHomeZh() {
             '@type': 'LocalBusiness',
             '@id': 'https://genesiscare.com.my/zh/old-folks-home-in-johor-bahru',
             name: centre.fullName,
-            description: 'Premier old folks home 乔豪州古来 with 24/7 nursing care, dementia care, rehabilitation and nutritious meals.',
+            description: 'Premier old folks home 柔佛州新山 with 24/7 nursing care, dementia care, rehabilitation and nutritious meals.',
             url: 'https://genesiscare.com.my/zh/old-folks-home-in-johor-bahru',
             telephone: centre.phone,
             address: {
@@ -223,7 +223,7 @@ export default function OldFolksHomeZh() {
             </div>
 
             <div>
-              <HeroEnquiryForm centreName="柔佛巴鲁" pageUrl="/zh/old-folks-home-in-johor-bahru" lang="zh" />
+              <HeroEnquiryForm centreName="新山" pageUrl="/zh/old-folks-home-in-johor-bahru" lang="zh" />
             </div>
           </div>
         </div>
@@ -251,7 +251,7 @@ export default function OldFolksHomeZh() {
             <div>
               <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">为什么选择柔佛州</p>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">
-                Why Choose Our 古来老人院?
+                Why Choose Our 新山老人院?
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
@@ -273,7 +273,7 @@ export default function OldFolksHomeZh() {
             <div>
               <img
                 src="/images/services/common-area-scenic.jpg"
-                alt="Common area at our old folks home 乔豪州古来"
+                alt="Common area at our old folks home 柔佛州新山"
                 className="rounded-2xl shadow-lg w-full object-cover"
                 style={{ maxHeight: '400px' }}
               />

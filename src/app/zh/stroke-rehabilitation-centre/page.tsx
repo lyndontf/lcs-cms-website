@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: '马来西亚中风康复中心 | 创世纪生命护理',
+  title: '马来西亚中风康复中心',
   description:
-    '马来西亚5个中心的全面中风康复服务。物理治疗、职业治疗和言语治疗。个性化康复计划与多学科团队。免费咨询。',
+    '创世生命关怀在马来西亚5家中心提供全面中风康复：物理治疗、职业治疗与言语治疗，由多学科团队为每位住户量身定制康复计划，协助恢复自理与独立生活。预约免费咨询。',
 };
 
 export const revalidate = 60;
@@ -90,7 +90,7 @@ const centres = [
   { name: '巴生', slug: 'nursing-home-in-klang', rating: '4.8', tag: '创始中心', img: '/images/klang-centre.jpg' },
   { name: '加影', slug: 'nursing-home-kajang', rating: '4.7', tag: '南吉隆坡', img: '/images/kajang-centre.jpeg' },
   { name: '蒲种', slug: 'nursing-home-in-puchong', rating: '4.8', tag: '现代设施', img: '/images/puchong-centre.jpeg' },
-  { name: '柔佛巴鲁', slug: 'nursing-home-in-johor-bahru', rating: '4.8', tag: '南部地区', img: '/images/jb-centre.jpeg' },
+  { name: '新山', slug: 'nursing-home-in-johor-bahru', rating: '4.8', tag: '南部地区', img: '/images/jb-centre.jpeg' },
 ];
 
 const faqs = [

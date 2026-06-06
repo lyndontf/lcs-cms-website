@@ -8,7 +8,7 @@ import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
 
 export const metadata: Metadata = {
-  title: 'Elderly Care in Bangsar - Nursing Home Near Bangsar | Genesis Life Care',
+  title: "Elderly Care in Bangsar",
   description:
     'Looking for elderly care near Bangsar? Genesis Life Care Petaling Jaya is just minutes away — offering 24/7 nursing care, dementia programmes, stroke rehab & on-site doctor. Rated 4.9★. Book a free tour.',
   openGraph: {

@@ -4,9 +4,9 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: '我们的服务 - 护理之家和老年护理服务 | Genesis Life Care',
+  title: "我们的服务",
   description:
-    '探索Genesis Life Care服务：24/7护理、失智症和记忆护理、中风康复、临终关怀、术后康复和老年日间护理，全马来西亚。',
+    '探索创世生命关怀的全方位服务：24/7专业护理、失智症与记忆护理、中风康复、术后康复、临终关怀及长者日间护理。5家中心遍布巴生谷与柔佛，收费透明，预约免费咨询。',
 };
 
 export const revalidate = 60;

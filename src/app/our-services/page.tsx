@@ -6,7 +6,7 @@ import FaqSection from '@/components/sections/FaqSection';
 import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
-  title: 'Elderly Care Services in Malaysia — Nursing, Dementia & Rehab | Genesis Life Care',
+  title: "Elderly Care Services in Malaysia",
   description:
     'Comprehensive elderly care services across 5 centres: 24/7 nursing care, dementia & memory care, stroke rehabilitation, palliative care, post-op recovery, respite care & senior daycare. Government-approved. Book a free consultation.',
   alternates: {

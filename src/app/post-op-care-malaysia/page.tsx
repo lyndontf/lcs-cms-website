@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Post-Operative Recovery Care in Malaysia | Genesis Life Care',
+  title: "Post-Operative Recovery Care in Malaysia",
   description:
     'Professional post-op recovery care across 5 centres in Selangor & Johor Bahru. Expert wound care, physiotherapy, medication management & discharge planning. Flexible short-term stays from 2 weeks. Book a free consultation.',
   alternates: {

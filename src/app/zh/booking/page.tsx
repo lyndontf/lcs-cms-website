@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import BookingFormClient from '@/components/BookingFormClient';
 
 export const metadata: Metadata = {
-  title: '预约参观 | Genesis Life Care',
+  title: "预约参观",
   description:
-    '安排免费参观我们位于巴生、八打灵再也、加影、蒲种和新山的护理中心。选择您喜欢的日期和时间。',
+    '预约免费参观创世生命关怀位于巴生、八打灵再也、加影、蒲种和柔佛新山的护老院。选择合适的日期与时间，由护理顾问陪同参观设施、了解收费与个人化护理方案。',
   openGraph: {
     title: '预约参观 | Genesis Life Care',
     description: '安排免费参观我们的护理中心。选择您喜欢的地点、日期和时间。',

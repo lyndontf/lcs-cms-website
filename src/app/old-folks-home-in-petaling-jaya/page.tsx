@@ -3,7 +3,7 @@ import Link from 'next/link';
 import HeroEnquiryForm from '@/components/HeroEnquiryForm';
 
 export const metadata: Metadata = {
-  title: 'Old Folks Home in Petaling Jaya - Genesis Life Care PJ',
+  title: "Old Folks Home in Petaling Jaya",
   description:
     'Trusted old folks home in Petaling Jaya with 24/7 nursing care, dedicated memory care wing, rehabilitation & nutritious meals. Affordable rates. Rated 4.9★ on Google. Visit us today.',
 };

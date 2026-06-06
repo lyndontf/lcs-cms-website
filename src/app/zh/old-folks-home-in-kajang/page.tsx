@@ -3,7 +3,7 @@ import Link from 'next/link';
 import HeroEnquiryForm from '@/components/HeroEnquiryForm';
 
 export const metadata: Metadata = {
-  title: '加影老人院 - Genesis Life Care Kajang',
+  title: "加影老人院",
   description:
     'Genesis Life Care 加影老人院 — 全天候24小时专业护理、营养膳食、失智症护理和康复服务。服务巴生谷南部地区。收费合理透明。谷歌评分4.7\u2605。',
 };

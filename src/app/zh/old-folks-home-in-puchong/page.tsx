@@ -3,7 +3,7 @@ import Link from 'next/link';
 import HeroEnquiryForm from '@/components/HeroEnquiryForm';
 
 export const metadata: Metadata = {
-  title: '蒲种老人院 - Genesis Life Care Puchong',
+  title: "蒲种老人院",
   description:
     'Modern old folks home 在蒲种, Bandar Puteri. 24/7 nursing care, rehabilitation, dementia care & nutritious meals. Affordable rates. Rated 4.8\u2605. Visit today.',
 };
@@ -257,7 +257,7 @@ export default function OldFolksHomeZh() {
                   我们蒲种老人院的独特之处在于全天候护理、营养膳食、康复服务、专门活动和失智症支持的结合——确保您的亲人在舒适、尊重的环境中获得整体护理。
                 </p>
                 <p>
-                  通过LDP高速公路和ELITE高速公路的便捷高速公路通道使我们的中心对许多巴生谷家族位置优越。我们靠近Columbia Asia Hospital蒲种和KPJ丹绒specialist医院，是蒲种、梳邦再也、USJ、网城和布城家族的理想选择。
+                  通过LDP高速公路和ELITE高速公路的便捷高速公路通道使我们的中心对许多巴生谷家族位置优越。我们靠近Columbia Asia Hospital蒲种和KPJ丹绒specialist医院，是蒲种、梳邦再也、USJ、网城和蒲种家族的理想选择。
                 </p>
               </div>
               <div className="flex flex-wrap gap-2 mt-6">

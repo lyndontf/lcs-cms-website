@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import GalleryClient from '../../our-gallery/GalleryClient';
 
 export const metadata: Metadata = {
-  title: '我们的图库 - Genesis Life Care护理之家的照片',
+  title: "我们的图库",
   description:
     '查看Genesis Life Care护理之家设施、康复服务、用餐和跨越Petaling Jaya、Klang、Kajang、Puchong和Johor Bahru的中心的照片。',
   openGraph: {

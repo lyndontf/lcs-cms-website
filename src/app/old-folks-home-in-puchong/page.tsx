@@ -3,7 +3,7 @@ import Link from 'next/link';
 import HeroEnquiryForm from '@/components/HeroEnquiryForm';
 
 export const metadata: Metadata = {
-  title: 'Old Folks Home in Puchong - Genesis Life Care Puchong',
+  title: "Old Folks Home in Puchong",
   description:
     'Modern old folks home in Puchong, Bandar Puteri. 24/7 nursing care, rehabilitation, dementia care & nutritious meals. Affordable rates. Rated 4.8\u2605. Visit today.',
 };

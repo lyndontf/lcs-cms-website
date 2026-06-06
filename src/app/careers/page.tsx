@@ -8,7 +8,7 @@ export const revalidate = 60;
 export async function generateMetadata(): Promise<Metadata> {
   const baseUrl = await getCurrentSiteBaseUrl();
   return {
-    title: 'Careers — Join the Genesis Life Care Team',
+    title: "Careers",
     description:
       'Explore open positions at Genesis Life Care. We are hiring nurses, caregivers, and support staff across our centres in Malaysia.',
     alternates: { canonical: `${baseUrl}/careers` },

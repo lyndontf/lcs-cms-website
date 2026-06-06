@@ -4,7 +4,7 @@ import { centres, getOtherCentres } from '@/data/centres';
 import AtAGlance from '@/components/sections/AtAGlance';
 
 export const metadata: Metadata = {
-  title: '柔佛老年护理 - 柔佛新山养老院 | Genesis Life Care',
+  title: "柔佛老年护理",
   description:
     '正在寻找柔佛的老年护理？Genesis Life Care 柔佛新山提供24小时护理、失智症项目、中风康复和驻场医生咨询。谷歌评分4.8★。预约免费参观。',
   openGraph: {

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: '马来西亚暂托护理 - 短期老年护理 | Genesis Life Care',
+  title: "马来西亚暂托护理",
   description:
     '马来西亚全国暂托护理服务。为照顾者提供缓解、术后康复和家庭度假提供短期老年护理。全国5个中心。Genesis Life Care — 预约免费咨询。',
   openGraph: {

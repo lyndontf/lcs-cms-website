@@ -8,7 +8,7 @@ import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
 
 export const metadata: Metadata = {
-  title: 'Dementia Care in Johor Bahru - Memory Care JB | Genesis Life Care',
+  title: "Dementia Care in Johor Bahru",
   description:
     'Specialised dementia care in Johor Bahru. Psychologist-led memory care programmes, cognitive stimulation, safe environment & personalised care plans. Rated 4.8★. Book a free tour at Genesis Life Care JB.',
   openGraph: {

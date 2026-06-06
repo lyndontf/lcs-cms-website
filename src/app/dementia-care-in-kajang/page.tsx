@@ -8,7 +8,7 @@ import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
 
 export const metadata: Metadata = {
-  title: 'Dementia Care in Kajang | Genesis Life Care',
+  title: "Dementia Care in Kajang",
   description:
     'Specialised dementia care in Kajang. Psychologist-led memory care programmes, cognitive stimulation, safe environment & personalised care plans. Rated 4.7★. Book a free tour at Genesis Life Care Kajang.',
   openGraph: {

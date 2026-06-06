@@ -8,14 +8,14 @@ import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
 
 export const metadata: Metadata = {
-  title: '柔佛巴鲁中风康复 | 创世纪生命护理',
+  title: '柔佛新山中风康复',
   description:
-    '柔佛巴鲁专业中风康复。物理治疗、职业治疗和言语治疗。创世纪生命护理柔佛巴鲁中心的个性化康复计划。评分4.7★。预约免费咨询。',
+    '创世生命关怀柔佛新山中心提供专业中风康复：物理治疗、职业治疗与言语治疗，由多学科团队量身定制康复计划，全天候护理支持，助力中风后恢复。预约免费咨询。',
   openGraph: {
-    title: '柔佛巴鲁中风康复 - 创世纪生命护理',
+    title: '新山中风康复 - 创世纪生命护理',
     description:
-      '柔佛巴鲁全面的中风康复。物理治疗、职业治疗、言语治疗和个性化康复计划。访问我们的柔佛巴鲁中心。',
-    images: [{ url: '/images/jb-centre.jpeg', width: 1200, height: 630, alt: '创世纪生命护理柔佛巴鲁' }],
+      '新山全面的中风康复。物理治疗、职业治疗、言语治疗和个性化康复计划。访问我们的新山中心。',
+    images: [{ url: '/images/jb-centre.jpeg', width: 1200, height: 630, alt: '创世纪生命护理新山' }],
   },
 };
 
@@ -24,8 +24,8 @@ export const revalidate = 60;
 /* ─── Centre data ──────────────────────────────────────────── */
 
 const centre = {
-  name: '柔佛巴鲁',
-  fullName: '创世纪生命护理柔佛巴鲁',
+  name: '新山',
+  fullName: '创世纪生命护理新山',
   slug: 'nursing-home-in-johor-bahru',
   phone: '+6019 282 0457',
   phoneCTA: '+6019-282-0457',
@@ -111,23 +111,23 @@ const rehabFeatures = [
 
 const faqs = [
   {
-    q: '柔佛巴鲁有哪些中风康复服务？',
-    a: '创世纪生命护理柔佛巴鲁中心提供全面的中风康复，包括物理治疗、职业治疗和言语治疗。我们的多学科团队为中风幸存者设计个性化的康复计划，帮助他们恢复活动能力、独立性和沟通技能。',
+    q: '新山有哪些中风康复服务？',
+    a: '创世纪生命护理新山中心提供全面的中风康复，包括物理治疗、职业治疗和言语治疗。我们的多学科团队为中风幸存者设计个性化的康复计划，帮助他们恢复活动能力、独立性和沟通技能。',
   },
   {
     q: '中风后应该多快开始康复？',
-    a: '中风后应尽快开始康复，通常在医学稳定后24至48小时内。早期康复已被证明能显著改善恢复效果。我们的团队与柔佛巴鲁和万谷地区的医院紧密合作，确保无缝转入我们的康复计划。',
+    a: '中风后应尽快开始康复，通常在医学稳定后24至48小时内。早期康复已被证明能显著改善恢复效果。我们的团队与新山和万谷地区的医院紧密合作，确保无缝转入我们的康复计划。',
   },
   {
-    q: '柔佛巴鲁创世纪生命护理的中风康复需要多长时间？',
+    q: '新山创世纪生命护理的中风康复需要多长时间？',
     a: '中风康复的时间长度取决于中风的严重程度和个人康复进展。有些患者在数周内会看到明显改善，而其他患者可能需要数个月的治疗。我们为每位患者设定个性化的里程碑，并定期重新评估计划。',
   },
   {
-    q: '柔佛巴鲁创世纪生命护理是否提供中风患者的言语治疗？',
-    a: '是的，我们的柔佛巴鲁中心提供言语和语言治疗，作为中风康复计划的一部分。这包括治疗失语症等沟通困难，以及吞咽困难患者的吞咽治疗。',
+    q: '新山创世纪生命护理是否提供中风患者的言语治疗？',
+    a: '是的，我们的新山中心提供言语和语言治疗，作为中风康复计划的一部分。这包括治疗失语症等沟通困难，以及吞咽困难患者的吞咽治疗。',
   },
   {
-    q: '柔佛巴鲁的中风康复费用是多少？',
+    q: '新山的中风康复费用是多少？',
     a: '中风康复的费用因所需的治疗强度和时间长度而异。创世纪生命护理提供具有竞争力和透明的定价。请联系我们获取个性化报价——我们很乐意讨论适合您家庭预算和保险覆盖的选项。',
   },
   {
@@ -146,21 +146,21 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'MedicalBusiness',
-      name: '创世纪生命护理柔佛巴鲁',
-      description: '柔佛巴鲁专业中风康复中心，提供物理治疗、职业治疗和言语治疗，支持中风恢复。',
+      name: '创世纪生命护理新山',
+      description: '新山专业中风康复中心，提供物理治疗、职业治疗和言语治疗，支持中风恢复。',
       image: centre.img,
       telephone: centre.phone,
       address: {
         '@type': 'PostalAddress',
         streetAddress: centre.address,
-        addressLocality: '柔佛巴鲁',
+        addressLocality: '新山',
         addressRegion: '雪兰莪州',
         postalCode: '43000',
         addressCountry: 'MY',
       },
       areaServed: {
         '@type': 'Place',
-        name: '柔佛巴鲁及周边地区',
+        name: '新山及周边地区',
       },
       ratingValue: centre.rating,
       ratingCount: centre.reviews,
@@ -216,12 +216,12 @@ export default function StrokeRehabilitationJohorBahruZh() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
-              <p className="text-gold text-sm font-bold uppercase tracking-widest mb-4">柔佛巴鲁中风康复</p>
+              <p className="text-gold text-sm font-bold uppercase tracking-widest mb-4">新山中风康复</p>
               <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6" style={{ color: 'white' }}>
-                柔佛巴鲁中风康复中心
+                新山中风康复中心
               </h1>
               <p className="text-lg text-white/90 max-w-xl mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.9)' }}>
-                创世纪生命护理柔佛巴鲁中心提供全面的物理治疗、职业治疗和言语治疗。专业的多学科团队为您亲人的中风恢复提供支持。
+                创世纪生命护理新山中心提供全面的物理治疗、职业治疗和言语治疗。专业的多学科团队为您亲人的中风恢复提供支持。
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
@@ -247,7 +247,7 @@ export default function StrokeRehabilitationJohorBahruZh() {
             <div className="hidden lg:block">
               <img
                 src={centre.img}
-                alt="创世纪生命护理柔佛巴鲁中心"
+                alt="创世纪生命护理新山中心"
                 className="rounded-2xl shadow-2xl w-full object-cover"
               />
             </div>
@@ -261,21 +261,21 @@ export default function StrokeRehabilitationJohorBahruZh() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-primary font-bold text-xs uppercase tracking-widest mb-3">关于本中心</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">柔佛巴鲁中风康复中心</h2>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">新山中风康复中心</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                中风是一种医学突发事件，需要立即干预和快速的康复支持。在创世纪生命护理柔佛巴鲁中心，我们从第一天就开始帮助中风患者走上恢复之路。在柔佛巴鲁及南部柔佛地区，创世纪生命护理为每位患者提供一个结构化的中风康复计划，以最大化恢复潜力。
+                中风是一种医学突发事件，需要立即干预和快速的康复支持。在创世纪生命护理新山中心，我们从第一天就开始帮助中风患者走上恢复之路。在新山及南部柔佛地区，创世纪生命护理为每位患者提供一个结构化的中风康复计划，以最大化恢复潜力。
               </p>
               <p className="text-gray-600 leading-relaxed mb-4">
                 我们的多学科方法汇集了物理治疗以恢复力量和协调、职业治疗以帮助患者在日常活动中恢复信心，以及言语治疗为那些受沟通或吞咽困难影响的患者提供服务。每位患者都会获得个性化的恢复计划，其中有明确的里程碑由我们的护理团队定期审查。
               </p>
               <p className="text-gray-600 leading-relaxed mb-6">
-                我们的柔佛巴鲁中心服务来自柔佛巴鲁、伊斯干达沛城及周边地区的家人。拥有{centre.beds}张床位和全天候护理，我们为中风恢复提供舒适和支持的环境。创世纪生命护理柔佛巴鲁在谷歌上评分{centre.rating}星，拥有{centre.reviews}条来自信任我们照顾其亲人的家人的评价。
+                我们的新山中心服务来自新山、伊斯干达沛城及周边地区的家人。拥有{centre.beds}张床位和全天候护理，我们为中风恢复提供舒适和支持的环境。创世纪生命护理新山在谷歌上评分{centre.rating}星，拥有{centre.reviews}条来自信任我们照顾其亲人的家人的评价。
               </p>
             </div>
             <div>
               <img
                 src="/images/services/kajang-stroke.jpg"
-                alt="柔佛巴鲁中风康复"
+                alt="新山中风康复"
                 className="rounded-2xl shadow-lg w-full object-cover"
               />
             </div>
@@ -292,7 +292,7 @@ export default function StrokeRehabilitationJohorBahruZh() {
               我们的中风康复计划
             </h2>
             <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
-              柔佛巴鲁中心全面的多学科中风恢复方法。
+              新山中心全面的多学科中风恢复方法。
             </p>
           </div>
 
@@ -323,7 +323,7 @@ export default function StrokeRehabilitationJohorBahruZh() {
           <div className="text-center mb-12">
             <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">我们的服务</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-              柔佛巴鲁中心的护理服务
+              新山中心的护理服务
             </h2>
             <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
               面向老年人的全面护理服务，包含专业中风康复。
@@ -372,7 +372,7 @@ export default function StrokeRehabilitationJohorBahruZh() {
           <div className="text-center mb-12">
             <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">我们的中心</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-              访问我们的柔佛巴鲁中心
+              访问我们的新山中心
             </h2>
             <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
               为南部地区地区提供专业的中风康复设施。
@@ -444,7 +444,7 @@ export default function StrokeRehabilitationJohorBahruZh() {
               常见问题
             </h2>
             <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
-              关于柔佛巴鲁中风康复的常见问题。
+              关于新山中风康复的常见问题。
             </p>
           </div>
 
@@ -479,10 +479,10 @@ export default function StrokeRehabilitationJohorBahruZh() {
         />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            在柔佛巴鲁开始您的中风康复之旅
+            在新山开始您的中风康复之旅
           </h2>
           <p className="text-lg text-white mb-8 max-w-2xl mx-auto" style={{ color: 'white' }}>
-            访问我们的柔佛巴鲁中心进行免费咨询。与我们的康复团队见面
+            访问我们的新山中心进行免费咨询。与我们的康复团队见面
             并了解我们如何帮助您亲人从中风中恢复。
           </p>
           <div className="flex flex-wrap justify-center gap-4">

@@ -119,7 +119,7 @@ const otherCentres = [
   { name: '巴生谷', slug: 'nursing-home-in-petaling-jaya', rating: '4.9', tag: '旗舰中心', img: '/images/pj-centre.jpg' },
   { name: 'Klang', slug: 'nursing-home-in-klang', rating: '4.8', tag: '创始中心', img: '/images/klang-centre.jpg' },
   { name: 'Puchong', slug: 'nursing-home-in-puchong', rating: '4.8', tag: '现代化设施', img: '/images/puchong-centre.jpeg' },
-  { name: '柔佛巴鲁', slug: 'nursing-home-in-johor-bahru', rating: '4.8', tag: '南方地区', img: '/images/jb-centre.jpeg' },
+  { name: '新山', slug: 'nursing-home-in-johor-bahru', rating: '4.8', tag: '南方地区', img: '/images/jb-centre.jpeg' },
 ];
 
 /* ─── Page component ─────────────────────────────────────────────────── */

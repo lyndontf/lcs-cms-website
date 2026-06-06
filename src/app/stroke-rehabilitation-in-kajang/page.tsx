@@ -8,7 +8,7 @@ import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
 
 export const metadata: Metadata = {
-  title: 'Stroke Rehabilitation in Kajang | Genesis Life Care',
+  title: "Stroke Rehabilitation in Kajang",
   description:
     'Professional stroke rehabilitation in Kajang. Physiotherapy, occupational therapy & speech therapy for stroke recovery. Personalised rehab plans at Genesis Life Care Kajang. Rated 4.7★. Book a free consultation.',
   openGraph: {

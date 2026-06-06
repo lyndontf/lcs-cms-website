@@ -4,7 +4,7 @@ import { centres, getOtherCentres } from '@/data/centres';
 import AtAGlance from '@/components/sections/AtAGlance';
 
 export const metadata: Metadata = {
-  title: '梳邦再也附近的老年护理 - Genesis Life Care',
+  title: "梳邦再也附近的老年护理",
   description:
     '在梳邦再也附近寻找老年护理？Genesis Life Care 有两个附近的分院 — 蒲种（约 15 分钟）和八打灵再也（约 20 分钟）。24/7 护理、失智症护理、中风康复及驻诊医生。评分 4.9★。预约免费参观。',
   openGraph: {

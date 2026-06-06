@@ -3,7 +3,7 @@ import Link from 'next/link';
 import HeroEnquiryForm from '@/components/HeroEnquiryForm';
 
 export const metadata: Metadata = {
-  title: '八打灵再也老人院 - Genesis Life Care PJ',
+  title: "八打灵再也老人院",
   description:
     'Trusted old folks home 在八打灵再也 with 24/7 nursing care, dedicated memory care wing, rehabilitation & nutritious meals. Affordable rates. Rated 4.9★ on Google. Visit us today.',
 };

@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: '马来西亚术后护理 | Genesis Life Care',
+  title: "马来西亚术后护理",
   description:
-    '马来西亚全国5家中心的专业术后康复护理。专家伤口护理、物理治疗、药物管理和出院规划。灵活的短期住宿。预约免费咨询。',
+    '创世生命关怀在马来西亚5家中心提供专业术后康复护理：专家伤口护理、物理治疗、药物管理与出院规划，并提供灵活的短期住宿，助您的亲人安心康复。预约免费咨询。',
 };
 
 export const revalidate = 60;

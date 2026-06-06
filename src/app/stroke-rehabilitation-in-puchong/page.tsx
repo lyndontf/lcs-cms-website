@@ -8,7 +8,7 @@ import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
 
 export const metadata: Metadata = {
-  title: 'Stroke Rehabilitation in Puchong | Genesis Life Care',
+  title: "Stroke Rehabilitation in Puchong",
   description:
     'Professional stroke rehabilitation in Puchong. Physiotherapy, occupational therapy & speech therapy for stroke recovery. Personalised rehab plans at Genesis Life Care Puchong. Rated 4.8★. Book a free consultation.',
   openGraph: {

@@ -9,7 +9,7 @@ import FaqSection from '@/components/sections/FaqSection';
 import FinalCtaSection from '@/components/sections/FinalCtaSection';
 
 export const metadata: Metadata = {
-  title: "About Genesis Life Care — Malaysia's Trusted Nursing Home Operator",
+  title: "Malaysia's Trusted Nursing Home Operator",
   description:
     "Learn about Genesis Life Care, operating 5 nursing homes across Selangor & Johor since 2018. 150+ trained nurses, caregivers & therapists delivering compassionate, government-approved elderly care. JKM registered & AgeCope certified.",
   alternates: {

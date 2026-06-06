@@ -3,7 +3,7 @@ import Link from 'next/link';
 import HeroEnquiryForm from '@/components/HeroEnquiryForm';
 
 export const metadata: Metadata = {
-  title: 'Old Folks Home in Kajang - Genesis Life Care Kajang',
+  title: "Old Folks Home in Kajang",
   description:
     'Family-friendly old folks home in Kajang with 24/7 nursing care, nutritious meals, dementia care & rehabilitation. Serving southern Klang Valley. Affordable rates. Rated 4.7\u2605.',
 };

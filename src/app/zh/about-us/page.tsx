@@ -7,7 +7,7 @@ import { getSiteSettings, getPageBySlug } from '@/lib/supabase';
 import { getCurrentSiteSlug, getCurrentSiteId } from '@/lib/site-context';
 
 export const metadata: Metadata = {
-  title: '关于Genesis Life Care — 马来西亚值得信赖的护老院运营商',
+  title: "马来西亚值得信赖的护老院运营商",
   description:
     '了解Genesis Life Care，自2018年以来在雪兰莪和柔佛运营5家护老院。150多名训练有素的护士、护理工作者和治疗师提供富有爱心的、政府认可的老年护理。JKM注册、AgeCope认证。',
   alternates: {

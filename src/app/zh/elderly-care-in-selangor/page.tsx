@@ -4,7 +4,7 @@ import { centres, getOtherCentres } from '@/data/centres';
 import AtAGlance from '@/components/sections/AtAGlance';
 
 export const metadata: Metadata = {
-  title: '雪兰莪老年护理 - Genesis Life Care',
+  title: "雪兰莪老年护理",
   description:
     '在雪兰莪寻找老年护理？Genesis Life Care 在巴生谷地区拥有 4 个养老院 — 巴生、八打灵再也、加影和蒲种。24/7 护理、失智症护理、中风康复。评分 4.7-4.9 星。预约免费参观。',
   openGraph: {

@@ -8,7 +8,7 @@ import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
 
 export const metadata: Metadata = {
-  title: 'Elderly Care in Selangor - Nursing Homes Across Selangor | Genesis Life Care',
+  title: "Elderly Care in Selangor",
   description:
     'Looking for elderly care in Selangor? Genesis Life Care operates 4 nursing homes across the Klang Valley — Petaling Jaya, Klang, Kajang & Puchong. 24/7 nursing, dementia care, stroke rehab. Rated 4.7-4.9 stars. Book a free tour.',
   openGraph: {

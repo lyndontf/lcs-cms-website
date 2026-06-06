@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { centres, getOtherCentres } from '@/data/centres';
 
 export const metadata: Metadata = {
-  title: '八打灵再也失智症护理 - Genesis Life Care',
+  title: "八打灵再也失智症护理",
   description: '八打灵再也专业失智症护理。心理学家主导的记忆护理计划、认知刺激、安全环境和个性化护理计划。评分 4.9★。在 Genesis Life Care 八打灵再也预约免费参观。',
 };
 

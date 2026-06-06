@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: '马来西亚失智症护理与记忆护理 | Genesis Life Care',
+  title: "马来西亚失智症护理与记忆护理",
   description: '跨越 5 个中心的专业失智症和记忆护理。心理学家主导的认知刺激疗法 (CST)、每个中心的专业记忆护理部、训练有素的照顾者和家庭支持。预约免费咨询。',
 };
 
@@ -63,7 +63,7 @@ const centres = [
   { name: '八打灵再也', slug: 'nursing-home-in-petaling-jaya', rating: '4.9', tag: '旗舰中心', img: '/images/pj-centre.jpg' },
   { name: '巴生', slug: 'nursing-home-in-klang', rating: '4.8', tag: '原始中心', img: '/images/klang-centre.jpg' },
   { name: '加影', slug: 'nursing-home-kajang', rating: '4.7', tag: '南部KV', img: '/images/kajang-centre.jpeg' },
-  { name: '布城', slug: 'nursing-home-in-puchong', rating: '4.8', tag: '现代设施', img: '/images/puchong-centre.jpeg' },
+  { name: '蒲种', slug: 'nursing-home-in-puchong', rating: '4.8', tag: '现代设施', img: '/images/puchong-centre.jpeg' },
   { name: '新山', slug: 'nursing-home-in-johor-bahru', rating: '4.8', tag: '南部地区', img: '/images/jb-centre.jpeg' },
 ];
 

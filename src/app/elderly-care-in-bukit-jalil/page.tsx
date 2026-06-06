@@ -8,7 +8,7 @@ import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
 
 export const metadata: Metadata = {
-  title: 'Elderly Care in Bukit Jalil - Nursing Home Near Bukit Jalil | Genesis Life Care',
+  title: "Elderly Care in Bukit Jalil",
   description:
     'Looking for elderly care near Bukit Jalil? Genesis Life Care Puchong is just ~15 minutes away — offering 24/7 nursing care, dementia programmes, stroke rehab & on-site doctor. Rated 4.8★. Book a free tour.',
   openGraph: {

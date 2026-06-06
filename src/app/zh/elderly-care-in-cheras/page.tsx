@@ -4,7 +4,7 @@ import { centres, getOtherCentres } from '@/data/centres';
 import AtAGlance from '@/components/sections/AtAGlance';
 
 export const metadata: Metadata = {
-  title: '芝拉斯老年护理 - 芝拉斯附近养老院 | Genesis Life Care',
+  title: "芝拉斯老年护理",
   description:
     '正在寻找芝拉斯附近的老年护理？Genesis Life Care Kajang 距离芝拉斯约15分钟车程（经芝拉斯-加影高速公路） — 提供24小时护理、失智症项目、中风康复和驻场医生。谷歌评分4.7★。预约免费参观。',
   openGraph: {

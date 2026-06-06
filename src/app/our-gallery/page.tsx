@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import GalleryClient from './GalleryClient';
 
 export const metadata: Metadata = {
-  title: 'Our Gallery - Photos of Genesis Life Care Nursing Homes',
+  title: "Our Gallery",
   description:
     'View photos of Genesis Life Care nursing home facilities, rehabilitation services, dining, and centres across Petaling Jaya, Klang, Kajang, Puchong & Johor Bahru.',
   openGraph: {

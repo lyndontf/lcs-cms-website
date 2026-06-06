@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: '普城老年护理中心',
   description:
-    'Genesis Life Care Puchong — 布城现代化老年护理中心，位于班达普特里，交通便利。提供24/7护理服务、康复服务、失智症护理及老年日间护理。费用合理。谷歌评分4.8★。预约免费参观。',
+    'Genesis Life Care Puchong — 蒲种现代化老年护理中心，位于班达普特里，交通便利。提供24/7护理服务、康复服务、失智症护理及老年日间护理。费用合理。谷歌评分4.8★。预约免费参观。',
 };
 
 export const revalidate = 60;
@@ -125,7 +125,7 @@ const otherCentres = [
   { name: '巴生谷', slug: 'nursing-home-in-petaling-jaya', rating: '4.9', tag: '旗舰中心', img: '/images/pj-centre.jpg' },
   { name: 'Klang', slug: 'nursing-home-in-klang', rating: '4.8', tag: '创始中心', img: '/images/klang-centre.jpg' },
   { name: 'Kajang', slug: 'nursing-home-kajang', rating: '4.7', tag: '南巴生谷', img: '/images/kajang-centre.jpeg' },
-  { name: '柔佛巴鲁', slug: 'nursing-home-in-johor-bahru', rating: '4.8', tag: '南方地区', img: '/images/jb-centre.jpeg' },
+  { name: '新山', slug: 'nursing-home-in-johor-bahru', rating: '4.8', tag: '南方地区', img: '/images/jb-centre.jpeg' },
 ];
 
 /* ─── Page component ─────────────────────────────────────────────────── */

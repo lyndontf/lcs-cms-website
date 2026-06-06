@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Dementia Care & Memory Care in Malaysia | Genesis Life Care',
+  title: "Dementia Care & Memory Care in Malaysia",
   description:
     'Specialist dementia and memory care across 5 centres in Selangor & Johor Bahru. Psychologist-led cognitive stimulation therapy (CST), dedicated Memory Care Wings, trained caregivers & family support. From RM 2,500/month. Book a free consultation.',
   alternates: {

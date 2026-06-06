@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Nursing Home Locations in Malaysia — PJ, Klang, Kajang, Puchong & JB | Genesis Life Care',
+  title: "Nursing Home Locations in Malaysia",
   description:
     'Find a Genesis Life Care nursing home near you. 5 centres in Petaling Jaya, Klang, Kajang, Puchong (Selangor) & Johor Bahru. 24/7 nursing care, affordable rates from RM 2,500/month. Book a free tour.',
   alternates: {

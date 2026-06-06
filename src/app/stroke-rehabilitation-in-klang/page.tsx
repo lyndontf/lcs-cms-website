@@ -8,7 +8,7 @@ import LocationContact from '@/components/sections/LocationContact';
 import OtherCentres from '@/components/sections/OtherCentres';
 
 export const metadata: Metadata = {
-  title: 'Stroke Rehabilitation in Klang - Stroke Recovery Klang | Genesis Life Care',
+  title: "Stroke Rehabilitation in Klang",
   description:
     'Professional stroke rehabilitation in Klang. Physiotherapy, occupational therapy & speech therapy for stroke recovery. Personalised rehab plans at Genesis Life Care Klang. Rated 4.8★. Book a free consultation.',
   openGraph: {

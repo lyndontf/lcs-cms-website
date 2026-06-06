@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Palliative Care in Malaysia — Comfort & Dignity | Genesis Life Care',
+  title: "Palliative Care in Malaysia",
   description:
     'Compassionate palliative care across 5 centres in Selangor & Johor Bahru. Expert pain management, emotional support, family counselling, and dignified end-of-life care. 24/7 nursing. Book a free consultation.',
   alternates: {

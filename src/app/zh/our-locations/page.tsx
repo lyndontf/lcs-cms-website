@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: '我们的护理之家地点 - Genesis Life Care马来西亚',
+  title: "我们的护理之家地点",
   description:
     '在Petaling Jaya、Klang、Kajang、Puchong和Johor Bahru找到Genesis Life Care护理之家。提供24/7护理的可负担中心。今天预约免费参观。',
 };
