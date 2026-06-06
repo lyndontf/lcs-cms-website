@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Nursing Home in Kajang',
   description:
-    'Genesis Life Care Kajang — family-friendly nursing home in the southern Klang Valley. 24/7 nursing care, rehab services, dementia care & Senior Daycare. Affordable rates from RM 2,500/month. Rated 4.9★ on Google. Book a free tour.',
+    'Genesis Life Care Kajang — family-friendly nursing home in southern Klang Valley. 24/7 nursing, rehab, dementia care & daycare. From RM 2,500/mo. Rated 4.9★.',
   alternates: {
     canonical: 'https://genesiscare.com.my/nursing-home-kajang',
     languages: { 'zh-Hans': 'https://genesiscare.com.my/zh/nursing-home-kajang' },

@@ -1,3 +1,4 @@
+import OrgSchema from '@/components/OrgSchema';
 import { Fragment } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -121,6 +122,7 @@ export default async function AboutPageZh() {
 
   return (
     <>
+      <OrgSchema />
       {/* ─── 英雄横幅 ─── */}
       <section className="hp-hero relative overflow-hidden">
         <img

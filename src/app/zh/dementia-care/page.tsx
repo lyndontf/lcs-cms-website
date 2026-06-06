@@ -1,3 +1,4 @@
+import OrgSchema from '@/components/OrgSchema';
 import { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -78,6 +79,7 @@ const faqs = [
 export default function DementiaCareZh() {
   return (
     <main className="bg-white">
+      <OrgSchema />
       <style dangerouslySetInnerHTML={{ __html: `.hero-dark .text-white { color: #ffffff !important; }` }} />
 
       {/* HERO */}

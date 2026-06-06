@@ -1,3 +1,4 @@
+import OrgSchema from '@/components/OrgSchema';
 import { getCurrentSiteSlug, getCurrentSiteId } from '@/lib/site-context';
 import { getPageBySlug } from '@/lib/supabase';
 import ContactFormClient from '../../contact/ContactFormClient';
@@ -22,5 +23,10 @@ export default async function ContactPageZh() {
   }
 
   // Centre site: render the default contact form
-  return <ContactFormClient />;
+  return (
+    <>
+      <OrgSchema />
+      <ContactFormClient />
+    </>
+  );
 }

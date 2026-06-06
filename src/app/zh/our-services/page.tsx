@@ -1,3 +1,4 @@
+import OrgSchema from '@/components/OrgSchema';
 import { Fragment } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -20,6 +21,7 @@ const highlights = [
 export default function OurServicesZh() {
   return (
     <main className="bg-white">
+      <OrgSchema />
       <style dangerouslySetInnerHTML={{ __html: `
         .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div { color: inherit; }
         .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div,

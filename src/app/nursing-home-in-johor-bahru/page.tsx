@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Nursing Home in Johor Bahru',
   description:
-    'Genesis Life Care Johor Bahru — premier nursing home in JB at Holiday Plaza. 24/7 nursing care, rehab, dementia care & dedicated kitchen. From RM 2,500/month. Rated 4.8★ on Google. Book a free tour.',
+    'Genesis Life Care Johor Bahru — nursing home at Holiday Plaza. 24/7 nursing, rehab & dementia care. From RM 2,500/mo. Rated 4.8★. Book a free tour.',
   alternates: {
     canonical: 'https://genesiscare.com.my/nursing-home-in-johor-bahru',
     languages: { 'zh-Hans': 'https://genesiscare.com.my/zh/nursing-home-in-johor-bahru' },

@@ -1,3 +1,4 @@
+import OrgSchema from '@/components/OrgSchema';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { centres, getOtherCentres } from '@/data/centres';
@@ -68,6 +69,7 @@ const zhTestimonials = [
 export default function DementiaCarePuchongZh() {
   return (
     <main className="bg-white">
+      <OrgSchema />
       <style dangerouslySetInnerHTML={{ __html: `.hero-dark { color: #ffffff; } .hero-dark * { color: inherit; }` }} />
 
       {/* HERO */}

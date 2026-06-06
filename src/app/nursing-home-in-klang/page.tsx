@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Nursing Home in Klang',
   description:
-    'Genesis Life Care Klang — our original nursing home near major hospitals in Klang. On-site doctor, 24/7 nursing care, rehab & psychologist-led dementia care. From RM 2,500/month. Rated 4.8★ on Google. Book a free tour.',
+    'Genesis Life Care Klang — nursing home near hospitals. On-site doctor, 24/7 nursing, rehab & dementia care. From RM 2,500/mo. Rated 4.8★. Book a free tour.',
   alternates: {
     canonical: 'https://genesiscare.com.my/nursing-home-in-klang',
     languages: { 'zh-Hans': 'https://genesiscare.com.my/zh/nursing-home-in-klang' },

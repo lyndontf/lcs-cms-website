@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Nursing Home in Petaling Jaya',
   description:
-    'Genesis Life Care Petaling Jaya — flagship nursing home in PJ with dedicated memory care wing, rehab facilities & 24/7 nursing care. From RM 2,500/month. Rated 4.9★ on Google. Book a free tour.',
+    'Genesis Life Care PJ — flagship nursing home with a memory-care wing, rehab & 24/7 nursing. From RM 2,500/mo. Rated 4.9★ on Google. Book a free tour.',
   alternates: {
     canonical: 'https://genesiscare.com.my/nursing-home-in-petaling-jaya',
     languages: { 'zh-Hans': 'https://genesiscare.com.my/zh/nursing-home-in-petaling-jaya' },
