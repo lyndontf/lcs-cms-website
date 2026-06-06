@@ -184,9 +184,6 @@ export default async function AboutPageZh() {
               <p className="text-gray-500 text-lg leading-relaxed mb-5">
                 让我们与众不同的是我们专有的护理运营系统 — 一个标准化框架，确保每位居民在每个中心都获得相同水平的高度关注。每个人都获得与其家人和多学科团队共同制定并定期审核的个性化护理计划。
               </p>
-              <p className="text-gray-500 text-lg leading-relaxed">
-                我们也大量投资于人才。通过我们由HRDF注册的培训学院，我们已资助超过600个护理工作者奖学金 — 因为我们相信培训更好的护理工作者会为家庭带来更好的成果。
-              </p>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-xl">
               <img

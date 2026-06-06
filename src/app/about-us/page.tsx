@@ -190,9 +190,6 @@ export default async function AboutPage() {
               <p className="text-gray-500 text-lg leading-relaxed mb-5">
                 What makes us different is our proprietary care operating system &mdash; a standardised framework that ensures every resident, in every centre, receives the same high level of attention. Each person gets a personalised care plan developed with their family and reviewed regularly by our multidisciplinary team.
               </p>
-              <p className="text-gray-500 text-lg leading-relaxed">
-                We also invest heavily in our people. Through our HRDF-registered training academy, we&apos;ve funded over 600 caregiver scholarships &mdash; because we believe better-trained caregivers lead to better outcomes for families.
-              </p>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-xl">
               <img
