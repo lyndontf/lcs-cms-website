@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: '八打灵再也护理家园 - Genesis Life Care PJ',
+  title: '八打灵再也护理家园',
   description:
     'Genesis Life Care 八打灵再也 — 我们的旗舰护理中心，配备专门的记忆护理病房、全面的康复设施与24/7专业护理服务。收费合理。谷歌评分4.9★。预约免费参观。',
 };
@@ -124,9 +124,36 @@ const otherCentres = [
 
 /* ─── Page component ─────────────────────────────────────────────────── */
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'MedicalBusiness',
+      name: centre.fullName,
+      description: `${centre.fullName} — 马来西亚专业护老院和24小时老年护理服务。`,
+      url: 'https://genesiscare.com.my/zh/nursing-home-in-petaling-jaya',
+      telephone: centre.phone.replace(/\s/g, ''),
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: centre.address,
+        addressRegion: 'Selangor',
+        addressCountry: 'MY',
+      },
+      medicalSpecialty: 'Geriatric',
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: centre.rating,
+        reviewCount: String(centre.reviews),
+        bestRating: '5',
+      },
+    },
+  ],
+};
+
 export default function NursingHomePJZh() {
   return (
     <main className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="pj-hero relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         {/* Decorative pattern */}

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Nursing Home in Klang — Genesis Life Care Klang | 24/7 Elderly Care',
+  title: 'Nursing Home in Klang',
   description:
     'Genesis Life Care Klang — our original nursing home near major hospitals in Klang. On-site doctor, 24/7 nursing care, rehab & psychologist-led dementia care. From RM 2,500/month. Rated 4.8★ on Google. Book a free tour.',
   alternates: {

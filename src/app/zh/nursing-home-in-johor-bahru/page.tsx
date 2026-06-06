@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: '新山护理中心 - Genesis Life Care 新山',
+  title: '新山护理中心',
   description:
     'Genesis Life Care 新山 — 我们在巴生谷以外的首个中心。全天候24/7护理、康复服务、失智症护理及位于假日广场的专业厨房。收费合理。谷歌评分4.8★。预约免费参观。',
 };
@@ -124,9 +124,36 @@ const otherCentres = [
 
 /* ─── Page component ─────────────────────────────────────────────────── */
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'MedicalBusiness',
+      name: centre.fullName,
+      description: `${centre.fullName} — 马来西亚专业护老院和24小时老年护理服务。`,
+      url: 'https://genesiscare.com.my/zh/nursing-home-in-johor-bahru',
+      telephone: centre.phone.replace(/\s/g, ''),
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: centre.address,
+        addressRegion: 'Johor',
+        addressCountry: 'MY',
+      },
+      medicalSpecialty: 'Geriatric',
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: centre.rating,
+        reviewCount: String(centre.reviews),
+        bestRating: '5',
+      },
+    },
+  ],
+};
+
 export default function NursingHomeJBZh() {
   return (
     <main className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Override global custom_css !important rules for dark-bg sections */}
       <style dangerouslySetInnerHTML={{ __html: `
         .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div { color: inherit; }

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: '普城老年护理中心 - Genesis Life Care Puchong',
+  title: '普城老年护理中心',
   description:
     'Genesis Life Care Puchong — 布城现代化老年护理中心，位于班达普特里，交通便利。提供24/7护理服务、康复服务、失智症护理及老年日间护理。费用合理。谷歌评分4.8★。预约免费参观。',
 };
@@ -130,9 +130,36 @@ const otherCentres = [
 
 /* ─── Page component ─────────────────────────────────────────────────── */
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'MedicalBusiness',
+      name: centre.fullName,
+      description: `${centre.fullName} — 马来西亚专业护老院和24小时老年护理服务。`,
+      url: 'https://genesiscare.com.my/zh/nursing-home-in-puchong',
+      telephone: centre.phone.replace(/\s/g, ''),
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: centre.address,
+        addressRegion: 'Selangor',
+        addressCountry: 'MY',
+      },
+      medicalSpecialty: 'Geriatric',
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: centre.rating,
+        reviewCount: String(centre.reviews),
+        bestRating: '5',
+      },
+    },
+  ],
+};
+
 export default function NursingHomePuchongZh() {
   return (
     <main className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Override global custom_css !important rules for dark-bg sections */}
       <style dangerouslySetInnerHTML={{ __html: `
         .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div { color: inherit; }

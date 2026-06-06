@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Nursing Home in Puchong — Genesis Life Care Puchong | 24/7 Elderly Care',
+  title: 'Nursing Home in Puchong',
   description:
     'Genesis Life Care Puchong — modern nursing home in Bandar Puteri with easy highway access. 24/7 nursing care, rehab, dementia care & Senior Daycare. From RM 2,500/month. Rated 4.8★ on Google. Book a free tour.',
   alternates: {
