@@ -67,6 +67,10 @@ export default async function RootLayout({
   const headersList = await headers();
   const pathname = headersList.get('x-pathname') || headersList.get('x-invoke-path') || headersList.get('x-nextjs-page') || '';
   const isZh = pathname.startsWith('/zh');
+  // Agency-branded pages render their own GlcHireNav — suppress the site
+  // header so visitors don't see two stacked menu bars.
+  const isAgencyPage = pathname === '/for-workers' || pathname.startsWith('/for-workers/')
+      || pathname === '/biodata' || pathname.startsWith('/biodata/');
 
   return (
     <html lang={isZh ? 'zh-Hans' : 'en'} suppressHydrationWarning>
@@ -87,7 +91,7 @@ export default async function RootLayout({
         )}
       </head>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
-        {!isCmsSite && !isZh && <Header settings={settings} menuItems={headerMenu?.items || []} />}
+        {!isCmsSite && !isZh && !isAgencyPage && <Header settings={settings} menuItems={headerMenu?.items || []} />}
         <LayoutWrapper
           isCmsSite={isCmsSite}
           isZh={isZh}

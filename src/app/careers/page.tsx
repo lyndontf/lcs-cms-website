@@ -31,15 +31,18 @@ export default async function CareersPage() {
   return (
     <article>
       {/* ─── HERO ─── */}
-      <section className="relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-            backgroundSize: '28px 28px',
-          }}
+      {/* Background-image hero matching the homepage pattern. force-white-text
+          beats the injected legacy stylesheet's !important colour rules, which
+          were rendering the hero copy dark-on-dark. */}
+      <section className="relative overflow-hidden force-white-text">
+        <img
+          src="/images/careers-hero.webp"
+          alt=""
+          fetchPriority="high"
+          className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary/80 to-secondary/70" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center">
           <span className="inline-flex items-center gap-2 text-xs font-bold tracking-[.14em] uppercase mb-4 text-white/80">
             <span className="w-6 h-0.5 bg-gold rounded" />
             Careers

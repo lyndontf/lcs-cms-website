@@ -230,8 +230,28 @@
 .force-white-text h1,
 .force-white-text h2,
 .force-white-text h3,
-.force-white-text p,
+.force-white-text h4,
+.force-white-text p {
+  color: #ffffff !important;
+}
 .force-white-text span {
+  color: #ffffff !important;
+}
+.force-white-text .text-white\/70,
+.force-white-text span.text-xs {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Force near-black text on a specific link (e.g. nav language toggle) against
+   the injected theme's anchor colour rules. */
+a.force-dark-link {
+  color: #111827 !important;
+}
+
+/* Anchor-level counterpart of .force-white-text — beats the injected theme's
+   `a { color … !important }` so solid-colour button labels and their
+   currentColor icons stay white. */
+a.force-white-link {
   color: #ffffff !important;
 }
 

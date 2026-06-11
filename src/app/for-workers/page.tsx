@@ -190,7 +190,9 @@ export default async function ForWorkersPage() {
                     </svg>
                   </a>
                 </div>
-                <div className="bg-gradient-to-br from-[#2E72B8] to-[#09B7D3] p-8 sm:p-12 flex flex-col justify-center">
+                {/* force-white-text beats the injected theme's !important
+                    colour rules, which repaint the inline white text dark. */}
+                <div className="force-white-text bg-gradient-to-br from-[#2E72B8] to-[#09B7D3] p-8 sm:p-12 flex flex-col justify-center">
                   <h3 className="text-xl font-bold mb-4" style={{ color: 'white' }}>Available Programmes</h3>
                   <div className="space-y-4">
                     {[
