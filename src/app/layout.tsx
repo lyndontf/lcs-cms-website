@@ -95,7 +95,9 @@ export default async function RootLayout({
         <LayoutWrapper
           isCmsSite={isCmsSite}
           isZh={isZh}
-          footer={<Footer settings={settings} menuItems={footerMenu?.items || headerMenu?.items || []} />}
+          // Agency-branded pages render their own GLC Hire footer — suppress
+          // the site footer so visitors don't see two stacked footers.
+          footer={isAgencyPage ? <></> : <Footer settings={settings} menuItems={footerMenu?.items || headerMenu?.items || []} />}
         >
           {children}
         </LayoutWrapper>

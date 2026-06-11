@@ -6,9 +6,10 @@ import { submitJobApplication } from '@/lib/supabase';
 interface Props {
   jobListingId: string;
   organizationId: string;
+  jobTitle?: string;
 }
 
-export default function ApplicationForm({ jobListingId, organizationId }: Props) {
+export default function ApplicationForm({ jobListingId, organizationId, jobTitle }: Props) {
   const [form, setForm] = useState({
     applicant_name: '',
     applicant_email: '',
@@ -40,6 +41,7 @@ export default function ApplicationForm({ jobListingId, organizationId }: Props)
     const success = await submitJobApplication({
       job_listing_id: jobListingId,
       organization_id: organizationId,
+      job_title: jobTitle,
       applicant_name: form.applicant_name.trim(),
       applicant_email: form.applicant_email.trim(),
       applicant_phone: form.applicant_phone.trim() || undefined,

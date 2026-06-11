@@ -89,7 +89,7 @@ export default async function JobDetailPage({ params }: { params: Promise<{ id: 
         {/* Application Form */}
         <div className="bg-white rounded-xl border border-gray-200 p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Apply for this Position</h2>
-          <ApplicationForm jobListingId={job.id} organizationId={job.organization_id} />
+          <ApplicationForm jobListingId={job.id} organizationId={job.organization_id} jobTitle={job.title} />
         </div>
       </div>
     </div>

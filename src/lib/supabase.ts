@@ -236,6 +236,7 @@ export async function getJobListingById(id: string): Promise<JobListing | null> 
 export async function submitJobApplication(formData: {
   job_listing_id: string;
   organization_id: string;
+  job_title?: string;
   applicant_name: string;
   applicant_email: string;
   applicant_phone?: string;
@@ -245,9 +246,26 @@ export async function submitJobApplication(formData: {
   years_experience?: number;
   expected_salary?: string;
 }): Promise<boolean> {
-  const { error } = await supabase.from('job_applications').insert({
-    ...formData,
-    status: 'new',
+  // All applications live in glc_biodata so they surface in the CMS
+  // Applications view alongside caregiver-pool submissions.
+  const notes = [
+    formData.current_employer ? `Current employer: ${formData.current_employer}` : null,
+    formData.years_experience != null ? `Experience: ${formData.years_experience} yr(s)` : null,
+    formData.expected_salary ? `Expected salary: ${formData.expected_salary}` : null,
+  ].filter(Boolean).join(' | ') || null;
+
+  const { error } = await supabase.from('glc_biodata').insert({
+    organization_id: formData.organization_id,
+    full_name: formData.applicant_name,
+    applicant_email: formData.applicant_email,
+    applicant_phone: formData.applicant_phone ?? null,
+    resume_url: formData.resume_url ?? null,
+    cover_letter: formData.cover_letter ?? null,
+    job_listing_id: formData.job_listing_id,
+    job_category: formData.job_title || 'Job Application',
+    status: 'pending',
+    application_source: 'careers_form',
+    notes,
   });
   return !error;
 }
