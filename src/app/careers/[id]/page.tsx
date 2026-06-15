@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { getJobListingById, getPublishedJobListings } from '@/lib/supabase';
 import { notFound } from 'next/navigation';
-import ApplicationForm from './ApplicationForm';
+
+// Central application form (scopes its fields to the listing via ?job=<id>).
+const APPLY_FORM_BASE = 'https://web.genesiscare.com.my/apply.html';
 
 export const revalidate = 30;
 
@@ -86,10 +88,20 @@ export default async function JobDetailPage({ params }: { params: Promise<{ id: 
           )}
         </div>
 
-        {/* Application Form */}
-        <div className="bg-white rounded-xl border border-gray-200 p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Apply for this Position</h2>
-          <ApplicationForm jobListingId={job.id} organizationId={job.organization_id} jobTitle={job.title} />
+        {/* Apply CTA — applicants are sent to the central application form,
+            which scopes its fields to this listing (caregiver vs professional). */}
+        <div className="bg-white rounded-xl border border-gray-200 p-8 text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Ready to apply?</h2>
+          <p className="text-gray-600 mb-6">
+            Complete our short online application form — it takes about 5 minutes.
+          </p>
+          <a
+            href={`${APPLY_FORM_BASE}?job=${job.id}`}
+            className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3.5 rounded-lg transition-colors"
+          >
+            Apply Now
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+          </a>
         </div>
       </div>
     </div>
