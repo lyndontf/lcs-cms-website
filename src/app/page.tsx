@@ -57,12 +57,35 @@ export async function generateMetadata(): Promise<Metadata> {
     };
   }
 
-  const baseUrl = await getCurrentSiteBaseUrl();
+  const [baseUrl, settings] = await Promise.all([
+    getCurrentSiteBaseUrl(),
+    getSiteSettings(siteId || undefined),
+  ]);
+  const seoDefaults = (settings?.seo_defaults as { default_description?: string } | null) || {};
+  const title = page?.meta_title || page?.title || settings?.site_name || 'Home';
+  const description =
+    page?.meta_description ||
+    seoDefaults.default_description ||
+    'Quality healthcare and aged care services in Malaysia';
+  const ogImage = page?.featured_image_url || undefined;
   return {
-    title: page?.meta_title || page?.title || 'Home',
-    description: page?.meta_description || 'Quality healthcare and aged care services in Malaysia',
-    alternates: {
-      canonical: baseUrl,
+    title,
+    description,
+    alternates: { canonical: baseUrl },
+    openGraph: {
+      title,
+      description,
+      url: baseUrl,
+      siteName: settings?.site_name || undefined,
+      locale: 'en_MY',
+      type: 'website',
+      images: ogImage ? [{ url: ogImage, width: 1200, height: 630 }] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ogImage ? [ogImage] : undefined,
     },
   };
 }
