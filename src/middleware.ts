@@ -15,6 +15,8 @@ const DOMAIN_TO_SITE: Record<string, string> = {
   'www.projectdeo.com.my': 'project-deo',
   'dementia.my': 'dementia',
   'www.dementia.my': 'dementia',
+  'strokerehab.my': 'stroke',
+  'www.strokerehab.my': 'stroke',
 };
 
 // Canonical (non-www) domain for each www variant — used for 301 redirects
@@ -26,6 +28,7 @@ const WWW_TO_CANONICAL: Record<string, string> = {
   'www.projectdeo.com.my': 'projectdeo.com.my',
   'www.genesiscare.com.my': 'genesiscare.com.my',
   'www.dementia.my': 'dementia.my',
+  'www.strokerehab.my': 'strokerehab.my',
 };
 
 // Path prefix to site slug mapping (for shared-domain hosting / dev)
@@ -35,6 +38,7 @@ const PATH_TO_SITE: Record<string, string> = {
   '/glc-hire': 'glc-hire',
   '/project-deo': 'project-deo',
   '/dementia': 'dementia',
+  '/stroke': 'stroke',
 };
 
 export function middleware(request: NextRequest) {
