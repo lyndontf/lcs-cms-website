@@ -2,6 +2,7 @@ import OrgSchema from '@/components/OrgSchema';
 import { Fragment } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import EcosystemTeaser from '@/components/sections/EcosystemTeaser';
 import { notFound } from 'next/navigation';
 import { getSiteSettings, getPageBySlug } from '@/lib/supabase';
 import { getCurrentSiteSlug, getCurrentSiteId } from '@/lib/site-context';
@@ -503,6 +504,8 @@ export default async function AboutPageZh() {
           </div>
         </div>
       </section>
+
+      <EcosystemTeaser lang="zh" />
 
       {/* ─── 最终号召 ─── */}
       <section className="hp-cta relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">

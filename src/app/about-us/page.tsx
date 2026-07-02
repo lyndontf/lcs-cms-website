@@ -7,6 +7,7 @@ import { getCurrentSiteSlug, getCurrentSiteId } from '@/lib/site-context';
 import GlcHireSection from '@/components/sections/GlcHireSection';
 import FaqSection from '@/components/sections/FaqSection';
 import FinalCtaSection from '@/components/sections/FinalCtaSection';
+import EcosystemTeaser from '@/components/sections/EcosystemTeaser';
 
 export const metadata: Metadata = {
   title: "Malaysia's Trusted Nursing Home Operator",
@@ -530,6 +531,8 @@ export default async function AboutPage() {
         heading="Frequently Asked Questions About Genesis Life Care"
         label="ABOUT OUR CARE"
       />
+
+      <EcosystemTeaser lang="en" />
 
       {/* ─── FINAL CTA ─── */}
       <FinalCtaSection
