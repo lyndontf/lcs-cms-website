@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: '创世生态体系 — 从培训到照护',
@@ -38,6 +39,7 @@ const highlights = [
 const pillars = [
   {
     step: '我们培训',
+    img: '/images/services/rehab-department.jpg',
     title: '创世培训学院',
     desc: '在照顾您的长者之前，我们的护理员已接受统一标准的培训与认证 —— 让床边的每一位照护者都真正专业称职。',
     cta: '了解学院',
@@ -47,6 +49,7 @@ const pillars = [
   },
   {
     step: '我们安置',
+    img: '/images/services/homecare-care.jpg',
     title: 'GLC Hire · Agensi Pekerjaan GLC',
     desc: '一家持牌安置中介，为家庭与我们的中心匹配经过培训与审核的护理员 —— 您也可以为自己的家聘请一位创世培训的护理员。',
     cta: '聘请培训护理员',
@@ -56,6 +59,7 @@ const pillars = [
   },
   {
     step: '我们照护',
+    img: '/images/services/common-area-scenic.jpg',
     title: '创世生命关怀',
     desc: '遍布巴生谷与新山的五间护理院及居家照护服务 —— 每一天，这些培训都在我们自己的监督下付诸实践。',
     cta: '参观中心',
@@ -86,7 +90,7 @@ export default function OurEcosystemZh() {
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full translate-y-1/2 -translate-x-1/3" />
 
-        <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24">
+        <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6">
               <svg className="w-4 h-4 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -110,6 +114,17 @@ export default function OurEcosystemZh() {
                 </svg>
               </Link>
             </div>
+          </div>
+
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20">
+            <Image
+              src="/images/general/dr-sue-rounds.jpg"
+              alt="创世护理人员照护一位长者"
+              fill
+              priority
+              sizes="(min-width: 1024px) 42vw, 100vw"
+              className="object-cover object-center"
+            />
           </div>
         </div>
       </section>
@@ -138,26 +153,26 @@ export default function OurEcosystemZh() {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {pillars.map((p, i) => (
-              <div key={i} className="bg-white border border-gray-100 rounded-2xl p-7 shadow-sm hover:shadow-md transition flex flex-col">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d={p.icon} />
-                  </svg>
+              <div key={i} className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col">
+                <div className="relative h-44">
+                  <Image src={p.img} alt={p.title} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover object-center" />
                 </div>
-                <p className="text-xs font-bold text-secondary uppercase tracking-wider mb-1">{p.step}</p>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{p.title}</h3>
-                <p className="text-gray-600 leading-relaxed mb-5 flex-grow">{p.desc}</p>
-                {p.external ? (
-                  <a href={p.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-primary font-bold text-sm hover:gap-2.5 transition-all">
-                    {p.cta}
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                  </a>
-                ) : (
-                  <Link href={p.href} className="inline-flex items-center gap-1.5 text-primary font-bold text-sm hover:gap-2.5 transition-all">
-                    {p.cta}
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-                  </Link>
-                )}
+                <div className="p-7 flex flex-col flex-grow">
+                  <p className="text-xs font-bold text-secondary uppercase tracking-wider mb-1">{p.step}</p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{p.title}</h3>
+                  <p className="text-gray-600 leading-relaxed mb-5 flex-grow">{p.desc}</p>
+                  {p.external ? (
+                    <a href={p.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-primary font-bold text-sm hover:gap-2.5 transition-all">
+                      {p.cta}
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </a>
+                  ) : (
+                    <Link href={p.href} className="inline-flex items-center gap-1.5 text-primary font-bold text-sm hover:gap-2.5 transition-all">
+                      {p.cta}
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                    </Link>
+                  )}
+                </div>
               </div>
             ))}
           </div>

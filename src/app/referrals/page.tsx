@@ -61,14 +61,17 @@ const steps = [
 const ecosystem = [
   {
     title: 'Genesis Training Academy',
+    img: '/images/services/rehab-department.jpg',
     desc: 'Our HRDF-registered, JPK-accredited training academy develops the nurses and caregivers who staff our homes — so the people caring for your loved one are trained to a consistent standard.',
   },
   {
     title: 'Agensi Pekerjaan GLC',
+    img: '/images/services/homecare-care.jpg',
     desc: 'Our own licensed placement agency. When a family prefers round-the-clock home support, we place a trained, vetted live-in caregiver through the agency for a one-off fee.',
   },
   {
     title: 'Partner lab & clinical services',
+    img: '/images/services/nursing-station.jpg',
     desc: 'Routine diagnostics through a partner lab visit, plus in-house pharmacy and an on-call doctor — so most clinical needs are handled without sending residents out.',
   },
 ];
@@ -250,9 +253,14 @@ export default function ReferralsPage() {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {ecosystem.map((e, i) => (
-              <div key={i} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{e.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{e.desc}</p>
+              <div key={i} className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                <div className="relative h-40">
+                  <Image src={e.img} alt={e.title} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover object-center" />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{e.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{e.desc}</p>
+                </div>
               </div>
             ))}
           </div>

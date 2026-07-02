@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'The Genesis Ecosystem — From Training to Care',
@@ -36,6 +37,7 @@ const highlights = [
 const pillars = [
   {
     step: 'We train',
+    img: '/images/services/rehab-department.jpg',
     title: 'Genesis Training Academy',
     desc: 'Our caregivers are trained and certified to a consistent standard before they ever care for your loved one — so the person at the bedside knows exactly what they’re doing.',
     cta: 'Explore the academy',
@@ -45,6 +47,7 @@ const pillars = [
   },
   {
     step: 'We place',
+    img: '/images/services/homecare-care.jpg',
     title: 'GLC Hire · Agensi Pekerjaan GLC',
     desc: 'A licensed placement agency that matches trained, vetted caregivers to families and to our centres — so you can hire a Genesis-trained caregiver for your own home, too.',
     cta: 'Hire a trained caregiver',
@@ -54,6 +57,7 @@ const pillars = [
   },
   {
     step: 'We care',
+    img: '/images/services/common-area-scenic.jpg',
     title: 'Genesis Life Care',
     desc: 'Five nursing homes and home-care services across the Klang Valley and Johor Bahru — where that training is put into practice, every day, under our own supervision.',
     cta: 'Visit a centre',
@@ -84,7 +88,7 @@ export default function OurEcosystem() {
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full translate-y-1/2 -translate-x-1/3" />
 
-        <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24">
+        <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6">
               <svg className="w-4 h-4 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -110,6 +114,17 @@ export default function OurEcosystem() {
                 </svg>
               </Link>
             </div>
+          </div>
+
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20">
+            <Image
+              src="/images/general/dr-sue-rounds.jpg"
+              alt="Genesis caregivers supporting a resident"
+              fill
+              priority
+              sizes="(min-width: 1024px) 42vw, 100vw"
+              className="object-cover object-center"
+            />
           </div>
         </div>
       </section>
@@ -138,26 +153,26 @@ export default function OurEcosystem() {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {pillars.map((p, i) => (
-              <div key={i} className="bg-white border border-gray-100 rounded-2xl p-7 shadow-sm hover:shadow-md transition flex flex-col">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d={p.icon} />
-                  </svg>
+              <div key={i} className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col">
+                <div className="relative h-44">
+                  <Image src={p.img} alt={p.title} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover object-center" />
                 </div>
-                <p className="text-xs font-bold text-secondary uppercase tracking-wider mb-1">{p.step}</p>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{p.title}</h3>
-                <p className="text-gray-600 leading-relaxed mb-5 flex-grow">{p.desc}</p>
-                {p.external ? (
-                  <a href={p.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-primary font-bold text-sm hover:gap-2.5 transition-all">
-                    {p.cta}
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                  </a>
-                ) : (
-                  <Link href={p.href} className="inline-flex items-center gap-1.5 text-primary font-bold text-sm hover:gap-2.5 transition-all">
-                    {p.cta}
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-                  </Link>
-                )}
+                <div className="p-7 flex flex-col flex-grow">
+                  <p className="text-xs font-bold text-secondary uppercase tracking-wider mb-1">{p.step}</p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{p.title}</h3>
+                  <p className="text-gray-600 leading-relaxed mb-5 flex-grow">{p.desc}</p>
+                  {p.external ? (
+                    <a href={p.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-primary font-bold text-sm hover:gap-2.5 transition-all">
+                      {p.cta}
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </a>
+                  ) : (
+                    <Link href={p.href} className="inline-flex items-center gap-1.5 text-primary font-bold text-sm hover:gap-2.5 transition-all">
+                      {p.cta}
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                    </Link>
+                  )}
+                </div>
               </div>
             ))}
           </div>

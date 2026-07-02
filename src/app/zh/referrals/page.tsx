@@ -60,14 +60,17 @@ const steps = [
 const ecosystem = [
   {
     title: '创世培训学院',
+    img: '/images/services/rehab-department.jpg',
     desc: '我们的HRDF注册、JPK认证培训学院培养驻院的护士与看护——确保照护您长者的人员都受过一致标准的训练。',
   },
   {
     title: 'Agensi Pekerjaan GLC',
+    img: '/images/services/homecare-care.jpg',
     desc: '我们自设的持牌招聘代理。当家庭偏好全天候居家支援时，我们通过该代理安排受训、经审核的住家看护，仅收一次性费用。',
   },
   {
     title: '合作实验室与临床服务',
+    img: '/images/services/nursing-station.jpg',
     desc: '通过合作实验室上门进行常规检验，加上院内药房与随时待命的医生——大多数临床需求无需送长者外出即可处理。',
   },
 ];
@@ -248,9 +251,14 @@ export default function ReferralsPageZh() {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {ecosystem.map((e, i) => (
-              <div key={i} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{e.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{e.desc}</p>
+              <div key={i} className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                <div className="relative h-40">
+                  <Image src={e.img} alt={e.title} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover object-center" />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{e.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{e.desc}</p>
+                </div>
               </div>
             ))}
           </div>
