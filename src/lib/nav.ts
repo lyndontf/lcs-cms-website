@@ -40,6 +40,7 @@ export const centreNavEN: MenuItem[] = [
     type: 'page',
     children: [
       { label: 'Admissions & Eligibility', url: '/admissions', type: 'page' },
+      { label: 'Referrals & Partnerships', url: '/referrals', type: 'page' },
       { label: 'Fees & Care Packages', url: '/pricing', type: 'page' },
       { label: 'Nursing Home Cost Guide', url: '/nursing-home-cost-malaysia', type: 'page' },
       { label: 'Family Care App', url: '/family-app', type: 'page' },
@@ -99,6 +100,7 @@ export const centreNavZH: MenuItem[] = [
     type: 'page',
     children: [
       { label: '入住与资格', url: '/zh/admissions', type: 'page' },
+      { label: '转介与合作', url: '/zh/referrals', type: 'page' },
       { label: '收费与护理配套', url: '/zh/pricing', type: 'page' },
       { label: '护理院费用指南', url: '/zh/nursing-home-cost-malaysia', type: 'page' },
       { label: '家属应用', url: '/zh/family-app', type: 'page' },
