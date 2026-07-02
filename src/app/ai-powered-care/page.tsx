@@ -258,6 +258,8 @@ export default function AiPoweredCare() {
       </section>
 
       {/* ── CTA ───────────────────────────────────────────────────────── */}
+      <FamilyUpdates lang="en" />
+
       <section className="hero-dark bg-gradient-to-br from-primary to-secondary">
         <div className="max-w-4xl mx-auto px-4 py-16 text-center">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4" style={{ color: 'white' }}>See AI-powered care in person</h2>
@@ -270,7 +272,6 @@ export default function AiPoweredCare() {
           </Link>
         </div>
       </section>
-      <FamilyUpdates lang="en" />
     </main>
   );
 }

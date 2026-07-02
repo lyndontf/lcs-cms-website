@@ -246,6 +246,8 @@ export default function AiPoweredCareZh() {
       </section>
 
       {/* ── CTA ───────────────────────────────────────────────────────── */}
+      <FamilyUpdates lang="zh" />
+
       <section className="hero-dark bg-gradient-to-br from-primary to-secondary">
         <div className="max-w-4xl mx-auto px-4 py-16 text-center">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4" style={{ color: 'white' }}>亲临参观 AI 智能护理</h2>
@@ -258,7 +260,6 @@ export default function AiPoweredCareZh() {
           </Link>
         </div>
       </section>
-      <FamilyUpdates lang="zh" />
     </main>
   );
 }

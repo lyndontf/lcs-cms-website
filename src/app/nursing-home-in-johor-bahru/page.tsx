@@ -680,6 +680,8 @@ export default function NursingHomeJB() {
       </section>
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
+      <FamilyUpdates lang="en" />
+
       <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
@@ -719,7 +721,6 @@ export default function NursingHomeJB() {
           </div>
         </div>
       </section>
-      <FamilyUpdates lang="en" />
     </main>
     </>
   );
