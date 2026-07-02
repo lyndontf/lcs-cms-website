@@ -12,6 +12,7 @@ const COPY: Record<Lang, {
   cardLead: string;
   cta: string;
   href: string;
+  imgAlt: string;
 }> = {
   en: {
     eyebrow: 'Stay Connected',
@@ -27,6 +28,7 @@ const COPY: Record<Lang, {
     cardLead: 'Have questions about how family updates work?',
     cta: 'Talk to our care team',
     href: '/contact',
+    imgAlt: 'A family visiting their loved one at Genesis Life Care',
   },
   zh: {
     eyebrow: '与家人保持联系',
@@ -42,6 +44,7 @@ const COPY: Record<Lang, {
     cardLead: '想了解家属更新如何运作？',
     cta: '联系我们的 care 团队',
     href: '/zh/contact',
+    imgAlt: '家人在创世生命关怀探望长者',
   },
 };
 
@@ -66,14 +69,17 @@ export default function FamilyUpdates({ lang = 'en' }: { lang?: Lang }) {
               ))}
             </ul>
           </div>
-          <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-            <p className="text-sm text-gray-500">{c.cardLead}</p>
-            <a href={c.href} className="mt-3 inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3 rounded-full transition">
-              {c.cta}
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
+          <div className="space-y-5">
+            <img src="/images/general/staff-care.jpg" alt={c.imgAlt} className="rounded-2xl shadow-lg w-full" />
+            <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+              <p className="text-sm text-gray-500">{c.cardLead}</p>
+              <a href={c.href} className="mt-3 inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3 rounded-full transition">
+                {c.cta}
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
