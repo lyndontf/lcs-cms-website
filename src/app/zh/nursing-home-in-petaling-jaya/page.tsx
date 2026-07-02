@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import FamilyUpdates from '@/components/sections/FamilyUpdates';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -618,6 +619,8 @@ export default function NursingHomePJZh() {
       </section>
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
+      <FamilyUpdates lang="zh" />
+
       <section className="pj-cta relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"

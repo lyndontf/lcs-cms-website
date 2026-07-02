@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import FamilyUpdates from '@/components/sections/FamilyUpdates';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -679,6 +680,8 @@ export default function NursingHomeJB() {
       </section>
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
+      <FamilyUpdates lang="en" />
+
       <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
