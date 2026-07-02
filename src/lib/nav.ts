@@ -32,6 +32,7 @@ export const centreNavEN: MenuItem[] = [
       { label: 'Kajang', url: '/nursing-home-kajang', type: 'page' },
       { label: 'Puchong', url: '/nursing-home-in-puchong', type: 'page' },
       { label: 'Johor Bahru', url: '/nursing-home-in-johor-bahru', type: 'page' },
+      { label: 'New Locations — Register Interest', url: '/register-interest', type: 'page' },
     ],
   },
   {
@@ -92,6 +93,7 @@ export const centreNavZH: MenuItem[] = [
       { label: '加影', url: '/zh/nursing-home-kajang', type: 'page' },
       { label: '蒲种', url: '/zh/nursing-home-in-puchong', type: 'page' },
       { label: '新山', url: '/zh/nursing-home-in-johor-bahru', type: 'page' },
+      { label: '新据点——登记意向', url: '/zh/register-interest', type: 'page' },
     ],
   },
   {
