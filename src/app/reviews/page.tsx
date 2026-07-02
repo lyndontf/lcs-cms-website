@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { centres } from '@/data/centres';
 
 export const metadata: Metadata = {
@@ -77,20 +78,33 @@ export default function Reviews() {
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
-        <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-20 text-center">
-          <span className="text-gold text-xs font-semibold tracking-widest uppercase">Reviews</span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mt-3 mb-4" style={{ color: 'white' }}>
-            What families say
-          </h1>
-          <div className="flex items-center justify-center gap-3">
-            <span className="text-gold text-2xl tracking-tight">★★★★★</span>
-            <span className="text-white/90 text-lg font-semibold" style={{ color: 'rgba(255,255,255,0.9)' }}>
-              {avgRating} from {totalReviews} Google reviews
-            </span>
+        <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+          <div>
+            <span className="text-gold text-xs font-semibold tracking-widest uppercase">Reviews</span>
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mt-3 mb-4" style={{ color: 'white' }}>
+              What families say
+            </h1>
+            <div className="flex items-center gap-3">
+              <span className="text-gold text-2xl tracking-tight">★★★★★</span>
+              <span className="text-white/90 text-lg font-semibold" style={{ color: 'rgba(255,255,255,0.9)' }}>
+                {avgRating} from {totalReviews} Google reviews
+              </span>
+            </div>
+            <p className="text-white/80 mt-4 max-w-2xl leading-relaxed" style={{ color: 'rgba(255,255,255,0.8)' }}>
+              Across our five nursing homes — real words from the families who trust us with their loved ones.
+            </p>
           </div>
-          <p className="text-white/80 mt-4 max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.8)' }}>
-            Across our five nursing homes — real words from the families who trust us with their loved ones.
-          </p>
+
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20">
+            <Image
+              src="/images/general/staff-care.jpg"
+              alt="A family spending time with their loved one"
+              fill
+              priority
+              sizes="(min-width: 1024px) 42vw, 100vw"
+              className="object-cover object-center"
+            />
+          </div>
         </div>
       </section>
 
