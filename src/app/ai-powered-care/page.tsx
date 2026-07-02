@@ -69,8 +69,8 @@ const faqs = [
   },
   {
     q: 'Is my family member’s data private?',
-    // TODO(REC-014): replace with Lyndon’s final PDPA / privacy-policy wording before publishing.
-    a: 'Yes. Data stays within Genesis’s secure care system and is used only to support your loved one’s care.',
+    // Privacy wording approved by Lyndon 2026-07-02 (PDPA reference removed).
+    a: 'Yes. Any information used by our AI stays within Genesis Life Care’s secure care system, is accessible only to authorised care staff, and is used solely to support your loved one’s care. We never sell it or share it for marketing.',
   },
   {
     q: 'Are families told that AI is used in care?',
