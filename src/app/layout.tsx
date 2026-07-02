@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import LayoutWrapper from '@/components/LayoutWrapper';
 import TrackingScript from '@/components/TrackingScript';
+import Script from 'next/script';
 import { getMenus, getSiteSettings } from '@/lib/supabase';
 import { getCurrentSiteId, getCurrentSiteSlug, getCurrentSiteBaseUrl } from '@/lib/site-context';
 
@@ -103,8 +104,9 @@ export default async function RootLayout({
         </LayoutWrapper>
         <TrackingScript />
         {settings?.custom_head_html && (
-          <script
-            suppressHydrationWarning
+          <Script
+            id="custom-head-inject"
+            strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `(function(){document.head.querySelectorAll('[data-custom-head]').forEach(function(e){e.remove()});var t=document.createElement('template');t.innerHTML=${JSON.stringify(settings.custom_head_html)};Array.from(t.content.children).forEach(function(el){el.setAttribute('data-custom-head','');document.head.appendChild(el)});})();`,
             }}
@@ -124,7 +126,9 @@ export default async function RootLayout({
           </a>
         )}
         {settings?.google_ads_id && (
-          <script
+          <Script
+            id="wa-conversion"
+            strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `(function(){document.addEventListener('click',function(e){var a=e.target;while(a&&a.tagName!=='A')a=a.parentElement;if(!a)return;var h=a.href||'';if(h.indexOf('wa.me')!==-1||h.indexOf('api.whatsapp.com')!==-1){if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-837607499/slQQCOGn7ZscEMvAs48D','value':1.0,'currency':'MYR'});}}});})();`,
             }}
