@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import FamilyUpdates from '@/components/sections/FamilyUpdates';
+import CentreTour from '@/components/sections/CentreTour';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -641,6 +642,8 @@ export default function NursingHomeJBZh() {
       </section>
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
+      <CentreTour lang="zh" centre="新山" video="/videos/johor-tour.mp4" poster="/images/jb-centre.jpeg" />
+
       <FamilyUpdates lang="zh" />
 
       <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">

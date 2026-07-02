@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import FamilyUpdates from '@/components/sections/FamilyUpdates';
+import CentreTour from '@/components/sections/CentreTour';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -660,6 +661,8 @@ export default function NursingHomePJ() {
       </section>
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
+      <CentreTour lang="en" centre="Petaling Jaya" video="/videos/pj-tour.mp4" poster="/images/pj-centre.jpg" />
+
       <FamilyUpdates lang="en" />
 
       <section className="pj-cta relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import FamilyUpdates from '@/components/sections/FamilyUpdates';
+import CentreTour from '@/components/sections/CentreTour';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -680,6 +681,8 @@ export default function NursingHomeJB() {
       </section>
 
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
+      <CentreTour lang="en" centre="Johor Bahru" video="/videos/johor-tour.mp4" poster="/images/jb-centre.jpeg" />
+
       <FamilyUpdates lang="en" />
 
       <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">

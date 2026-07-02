@@ -657,6 +657,23 @@ export default function NursingHomeKajang() {
         </div>
       </section>
 
+      {/* ── VIRTUAL TOUR (real footage) ────────────────────────────────── */}
+      <section className="py-16 sm:py-20 bg-gray-50">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <span className="text-secondary text-xs font-bold tracking-wide uppercase">Virtual Tour</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2 mb-3">Step inside our Kajang centre</h2>
+            <p className="text-lg text-gray-600">No stock photos — a real walk-through of the actual centre your loved one would call home.</p>
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-100 bg-black">
+            <video controls preload="none" playsInline poster="/images/kajang-centre.jpeg" className="w-full h-auto block">
+              <source src="/videos/kajang-tour.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </section>
+
       {/* ── BOTTOM CTA ────────────────────────────────────────────────── */}
       <FamilyUpdates lang="en" />
 
