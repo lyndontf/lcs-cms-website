@@ -157,11 +157,7 @@ export default function AiPoweredCareZh() {
 
             <div className="hidden lg:block">
               <div className="relative">
-                <img src="/images/services/common-area-scenic.jpg" alt="创世生命关怀 AI 智能护理" className="rounded-2xl shadow-2xl w-full object-cover" />
-                <div className="absolute -bottom-5 -right-5 bg-secondary text-white text-center rounded-xl px-6 py-4 shadow-lg hidden sm:block">
-                  <p className="text-3xl font-extrabold" style={{ color: 'white' }}>24/7</p>
-                  <p className="text-xs" style={{ color: 'rgba(255,255,255,0.8)' }}>AI 监测</p>
-                </div>
+                <img src="/images/general/ai-dashboard-mockup.png" alt="Life Care Systems 平台 —— 桌面与移动端的住客仪表板" className="rounded-2xl shadow-2xl w-full object-contain bg-white p-2" />
               </div>
             </div>
           </div>

@@ -166,14 +166,10 @@ export default function AiPoweredCare() {
             <div className="hidden lg:block">
               <div className="relative">
                 <img
-                  src="/images/services/common-area-scenic.jpg"
-                  alt="AI-supported nursing care at Genesis Life Care"
-                  className="rounded-2xl shadow-2xl w-full object-cover"
+                  src="/images/general/ai-dashboard-mockup.png"
+                  alt="The Life Care Systems platform — resident dashboard on desktop and mobile"
+                  className="rounded-2xl shadow-2xl w-full object-contain bg-white p-2"
                 />
-                <div className="absolute -bottom-5 -right-5 bg-secondary text-white text-center rounded-xl px-6 py-4 shadow-lg hidden sm:block">
-                  <p className="text-3xl font-extrabold" style={{ color: 'white' }}>24/7</p>
-                  <p className="text-xs" style={{ color: 'rgba(255,255,255,0.8)' }}>AI Vitals Watch</p>
-                </div>
               </div>
             </div>
           </div>
