@@ -136,8 +136,6 @@ const nextConfig = {
       { source: '/terms-of-service', destination: '/', permanent: true },
       { source: '/terms-of-service/', destination: '/', permanent: true },
       { source: '/senior-daycare', destination: '/our-services', permanent: true },
-      { source: '/home-care', destination: '/our-services', permanent: true },
-      { source: '/home-care/', destination: '/our-services', permanent: true },
       { source: '/geriatric-care', destination: '/our-services', permanent: true },
       { source: '/geriatric-care/', destination: '/our-services', permanent: true },
       { source: '/cost-calculator', destination: 'https://web.lifecaresystems.com.my/cost-calculator', permanent: false },
