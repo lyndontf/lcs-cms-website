@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import FamilyUpdates from '@/components/sections/FamilyUpdates';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -677,6 +678,7 @@ export default function NursingHomeKajangZh() {
           </div>
         </div>
       </section>
+      <FamilyUpdates lang="zh" />
     </main>
   );
 }

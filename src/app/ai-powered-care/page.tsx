@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import FamilyUpdates from '@/components/sections/FamilyUpdates';
 
 export const metadata: Metadata = {
   title: 'AI-Powered Nursing Care in Malaysia',
@@ -269,6 +270,7 @@ export default function AiPoweredCare() {
           </Link>
         </div>
       </section>
+      <FamilyUpdates lang="en" />
     </main>
   );
 }

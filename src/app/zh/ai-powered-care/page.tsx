@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import FamilyUpdates from '@/components/sections/FamilyUpdates';
 
 export const metadata: Metadata = {
   title: 'AI 智能养老护理 | 马来西亚',
@@ -257,6 +258,7 @@ export default function AiPoweredCareZh() {
           </Link>
         </div>
       </section>
+      <FamilyUpdates lang="zh" />
     </main>
   );
 }
