@@ -200,6 +200,7 @@ export default function NursingHomeCostMalaysia() {
             </div>
           </div>
           <p className="text-sm text-gray-500 mt-5 text-center">Genesis Life Care fees start from <strong className="text-gray-700">RM2,500/month</strong>. Figures for the wider market are indicative and vary by operator and location.</p>
+          <p className="text-center mt-4"><Link href="/pricing" className="text-primary font-semibold hover:underline">See our care packages &amp; starting fees →</Link></p>
         </div>
       </section>
 
