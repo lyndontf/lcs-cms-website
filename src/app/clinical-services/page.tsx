@@ -141,47 +141,51 @@ export default function ClinicalServicesPage() {
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="hero-dark relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
-        <Image
-          src="/images/services/homecare-auscultation.jpg"
-          alt="A Genesis Life Care nurse performing a clinical assessment on a resident"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-800/95 via-primary/85 to-secondary/70" />
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full translate-y-1/2 -translate-x-1/3" />
 
         <div className="relative max-w-7xl mx-auto px-4 py-16 sm:py-24">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6">
-              <svg className="w-4 h-4 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-              </svg>
-              <span className="text-gold text-xs font-semibold tracking-wide uppercase">Everything under one roof</span>
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 rounded-full px-4 py-1.5 mb-6">
+                <svg className="w-4 h-4 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span className="text-gold text-xs font-semibold tracking-wide uppercase">Everything under one roof</span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6" style={{ color: 'white' }}>
+                Clinical &amp; allied health services
+              </h1>
+              <p className="text-lg text-white/90 mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.9)' }}>
+                Doctor, nurses, physiotherapy, dietitian, psychologist, in-house pharmacy, diagnostics and
+                emergency ambulance &mdash; all coordinated by one team, under one roof. No juggling outside
+                providers; everyone shares the same care plan.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-start gap-4">
+                <Link href="/contact" className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl">
+                  Book a Free Assessment
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+                <Link href="/pricing" className="whitespace-nowrap inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3.5 rounded-full transition">
+                  See fees &amp; packages
+                </Link>
+              </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6" style={{ color: 'white' }}>
-              Clinical &amp; allied health services
-            </h1>
-            <p className="text-lg text-white/90 max-w-2xl mb-8 leading-relaxed" style={{ color: 'rgba(255,255,255,0.9)' }}>
-              Doctor, nurses, physiotherapy, dietitian, psychologist, in-house pharmacy, diagnostics and
-              emergency ambulance &mdash; all coordinated by one team, under one roof. No juggling outside
-              providers; everyone shares the same care plan.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-start gap-4">
-              <Link href="/contact" className="whitespace-nowrap inline-flex items-center gap-2 bg-gold hover:bg-yellow-500 text-gray-900 font-bold px-6 py-3.5 rounded-full transition shadow-lg hover:shadow-xl">
-                Book a Free Assessment
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-              <Link href="/pricing" className="whitespace-nowrap inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3.5 rounded-full transition">
-                See fees &amp; packages
-              </Link>
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20">
+              <Image
+                src="/images/services/homecare-auscultation.jpg"
+                alt="A Genesis Life Care nurse performing a clinical assessment on a resident"
+                fill
+                priority
+                sizes="(min-width: 1024px) 42vw, 100vw"
+                className="object-cover object-center"
+              />
             </div>
           </div>
         </div>
