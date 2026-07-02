@@ -50,6 +50,7 @@ export const centreNavEN: MenuItem[] = [
     type: 'page',
     children: [
       { label: 'Our Story', url: '/about-us', type: 'page' },
+      { label: 'Our Team', url: '/our-team', type: 'page' },
       { label: 'The Genesis Ecosystem', url: '/our-ecosystem', type: 'page' },
       { label: 'Gallery', url: '/our-gallery', type: 'page' },
       { label: 'Blog', url: '/blog', type: 'page' },
@@ -106,6 +107,7 @@ export const centreNavZH: MenuItem[] = [
     type: 'page',
     children: [
       { label: '我们的故事', url: '/zh/about-us', type: 'page' },
+      { label: '我们的团队', url: '/zh/our-team', type: 'page' },
       { label: '创世生态体系', url: '/zh/our-ecosystem', type: 'page' },
       { label: '设施相册', url: '/zh/our-gallery', type: 'page' },
     ],
