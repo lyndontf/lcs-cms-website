@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import LayoutWrapper from '@/components/LayoutWrapper';
 import TrackingScript from '@/components/TrackingScript';
 import Script from 'next/script';
+import { centreNavEN } from '@/lib/nav';
 import { getMenus, getSiteSettings } from '@/lib/supabase';
 import { getCurrentSiteId, getCurrentSiteSlug, getCurrentSiteBaseUrl } from '@/lib/site-context';
 
@@ -92,7 +93,7 @@ export default async function RootLayout({
         )}
       </head>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
-        {!isCmsSite && !isZh && !isAgencyPage && <Header settings={settings} menuItems={headerMenu?.items || []} />}
+        {!isCmsSite && !isZh && !isAgencyPage && <Header settings={settings} menuItems={centreNavEN} />}
         <LayoutWrapper
           isCmsSite={isCmsSite}
           isZh={isZh}

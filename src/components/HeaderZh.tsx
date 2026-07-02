@@ -1,23 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { SiteSettings } from '@/lib/supabase';
+import { centreNavZH } from '@/lib/nav';
 
 interface HeaderZhProps {
   settings: SiteSettings | null;
 }
-
-const zhMenuItems = [
-  { label: '首页', url: '/zh' },
-  { label: '关于我们', url: '/zh/about-us' },
-  { label: '我们的服务', url: '/zh/our-services' },
-  { label: '我们的中心', url: '/zh/our-locations' },
-  { label: '设施相册', url: '/zh/our-gallery' },
-  { label: '联系我们', url: '/zh/contact' },
-];
 
 export default function HeaderZh({ settings }: HeaderZhProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -35,11 +26,7 @@ export default function HeaderZh({ settings }: HeaderZhProps) {
           {/* Logo / Site Name */}
           <Link href="/zh" className="flex items-center flex-shrink-0">
             {settings?.logo_url ? (
-              <img
-                src={settings.logo_url}
-                alt={settings?.site_name || '首页'}
-                className="h-12 sm:h-14 w-auto"
-              />
+              <img src={settings.logo_url} alt={settings?.site_name || '首页'} className="h-12 sm:h-14 w-auto" />
             ) : (
               <span className="text-base sm:text-lg font-extrabold text-primary leading-tight whitespace-nowrap">
                 {settings?.site_name || 'Genesis Life Care'}
@@ -49,18 +36,37 @@ export default function HeaderZh({ settings }: HeaderZhProps) {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1">
-            {zhMenuItems.map((item, i) => (
-              <Link
-                key={i}
-                href={item.url}
-                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
-                  isActive(item.url)
-                    ? 'text-primary underline underline-offset-4'
-                    : 'text-gray-700 hover:text-primary hover:bg-primary-50'
-                }`}
-              >
-                {item.label}
-              </Link>
+            {centreNavZH.map((item, i) => (
+              <div key={i} className="relative group">
+                <Link
+                  href={item.url}
+                  className={`inline-flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                    isActive(item.url)
+                      ? 'text-primary underline underline-offset-4'
+                      : 'text-gray-700 hover:text-primary hover:bg-primary-50'
+                  }`}
+                >
+                  {item.label}
+                  {item.children && item.children.length > 0 && (
+                    <svg className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  )}
+                </Link>
+                {item.children && item.children.length > 0 && (
+                  <div className="absolute left-0 top-full mt-1 w-56 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                    {item.children.map((child, j) => (
+                      <Link
+                        key={j}
+                        href={child.url}
+                        className="block px-4 py-2.5 text-sm text-gray-700 hover:text-primary hover:bg-primary-50 first:rounded-t-lg last:rounded-b-lg"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             {/* Language switcher */}
             <Link
@@ -90,19 +96,30 @@ export default function HeaderZh({ settings }: HeaderZhProps) {
         {/* Mobile Nav */}
         {mobileOpen && (
           <div className="md:hidden border-t border-gray-100 py-3">
-            {zhMenuItems.map((item, i) => (
-              <Link
-                key={i}
-                href={item.url}
-                className={`block px-3 py-2.5 text-sm font-medium rounded-md ${
-                  isActive(item.url)
-                    ? 'text-primary underline underline-offset-4'
-                    : 'text-gray-700 hover:text-primary hover:bg-primary-50'
-                }`}
-                onClick={() => setMobileOpen(false)}
-              >
-                {item.label}
-              </Link>
+            {centreNavZH.map((item, i) => (
+              <div key={i}>
+                <Link
+                  href={item.url}
+                  className={`block px-3 py-2.5 text-sm font-medium rounded-md ${
+                    isActive(item.url)
+                      ? 'text-primary underline underline-offset-4'
+                      : 'text-gray-700 hover:text-primary hover:bg-primary-50'
+                  }`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {item.label}
+                </Link>
+                {item.children?.map((child, j) => (
+                  <Link
+                    key={j}
+                    href={child.url}
+                    className="block pl-8 pr-3 py-2 text-sm text-gray-600 hover:text-primary hover:bg-primary-50 rounded-md"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {child.label}
+                  </Link>
+                ))}
+              </div>
             ))}
             <Link
               href="/"
