@@ -2,7 +2,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getPublishedJobListings, getPageBySlug } from '@/lib/supabase';
 import { getCurrentSiteId, getCurrentSiteBaseUrl, getCurrentSiteSlug } from '@/lib/site-context';
-import { isRawBlockSequence, CmsRawBlocks } from '@/components/CmsHtmlPage';
+import { CmsRawBlocks } from '@/components/CmsHtmlPage';
+import { isRawBlockSequence } from '@/lib/cms-blocks';
 import ContentRenderer from '@/components/ContentRenderer';
 
 export const revalidate = 60;

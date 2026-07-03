@@ -3,7 +3,8 @@ import { notFound } from 'next/navigation';
 import { getPageBySlug, getPublishedPages, getPublishedPosts, getSupportedLocales, pageExistsForLocale } from '@/lib/supabase';
 import { getCurrentSiteId, getCurrentSiteSlug, getCurrentSiteBaseUrl } from '@/lib/site-context';
 import ContentRenderer from '@/components/ContentRenderer';
-import { isRawBlockSequence, CmsRawBlocks } from '@/components/CmsHtmlPage';
+import { CmsRawBlocks } from '@/components/CmsHtmlPage';
+import { isRawBlockSequence } from '@/lib/cms-blocks';
 
 // This REQUIRED catch-all (note: [...slugPath], not the optional [[...slugPath]]) merges
 // what used to be single-segment CMS page routes ([slug]/page.tsx) with locale-prefixed
