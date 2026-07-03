@@ -1,12 +1,45 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { getPublishedJobListings } from '@/lib/supabase';
-import { getCurrentSiteBaseUrl } from '@/lib/site-context';
+import { getPublishedJobListings, getPageBySlug } from '@/lib/supabase';
+import { getCurrentSiteId, getCurrentSiteBaseUrl, getCurrentSiteSlug } from '@/lib/site-context';
+import { isRawBlockSequence, CmsRawBlocks } from '@/components/CmsHtmlPage';
+import ContentRenderer from '@/components/ContentRenderer';
 
 export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const baseUrl = await getCurrentSiteBaseUrl();
+  const siteSlug = await getCurrentSiteSlug();
+  // CMS-authored /careers is currently only wired for GTA. Other sites (e.g. `centre`,
+  // which happens to have its own unrelated, currently-unreachable `careers` cms_pages
+  // row) intentionally keep the hardcoded experience below unless explicitly opted in.
+  const siteId = siteSlug === 'gta' ? await getCurrentSiteId() : null;
+  const cmsPage = siteId ? await getPageBySlug('careers', siteId || undefined, 'en') : null;
+
+  if (cmsPage) {
+    const title = cmsPage.meta_title || cmsPage.title;
+    const description = cmsPage.meta_description || undefined;
+    const url = `${baseUrl}/careers`;
+    return {
+      title,
+      description,
+      alternates: { canonical: url },
+      openGraph: {
+        title,
+        description,
+        url,
+        images: cmsPage.featured_image_url ? [{ url: cmsPage.featured_image_url }] : undefined,
+        type: 'website',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
+        images: cmsPage.featured_image_url ? [cmsPage.featured_image_url] : undefined,
+      },
+    };
+  }
+
   return {
     title: "Careers",
     description:
@@ -26,6 +59,47 @@ function typeLabel(t: string): string {
 }
 
 export default async function CareersPage() {
+  const siteSlug = await getCurrentSiteSlug();
+  // See note in generateMetadata above — CMS-authored /careers is scoped to GTA only.
+  const siteId = siteSlug === 'gta' ? await getCurrentSiteId() : null;
+  const cmsPage = siteId ? await getPageBySlug('careers', siteId || undefined, 'en') : null;
+
+  if (cmsPage) {
+    // Site has its own CMS-authored careers page (e.g. GTA). Render it with the
+    // same block logic as the generic catch-all: raw html/job_listings sequences
+    // render directly (no generic hero), anything else falls back to the
+    // standard hero + ContentRenderer treatment.
+    if (isRawBlockSequence(cmsPage.content)) {
+      return <CmsRawBlocks blocks={cmsPage.content} />;
+    }
+
+    return (
+      <article>
+        <section className="cms-hero relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
+          <img
+            src={cmsPage.featured_image_url || '/images/general/staff-care.jpg'}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary/85 to-secondary/80" />
+          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center" style={{ color: '#ffffff' }}>
+            <h1 className="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-tight mb-6 max-w-3xl mx-auto" style={{ color: '#ffffff' }}>
+              {cmsPage.title}
+            </h1>
+            {cmsPage.meta_description && (
+              <p className="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto" style={{ color: '#ffffff' }}>
+                {cmsPage.meta_description}
+              </p>
+            )}
+          </div>
+        </section>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+          <ContentRenderer blocks={cmsPage.content} />
+        </div>
+      </article>
+    );
+  }
+
   const jobs = await getPublishedJobListings();
 
   return (
