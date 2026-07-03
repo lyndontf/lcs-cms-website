@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { getPageBySlug, getPublishedPages, getPublishedPosts, getSupportedLocales, pageExistsForLocale } from '@/lib/supabase';
 import { getCurrentSiteId, getCurrentSiteSlug, getCurrentSiteBaseUrl } from '@/lib/site-context';
 import ContentRenderer from '@/components/ContentRenderer';
+import { isRawBlockSequence, CmsRawBlocks } from '@/components/CmsHtmlPage';
 
 // This REQUIRED catch-all (note: [...slugPath], not the optional [[...slugPath]]) merges
 // what used to be single-segment CMS page routes ([slug]/page.tsx) with locale-prefixed
@@ -166,15 +167,11 @@ export default async function DynamicPage({ params }: PageProps) {
     notFound();
   }
 
-  // If page content is a single raw HTML block (full-page HTML like LCS/GLC Hire),
-  // render it directly without the generic hero wrapper
-  if (page.content?.length === 1 && page.content[0].type === 'html') {
-    return (
-      <div
-        className="cms-html-page"
-        dangerouslySetInnerHTML={{ __html: page.content[0].content || '' }}
-      />
-    );
+  // If page content is entirely raw 'html' / 'job_listings' blocks (a full-page
+  // HTML build like LCS/GLC Hire, or an html+job_listings+html mix like GTA's
+  // careers page), render each block in sequence without the generic hero wrapper.
+  if (isRawBlockSequence(page.content)) {
+    return <CmsRawBlocks blocks={page.content} />;
   }
 
   // Locale-prefixed home page (e.g. /ms) — mirrors the non-centre branch of /app/page.tsx,
