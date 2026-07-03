@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import LayoutWrapper from '@/components/LayoutWrapper';
 import TrackingScript from '@/components/TrackingScript';
+import GtaOrgSchema from '@/components/GtaOrgSchema';
 import Script from 'next/script';
 import { centreNavEN } from '@/lib/nav';
 import { getMenus, getSiteSettings } from '@/lib/supabase';
@@ -109,6 +110,7 @@ export default async function RootLayout({
         )}
       </head>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
+        {siteSlug === 'gta' && <GtaOrgSchema />}
         {!isCmsSite && !isZh && !isAgencyPage && <Header settings={settings} menuItems={centreNavEN} />}
         <LayoutWrapper
           isCmsSite={isCmsSite}
