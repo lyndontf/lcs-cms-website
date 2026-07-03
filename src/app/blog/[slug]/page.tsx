@@ -20,11 +20,27 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   const [siteId, baseUrl] = await Promise.all([getCurrentSiteId(), getCurrentSiteBaseUrl()]);
   const post = await getPostBySlug(slug, siteId || undefined);
   if (!post) return { title: 'Post Not Found' };
+  const title = post.meta_title || post.title;
+  const description = post.meta_description || post.excerpt || undefined;
+  const url = `${baseUrl}/blog/${slug}`;
   return {
-    title: post.meta_title || post.title,
-    description: post.meta_description || post.excerpt || undefined,
+    title,
+    description,
     alternates: {
-      canonical: `${baseUrl}/blog/${slug}`,
+      canonical: url,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      images: post.featured_image_url ? [{ url: post.featured_image_url }] : undefined,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: post.featured_image_url ? [post.featured_image_url] : undefined,
     },
   };
 }

@@ -229,6 +229,22 @@ const nextConfig = {
 
       // Old Elementor floating buttons
       { source: '/e-floating-buttons/:path*', destination: '/', permanent: true },
+
+      // GTA redesign — dropped "why-choose-us" page merged into "about"
+      {
+        source: '/why-choose-us',
+        destination: '/about',
+        permanent: true,
+        has: [{ type: 'host', value: 'gtacademy.com.my' }],
+      },
+      {
+        source: '/why-choose-us',
+        destination: '/about',
+        permanent: true,
+        has: [{ type: 'host', value: 'www.gtacademy.com.my' }],
+      },
+      // Dev-preview path-prefix equivalent (e.g. localhost/gta/why-choose-us)
+      { source: '/gta/why-choose-us', destination: '/gta/about', permanent: true },
     ];
   },
 };
