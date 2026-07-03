@@ -40,7 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get published pages for this site only
   const { data: pages } = await supabase
     .from('cms_pages')
-    .select('slug, updated_at')
+    .select('slug, updated_at, locale')
     .eq('status', 'published')
     .eq('site_id', siteId)
     .order('sort_order', { ascending: true });
@@ -56,16 +56,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: MetadataRoute.Sitemap = [];
 
   for (const page of pages || []) {
-    const url =
-      page.slug === 'home'
-        ? baseUrl
-        : `${baseUrl}/${page.slug}`;
+    const locale = page.locale || 'en';
+    const isHome = page.slug === 'home';
+    let url: string;
+    if (locale === 'en') {
+      url = isHome ? baseUrl : `${baseUrl}/${page.slug}`;
+    } else {
+      url = isHome ? `${baseUrl}/${locale}` : `${baseUrl}/${locale}/${page.slug}`;
+    }
 
     entries.push({
       url,
       lastModified: new Date(page.updated_at),
-      changeFrequency: page.slug === 'home' ? 'daily' : 'weekly',
-      priority: page.slug === 'home' ? 1.0 : 0.8,
+      changeFrequency: isHome ? 'daily' : 'weekly',
+      priority: isHome ? 1.0 : 0.8,
     });
   }
 

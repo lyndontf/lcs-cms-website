@@ -42,14 +42,30 @@ export async function generateMetadata(): Promise<Metadata> {
     }
   }
 
+  const siteName = settings?.site_name || 'Genesis Life Care';
+  const description = defaults.default_description || 'Quality healthcare and aged care services in Malaysia';
+
   return {
     title: {
-      default: settings?.site_name || 'Genesis Life Care',
-      template: `%s | ${settings?.site_name || 'Genesis Life Care'}`,
+      default: siteName,
+      template: `%s | ${siteName}`,
     },
-    description: defaults.default_description || 'Quality healthcare and aged care services in Malaysia',
+    description,
     icons: settings?.favicon_url ? [{ url: settings.favicon_url }] : undefined,
     alternates,
+    openGraph: {
+      siteName,
+      title: siteName,
+      description,
+      type: 'website',
+      images: settings?.logo_url ? [{ url: settings.logo_url }] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: siteName,
+      description,
+      images: settings?.logo_url ? [settings.logo_url] : undefined,
+    },
   };
 }
 
