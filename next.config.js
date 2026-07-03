@@ -129,8 +129,30 @@ const nextConfig = {
       // General / about pages
       { source: '/about-us-trusted-brand-in-long-term-care', destination: '/about-us', permanent: true },
       { source: '/about-us-trusted-brand-in-long-term-care/', destination: '/about-us', permanent: true },
-      { source: '/about', destination: '/about-us', permanent: true },
-      { source: '/about/', destination: '/about-us', permanent: true },
+      {
+        source: '/about',
+        destination: '/about-us',
+        permanent: true,
+        has: [{ type: 'host', value: 'genesiscare.com.my' }],
+      },
+      {
+        source: '/about/',
+        destination: '/about-us',
+        permanent: true,
+        has: [{ type: 'host', value: 'genesiscare.com.my' }],
+      },
+      {
+        source: '/about',
+        destination: '/about-us',
+        permanent: true,
+        has: [{ type: 'host', value: 'www.genesiscare.com.my' }],
+      },
+      {
+        source: '/about/',
+        destination: '/about-us',
+        permanent: true,
+        has: [{ type: 'host', value: 'www.genesiscare.com.my' }],
+      },
       { source: '/privacy-policy', destination: '/', permanent: true },
       { source: '/privacy-policy/', destination: '/', permanent: true },
       { source: '/terms-of-service', destination: '/', permanent: true },
