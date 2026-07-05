@@ -20,8 +20,8 @@ const WA_MESSAGES = {
     '紧急情况通常可在24至48小时内安排入住。',
   ],
 };
-const WA_NAME = { en: 'Dr. Phang GLC', zh: '庞医生 GLC' };
-const WA_STATUS = { en: 'online', zh: '在线' };
+const WA_NAME = 'Dr. Phang GLC';
+const WA_STATUS = 'online';
 
 interface WhatsAppWidgetProps {
   phone: string;
@@ -101,8 +101,8 @@ export default function WhatsAppWidget({ phone }: WhatsAppWidgetProps) {
               <span className="absolute -bottom-px -right-px w-[9px] h-[9px] rounded-full bg-[#31d158] border-2 border-[#075E54]" />
             </div>
             <div>
-              <div className="text-[13px] font-bold text-white">{WA_NAME[lang]}</div>
-              <div className="text-[10px] text-[#d4ede9]">{WA_STATUS[lang]}</div>
+              <div className="text-[13px] font-bold text-white">{WA_NAME}</div>
+              <div className="text-[10px] text-[#d4ede9]">{WA_STATUS}</div>
             </div>
           </div>
           <div className="bg-[#E5DDD5] px-2.5 py-3.5">
