@@ -16,15 +16,32 @@ export default function CmsHtmlRenderer({ html }: { html: string }) {
   useEffect(() => {
     const container = ref.current;
     if (!container) return;
-    const scripts = Array.from(container.querySelectorAll('script'));
-    scripts.forEach((oldScript) => {
-      const newScript = document.createElement('script');
-      Array.from(oldScript.attributes).forEach((attr) => {
-        newScript.setAttribute(attr.name, attr.value);
+
+    function runScripts() {
+      if (!container) return;
+      const scripts = Array.from(container.querySelectorAll('script:not([data-executed])'));
+      scripts.forEach((oldScript) => {
+        const newScript = document.createElement('script');
+        Array.from(oldScript.attributes).forEach((attr) => {
+          newScript.setAttribute(attr.name, attr.value);
+        });
+        newScript.setAttribute('data-executed', 'true');
+        newScript.textContent = oldScript.textContent;
+        oldScript.parentNode?.replaceChild(newScript, oldScript);
       });
-      newScript.textContent = oldScript.textContent;
-      oldScript.parentNode?.replaceChild(newScript, oldScript);
-    });
+    }
+
+    runScripts();
+
+    // If a hydration mismatch fires elsewhere on the page, React "repairs" this
+    // subtree by wholesale-replacing its innerHTML with the original (unexecuted)
+    // server HTML — silently killing every listener the scripts above attached.
+    // Since the effect's [html] dependency never changes, it won't re-fire on its
+    // own, so watch the subtree directly and re-run against any fresh script tags.
+    const observer = new MutationObserver(() => runScripts());
+    observer.observe(container, { childList: true, subtree: true });
+
+    return () => observer.disconnect();
   }, [html]);
 
   return (

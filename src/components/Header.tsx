@@ -60,6 +60,9 @@ export default function Header({ settings, menuItems }: HeaderProps) {
     } catch {
       /* ignore */
     }
+    // Same-tab listeners (e.g. WhatsAppWidget) can't rely on the 'storage' event,
+    // which only fires in other tabs — broadcast the change directly instead.
+    window.dispatchEvent(new CustomEvent('glc-lang-change', { detail: next }));
   };
 
   const isActive = (url: string) => {

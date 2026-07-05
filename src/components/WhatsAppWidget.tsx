@@ -2,14 +2,26 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-const WA_MESSAGES = [
-  'Hello, this is Dr. Phang from Genesis. How can I help you?',
-  'Would you like to schedule a no-obligations visit?',
-  'Did you know we have full-time doctors overseeing each centre?',
-  'Fees start from RM2,500/month — transparent pricing, no hidden fees.',
-  "We're JKM registered and AgeCope certified. Want to know more?",
-  'Urgent cases can often be admitted within 24–48 hours.',
-];
+const WA_MESSAGES = {
+  en: [
+    'Hello, this is Dr. Phang from Genesis. How can I help you?',
+    'Would you like to schedule a no-obligations visit?',
+    'Did you know we have full-time doctors overseeing each centre?',
+    'Fees start from RM2,500/month — transparent pricing, no hidden fees.',
+    "We're JKM registered and AgeCope certified. Want to know more?",
+    'Urgent cases can often be admitted within 24–48 hours.',
+  ],
+  zh: [
+    '您好，我是Genesis的庞医生，有什么可以帮您的吗？',
+    '您想预约一次免费参观吗？',
+    '您知道吗？我们每间中心都有全职医生驻守。',
+    '收费每月低至RM2,500起 — 价格透明，无隐藏费用。',
+    '我们已获得JKM注册及AgeCope认证。想了解更多吗？',
+    '紧急情况通常可在24至48小时内安排入住。',
+  ],
+};
+const WA_NAME = { en: 'Dr. Phang GLC', zh: '庞医生 GLC' };
+const WA_STATUS = { en: 'online', zh: '在线' };
 
 interface WhatsAppWidgetProps {
   phone: string;
@@ -19,8 +31,25 @@ export default function WhatsAppWidget({ phone }: WhatsAppWidgetProps) {
   const [dismissed, setDismissed] = useState(false);
   const [msgIndex, setMsgIndex] = useState(0);
   const [input, setInput] = useState('');
+  const [lang, setLang] = useState<'en' | 'zh'>('en');
   const scrollAccum = useRef(0);
   const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('glc-lang');
+      if (saved === 'zh' || saved === 'en') setLang(saved);
+    } catch {
+      /* localStorage unavailable — default to English */
+    }
+    // Header's toggle broadcasts this event since 'storage' only fires in other tabs.
+    function onLangChange(e: Event) {
+      const next = (e as CustomEvent).detail;
+      if (next === 'zh' || next === 'en') setLang(next);
+    }
+    window.addEventListener('glc-lang-change', onLangChange);
+    return () => window.removeEventListener('glc-lang-change', onLangChange);
+  }, []);
 
   useEffect(() => {
     lastScrollY.current = window.scrollY;
@@ -30,7 +59,7 @@ export default function WhatsAppWidget({ phone }: WhatsAppWidgetProps) {
       lastScrollY.current = y;
       if (scrollAccum.current > 600) {
         scrollAccum.current = 0;
-        setMsgIndex((i) => (i + 1) % WA_MESSAGES.length);
+        setMsgIndex((i) => (i + 1) % WA_MESSAGES.en.length);
       }
     }
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -72,13 +101,13 @@ export default function WhatsAppWidget({ phone }: WhatsAppWidgetProps) {
               <span className="absolute -bottom-px -right-px w-[9px] h-[9px] rounded-full bg-[#31d158] border-2 border-[#075E54]" />
             </div>
             <div>
-              <div className="text-[13px] font-bold text-white">Dr. Phang GLC</div>
-              <div className="text-[10px] text-[#d4ede9]">online</div>
+              <div className="text-[13px] font-bold text-white">{WA_NAME[lang]}</div>
+              <div className="text-[10px] text-[#d4ede9]">{WA_STATUS[lang]}</div>
             </div>
           </div>
           <div className="bg-[#E5DDD5] px-2.5 py-3.5">
             <div className="relative bg-white rounded-tr-lg rounded-bl-lg rounded-br-lg px-2.5 py-2 text-[12.5px] text-[#111b21] leading-snug shadow-[0_1px_1px_rgba(0,0,0,0.15)]">
-              {WA_MESSAGES[msgIndex]}
+              {WA_MESSAGES[lang][msgIndex]}
               <span className="block text-right text-[10px] text-[#8696a0] mt-1">10:24 AM</span>
             </div>
           </div>
