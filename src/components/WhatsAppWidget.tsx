@@ -48,6 +48,14 @@ export default function WhatsAppWidget({ phone }: WhatsAppWidgetProps) {
         className={`block absolute bottom-[calc(100%+14px)] right-0 w-[250px] bg-white rounded-xl overflow-hidden shadow-[0_20px_44px_-16px_rgba(0,0,0,0.4)] transition-all duration-200 ${
           dismissed ? 'opacity-0 invisible translate-y-2 pointer-events-none' : 'opacity-100 visible translate-y-0'
         }`}
+        onClick={(e) => {
+          // On mobile, tapping anywhere on the card (outside the close button and the
+          // message input/send controls) opens WhatsApp directly.
+          if (!window.matchMedia('(max-width:640px)').matches) return;
+          const target = e.target as HTMLElement;
+          if (target.closest('button[aria-label="Close"], input, button[aria-label="Send message"]')) return;
+          sendMessage();
+        }}
       >
         <button
           onClick={() => setDismissed(true)}
