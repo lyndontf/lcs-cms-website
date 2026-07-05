@@ -106,8 +106,8 @@ export default function WhatsAppWidget({ phone }: WhatsAppWidgetProps) {
         onClick={() => setDismissed(false)}
         aria-label="Open WhatsApp chat"
         type="button"
-        className={`relative flex items-center justify-center [filter:drop-shadow(0_6px_14px_rgba(0,0,0,0.3))] transition-all duration-200 border-0 bg-transparent p-0 cursor-pointer overflow-hidden hover:scale-105 ${
-          dismissed ? 'opacity-100 visible w-[52px] h-[59px]' : 'opacity-0 invisible pointer-events-none w-0 h-0'
+        className={`relative flex items-center justify-center [filter:drop-shadow(0_6px_14px_rgba(0,0,0,0.3))] transition-all duration-200 border-0 bg-transparent p-0 cursor-pointer overflow-hidden hover:scale-105 opacity-100 visible w-[52px] h-[59px] ${
+          dismissed ? 'sm:opacity-100 sm:visible sm:w-[52px] sm:h-[59px]' : 'sm:opacity-0 sm:invisible sm:pointer-events-none sm:w-0 sm:h-0'
         }`}
       >
         <svg viewBox="0 0 448 512" width="52" height="59" fill="#25D366" aria-hidden="true">
