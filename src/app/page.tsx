@@ -4,6 +4,7 @@ import { getPageBySlug, getSiteSettings, getPublishedPosts } from '@/lib/supabas
 import { getCurrentSiteId, getCurrentSiteSlug, getCurrentSiteBaseUrl } from '@/lib/site-context';
 import ContentRenderer from '@/components/ContentRenderer';
 import QuickEnquiryCard from '@/components/QuickEnquiryCard';
+import CmsHtmlRenderer from '@/components/CmsHtmlRenderer';
 
 export async function generateMetadata(): Promise<Metadata> {
   const [siteId, siteSlug] = await Promise.all([getCurrentSiteId(), getCurrentSiteSlug()]);
@@ -16,7 +17,6 @@ export async function generateMetadata(): Promise<Metadata> {
         '5 government-approved Genesis Life Care nursing homes across Klang Valley & Johor Bahru. 24/7 nursing, dementia & stroke care. Rated 4.8★. Book a free visit.',
       alternates: {
         canonical: 'https://genesiscare.com.my/',
-        languages: { 'zh-Hans': 'https://genesiscare.com.my/zh' },
       },
       openGraph: {
         title: 'Genesis Life Care — Nursing Home & Elderly Care in Malaysia',
@@ -109,10 +109,7 @@ export default async function HomePage() {
           <>
             {/* Check if content is a single raw HTML block (full-page HTML) */}
             {page.content.length === 1 && page.content[0].type === 'html' ? (
-              <div
-                className="cms-html-page"
-                dangerouslySetInnerHTML={{ __html: page.content[0].content || '' }}
-              />
+              <CmsHtmlRenderer html={page.content[0].content || ''} />
             ) : (
               <article>
                 {/* Hero section */}
@@ -309,6 +306,12 @@ export default async function HomePage() {
       },
     ],
   };
+
+  // CMS override: if 'home' has been rebuilt as a single self-contained HTML
+  // block (full rebrand), render it instead of the hardcoded layout below.
+  if (page && page.content?.length === 1 && page.content[0].type === 'html') {
+    return <CmsHtmlRenderer html={page.content[0].content || ''} />;
+  }
 
   return (
     <>

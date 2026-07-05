@@ -29,7 +29,6 @@ export function generateMetadata({ params }: { params: { area: string } }): Meta
     description: `A practical guide to choosing a nursing home in ${a.name}: what to look for, the questions to ask on a visit, and how to compare care and cost. Genesis Life Care operates a trusted centre in ${a.name}.`,
     alternates: {
       canonical: `https://genesiscare.com.my/nursing-home-guide/${a.slug}`,
-      languages: { 'zh-Hans': `https://genesiscare.com.my/zh/nursing-home-guide/${a.slug}` },
     },
     openGraph: {
       title: `How to Choose a Nursing Home in ${a.name} | Genesis Life Care`,

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { generateCmsMetadata, CmsHtmlPage } from '@/lib/cms-html-page';
 
-const SLUG = 'nursing-home-in-klang';
+const SLUG = 'legal/terms-of-service';
 
 export const revalidate = 60;
 

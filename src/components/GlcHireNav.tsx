@@ -78,12 +78,6 @@ export default function GlcHireNav() {
               >
                 +6019 325 0457
               </a>
-              <Link
-                href="/zh"
-                className="force-dark-link text-sm font-medium text-gray-500 hover:text-[#2E72B8] px-2"
-              >
-                中文
-              </Link>
               <a
                 href={WHATSAPP}
                 target="_blank"

@@ -40,8 +40,9 @@ export default async function BlogPage() {
   return (
     <div className="py-10 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-extrabold text-gray-900 mb-2">Blog</h1>
-        <p className="text-lg text-gray-600 mb-8">News, insights, and updates</p>
+        <div className="text-xs font-bold uppercase tracking-[0.14em] text-bloom-700 mb-3">Genesis Life Care</div>
+        <h1 className="text-4xl font-extrabold text-bloom-ink mb-2 tracking-tight">Blog</h1>
+        <p className="text-lg text-bloom-muted mb-8">News, insights, and updates</p>
 
         <BlogClient posts={posts} categories={categories} />
       </div>

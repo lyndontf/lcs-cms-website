@@ -2,3 +2,6 @@ node_modules/
 .next/
 _deployer.html
 .env.local
+.env.migration.local
+.vercel/
+tsconfig.tsbuildinfo

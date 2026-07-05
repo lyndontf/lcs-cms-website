@@ -16,18 +16,18 @@ export default function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) 
   }
 
   return (
-    <div className="prose prose-lg max-w-none">
+    <div className="text-base leading-[1.8] text-[#334046] [&_strong]:text-[#173039] [&_strong]:font-semibold [&_table]:w-full [&_table]:border-collapse [&_table]:my-2 [&_table]:mb-6 [&_table]:text-sm [&_th]:p-3 [&_td]:p-3 [&_th]:border [&_td]:border [&_th]:border-[#e4eaed] [&_td]:border-[#e4eaed] [&_th]:text-left [&_td]:text-left [&_th]:bg-[#eaf3f6] [&_th]:font-bold [&_th]:text-[#173039]">
       {blocks.map((block, i) => {
         switch (block.type) {
           case 'heading': {
             const Tag = `h${block.level || 2}` as keyof JSX.IntrinsicElements;
             const classes: Record<number, string> = {
-              1: 'text-4xl font-extrabold text-gray-900 mb-6 mt-10',
-              2: 'text-3xl font-bold text-gray-900 mb-4 mt-8',
-              3: 'text-2xl font-bold text-gray-800 mb-3 mt-6',
-              4: 'text-xl font-semibold text-gray-800 mb-2 mt-4',
-              5: 'text-lg font-semibold text-gray-700 mb-2 mt-3',
-              6: 'text-base font-semibold text-gray-700 mb-2 mt-3',
+              1: 'text-3xl font-extrabold text-[#173039] tracking-[-0.02em] mb-4 mt-10',
+              2: 'text-[26px] font-extrabold text-[#173039] tracking-[-0.02em] mb-4 mt-10',
+              3: 'text-xl font-extrabold text-[#173039] mb-3 mt-7',
+              4: 'text-lg font-bold text-[#173039] mb-2 mt-5',
+              5: 'text-base font-bold text-[#173039] mb-2 mt-4',
+              6: 'text-base font-bold text-[#173039] mb-2 mt-4',
             };
             return (
               <Tag key={i} className={classes[block.level || 2] || classes[2]}>
@@ -40,7 +40,7 @@ export default function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) 
             return (
               <p
                 key={i}
-                className="text-gray-700 leading-relaxed mb-4"
+                className="mb-[18px]"
                 dangerouslySetInnerHTML={{ __html: block.content || '' }}
               />
             );
@@ -60,7 +60,7 @@ export default function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) 
                   </div>
                 )}
                 {block.caption && (
-                  <figcaption className="text-center text-sm text-gray-500 mt-2">
+                  <figcaption className="text-center text-sm text-[#7a8a92] mt-2">
                     {block.caption}
                   </figcaption>
                 )}
@@ -72,9 +72,9 @@ export default function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) 
             return (
               <ListTag
                 key={i}
-                className={`mb-4 pl-6 space-y-1 ${
+                className={`mb-5 pl-6 space-y-2.5 ${
                   block.ordered ? 'list-decimal' : 'list-disc'
-                } text-gray-700`}
+                }`}
               >
                 {(block.items || []).map((item, j) => (
                   <li
@@ -91,7 +91,7 @@ export default function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) 
             return (
               <blockquote
                 key={i}
-                className="border-l-4 border-primary pl-4 py-2 my-6 italic text-gray-600 bg-primary-50/50 rounded-r-lg"
+                className="border-l-4 border-[#2c88a2] pl-4 py-2 my-6 italic text-[#5b6b73] bg-[#eaf3f6]/60 rounded-r-lg"
               >
                 <p>{block.content}</p>
               </blockquote>
@@ -102,7 +102,7 @@ export default function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) 
               <div key={i} className="my-8 text-center">
                 <a
                   href={block.url || '#'}
-                  className="inline-block bg-primary text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-primary-600 transition-colors shadow-md hover:shadow-lg"
+                  className="inline-block bg-[#2c88a2] text-white px-8 py-3.5 rounded-full font-bold text-[15px] hover:bg-[#0b4a5e] transition-colors"
                 >
                   {block.label || block.content || 'Learn More'}
                 </a>
@@ -110,7 +110,7 @@ export default function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) 
             );
 
           case 'divider':
-            return <hr key={i} className="my-8 border-gray-200" />;
+            return <hr key={i} className="my-8 border-[#e4eaed]" />;
 
           case 'html':
             return (

@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { getPageBySlug, getPublishedPages } from '@/lib/supabase';
 import { getCurrentSiteId, getCurrentSiteBaseUrl } from '@/lib/site-context';
 import ContentRenderer from '@/components/ContentRenderer';
+import CmsHtmlRenderer from '@/components/CmsHtmlRenderer';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -44,12 +45,7 @@ export default async function DynamicPage({ params }: PageProps) {
   // If page content is a single raw HTML block (full-page HTML like LCS/GLC Hire),
   // render it directly without the generic hero wrapper
   if (page.content?.length === 1 && page.content[0].type === 'html') {
-    return (
-      <div
-        className="cms-html-page"
-        dangerouslySetInnerHTML={{ __html: page.content[0].content || '' }}
-      />
-    );
+    return <CmsHtmlRenderer html={page.content[0].content || ''} />;
   }
 
   // Extract the first heading (h1) and first paragraph from content blocks for the hero

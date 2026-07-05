@@ -121,15 +121,21 @@ export default function OurLocationsPage() {
   return (
     <>
       {/* ─── HERO ─── */}
-      <section className="loc-hero relative bg-gradient-to-br from-primary via-primary to-secondary text-white py-16 sm:py-24">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-50" />
+      <section className="loc-hero relative bg-gradient-to-br from-[#0e5a72] to-[#2c88a2] text-white py-16 sm:py-24">
+        <div
+          className="absolute inset-0 opacity-[0.06]"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
+            backgroundSize: '26px 26px',
+          }}
+        />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-[.14em] uppercase text-white/80 mb-4">
-            <span className="w-6 h-px bg-gold" />
+          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-[.14em] uppercase text-white/85 mb-4">
+            <span className="w-5 h-0.5 bg-white/50 rounded" />
             Our Locations
-            <span className="w-6 h-px bg-gold" />
+            <span className="w-5 h-0.5 bg-white/50 rounded" />
           </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold mb-5">
+          <h1 className="text-4xl sm:text-5xl font-extrabold mb-5 tracking-tight text-balance">
             Find a Centre Near You
           </h1>
           <p className="text-lg sm:text-xl text-white/85 max-w-2xl mx-auto leading-relaxed">
@@ -139,18 +145,18 @@ export default function OurLocationsPage() {
       </section>
 
       {/* ─── CENTRE CARDS ─── */}
-      <section className="py-14 sm:py-20">
+      <section className="py-14 sm:py-20 bg-[#edf1f3]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-8">
             {centres.map((c, i) => (
               <div
                 key={c.slug}
-                className={`bg-white rounded-2xl border border-gray-200 overflow-hidden hover:border-primary hover:shadow-xl transition-all ${
+                className={`bg-white rounded-[20px] border border-[#e4eaed] overflow-hidden hover:border-[#2c88a2] hover:shadow-[0_24px_44px_-22px_rgba(20,64,90,0.4)] transition-all ${
                   i % 2 === 1 ? 'md:flex-row-reverse' : ''
                 } md:flex`}
               >
                 {/* Image */}
-                <div className="md:w-2/5 aspect-[4/3] md:aspect-auto overflow-hidden bg-gray-100 flex-shrink-0">
+                <div className="md:w-2/5 aspect-[4/3] md:aspect-auto overflow-hidden bg-[#eaf3f6] flex-shrink-0">
                   <img
                     src={c.img}
                     alt={`Genesis Life Care ${c.name} centre`}
@@ -165,14 +171,14 @@ export default function OurLocationsPage() {
                     {c.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="inline-block text-[10px] font-bold uppercase tracking-wide bg-primary-50 text-primary px-2.5 py-1 rounded-full"
+                        className="inline-block text-[10px] font-bold uppercase tracking-wide bg-[#eaf3f6] text-[#2c88a2] px-2.5 py-1 rounded-full"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-2">
+                  <h2 className="text-2xl sm:text-3xl font-extrabold text-[#173039] mb-2 tracking-tight">
                     Genesis Life Care {c.name}
                   </h2>
 
@@ -180,33 +186,33 @@ export default function OurLocationsPage() {
                   <div className="flex items-center gap-1.5 mb-4">
                     <div className="flex">
                       {[...Array(5)].map((_, j) => (
-                        <svg key={j} className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24">
+                        <svg key={j} className="w-4 h-4 text-[#f5b942]" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                         </svg>
                       ))}
                     </div>
-                    <span className="text-sm font-bold text-gray-900">{c.rating}</span>
-                    <span className="text-sm text-gray-400">({c.reviews} Google reviews)</span>
+                    <span className="text-sm font-bold text-[#173039]">{c.rating}</span>
+                    <span className="text-sm text-[#9aa8ae]">({c.reviews} Google reviews)</span>
                   </div>
 
-                  <p className="text-gray-600 leading-relaxed mb-5">
+                  <p className="text-[#5b6b73] leading-relaxed mb-5">
                     {c.desc}
                   </p>
 
                   {/* Address & Phone */}
-                  <div className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-6 mb-6 text-sm text-gray-500">
+                  <div className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-6 mb-6 text-sm text-[#7a8a92]">
                     <div className="flex items-start gap-2">
-                      <svg className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 mt-0.5 text-[#2c88a2] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
                       <span>{c.address}</span>
                     </div>
                     <div className="flex items-center gap-2 flex-shrink-0">
-                      <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-[#2c88a2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
-                      <a href={`tel:${c.phone.replace(/\s/g, '')}`} className="font-semibold text-gray-700 hover:text-primary transition-colors">
+                      <a href={`tel:${c.phone.replace(/\s/g, '')}`} className="font-semibold text-[#33424a] hover:text-[#2c88a2] transition-colors">
                         {c.phone}
                       </a>
                     </div>
@@ -216,7 +222,7 @@ export default function OurLocationsPage() {
                   <div className="flex flex-wrap gap-3">
                     <Link
                       href={`/${c.slug}`}
-                      className="inline-flex items-center gap-2 bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-primary-600 transition-colors whitespace-nowrap"
+                      className="inline-flex items-center gap-2 bg-[#2c88a2] text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-[#0b4a5e] transition-colors whitespace-nowrap"
                     >
                       View Centre
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -225,7 +231,7 @@ export default function OurLocationsPage() {
                     </Link>
                     <a
                       href={`tel:${c.phone.replace(/\s/g, '')}`}
-                      className="inline-flex items-center gap-2 border border-gray-300 text-gray-700 px-6 py-2.5 rounded-lg text-sm font-semibold hover:border-primary hover:text-primary transition-colors whitespace-nowrap"
+                      className="inline-flex items-center gap-2 border border-[#dbe3e6] text-[#33424a] px-6 py-2.5 rounded-full text-sm font-bold hover:border-[#2c88a2] hover:text-[#2c88a2] transition-colors whitespace-nowrap"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -241,17 +247,17 @@ export default function OurLocationsPage() {
       </section>
 
       {/* ─── TRUST SIGNALS ─── */}
-      <section className="bg-[#f4f8fb] py-12 sm:py-16">
+      <section className="bg-white py-12 sm:py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             {trustSignals.map((s) => (
               <div key={s.label} className="flex flex-col items-center text-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-[#eaf3f6] text-[#2c88a2] flex items-center justify-center">
                   {s.icon}
                 </div>
                 <div>
-                  <p className="font-bold text-gray-900 text-sm">{s.label}</p>
-                  <p className="text-xs text-gray-500">{s.sub}</p>
+                  <p className="font-bold text-[#173039] text-sm">{s.label}</p>
+                  <p className="text-xs text-[#9aa8ae]">{s.sub}</p>
                 </div>
               </div>
             ))}
@@ -260,9 +266,9 @@ export default function OurLocationsPage() {
       </section>
 
       {/* ─── CTA ─── */}
-      <section className="loc-cta relative bg-gradient-to-r from-primary to-secondary py-14 sm:py-20">
+      <section className="loc-cta relative bg-gradient-to-br from-[#0e5a72] to-[#2c88a2] py-14 sm:py-20">
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 tracking-tight text-balance">
             Not Sure Which Centre is Right?
           </h2>
           <p className="text-lg text-white/85 mb-8 max-w-xl mx-auto">
@@ -270,8 +276,8 @@ export default function OurLocationsPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-gold text-gray-900 px-6 py-3.5 rounded-lg font-bold text-base hover:bg-yellow-400 transition-colors shadow-lg whitespace-nowrap"
+              href="/booking"
+              className="inline-flex items-center gap-2 bg-[#f5b942] text-[#111] px-6 py-3.5 rounded-full font-bold text-base hover:bg-[#eaa92a] transition-colors shadow-lg whitespace-nowrap"
             >
               Book a Free Tour
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -280,7 +286,7 @@ export default function OurLocationsPage() {
             </Link>
             <a
               href="tel:+60193250457"
-              className="inline-flex items-center gap-2 border-2 border-white/40 text-white px-6 py-3.5 rounded-lg font-bold text-base hover:bg-white/10 transition-colors whitespace-nowrap"
+              className="inline-flex items-center gap-2 border-2 border-white/40 text-white px-6 py-3.5 rounded-full font-bold text-base hover:bg-white/10 transition-colors whitespace-nowrap"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />

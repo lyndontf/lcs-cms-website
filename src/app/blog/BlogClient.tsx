@@ -23,10 +23,10 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
         <div className="flex flex-wrap gap-2 mb-8">
           <button
             onClick={() => setActiveCategory(null)}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+            className={`px-4 py-2 rounded-full text-[13px] font-bold border transition-colors ${
               activeCategory === null
-                ? 'bg-primary text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-bloom-700 text-white border-bloom-700'
+                : 'bg-white text-bloom-700 border-bloom-line hover:bg-bloom-50'
             }`}
           >
             All
@@ -35,10 +35,10 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+              className={`px-4 py-2 rounded-full text-[13px] font-bold border transition-colors ${
                 activeCategory === cat
-                  ? 'bg-primary text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-bloom-700 text-white border-bloom-700'
+                  : 'bg-white text-bloom-700 border-bloom-line hover:bg-bloom-50'
               }`}
             >
               {cat}
@@ -49,7 +49,7 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
 
       {/* Posts Grid */}
       {filteredPosts.length === 0 ? (
-        <div className="text-center py-20 text-gray-500">
+        <div className="text-center py-20 text-bloom-muted">
           <p className="text-lg">No blog posts found.</p>
         </div>
       ) : (
@@ -58,10 +58,10 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
             <Link
               key={post.id}
               href={`/blog/${post.slug}`}
-              className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden group border border-gray-100"
+              className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden group border border-bloom-line"
             >
               {post.featured_image_url ? (
-                <div className="aspect-video bg-gray-100 overflow-hidden">
+                <div className="aspect-video bg-bloom-50 overflow-hidden">
                   <img
                     src={post.featured_image_url}
                     alt={post.title}
@@ -69,9 +69,9 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
                   />
                 </div>
               ) : (
-                <div className="aspect-video bg-gradient-to-br from-primary-50 to-secondary-50 flex items-center justify-center">
+                <div className="aspect-video bg-gradient-to-br from-bloom-50 to-bloom-300/30 flex items-center justify-center">
                   <svg
-                    className="w-12 h-12 text-primary-200"
+                    className="w-12 h-12 text-bloom-300"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -88,11 +88,11 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
               <div className="p-5">
                 <div className="flex items-center gap-2 mb-2">
                   {post.category && (
-                    <span className="text-xs font-semibold text-primary uppercase tracking-wider">
+                    <span className="text-xs font-bold text-bloom-700 uppercase tracking-wider">
                       {post.category}
                     </span>
                   )}
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-bloom-muted">
                     {post.published_at
                       ? new Date(post.published_at).toLocaleDateString('en-MY', {
                           year: 'numeric',
@@ -102,18 +102,18 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
                       : ''}
                   </span>
                 </div>
-                <h2 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                <h2 className="text-lg font-bold text-bloom-ink mb-2 group-hover:text-bloom-700 transition-colors line-clamp-2">
                   {post.title}
                 </h2>
                 {post.excerpt && (
-                  <p className="text-sm text-gray-600 line-clamp-3">{post.excerpt}</p>
+                  <p className="text-sm text-bloom-muted line-clamp-3">{post.excerpt}</p>
                 )}
                 {post.tags && post.tags.length > 0 && (
                   <div className="flex flex-wrap gap-1.5 mt-3">
                     {post.tags.slice(0, 3).map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded"
+                        className="text-xs bg-bloom-50 text-bloom-slate px-2 py-0.5 rounded"
                       >
                         {tag}
                       </span>
