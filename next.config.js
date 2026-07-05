@@ -129,8 +129,30 @@ const nextConfig = {
       // General / about pages
       { source: '/about-us-trusted-brand-in-long-term-care', destination: '/about-us', permanent: true },
       { source: '/about-us-trusted-brand-in-long-term-care/', destination: '/about-us', permanent: true },
-      { source: '/about', destination: '/about-us', permanent: true },
-      { source: '/about/', destination: '/about-us', permanent: true },
+      {
+        source: '/about',
+        destination: '/about-us',
+        permanent: true,
+        has: [{ type: 'host', value: 'genesiscare.com.my' }],
+      },
+      {
+        source: '/about/',
+        destination: '/about-us',
+        permanent: true,
+        has: [{ type: 'host', value: 'genesiscare.com.my' }],
+      },
+      {
+        source: '/about',
+        destination: '/about-us',
+        permanent: true,
+        has: [{ type: 'host', value: 'www.genesiscare.com.my' }],
+      },
+      {
+        source: '/about/',
+        destination: '/about-us',
+        permanent: true,
+        has: [{ type: 'host', value: 'www.genesiscare.com.my' }],
+      },
       { source: '/privacy-policy', destination: '/', permanent: true },
       { source: '/privacy-policy/', destination: '/', permanent: true },
       { source: '/terms-of-service', destination: '/', permanent: true },
@@ -229,6 +251,22 @@ const nextConfig = {
 
       // Old Elementor floating buttons
       { source: '/e-floating-buttons/:path*', destination: '/', permanent: true },
+
+      // GTA redesign — dropped "why-choose-us" page merged into "about"
+      {
+        source: '/why-choose-us',
+        destination: '/about',
+        permanent: true,
+        has: [{ type: 'host', value: 'gtacademy.com.my' }],
+      },
+      {
+        source: '/why-choose-us',
+        destination: '/about',
+        permanent: true,
+        has: [{ type: 'host', value: 'www.gtacademy.com.my' }],
+      },
+      // Dev-preview path-prefix equivalent (e.g. localhost/gta/why-choose-us)
+      { source: '/gta/why-choose-us', destination: '/gta/about', permanent: true },
     ];
   },
 };

@@ -41,6 +41,7 @@ export interface CmsPage {
   published_at: string | null;
   created_at: string;
   updated_at: string;
+  locale?: string;
 }
 
 export interface CmsPost {
@@ -121,15 +122,41 @@ export async function getPublishedPages(siteId?: string): Promise<CmsPage[]> {
   return (data || []) as CmsPage[];
 }
 
-export async function getPageBySlug(slug: string, siteId?: string): Promise<CmsPage | null> {
+export async function getPageBySlug(slug: string, siteId?: string, locale: string = 'en'): Promise<CmsPage | null> {
   let query = supabase
     .from('cms_pages')
     .select('*')
     .eq('slug', slug)
-    .eq('status', 'published');
+    .eq('status', 'published')
+    .eq('locale', locale);
   if (siteId) query = query.eq('site_id', siteId);
   const { data } = await query.limit(1).single();
   return data as CmsPage | null;
+}
+
+// ─── Locale Helpers ───
+
+export async function getSupportedLocales(siteId?: string): Promise<string[]> {
+  if (!siteId) return ['en'];
+  const { data } = await supabase
+    .from('cms_sites')
+    .select('supported_locales')
+    .eq('id', siteId)
+    .single();
+  const locales = data?.supported_locales as string[] | null | undefined;
+  return locales && locales.length > 0 ? locales : ['en'];
+}
+
+export async function pageExistsForLocale(slug: string, siteId: string, locale: string): Promise<boolean> {
+  let query = supabase
+    .from('cms_pages')
+    .select('id')
+    .eq('slug', slug)
+    .eq('status', 'published')
+    .eq('locale', locale);
+  if (siteId) query = query.eq('site_id', siteId);
+  const { data } = await query.limit(1).maybeSingle();
+  return !!data;
 }
 
 export async function getPublishedPosts(siteId?: string): Promise<CmsPost[]> {

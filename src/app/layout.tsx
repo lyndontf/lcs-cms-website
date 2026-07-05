@@ -33,13 +33,33 @@ export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings(siteId || undefined);
   const defaults = settings?.seo_defaults || {};
 
+  // Note: the centre site's old /zh route tree (and the reciprocal en/zh hreflang
+  // this used to generate for it) was removed in favour of the inline client-side
+  // EN/ZH toggle now built into Header — there is no separate /zh URL to alternate
+  // to any more, for any site.
+  const siteName = settings?.site_name || 'Genesis Life Care';
+  const description = defaults.default_description || 'Quality healthcare and aged care services in Malaysia';
+
   return {
     title: {
-      default: settings?.site_name || 'Genesis Life Care',
-      template: `%s | ${settings?.site_name || 'Genesis Life Care'}`,
+      default: siteName,
+      template: `%s | ${siteName}`,
     },
-    description: defaults.default_description || 'Quality healthcare and aged care services in Malaysia',
+    description,
     icons: settings?.favicon_url ? [{ url: settings.favicon_url }] : undefined,
+    openGraph: {
+      siteName,
+      title: siteName,
+      description,
+      type: 'website',
+      images: settings?.logo_url ? [{ url: settings.logo_url }] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: siteName,
+      description,
+      images: settings?.logo_url ? [settings.logo_url] : undefined,
+    },
   };
 }
 
