@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+// Countries frequently cited in scam-call / fraud-compound advisories targeting
+// Malaysian consumers. Drives the WhatsApp widget disable in layout.tsx — not an
+// access-control mechanism, just a spam-reduction signal, so a coarse country
+// code (Vercel's edge-injected x-vercel-ip-country header) is sufficient.
+const WA_BLOCKED_COUNTRIES = new Set(['IN', 'PK', 'MM', 'NG', 'KH', 'LA']);
+
 const DOMAIN_TO_SITE: Record<string, string> = {
   'genesiscare.com.my': 'centre',
   'www.genesiscare.com.my': 'centre',
@@ -45,6 +51,11 @@ export function middleware(request: NextRequest) {
   const hostname = request.headers.get('host')?.split(':')[0] || '';
   const pathname = request.nextUrl.pathname;
 
+  // Vercel injects this at the edge on every production request — no geo API
+  // lookup needed. Absent in local dev, which is treated as not-blocked.
+  const country = request.headers.get('x-vercel-ip-country') || '';
+  const waBlocked = WA_BLOCKED_COUNTRIES.has(country);
+
   // ── 1. Redirect www → non-www (permanent 301) ──
   const canonicalHost = WWW_TO_CANONICAL[hostname];
   if (canonicalHost) {
@@ -83,6 +94,7 @@ export function middleware(request: NextRequest) {
       reqHeaders.set('x-pathname', pathname);
       const response = NextResponse.rewrite(url, { request: { headers: reqHeaders } });
       response.headers.set('x-site-slug', effectiveSlug);
+      response.cookies.set('glc-wa-blocked', waBlocked ? '1' : '0', { path: '/', maxAge: 86400, sameSite: 'lax' });
       return response;
     }
   }
@@ -94,6 +106,7 @@ export function middleware(request: NextRequest) {
   reqHeaders.set('x-pathname', pathname);
   const response = NextResponse.next({ request: { headers: reqHeaders } });
   response.headers.set('x-site-slug', effectiveSlug);
+  response.cookies.set('glc-wa-blocked', waBlocked ? '1' : '0', { path: '/', maxAge: 86400, sameSite: 'lax' });
   return response;
 }
 

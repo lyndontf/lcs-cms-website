@@ -114,6 +114,19 @@ export default async function RootLayout({
           {children}
         </LayoutWrapper>
         <TrackingScript />
+        {/* Disables the WhatsApp widget for visitors from countries flagged in
+            middleware.ts (scam-call-origin advisories), via the glc-wa-blocked
+            cookie it sets. Runs on every page — covers both the shared
+            WhatsAppWidget React component and every page's own embedded raw-HTML
+            copy of it (Bloom/GLC-Hire full-HTML-override pages), so the widget
+            stays visible but inert rather than needing per-page edits. */}
+        <Script
+          id="wa-region-gate"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){function blocked(){return document.cookie.split('; ').some(function(c){return c.indexOf('glc-wa-blocked=1')===0;});}if(!blocked())return;document.addEventListener('click',function(e){var l=e.target.closest('a[href*="wa.me/"],a[href*="api.whatsapp.com"]');if(l){e.preventDefault();e.stopPropagation();}},true);var o=window.open;window.open=function(u){if(typeof u==='string'&&(u.indexOf('wa.me/')!==-1||u.indexOf('api.whatsapp.com')!==-1))return null;return o.apply(window,arguments);};})();`,
+          }}
+        />
         {settings?.custom_head_html && (
           <Script
             id="custom-head-inject"
