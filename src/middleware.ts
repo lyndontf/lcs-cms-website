@@ -5,7 +5,11 @@ import { NextRequest, NextResponse } from 'next/server';
 // layout.tsx — not an access-control mechanism, just a spam-reduction signal,
 // so a coarse country code (Vercel's edge-injected x-vercel-ip-country header)
 // is sufficient.
-const CONTACT_BLOCKED_COUNTRIES = new Set(['IN', 'PK', 'MM', 'NG', 'KH', 'LA']);
+const CONTACT_BLOCKED_COUNTRIES = new Set([
+  'IN', 'PK', 'MM', 'NG', 'KH', 'LA',
+  // South America
+  'AR', 'BO', 'BR', 'CL', 'CO', 'EC', 'GY', 'PY', 'PE', 'SR', 'UY', 'VE',
+]);
 
 const DOMAIN_TO_SITE: Record<string, string> = {
   'genesiscare.com.my': 'centre',
