@@ -77,42 +77,42 @@ export default async function BiodataDetailPage({ params }: { params: Promise<{ 
   return (
     <>
     <GlcHireNav />
-    <article className="bg-gray-50 min-h-screen">
+    <article style={{ background: 'var(--glc-cloud)', minHeight: '100vh' }}>
       {/* ─── HERO STRIP ─── */}
-      <section className="bg-gradient-to-r from-[#2E72B8] to-[#09B7D3] text-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <section className="glc-section--dark">
+        <div className="glc-container" style={{ paddingTop: 'var(--glc-8)', paddingBottom: 'var(--glc-8)' }}>
           <Link
             href="/biodata"
-            className="inline-flex items-center text-sm text-white/80 hover:text-white mb-4 transition-colors"
+            style={{ display: 'inline-flex', alignItems: 'center', fontSize: 'var(--glc-fs-sm)', color: 'rgba(255,255,255,.8)', marginBottom: 16 }}
           >
             <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             Back to All Candidates
           </Link>
-          <div className="flex items-center gap-5">
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
             {c.photo_url ? (
               <img
                 src={c.photo_url}
                 alt={name}
-                className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border-4 border-white/30 shadow-lg"
+                style={{ width: 96, height: 96, borderRadius: '50%', objectFit: 'cover', border: '4px solid rgba(255,255,255,.3)', boxShadow: 'var(--glc-shadow-lg)' }}
               />
             ) : (
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/20 flex items-center justify-center">
+              <div style={{ width: 96, height: 96, borderRadius: '50%', background: 'rgba(255,255,255,.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <svg className="w-10 h-10 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
             )}
             <div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-white">{name}</h1>
-              <p className="text-white/80 text-sm sm:text-base mt-1">{c.job_category || 'Candidate'}</p>
-              <div className="flex items-center gap-3 mt-2">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-400/20 text-emerald-100 border border-emerald-300/30">
+              <h1 style={{ color: '#fff', fontSize: 'var(--glc-fs-h1)', margin: 0 }}>{name}</h1>
+              <p style={{ color: 'rgba(255,255,255,.8)', fontSize: 'var(--glc-fs-body)', margin: '4px 0 0' }}>{c.job_category || 'Candidate'}</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 8 }}>
+                <span className="glc-badge" style={{ background: 'rgba(30,158,106,.2)', color: '#8CE5BC' }}>
                   Available
                 </span>
                 {c.reference_no && (
-                  <span className="text-xs text-white/60">Ref: {c.reference_no}</span>
+                  <span style={{ fontSize: 'var(--glc-fs-xs)', color: 'rgba(255,255,255,.6)' }}>Ref: {c.reference_no}</span>
                 )}
               </div>
             </div>
@@ -121,14 +121,14 @@ export default async function BiodataDetailPage({ params }: { params: Promise<{ 
       </section>
 
       {/* ─── CONTENT ─── */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+      <div className="glc-container" style={{ paddingTop: 'var(--glc-8)', paddingBottom: 'var(--glc-10)' }}>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* ─── MAIN COLUMN ─── */}
           <div className="lg:col-span-2 space-y-6">
             {/* Personal Information */}
-            <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
-              <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <svg className="w-5 h-5 text-[#2E72B8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+            <div className="glc-card">
+              <h2 style={{ fontSize: 'var(--glc-fs-h3)', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+                <svg className="w-5 h-5" stroke="var(--glc-teal)" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
                 Personal Information
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-4 gap-x-6 text-sm">
@@ -146,16 +146,16 @@ export default async function BiodataDetailPage({ params }: { params: Promise<{ 
 
             {/* Languages */}
             {c.languages && c.languages.length > 0 && (
-              <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
-                <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#2E72B8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg>
+              <div className="glc-card">
+                <h2 style={{ fontSize: 'var(--glc-fs-h3)', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <svg className="w-5 h-5" stroke="var(--glc-teal)" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg>
                   Languages
                 </h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   {c.languages.map((lang, i) => (
-                    <div key={i} className="bg-gray-50 rounded-lg px-4 py-3">
-                      <span className="block font-semibold text-gray-800 text-sm">{lang.name}</span>
-                      <span className="text-xs text-gray-500">{lang.level}</span>
+                    <div key={i} style={{ background: 'var(--glc-cloud)', borderRadius: 'var(--glc-r)', padding: '12px 16px' }}>
+                      <span style={{ display: 'block', fontWeight: 600, color: 'var(--glc-ink)', fontSize: 'var(--glc-fs-sm)' }}>{lang.name}</span>
+                      <span style={{ fontSize: 'var(--glc-fs-xs)', color: 'var(--glc-slate-soft)' }}>{lang.level}</span>
                     </div>
                   ))}
                 </div>
@@ -164,20 +164,20 @@ export default async function BiodataDetailPage({ params }: { params: Promise<{ 
 
             {/* Skills */}
             {(experiencedSkills.length > 0 || willingSkills.length > 0) && (
-              <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
-                <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#2E72B8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
+              <div className="glc-card">
+                <h2 style={{ fontSize: 'var(--glc-fs-h3)', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <svg className="w-5 h-5" stroke="var(--glc-teal)" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
                   Skills &amp; Competencies
                 </h2>
 
                 {experiencedSkills.length > 0 && (
                   <div className="mb-5">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">Experienced</h3>
+                    <h3 style={{ fontSize: 'var(--glc-fs-xs)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--glc-slate-soft)', marginBottom: 12 }}>Experienced</h3>
                     <div className="space-y-2">
                       {experiencedSkills.map((s: BiodataSkill, i: number) => (
-                        <div key={i} className="flex items-center justify-between bg-emerald-50/60 rounded-lg px-4 py-2.5">
-                          <span className="text-sm text-gray-800">{s.area}</span>
-                          <span className="text-amber-400 text-sm tracking-wide">{starRating(s.stars)}</span>
+                        <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'var(--glc-teal-soft)', borderRadius: 'var(--glc-r)', padding: '10px 16px' }}>
+                          <span style={{ fontSize: 'var(--glc-fs-sm)', color: 'var(--glc-ink)' }}>{s.area}</span>
+                          <span style={{ color: '#D98A2B', fontSize: 'var(--glc-fs-sm)', letterSpacing: '0.05em' }}>{starRating(s.stars)}</span>
                         </div>
                       ))}
                     </div>
@@ -186,13 +186,10 @@ export default async function BiodataDetailPage({ params }: { params: Promise<{ 
 
                 {willingSkills.length > 0 && (
                   <div>
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">Willing to Learn</h3>
+                    <h3 style={{ fontSize: 'var(--glc-fs-xs)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--glc-slate-soft)', marginBottom: 12 }}>Willing to Learn</h3>
                     <div className="flex flex-wrap gap-2">
                       {willingSkills.map((s: BiodataSkill, i: number) => (
-                        <span
-                          key={i}
-                          className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100"
-                        >
+                        <span key={i} className="glc-tag">
                           {s.area}
                         </span>
                       ))}
@@ -204,50 +201,50 @@ export default async function BiodataDetailPage({ params }: { params: Promise<{ 
 
             {/* Work Experience */}
             {c.helper_experience && Object.keys(c.helper_experience).length > 0 && (
-              <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
-                <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#2E72B8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              <div className="glc-card">
+                <h2 style={{ fontSize: 'var(--glc-fs-h3)', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <svg className="w-5 h-5" stroke="var(--glc-teal)" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                   Work Experience
                 </h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   {Object.entries(c.helper_experience).map(([country, duration]) => (
-                    <div key={country} className="bg-gray-50 rounded-lg px-4 py-3 text-center">
-                      <span className="block text-sm font-semibold text-gray-800">{country}</span>
-                      <span className="text-xs text-gray-500">{duration}</span>
+                    <div key={country} style={{ background: 'var(--glc-cloud)', borderRadius: 'var(--glc-r)', padding: '12px 16px', textAlign: 'center' }}>
+                      <span style={{ display: 'block', fontWeight: 600, color: 'var(--glc-ink)', fontSize: 'var(--glc-fs-sm)' }}>{country}</span>
+                      <span style={{ fontSize: 'var(--glc-fs-xs)', color: 'var(--glc-slate-soft)' }}>{duration}</span>
                     </div>
                   ))}
                 </div>
-                <div className="mt-4 pt-3 border-t border-gray-100 text-sm text-gray-600">
-                  <span className="font-semibold">Total Experience:</span> {totalExperience(c.helper_experience)}
+                <div style={{ marginTop: 16, paddingTop: 12, borderTop: '1px solid var(--glc-line)', fontSize: 'var(--glc-fs-sm)', color: 'var(--glc-slate)' }}>
+                  <span style={{ fontWeight: 700, color: 'var(--glc-ink)' }}>Total Experience:</span> {totalExperience(c.helper_experience)}
                 </div>
               </div>
             )}
 
             {/* Previous Employers */}
             {c.previous_employers && c.previous_employers.length > 0 && (
-              <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
-                <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#2E72B8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+              <div className="glc-card">
+                <h2 style={{ fontSize: 'var(--glc-fs-h3)', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <svg className="w-5 h-5" stroke="var(--glc-teal)" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                   Previous Employers
                 </h2>
                 <div className="space-y-4">
                   {c.previous_employers.map((emp, i) => (
-                    <div key={i} className="bg-gray-50 rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="font-semibold text-sm text-gray-800">
+                    <div key={i} style={{ background: 'var(--glc-cloud)', borderRadius: 'var(--glc-r)', padding: 16 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+                        <span style={{ fontWeight: 700, fontSize: 'var(--glc-fs-sm)', color: 'var(--glc-ink)' }}>
                           {emp.country || 'Unknown Country'}
                         </span>
                         {(emp.period_from || emp.period_to) && (
-                          <span className="text-xs text-gray-500">
+                          <span style={{ fontSize: 'var(--glc-fs-xs)', color: 'var(--glc-slate-soft)' }}>
                             {emp.period_from || '?'} — {emp.period_to || 'Present'}
                           </span>
                         )}
                       </div>
-                      <div className="grid grid-cols-2 gap-2 text-xs text-gray-600">
-                        {emp.housing_type && <div><span className="font-medium text-gray-500">Housing:</span> {emp.housing_type}</div>}
-                        {emp.family_composition && <div><span className="font-medium text-gray-500">Family:</span> {emp.family_composition}</div>}
-                        {emp.duties && <div className="col-span-2"><span className="font-medium text-gray-500">Duties:</span> {emp.duties}</div>}
-                        {emp.termination_reason && <div className="col-span-2"><span className="font-medium text-gray-500">Reason for leaving:</span> {emp.termination_reason}</div>}
+                      <div className="grid grid-cols-2 gap-2" style={{ fontSize: 'var(--glc-fs-xs)', color: 'var(--glc-slate)' }}>
+                        {emp.housing_type && <div><span style={{ fontWeight: 600, color: 'var(--glc-slate-soft)' }}>Housing:</span> {emp.housing_type}</div>}
+                        {emp.family_composition && <div><span style={{ fontWeight: 600, color: 'var(--glc-slate-soft)' }}>Family:</span> {emp.family_composition}</div>}
+                        {emp.duties && <div className="col-span-2"><span style={{ fontWeight: 600, color: 'var(--glc-slate-soft)' }}>Duties:</span> {emp.duties}</div>}
+                        {emp.termination_reason && <div className="col-span-2"><span style={{ fontWeight: 600, color: 'var(--glc-slate-soft)' }}>Reason for leaving:</span> {emp.termination_reason}</div>}
                       </div>
                     </div>
                   ))}
@@ -259,9 +256,9 @@ export default async function BiodataDetailPage({ params }: { params: Promise<{ 
           {/* ─── SIDEBAR ─── */}
           <div className="space-y-6">
             {/* Enquiry Card */}
-            <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 sticky top-28">
-              <h2 className="text-base font-bold text-gray-900 mb-2">Interested in this candidate?</h2>
-              <p className="text-sm text-gray-500 mb-5">
+            <div className="glc-card sticky top-28">
+              <h2 style={{ fontSize: 'var(--glc-fs-body)', fontWeight: 700, color: 'var(--glc-ink)', marginBottom: 8 }}>Interested in this candidate?</h2>
+              <p style={{ fontSize: 'var(--glc-fs-sm)', color: 'var(--glc-slate-soft)', marginBottom: 20 }}>
                 Contact us to arrange a video interview or request more details about {name}.
               </p>
 
@@ -270,7 +267,8 @@ export default async function BiodataDetailPage({ params }: { params: Promise<{ 
                 href={`https://wa.me/${PHONE}?text=${whatsappMsg}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-lg text-sm font-bold text-white bg-[#25D366] hover:bg-[#20bd5a] transition-colors mb-3 shadow-sm"
+                className="glc-btn glc-btn--block"
+                style={{ background: '#25D366', color: '#fff', marginBottom: 12 }}
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -281,7 +279,8 @@ export default async function BiodataDetailPage({ params }: { params: Promise<{ 
               {/* Email Button */}
               <a
                 href={`mailto:${EMAIL}?subject=${emailSubject}&body=${emailBody}`}
-                className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-lg text-sm font-bold text-[#2E72B8] bg-[#2E72B8]/10 hover:bg-[#2E72B8]/20 transition-colors mb-5"
+                className="glc-btn glc-btn--outline glc-btn--block"
+                style={{ marginBottom: 20 }}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -289,10 +288,10 @@ export default async function BiodataDetailPage({ params }: { params: Promise<{ 
                 Email Enquiry
               </a>
 
-              <div className="border-t border-gray-100 pt-4 text-center">
-                <p className="text-xs text-gray-400">
+              <div style={{ borderTop: '1px solid var(--glc-line)', paddingTop: 16, textAlign: 'center' }}>
+                <p style={{ fontSize: 'var(--glc-fs-xs)', color: 'var(--glc-slate-soft)' }}>
                   Or call us at{' '}
-                  <a href="tel:+60193250457" className="text-[#2E72B8] font-semibold hover:underline">
+                  <a href="tel:+60193250457" style={{ color: 'var(--glc-teal)', fontWeight: 700 }}>
                     +6019 325 0457
                   </a>
                 </p>
@@ -300,8 +299,8 @@ export default async function BiodataDetailPage({ params }: { params: Promise<{ 
             </div>
 
             {/* Quick Summary Card */}
-            <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4">Quick Summary</h3>
+            <div className="glc-card">
+              <h3 style={{ fontSize: 'var(--glc-fs-xs)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--glc-slate-soft)', marginBottom: 16 }}>Quick Summary</h3>
               <div className="space-y-3 text-sm">
                 <SummaryRow label="Category" value={c.job_category || '—'} />
                 <SummaryRow label="Nationality" value={c.nationality || '—'} />
@@ -331,8 +330,8 @@ function InfoItem({ label, value }: { label: string; value: string | null | unde
   if (!value) return null;
   return (
     <div>
-      <span className="block text-[10px] font-bold uppercase tracking-wider text-gray-400">{label}</span>
-      <span className="text-gray-800 font-medium text-sm">{value}</span>
+      <span style={{ display: 'block', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--glc-slate-soft)' }}>{label}</span>
+      <span style={{ color: 'var(--glc-ink)', fontWeight: 600, fontSize: 'var(--glc-fs-sm)' }}>{value}</span>
     </div>
   );
 }
@@ -340,8 +339,8 @@ function InfoItem({ label, value }: { label: string; value: string | null | unde
 function SummaryRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between">
-      <span className="text-gray-500">{label}</span>
-      <span className="font-semibold text-gray-800">{value}</span>
+      <span style={{ color: 'var(--glc-slate-soft)' }}>{label}</span>
+      <span style={{ fontWeight: 700, color: 'var(--glc-ink)' }}>{value}</span>
     </div>
   );
 }

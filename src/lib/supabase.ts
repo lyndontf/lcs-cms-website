@@ -262,7 +262,7 @@ export async function getJobListingById(id: string): Promise<JobListing | null> 
 
 export async function submitJobApplication(formData: {
   job_listing_id: string;
-  organization_id: string;
+  organization_id?: string;
   job_title?: string;
   applicant_name: string;
   applicant_email: string;
@@ -273,24 +273,28 @@ export async function submitJobApplication(formData: {
   years_experience?: number;
   expected_salary?: string;
 }): Promise<boolean> {
-  // All applications live in glc_biodata so they surface in the CMS
-  // Applications view alongside caregiver-pool submissions.
+  // Professional/internal-hire applications (e.g. Resident Medical Officer)
+  // now live in the unified `candidates` table alongside GLC Hire marketplace
+  // candidates. `organization_id` has no equivalent column here — candidates
+  // are centre-scoped instead, so `centre_id` is left unset and an admin
+  // assigns it later in the Biodata Pool screen.
   const notes = [
     formData.current_employer ? `Current employer: ${formData.current_employer}` : null,
     formData.years_experience != null ? `Experience: ${formData.years_experience} yr(s)` : null,
     formData.expected_salary ? `Expected salary: ${formData.expected_salary}` : null,
   ].filter(Boolean).join(' | ') || null;
 
-  const { error } = await supabase.from('glc_biodata').insert({
-    organization_id: formData.organization_id,
-    full_name: formData.applicant_name,
-    applicant_email: formData.applicant_email,
-    applicant_phone: formData.applicant_phone ?? null,
-    resume_url: formData.resume_url ?? null,
+  const { error } = await supabase.from('candidates').insert({
+    name: formData.applicant_name,
+    email: formData.applicant_email,
+    phone: formData.applicant_phone ?? null,
+    pdf_url: formData.resume_url ?? null,
     cover_letter: formData.cover_letter ?? null,
     job_listing_id: formData.job_listing_id,
     job_category: formData.job_title || 'Job Application',
-    status: 'pending',
+    status: 'pending review',
+    is_published: false,
+    application_type: 'internal',
     application_source: 'careers_form',
     notes,
   });
@@ -326,15 +330,35 @@ export async function submitBiodataApplication(formData: {
   cover_letter?: string;
   photo_url?: string;
   job_listing_id?: string;
-  organization_id: string;
+  organization_id?: string;
 }): Promise<boolean> {
-  const { error } = await supabase.from('glc_biodata').insert({
-    ...formData,
-    status: 'pending',
-    application_source: 'website',
+  // GLC Hire marketplace biodata applications now insert directly into the
+  // unified `candidates` table. `age` (derived elsewhere from dob) and
+  // `organization_id` (candidates is centre-scoped, not org-scoped) have no
+  // destination column and are intentionally not passed through.
+  const { error } = await supabase.from('candidates').insert({
+    name: formData.full_name,
+    email: formData.applicant_email,
+    phone: formData.applicant_phone ?? null,
+    job_category: formData.job_category ?? null,
+    nationality_text: formData.nationality ?? null,
+    dob: formData.date_of_birth ?? null,
+    marital_status_text: formData.marital_status ?? null,
+    education_level: formData.education_level ?? null,
+    religion: formData.religion ?? null,
+    height_cm: formData.height_cm ?? null,
+    weight_kg: formData.weight_kg ?? null,
+    food_preference: formData.food_preference ?? null,
     languages: formData.languages || [],
+    cover_letter: formData.cover_letter ?? null,
+    profile_pic_url: formData.photo_url ?? null,
+    job_listing_id: formData.job_listing_id ?? null,
+    status: 'pending review',
+    is_published: false,
+    application_type: 'marketplace',
+    application_source: 'website',
     skills: [],
-    helper_experience: {},
+    experience: {},
     previous_employers: [],
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
@@ -412,16 +436,16 @@ export interface BiodataCandidate {
   updated_at: string;
 }
 
-// Published caregivers are the single source of truth in `users` (caregiver_*),
+// Published candidates are the single source of truth in `public.candidates`,
 // shared by /biodata, the agency site, and agency-services.html. Approved resume
-// submissions become published users via the approve_biodata() RPC.
+// submissions become published candidates via the approve_biodata() RPC.
 const CAREGIVER_COLUMNS =
   'id, name, profile_pic_url, nationality_text, dob, created_at, ' +
-  'caregiver_reference_no, caregiver_job_category, caregiver_pdf_url, ' +
-  'caregiver_education_level, caregiver_food_preference, caregiver_children_info, ' +
-  'caregiver_monthly_salary_myr, caregiver_rest_days_per_month, ' +
-  'caregiver_off_day_compensation_myr, caregiver_languages, caregiver_skills, ' +
-  'caregiver_experience, caregiver_notes';
+  'reference_no, job_category, pdf_url, ' +
+  'education_level, food_preference, children_info, ' +
+  'monthly_salary_myr, rest_days_per_month, ' +
+  'off_day_compensation_myr, languages, skills, ' +
+  'experience, notes';
 
 function mapUserToCandidate(u: Record<string, any>): BiodataCandidate {
   let age: number | null = null;
@@ -434,33 +458,33 @@ function mapUserToCandidate(u: Record<string, any>): BiodataCandidate {
   return {
     id: u.id,
     organization_id: '',
-    reference_no: u.caregiver_reference_no ?? null,
+    reference_no: u.reference_no ?? null,
     status: 'available',
-    job_category: u.caregiver_job_category ?? null,
+    job_category: u.job_category ?? null,
     photo_url: u.profile_pic_url ?? null,
-    pdf_url: u.caregiver_pdf_url ?? null,
+    pdf_url: u.pdf_url ?? null,
     full_name: u.name ?? '',
     date_of_birth: u.dob ?? null,
     age,
     nationality: u.nationality_text ?? null,
     height_cm: null,
     weight_kg: null,
-    education_level: u.caregiver_education_level ?? null,
+    education_level: u.education_level ?? null,
     religion: null,
-    food_preference: u.caregiver_food_preference ?? null,
+    food_preference: u.food_preference ?? null,
     diet: null,
     siblings_count: null,
     sibling_position: null,
     marital_status: null,
-    children_info: u.caregiver_children_info ?? null,
-    monthly_salary_myr: u.caregiver_monthly_salary_myr ?? null,
-    rest_days_per_month: u.caregiver_rest_days_per_month ?? null,
-    off_day_compensation_myr: u.caregiver_off_day_compensation_myr ?? null,
-    languages: (u.caregiver_languages as BiodataLanguage[]) ?? [],
-    skills: (u.caregiver_skills as BiodataSkill[]) ?? [],
-    helper_experience: (u.caregiver_experience as Record<string, string>) ?? {},
+    children_info: u.children_info ?? null,
+    monthly_salary_myr: u.monthly_salary_myr ?? null,
+    rest_days_per_month: u.rest_days_per_month ?? null,
+    off_day_compensation_myr: u.off_day_compensation_myr ?? null,
+    languages: (u.languages as BiodataLanguage[]) ?? [],
+    skills: (u.skills as BiodataSkill[]) ?? [],
+    helper_experience: (u.experience as Record<string, string>) ?? {},
     previous_employers: [],
-    notes: u.caregiver_notes ?? null,
+    notes: u.notes ?? null,
     created_at: u.created_at ?? '',
     updated_at: u.created_at ?? '',
   };
@@ -468,21 +492,19 @@ function mapUserToCandidate(u: Record<string, any>): BiodataCandidate {
 
 export async function getAvailableBiodata(): Promise<BiodataCandidate[]> {
   const { data } = await supabase
-    .from('users')
+    .from('candidates')
     .select(CAREGIVER_COLUMNS)
-    .eq('is_caregiver', true)
-    .eq('caregiver_is_published', true)
+    .eq('is_published', true)
     .order('created_at', { ascending: false });
   return (data || []).map(mapUserToCandidate);
 }
 
 export async function getBiodataById(id: string): Promise<BiodataCandidate | null> {
   const { data } = await supabase
-    .from('users')
+    .from('candidates')
     .select(CAREGIVER_COLUMNS)
     .eq('id', id)
-    .eq('is_caregiver', true)
-    .eq('caregiver_is_published', true)
+    .eq('is_published', true)
     .limit(1)
     .maybeSingle();
   return data ? mapUserToCandidate(data) : null;
