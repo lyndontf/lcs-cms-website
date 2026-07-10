@@ -445,7 +445,8 @@ const CAREGIVER_COLUMNS =
   'education_level, food_preference, children_info, ' +
   'monthly_salary_myr, rest_days_per_month, ' +
   'off_day_compensation_myr, languages, skills, ' +
-  'experience, notes';
+  'experience, notes, height_cm, weight_kg, religion, diet, ' +
+  'siblings_count, sibling_position, marital_status_text, previous_employers';
 
 function mapUserToCandidate(u: Record<string, any>): BiodataCandidate {
   let age: number | null = null;
@@ -467,15 +468,15 @@ function mapUserToCandidate(u: Record<string, any>): BiodataCandidate {
     date_of_birth: u.dob ?? null,
     age,
     nationality: u.nationality_text ?? null,
-    height_cm: null,
-    weight_kg: null,
+    height_cm: u.height_cm ?? null,
+    weight_kg: u.weight_kg ?? null,
     education_level: u.education_level ?? null,
-    religion: null,
+    religion: u.religion ?? null,
     food_preference: u.food_preference ?? null,
-    diet: null,
-    siblings_count: null,
-    sibling_position: null,
-    marital_status: null,
+    diet: u.diet ?? null,
+    siblings_count: u.siblings_count ?? null,
+    sibling_position: u.sibling_position ?? null,
+    marital_status: u.marital_status_text ?? null,
     children_info: u.children_info ?? null,
     monthly_salary_myr: u.monthly_salary_myr ?? null,
     rest_days_per_month: u.rest_days_per_month ?? null,
@@ -483,7 +484,7 @@ function mapUserToCandidate(u: Record<string, any>): BiodataCandidate {
     languages: (u.languages as BiodataLanguage[]) ?? [],
     skills: (u.skills as BiodataSkill[]) ?? [],
     helper_experience: (u.experience as Record<string, string>) ?? {},
-    previous_employers: [],
+    previous_employers: (u.previous_employers as BiodataPreviousEmployer[]) ?? [],
     notes: u.notes ?? null,
     created_at: u.created_at ?? '',
     updated_at: u.created_at ?? '',
