@@ -326,7 +326,11 @@ export async function submitBiodataApplication(formData: {
   height_cm?: number;
   weight_kg?: number;
   food_preference?: string;
+  diet?: string;
+  siblings_count?: number;
+  sibling_position?: number;
   languages?: { name: string; level: string }[];
+  previous_employers?: BiodataPreviousEmployer[];
   cover_letter?: string;
   photo_url?: string;
   job_listing_id?: string;
@@ -349,6 +353,9 @@ export async function submitBiodataApplication(formData: {
     height_cm: formData.height_cm ?? null,
     weight_kg: formData.weight_kg ?? null,
     food_preference: formData.food_preference ?? null,
+    diet: formData.diet ?? null,
+    siblings_count: formData.siblings_count ?? null,
+    sibling_position: formData.sibling_position ?? null,
     languages: formData.languages || [],
     cover_letter: formData.cover_letter ?? null,
     profile_pic_url: formData.photo_url ?? null,
@@ -359,7 +366,7 @@ export async function submitBiodataApplication(formData: {
     application_source: 'website',
     skills: [],
     experience: {},
-    previous_employers: [],
+    previous_employers: formData.previous_employers || [],
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
   });

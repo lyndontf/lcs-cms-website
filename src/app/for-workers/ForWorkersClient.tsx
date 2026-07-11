@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { submitBiodataApplication, uploadBiodataPhoto } from '@/lib/supabase';
+import { submitBiodataApplication, uploadBiodataPhoto, type BiodataPreviousEmployer } from '@/lib/supabase';
 
 const GLC_ORG_ID = '09db6826-ee70-4e6a-a8b6-f19667cfd025';
 
@@ -38,11 +38,29 @@ export default function ForWorkersClient() {
   const [heightCm, setHeightCm] = useState('');
   const [weightKg, setWeightKg] = useState('');
   const [foodPreference, setFoodPreference] = useState('');
+  const [diet, setDiet] = useState('');
+  const [siblingsCount, setSiblingsCount] = useState('');
+  const [siblingPosition, setSiblingPosition] = useState('');
 
   // Languages
   const [languages, setLanguages] = useState<{ name: string; level: string }[]>([]);
   const [langName, setLangName] = useState('');
   const [langLevel, setLangLevel] = useState('Conversational');
+
+  // Previous employers
+  const [previousEmployers, setPreviousEmployers] = useState<BiodataPreviousEmployer[]>([]);
+
+  function addEmployer() {
+    setPreviousEmployers([...previousEmployers, {}]);
+  }
+
+  function removeEmployer(index: number) {
+    setPreviousEmployers(previousEmployers.filter((_, i) => i !== index));
+  }
+
+  function updateEmployer(index: number, key: keyof BiodataPreviousEmployer, value: string) {
+    setPreviousEmployers(previousEmployers.map((emp, i) => (i === index ? { ...emp, [key]: value } : emp)));
+  }
 
   // Photo
   const [photoFile, setPhotoFile] = useState<File | null>(null);
@@ -133,7 +151,11 @@ export default function ForWorkersClient() {
       height_cm: heightCm ? parseFloat(heightCm) : undefined,
       weight_kg: weightKg ? parseFloat(weightKg) : undefined,
       food_preference: foodPreference || undefined,
+      diet: diet.trim() || undefined,
+      siblings_count: siblingsCount ? parseInt(siblingsCount, 10) : undefined,
+      sibling_position: siblingPosition ? parseInt(siblingPosition, 10) : undefined,
       languages: languages.length > 0 ? languages : undefined,
+      previous_employers: previousEmployers.length > 0 ? previousEmployers : undefined,
       cover_letter: coverLetter.trim() || undefined,
       photo_url: photoUrl,
       organization_id: GLC_ORG_ID,
@@ -302,6 +324,18 @@ export default function ForWorkersClient() {
             <label className={LABEL_CLASS}>Weight (kg)</label>
             <input type="number" value={weightKg} onChange={(e) => setWeightKg(e.target.value)} placeholder="e.g. 55" min="30" max="150" className={INPUT_CLASS} />
           </div>
+          <div>
+            <label className={LABEL_CLASS}>Diet</label>
+            <input type="text" value={diet} onChange={(e) => setDiet(e.target.value)} placeholder="e.g. Vegetarian" className={INPUT_CLASS} />
+          </div>
+          <div>
+            <label className={LABEL_CLASS}>Siblings Count</label>
+            <input type="number" value={siblingsCount} onChange={(e) => setSiblingsCount(e.target.value)} placeholder="e.g. 3" min="0" className={INPUT_CLASS} />
+          </div>
+          <div>
+            <label className={LABEL_CLASS}>Sibling Position</label>
+            <input type="number" value={siblingPosition} onChange={(e) => setSiblingPosition(e.target.value)} placeholder="e.g. 2 = second-born" min="1" className={INPUT_CLASS} />
+          </div>
         </div>
       </div>
 
@@ -349,6 +383,40 @@ export default function ForWorkersClient() {
             value=""
           />
         )}
+      </div>
+
+      {/* ─── SECTION: PREVIOUS EMPLOYERS ─── */}
+      <div>
+        <div className="flex items-center justify-between" style={{ marginBottom: 12 }}>
+          <h3 style={{ fontSize: 'var(--glc-fs-sm)', fontWeight: 700, color: 'var(--glc-ink)', display: 'flex', alignItems: 'center', gap: 8 }}>
+            <svg className="w-4 h-4" stroke="var(--glc-teal)" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+            Previous Employers
+          </h3>
+          <button type="button" onClick={addEmployer} style={{ fontSize: 'var(--glc-fs-xs)', fontWeight: 700, color: 'var(--glc-teal)', background: 'none', border: 0, cursor: 'pointer', padding: 0 }}>
+            + Add Employer
+          </button>
+        </div>
+        {previousEmployers.length === 0 && (
+          <p style={{ fontSize: 'var(--glc-fs-xs)', color: 'var(--glc-slate-soft)', fontStyle: 'italic' }}>No previous employers to add (optional).</p>
+        )}
+        {previousEmployers.map((emp, i) => (
+          <div key={i} style={{ background: 'var(--glc-cloud)', borderRadius: 'var(--glc-r)', border: '1px solid var(--glc-line)', padding: 12, marginBottom: 10 }}>
+            <div className="flex items-center justify-between" style={{ marginBottom: 8 }}>
+              <span style={{ fontSize: 'var(--glc-fs-sm)', fontWeight: 700, color: 'var(--glc-ink)' }}>Employer {i + 1}</span>
+              <button type="button" onClick={() => removeEmployer(i)} style={{ background: 'none', border: 0, cursor: 'pointer', color: 'var(--glc-danger)', fontWeight: 700 }}>&times;</button>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <input type="text" value={emp.country || ''} onChange={(e) => updateEmployer(i, 'country', e.target.value)} placeholder="Country" className={INPUT_CLASS} />
+              <input type="text" value={emp.housing_type || ''} onChange={(e) => updateEmployer(i, 'housing_type', e.target.value)} placeholder="Housing Type" className={INPUT_CLASS} />
+              <input type="text" value={emp.period_from || ''} onChange={(e) => updateEmployer(i, 'period_from', e.target.value)} placeholder="Period From (e.g. 2019)" className={INPUT_CLASS} />
+              <input type="text" value={emp.period_to || ''} onChange={(e) => updateEmployer(i, 'period_to', e.target.value)} placeholder="Period To (e.g. 2021)" className={INPUT_CLASS} />
+              <input type="text" value={emp.family_composition || ''} onChange={(e) => updateEmployer(i, 'family_composition', e.target.value)} placeholder="Family Composition" className={`${INPUT_CLASS} sm:col-span-2`} />
+              <input type="text" value={emp.duties || ''} onChange={(e) => updateEmployer(i, 'duties', e.target.value)} placeholder="Duties" className={`${INPUT_CLASS} sm:col-span-2`} />
+              <input type="text" value={emp.termination_reason || ''} onChange={(e) => updateEmployer(i, 'termination_reason', e.target.value)} placeholder="Termination Reason" className={INPUT_CLASS} />
+              <input type="text" value={emp.remarks || ''} onChange={(e) => updateEmployer(i, 'remarks', e.target.value)} placeholder="Remarks" className={INPUT_CLASS} />
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* ─── ABOUT YOURSELF ─── */}
