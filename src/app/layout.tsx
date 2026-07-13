@@ -40,6 +40,15 @@ export async function generateMetadata(): Promise<Metadata> {
   const siteName = settings?.site_name || 'Genesis Life Care';
   const description = defaults.default_description || 'Quality healthcare and aged care services in Malaysia';
 
+  // og_image_url is a dedicated 1200x630 social-preview asset. logo_url is the
+  // small header wordmark (often a wide ~4:1 crop) — falls back to it only
+  // when a site hasn't had a proper share image made yet, since a link
+  // preview is still better with something than nothing.
+  const shareImageUrl = settings?.og_image_url || settings?.logo_url || undefined;
+  const shareImage = shareImageUrl
+    ? [{ url: shareImageUrl, width: 1200, height: 630, alt: siteName }]
+    : undefined;
+
   return {
     title: {
       default: siteName,
@@ -52,13 +61,13 @@ export async function generateMetadata(): Promise<Metadata> {
       title: siteName,
       description,
       type: 'website',
-      images: settings?.logo_url ? [{ url: settings.logo_url }] : undefined,
+      images: shareImage,
     },
     twitter: {
       card: 'summary_large_image',
       title: siteName,
       description,
-      images: settings?.logo_url ? [settings.logo_url] : undefined,
+      images: shareImageUrl ? [shareImageUrl] : undefined,
     },
   };
 }

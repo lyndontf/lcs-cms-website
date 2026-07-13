@@ -83,6 +83,7 @@ export interface SiteSettings {
   site_name: string;
   tagline: string | null;
   logo_url: string | null;
+  og_image_url: string | null;
   favicon_url: string | null;
   primary_color: string;
   secondary_color: string;
