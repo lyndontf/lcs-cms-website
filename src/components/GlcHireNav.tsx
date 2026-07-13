@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const LOGO_URL =
-  'https://hztfeqfnvwzkaeiwldmd.supabase.co/storage/v1/object/public/cms-media/glc-hire/logo.png';
+  'https://hztfeqfnvwzkaeiwldmd.supabase.co/storage/v1/object/public/cms-media/glc-hire/logo-transparent.png';
 const PHONE = '+60193250457';
 const WHATSAPP = 'https://wa.me/60193250457';
 
