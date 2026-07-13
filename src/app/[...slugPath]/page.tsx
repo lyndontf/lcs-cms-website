@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getPageBySlug, getPublishedPages, getPublishedPosts, getSupportedLocales, pageExistsForLocale } from '@/lib/supabase';
+import { getPageBySlug, getPublishedPages, getPublishedPosts, getSiteSettings, getSupportedLocales, pageExistsForLocale } from '@/lib/supabase';
 import { getCurrentSiteId, getCurrentSiteSlug, getCurrentSiteBaseUrl } from '@/lib/site-context';
 import ContentRenderer from '@/components/ContentRenderer';
 import { CmsRawBlocks } from '@/components/CmsHtmlPage';
@@ -103,6 +103,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = page.meta_title || page.title;
   const description = page.meta_description || undefined;
   const isHome = route.slug === 'home';
+
+  // Falls back to the site's dedicated share image (or its logo) when this
+  // page has no featured image of its own, so link previews never go bare.
+  const settings = await getSiteSettings(siteId || undefined);
+  const shareImageUrl = page.featured_image_url || settings?.og_image_url || settings?.logo_url || undefined;
   const url =
     route.locale === 'en'
       ? isHome ? baseUrl : `${baseUrl}/${route.slug}`
@@ -134,14 +139,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       url,
-      images: page.featured_image_url ? [{ url: page.featured_image_url }] : undefined,
+      images: shareImageUrl ? [{ url: shareImageUrl, width: 1200, height: 630, alt: title }] : undefined,
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: page.featured_image_url ? [page.featured_image_url] : undefined,
+      images: shareImageUrl ? [shareImageUrl] : undefined,
     },
   };
 }

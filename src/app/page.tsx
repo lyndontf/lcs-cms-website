@@ -67,7 +67,9 @@ export async function generateMetadata(): Promise<Metadata> {
     page?.meta_description ||
     seoDefaults.default_description ||
     'Quality healthcare and aged care services in Malaysia';
-  const ogImage = page?.featured_image_url || undefined;
+  // Falls back to the site's dedicated share image (or its logo) when the
+  // homepage has no featured image of its own, so link previews never go bare.
+  const ogImage = page?.featured_image_url || settings?.og_image_url || settings?.logo_url || undefined;
   return {
     title,
     description,
@@ -79,7 +81,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: settings?.site_name || undefined,
       locale: 'en_MY',
       type: 'website',
-      images: ogImage ? [{ url: ogImage, width: 1200, height: 630 }] : undefined,
+      images: ogImage ? [{ url: ogImage, width: 1200, height: 630, alt: title }] : undefined,
     },
     twitter: {
       card: 'summary_large_image',
