@@ -123,18 +123,23 @@ export default async function RootLayout({
           {children}
         </LayoutWrapper>
         <TrackingScript />
-        {/* Disables the WhatsApp widget and phone/call buttons for visitors from
-            countries flagged in middleware.ts (scam-call-origin advisories), via
-            the glc-contact-blocked cookie it sets. Runs on every page — covers
-            both the shared WhatsAppWidget React component and every page's own
-            embedded raw-HTML copy of it (Bloom/GLC-Hire full-HTML-override
-            pages), so contact CTAs stay visible but inert rather than needing
-            per-page edits. */}
+        {/* Hides phone numbers, email addresses, and the WhatsApp widget for
+            visitors from countries flagged in middleware.ts (scam-call-origin
+            advisories), via the glc-contact-blocked cookie it sets. Runs on
+            every page — covers both shared React components (Footer, Header,
+            GlcHireNav, WhatsAppWidget, etc.) and every page's own embedded
+            raw-HTML copy (Bloom/GLC-Hire full-HTML-override pages), so this
+            never needs per-page edits. tel:/mailto:/wa.me elements are hidden
+            outright (their parent too, when the parent has no other text —
+            e.g. an <li> whose only content is an icon + the link) rather than
+            just click-blocked, since the ask is to hide the info, not just
+            make it inert. A MutationObserver re-applies this to anything
+            rendered after the initial pass (e.g. client-hydrated widgets). */}
         <Script
           id="contact-region-gate"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `(function(){function blocked(){return document.cookie.split('; ').some(function(c){return c.indexOf('glc-contact-blocked=1')===0;});}if(!blocked())return;document.addEventListener('click',function(e){var l=e.target.closest('a[href*="wa.me/"],a[href*="api.whatsapp.com"],a[href^="tel:"]');if(l){e.preventDefault();e.stopPropagation();}},true);var o=window.open;window.open=function(u){if(typeof u==='string'&&(u.indexOf('wa.me/')!==-1||u.indexOf('api.whatsapp.com')!==-1||u.indexOf('tel:')===0))return null;return o.apply(window,arguments);};})();`,
+            __html: `(function(){function blocked(){return document.cookie.split('; ').some(function(c){return c.indexOf('glc-contact-blocked=1')===0;});}if(!blocked())return;var SEL='a[href*="wa.me/"],a[href*="api.whatsapp.com"],a[href^="tel:"],a[href^="mailto:"]';var WIDGET_SEL='.glc-wa-fab-wrap';function hide(a){var p=a.parentElement;if(p&&p!==document.body&&p.innerText.trim()===a.innerText.trim()){p.style.display='none';}else{a.style.display='none';}}function sweep(root){(root||document).querySelectorAll(WIDGET_SEL).forEach(function(w){w.style.display='none';});(root||document).querySelectorAll(SEL).forEach(hide);}sweep();document.addEventListener('click',function(e){var l=e.target.closest(SEL);if(l){e.preventDefault();e.stopPropagation();}},true);var o=window.open;window.open=function(u){if(typeof u==='string'&&(u.indexOf('wa.me/')!==-1||u.indexOf('api.whatsapp.com')!==-1||u.indexOf('tel:')===0||u.indexOf('mailto:')===0))return null;return o.apply(window,arguments);};new MutationObserver(function(muts){muts.forEach(function(m){m.addedNodes.forEach(function(n){if(n.nodeType!==1)return;if(n.matches&&n.matches(WIDGET_SEL)){n.style.display='none';return;}if(n.matches&&n.matches(SEL))hide(n);if(n.querySelectorAll)sweep(n);});});}).observe(document.body,{childList:true,subtree:true});})();`,
           }}
         />
         {settings?.custom_head_html && (
