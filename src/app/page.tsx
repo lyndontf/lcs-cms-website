@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   if (siteSlug === 'centre') {
     return {
-      title: 'Nursing Home & Elderly Care in Malaysia | Genesis Life Care',
+      title: { absolute: 'Nursing Home & Elderly Care in Malaysia | Genesis Life Care' },
       description:
         '5 government-approved Genesis Life Care nursing homes across Klang Valley & Johor Bahru. 24/7 nursing, dementia & stroke care. Rated 4.8★. Book a free visit.',
       alternates: {
