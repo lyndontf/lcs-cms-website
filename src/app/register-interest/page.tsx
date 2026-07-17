@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'New Locations — Register Your Interest | Genesis Life Care',
+  title: { absolute: 'New Locations — Register Your Interest | Genesis Life Care' },
   description:
     'Genesis Life Care operates five centres across Selangor and Johor, and we’re growing. Tell us where you need care and we’ll keep you posted as we expand — plus home care available across the Klang Valley today.',
   alternates: {
