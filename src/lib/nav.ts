@@ -32,6 +32,7 @@ export const centreNavEN: MenuItem[] = [
       { label: 'Referrals & Partnerships', url: '/referrals', type: 'page' },
       { label: 'Fees & Care Packages', url: '/pricing', type: 'page' },
       { label: 'Nursing Home Cost Guide', url: '/nursing-home-cost-malaysia', type: 'page' },
+      { label: 'Home Care vs. Nursing Home Cost', url: '/nursing-home-vs-home-care-cost', type: 'page' },
       { label: 'Family Care App', url: '/family-app', type: 'page' },
       { label: 'Reviews', url: '/reviews', type: 'page' },
     ],
