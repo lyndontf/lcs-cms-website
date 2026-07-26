@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // so a coarse country code (Vercel's edge-injected x-vercel-ip-country header)
 // is sufficient.
 const CONTACT_BLOCKED_COUNTRIES = new Set([
-  'IN', 'PK', 'MM', 'NG', 'KH', 'LA',
+  'IN', 'PK', 'MM', 'NG', 'KH', 'LA', 'NP',
   // South America
   'AR', 'BO', 'BR', 'CL', 'CO', 'EC', 'GY', 'PY', 'PE', 'SR', 'UY', 'VE',
   // Africa (all 54 UN member states; NG already listed above)
