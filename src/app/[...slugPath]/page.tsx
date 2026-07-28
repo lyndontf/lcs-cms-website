@@ -151,7 +151,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export const revalidate = 60;
+// Must be force-dynamic, not ISR (revalidate): this route reads the current
+// site via headers() (see getCurrentSiteSlug in site-context.ts), which is a
+// per-request dynamic API. Combined with a revalidate window, any path not
+// covered by generateStaticParams (scanner probes, dead /zh links, anything
+// not yet published) crashed with a Next.js DYNAMIC_SERVER_USAGE error
+// instead of a clean 404 — surfaced by Search Console as "Server error (5xx)".
+export const dynamic = 'force-dynamic';
 
 export default async function DynamicPage({ params }: PageProps) {
   const { slugPath } = await params;

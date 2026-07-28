@@ -63,7 +63,10 @@ const PATH_TO_SITE: Record<string, string> = {
 // queries Supabase for it. A scanner hammering these paths was turning into a
 // sustained Supabase query flood (2-3 queries per hit) that contributed to the DB
 // showing "Unhealthy" — reject them here, before any routing/DB work happens.
-const SCANNER_PATH_RE = /\.(php\d?|asp|aspx|jsp|cgi|env|git|sql|bak|ini|log|htaccess|htpasswd)(\/|$)|^\/(wp-admin|wp-login|wp-content|wp-includes|wp-json|phpmyadmin|cgi-bin|\.git|\.env)(\/|$)/i;
+// The `env` alternative allows an optional dot-suffix (`.env.development`,
+// `.env.local`, etc.) — the original anchor required `.env` to be immediately
+// followed by `/` or end-of-string, missing these common variants.
+const SCANNER_PATH_RE = /\.(php\d?|asp|aspx|jsp|cgi|env(\.\w+)?|git|sql|bak|ini|log|htaccess|htpasswd|tfstate)(\/|$)|^\/(wp-admin|wp-login|wp-content|wp-includes|wp-json|phpmyadmin|cgi-bin|\.git|\.env)(\/|$)/i;
 
 export function middleware(request: NextRequest) {
   const hostname = request.headers.get('host')?.split(':')[0] || '';

@@ -45,7 +45,12 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   };
 }
 
-export const revalidate = 60;
+// See [...slugPath]/page.tsx for why this must be force-dynamic rather than
+// ISR (revalidate): getCurrentSiteId() reads headers() per-request, which
+// crashes with DYNAMIC_SERVER_USAGE under ISR for any slug not in
+// generateStaticParams (bot-scan paths, mistyped URLs, etc.) instead of
+// returning a clean 404.
+export const dynamic = 'force-dynamic';
 
 function pickRelatedPosts(posts: CmsPost[], current: CmsPost, limit = 5): CmsPost[] {
   const others = posts.filter((p) => p.id !== current.id);
