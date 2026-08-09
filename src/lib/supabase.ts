@@ -1,4 +1,5 @@
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
+import { isVisitorRegionBlocked } from './geo-block';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -279,6 +280,8 @@ export async function submitJobApplication(formData: {
   // candidates. `organization_id` has no equivalent column here — candidates
   // are centre-scoped instead, so `centre_id` is left unset and an admin
   // assigns it later in the Biodata Pool screen.
+  if (isVisitorRegionBlocked()) return false;
+
   const notes = [
     formData.current_employer ? `Current employer: ${formData.current_employer}` : null,
     formData.years_experience != null ? `Experience: ${formData.years_experience} yr(s)` : null,
@@ -303,6 +306,7 @@ export async function submitJobApplication(formData: {
 }
 
 export async function uploadBiodataPhoto(file: File): Promise<string | null> {
+  if (isVisitorRegionBlocked()) return null;
   const ext = file.name.split('.').pop() || 'jpg';
   const filename = `applications/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
   const { error } = await supabase.storage
@@ -337,6 +341,8 @@ export async function submitBiodataApplication(formData: {
   job_listing_id?: string;
   organization_id?: string;
 }): Promise<boolean> {
+  if (isVisitorRegionBlocked()) return false;
+
   // GLC Hire marketplace biodata applications now insert directly into the
   // unified `candidates` table. `age` (derived elsewhere from dob) and
   // `organization_id` (candidates is centre-scoped, not org-scoped) have no
@@ -529,6 +535,8 @@ export async function submitContactForm(formData: {
   page_url?: string;
   centre_id?: string;
 }): Promise<boolean> {
+  if (isVisitorRegionBlocked()) return false;
+
   const { error } = await supabase.from('cms_forms').insert({
     ...formData,
     form_type: 'contact',
@@ -640,6 +648,8 @@ export async function submitBooking(booking: {
   type_of_care_id?: string | null;
   booking_status_id?: string | null;
 }): Promise<{ success: boolean; duplicate?: boolean; full?: boolean }> {
+  if (isVisitorRegionBlocked()) return { success: false };
+
   const { data, error } = await supabase.rpc('submit_booking_safe', {
     p_centre_id: booking.centre_id,
     p_booking_slot_config_id: booking.booking_slot_config_id,
