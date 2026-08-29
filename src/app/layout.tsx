@@ -77,12 +77,15 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [siteId, siteSlug] = await Promise.all([getCurrentSiteId(), getCurrentSiteSlug()]);
+  const [siteId, siteSlug, headersList] = await Promise.all([
+    getCurrentSiteId(),
+    getCurrentSiteSlug(),
+    headers(),
+  ]);
   const sid = siteId || undefined;
   const isCmsSite = siteSlug !== 'centre';
   const settings = await getSiteSettings(sid);
 
-  const headersList = await headers();
   const pathname = headersList.get('x-pathname') || headersList.get('x-invoke-path') || headersList.get('x-nextjs-page') || '';
   // Agency-branded pages render their own GlcHireNav — suppress the site
   // header so visitors don't see two stacked menu bars.

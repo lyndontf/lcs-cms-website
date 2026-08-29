@@ -97,7 +97,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Page Not Found' };
   }
 
-  const page = await getPageBySlug(route.slug, siteId || undefined, route.locale);
+  // None of these three depend on each other — only on siteId/route, both
+  // already resolved above — so they can be fetched concurrently instead of
+  // as three sequential round trips.
+  const [page, settings, supportedLocales] = await Promise.all([
+    getPageBySlug(route.slug, siteId || undefined, route.locale),
+    getSiteSettings(siteId || undefined),
+    getSupportedLocales(siteId || undefined),
+  ]);
   if (!page) return { title: 'Page Not Found' };
 
   const title = page.meta_title || page.title;
@@ -106,7 +113,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   // Falls back to the site's dedicated share image (or its logo) when this
   // page has no featured image of its own, so link previews never go bare.
-  const settings = await getSiteSettings(siteId || undefined);
   const shareImageUrl = page.featured_image_url || settings?.og_image_url || settings?.logo_url || undefined;
   const url =
     route.locale === 'en'
@@ -114,11 +120,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       : isHome ? `${baseUrl}/${route.locale}` : `${baseUrl}/${route.locale}/${route.slug}`;
 
   let languages: Record<string, string> | undefined;
-  const supportedLocales = await getSupportedLocales(siteId || undefined);
   if (supportedLocales.length > 1) {
+    // Each locale's translation check is independent — run them concurrently
+    // rather than one Supabase round trip per locale in sequence.
+    const checks = await Promise.all(
+      supportedLocales.map(async (loc) => ({
+        loc,
+        hasTranslation: loc === 'en' || (await pageExistsForLocale(route.slug, siteId || '', loc)),
+      }))
+    );
     const langMap: Record<string, string> = {};
-    for (const loc of supportedLocales) {
-      const hasTranslation = loc === 'en' || (await pageExistsForLocale(route.slug, siteId || '', loc));
+    for (const { loc, hasTranslation } of checks) {
       if (!hasTranslation) continue;
       langMap[loc] =
         loc === 'en'
@@ -161,8 +173,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function DynamicPage({ params }: PageProps) {
   const { slugPath } = await params;
-  const siteId = await getCurrentSiteId();
-  const siteSlug = await getCurrentSiteSlug();
+  const [siteId, siteSlug] = await Promise.all([getCurrentSiteId(), getCurrentSiteSlug()]);
 
   const route = await resolveRoute(slugPath, siteId || undefined);
   if (!route) {
