@@ -1,3 +1,7 @@
+'use client';
+
+import { useSiteLang } from '@/lib/useSiteLang';
+
 type Testimonial = { name: string; text: string; rating: number };
 
 const i18n = {
@@ -9,14 +13,15 @@ export default function Testimonials({
   testimonials,
   rating,
   reviews,
-  lang = 'en',
+  lang,
 }: {
   testimonials: Testimonial[];
   rating: string;
   reviews: string;
   lang?: 'en' | 'zh';
 }) {
-  const l = i18n[lang];
+  const detected = useSiteLang();
+  const l = i18n[lang ?? detected];
   return (
     <section className="py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

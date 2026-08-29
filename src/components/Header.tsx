@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { MenuItem, SiteSettings } from '@/lib/supabase';
+import { useLangToggle } from '@/lib/useSiteLang';
 
 interface HeaderProps {
   settings: SiteSettings | null;
@@ -40,30 +41,15 @@ function tr(label: string, lang: 'en' | 'zh'): string {
 
 export default function Header({ settings, menuItems }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [lang, setLang] = useState<'en' | 'zh'>('en');
+  // Shared with every other language-aware component (Bilingual, ContentRenderer,
+  // WhatsAppWidget, etc.) — see src/lib/useSiteLang.ts. Also picks up a route-forced
+  // initial language from <LangProvider> (e.g. on /zh/<slug> pages) so the header's
+  // own nav labels match the page body's language on first paint, not just after
+  // a client-side toggle.
+  const [lang, toggleLangTo] = useLangToggle();
   const pathname = usePathname();
 
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('glc-lang');
-      if (saved === 'zh' || saved === 'en') setLang(saved);
-    } catch {
-      /* localStorage unavailable — default to English */
-    }
-  }, []);
-
-  const toggleLang = () => {
-    const next = lang === 'en' ? 'zh' : 'en';
-    setLang(next);
-    try {
-      localStorage.setItem('glc-lang', next);
-    } catch {
-      /* ignore */
-    }
-    // Same-tab listeners (e.g. WhatsAppWidget) can't rely on the 'storage' event,
-    // which only fires in other tabs — broadcast the change directly instead.
-    window.dispatchEvent(new CustomEvent('glc-lang-change', { detail: next }));
-  };
+  const toggleLang = () => toggleLangTo(lang === 'en' ? 'zh' : 'en');
 
   const isActive = (url: string) => {
     if (url === '/') return pathname === '/';

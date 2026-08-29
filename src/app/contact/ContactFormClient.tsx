@@ -2,8 +2,70 @@
 
 import { useState } from 'react';
 import { submitContactForm } from '@/lib/supabase';
+import { useSiteLang } from '@/lib/useSiteLang';
+
+const t = {
+  en: {
+    eyebrow: 'Get In Touch',
+    h1: 'Contact Us',
+    subtitle: 'Have questions about our care services? We would love to hear from you.',
+    thankYouTitle: 'Thank You!',
+    thankYouBody: 'Your message has been sent successfully. We will get back to you shortly.',
+    sendAnother: 'Send Another Message',
+    fullName: 'Full Name',
+    email: 'Email',
+    phoneNumber: 'Phone Number',
+    message: 'Message',
+    namePlaceholder: 'Your name',
+    messagePlaceholder: 'How can we help you?',
+    requiredError: 'Please fill in all required fields.',
+    genericError: 'Something went wrong. Please try again or contact us directly.',
+    sending: 'Sending...',
+    send: 'Send Message',
+    getInTouch: 'Get in Touch',
+    phoneLabel: 'Phone',
+    phoneDesc: 'Call us for immediate assistance',
+    emailLabel: 'Email',
+    emailDesc: 'Send us a detailed enquiry',
+    locationsLabel: 'Locations',
+    locationsList: 'Klang, Kajang, Petaling Jaya, Puchong, Johor Bahru',
+    needHelp: 'Need Immediate Help?',
+    needHelpDesc: 'Our care team is available to answer your questions and help you find the right care solution.',
+    callToday: 'Call us today',
+  },
+  zh: {
+    eyebrow: '联系方式',
+    h1: '联系我们',
+    subtitle: '对我们的护理服务有任何疑问？欢迎与我们联系。',
+    thankYouTitle: '谢谢您！',
+    thankYouBody: '您的讯息已成功发送。我们会尽快回复您。',
+    sendAnother: '发送另一则讯息',
+    fullName: '全名',
+    email: '电邮',
+    phoneNumber: '电话号码',
+    message: '讯息',
+    namePlaceholder: '您的姓名',
+    messagePlaceholder: '我们可以如何协助您？',
+    requiredError: '请填写所有必填栏位。',
+    genericError: '发生错误，请重试或直接联系我们。',
+    sending: '发送中…',
+    send: '发送讯息',
+    getInTouch: '联系方式',
+    phoneLabel: '电话',
+    phoneDesc: '致电获得即时协助',
+    emailLabel: '电邮',
+    emailDesc: '发送详细询问给我们',
+    locationsLabel: '分院',
+    locationsList: '巴生、加影、八打灵再也、蒲种、新山',
+    needHelp: '需要即时协助？',
+    needHelpDesc: '我们的护理团队随时为您解答疑问，协助您找到合适的护理方案。',
+    callToday: '立即致电我们',
+  },
+};
 
 export default function ContactFormClient() {
+  const lang = useSiteLang();
+  const l = t[lang];
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -12,7 +74,7 @@ export default function ContactFormClient() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-      setError('Please fill in all required fields.');
+      setError(l.requiredError);
       return;
     }
 
@@ -33,7 +95,7 @@ export default function ContactFormClient() {
       setSubmitted(true);
       setForm({ name: '', email: '', phone: '', message: '' });
     } else {
-      setError('Something went wrong. Please try again or contact us directly.');
+      setError(l.genericError);
     }
   };
 
@@ -43,12 +105,12 @@ export default function ContactFormClient() {
         <div className="max-w-2xl mx-auto text-center mb-12">
           <span className="inline-flex items-center gap-2 text-xs font-bold tracking-[.14em] uppercase text-[#2c88a2] mb-3">
             <span className="w-5 h-0.5 bg-[#2c88a2] rounded" />
-            Get In Touch
+            {l.eyebrow}
             <span className="w-5 h-0.5 bg-[#2c88a2] rounded" />
           </span>
-          <h1 className="text-4xl font-extrabold text-[#173039] mb-4 tracking-tight">Contact Us</h1>
+          <h1 className="text-4xl font-extrabold text-[#173039] mb-4 tracking-tight">{l.h1}</h1>
           <p className="text-lg text-[#5b6b73]">
-            Have questions about our care services? We would love to hear from you.
+            {l.subtitle}
           </p>
         </div>
 
@@ -62,22 +124,22 @@ export default function ContactFormClient() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-[#173039] mb-2">Thank You!</h3>
+                <h3 className="text-xl font-bold text-[#173039] mb-2">{l.thankYouTitle}</h3>
                 <p className="text-[#5b6b73] mb-6">
-                  Your message has been sent successfully. We will get back to you shortly.
+                  {l.thankYouBody}
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
                   className="text-[#2c88a2] font-semibold hover:text-[#0b4a5e]"
                 >
-                  Send Another Message
+                  {l.sendAnother}
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-[#33424a] mb-1">
-                    Full Name <span className="text-[#c1493f]">*</span>
+                    {l.fullName} <span className="text-[#c1493f]">*</span>
                   </label>
                   <input
                     id="name"
@@ -85,12 +147,12 @@ export default function ContactFormClient() {
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     className="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#dbe3e6] rounded-lg text-sm text-[#173039] focus:ring-2 focus:ring-[#2c88a2]/30 focus:border-[#2c88a2] outline-none transition-colors"
-                    placeholder="Your name"
+                    placeholder={l.namePlaceholder}
                   />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-[#33424a] mb-1">
-                    Email <span className="text-[#c1493f]">*</span>
+                    {l.email} <span className="text-[#c1493f]">*</span>
                   </label>
                   <input
                     id="email"
@@ -103,7 +165,7 @@ export default function ContactFormClient() {
                 </div>
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-[#33424a] mb-1">
-                    Phone Number
+                    {l.phoneNumber}
                   </label>
                   <input
                     id="phone"
@@ -116,7 +178,7 @@ export default function ContactFormClient() {
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-[#33424a] mb-1">
-                    Message <span className="text-[#c1493f]">*</span>
+                    {l.message} <span className="text-[#c1493f]">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -124,7 +186,7 @@ export default function ContactFormClient() {
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     rows={5}
                     className="w-full px-4 py-2.5 bg-[#f8fafc] border border-[#dbe3e6] rounded-lg text-sm text-[#173039] focus:ring-2 focus:ring-[#2c88a2]/30 focus:border-[#2c88a2] outline-none transition-colors resize-none"
-                    placeholder="How can we help you?"
+                    placeholder={l.messagePlaceholder}
                   />
                 </div>
                 {error && (
@@ -135,7 +197,7 @@ export default function ContactFormClient() {
                   disabled={submitting}
                   className="w-full bg-[#2c88a2] text-white py-3 rounded-xl font-bold hover:bg-[#0b4a5e] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
                 >
-                  {submitting ? 'Sending...' : 'Send Message'}
+                  {submitting ? l.sending : l.send}
                 </button>
               </form>
             )}
@@ -144,7 +206,7 @@ export default function ContactFormClient() {
           {/* Contact Info */}
           <div className="space-y-6">
             <div className="bg-white rounded-[20px] shadow-[0_30px_70px_-30px_rgba(8,30,38,0.4)] p-6">
-              <h3 className="text-lg font-bold text-[#173039] mb-4">Get in Touch</h3>
+              <h3 className="text-lg font-bold text-[#173039] mb-4">{l.getInTouch}</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 bg-[#eaf3f6] rounded-lg flex items-center justify-center flex-shrink-0">
@@ -153,8 +215,8 @@ export default function ContactFormClient() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-[#173039]">Phone</p>
-                    <p className="text-sm text-[#7a8a92]">Call us for immediate assistance</p>
+                    <p className="text-sm font-medium text-[#173039]">{l.phoneLabel}</p>
+                    <p className="text-sm text-[#7a8a92]">{l.phoneDesc}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -164,8 +226,8 @@ export default function ContactFormClient() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-[#173039]">Email</p>
-                    <p className="text-sm text-[#7a8a92]">Send us a detailed enquiry</p>
+                    <p className="text-sm font-medium text-[#173039]">{l.emailLabel}</p>
+                    <p className="text-sm text-[#7a8a92]">{l.emailDesc}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -176,19 +238,19 @@ export default function ContactFormClient() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-[#173039]">Locations</p>
-                    <p className="text-sm text-[#7a8a92]">Klang, Kajang, Petaling Jaya, Puchong, Johor Bahru</p>
+                    <p className="text-sm font-medium text-[#173039]">{l.locationsLabel}</p>
+                    <p className="text-sm text-[#7a8a92]">{l.locationsList}</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="bg-gradient-to-br from-[#0e5a72] to-[#2c88a2] rounded-[20px] p-6 text-white">
-              <h3 className="text-lg font-bold mb-2">Need Immediate Help?</h3>
+              <h3 className="text-lg font-bold mb-2">{l.needHelp}</h3>
               <p className="text-sm text-white/85 mb-4">
-                Our care team is available to answer your questions and help you find the right care solution.
+                {l.needHelpDesc}
               </p>
-              <p className="text-2xl font-bold">Call us today</p>
+              <p className="text-2xl font-bold">{l.callToday}</p>
             </div>
           </div>
         </div>

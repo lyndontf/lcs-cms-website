@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { CmsPost } from '@/lib/supabase';
+import { useSiteLang } from '@/lib/useSiteLang';
 
 interface BlogClientProps {
   posts: CmsPost[];
@@ -10,6 +11,7 @@ interface BlogClientProps {
 }
 
 export default function BlogClient({ posts, categories }: BlogClientProps) {
+  const lang = useSiteLang();
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const filteredPosts = activeCategory
@@ -29,7 +31,7 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
                 : 'bg-white text-bloom-700 border-bloom-line hover:bg-bloom-50'
             }`}
           >
-            All
+            {lang === 'zh' ? '全部' : 'All'}
           </button>
           {categories.map((cat) => (
             <button
@@ -50,7 +52,7 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
       {/* Posts Grid */}
       {filteredPosts.length === 0 ? (
         <div className="text-center py-20 text-bloom-muted">
-          <p className="text-lg">No blog posts found.</p>
+          <p className="text-lg">{lang === 'zh' ? '找不到部落格文章。' : 'No blog posts found.'}</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -94,7 +96,7 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
                   )}
                   <span className="text-xs text-bloom-muted">
                     {post.published_at
-                      ? new Date(post.published_at).toLocaleDateString('en-MY', {
+                      ? new Date(post.published_at).toLocaleDateString(lang === 'zh' ? 'zh-MY' : 'en-MY', {
                           year: 'numeric',
                           month: 'short',
                           day: 'numeric',

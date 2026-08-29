@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { useSiteLang } from '@/lib/useSiteLang';
 
 type ContactInfo = {
   fullName: string;
@@ -32,12 +35,14 @@ const t = {
     email: '电邮',
     bookTour: '预约免费参观',
     whatsapp: 'WhatsApp 联系我们',
-    contactLink: '/zh/contact',
+    // Same page, no separate /zh route — the toggle swaps text in place.
+    contactLink: '/contact',
   },
 };
 
-export default function LocationContact({ centre, lang = 'en' }: { centre: ContactInfo; lang?: 'en' | 'zh' }) {
-  const l = t[lang];
+export default function LocationContact({ centre, lang }: { centre: ContactInfo; lang?: 'en' | 'zh' }) {
+  const detected = useSiteLang();
+  const l = t[lang ?? detected];
   return (
     <section className="py-16 sm:py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

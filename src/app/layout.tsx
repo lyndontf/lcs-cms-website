@@ -11,6 +11,7 @@ import Script from 'next/script';
 import { centreNavEN } from '@/lib/nav';
 import { getSiteSettings, getPageBySlug } from '@/lib/supabase';
 import { getCurrentSiteId, getCurrentSiteSlug } from '@/lib/site-context';
+import { LangProvider } from '@/lib/LangContext';
 
 // A centre page that has been rebuilt as a single self-contained HTML block
 // (own header/footer, Bloom rebrand) embeds its own chrome — the shared
@@ -33,10 +34,6 @@ export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings(siteId || undefined);
   const defaults = settings?.seo_defaults || {};
 
-  // Note: the centre site's old /zh route tree (and the reciprocal en/zh hreflang
-  // this used to generate for it) was removed in favour of the inline client-side
-  // EN/ZH toggle now built into Header — there is no separate /zh URL to alternate
-  // to any more, for any site.
   const siteName = settings?.site_name || 'Genesis Life Care';
   const description = defaults.default_description || 'Quality healthcare and aged care services in Malaysia';
 
@@ -95,6 +92,13 @@ export default async function RootLayout({
   // Header/Footer/WhatsApp widget below use the Bloom rebrand (Hanken Grotesk,
   // glc-* palette) — only the centre site's own-chrome pages get it.
   const isBloom = !isCmsSite && !isAgencyPage && !isFullHtmlPage;
+  // /zh/* routes (centre site only) render the same shared components as their
+  // English counterparts but need Header/nav and every page body to default to
+  // Chinese on first paint — forcing it here (not just inside each /zh page's own
+  // subtree) is what makes Header, which this layout renders as a sibling of
+  // {children}, agree with the page body instead of showing English nav on a
+  // Chinese page.
+  const isZhRoute = pathname === '/zh' || pathname.startsWith('/zh/');
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -115,16 +119,18 @@ export default async function RootLayout({
         )}
       </head>
       <body className={`${isFullHtmlPage ? '' : isBloom ? hanken.className : inter.className} flex flex-col min-h-screen`}>
-        {!isCmsSite && !isAgencyPage && !isFullHtmlPage && <Header settings={settings} menuItems={centreNavEN} />}
-        <LayoutWrapper
-          isCmsSite={isCmsSite}
-          isFullHtmlPage={isFullHtmlPage}
-          // Agency-branded pages render their own GLC Hire footer — suppress
-          // the site footer so visitors don't see two stacked footers.
-          footer={isAgencyPage ? <></> : <Footer settings={settings} />}
-        >
-          {children}
-        </LayoutWrapper>
+        <LangProvider initialLang={isZhRoute ? 'zh' : 'en'}>
+          {!isCmsSite && !isAgencyPage && !isFullHtmlPage && <Header settings={settings} menuItems={centreNavEN} />}
+          <LayoutWrapper
+            isCmsSite={isCmsSite}
+            isFullHtmlPage={isFullHtmlPage}
+            // Agency-branded pages render their own GLC Hire footer — suppress
+            // the site footer so visitors don't see two stacked footers.
+            footer={isAgencyPage ? <></> : <Footer settings={settings} />}
+          >
+            {children}
+          </LayoutWrapper>
+        </LangProvider>
         <TrackingScript />
         {/* Hides phone numbers, email addresses, and the WhatsApp widget for
             visitors from countries flagged in middleware.ts (scam-call-origin

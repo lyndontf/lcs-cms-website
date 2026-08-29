@@ -35,6 +35,11 @@ export interface CmsPage {
   meta_title: string | null;
   meta_description: string | null;
   content: ContentBlock[];
+  // Optional Chinese translation of `content`, rendered client-side by
+  // ContentRenderer when the visitor toggles the site language — same page,
+  // same URL, no separate zh- page/locale row. Null/absent means this page
+  // has no Chinese translation yet, and the toggle simply has no effect on it.
+  content_zh?: ContentBlock[] | null;
   featured_image_url: string | null;
   status: 'draft' | 'published' | 'archived';
   template: string;
