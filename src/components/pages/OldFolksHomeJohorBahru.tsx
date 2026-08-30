@@ -317,7 +317,7 @@ export function OldFolksHomeJohorBahruContent({ locale = 'en' }: { locale?: 'en'
             </div>
 
             <div>
-              <HeroEnquiryForm centreName="Johor Bahru" pageUrl="/old-folks-home-in-johor-bahru" />
+              <HeroEnquiryForm centreName="Johor Bahru" pageUrl="/old-folks-home-in-johor-bahru" lang={locale} />
             </div>
           </div>
         </div>

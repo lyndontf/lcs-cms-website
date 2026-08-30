@@ -322,7 +322,7 @@ export function OldFolksHomeKlangContent({ locale = 'en' }: { locale?: 'en' | 'z
             </div>
 
             <div>
-              <HeroEnquiryForm centreName="Klang" pageUrl="/old-folks-home-in-klang" />
+              <HeroEnquiryForm centreName="Klang" pageUrl="/old-folks-home-in-klang" lang={locale} />
             </div>
           </div>
         </div>

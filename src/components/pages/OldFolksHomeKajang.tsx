@@ -317,7 +317,7 @@ export function OldFolksHomeKajangContent({ locale = 'en' }: { locale?: 'en' | '
             </div>
 
             <div>
-              <HeroEnquiryForm centreName="Kajang" pageUrl="/old-folks-home-in-kajang" />
+              <HeroEnquiryForm centreName="Kajang" pageUrl="/old-folks-home-in-kajang" lang={locale} />
             </div>
           </div>
         </div>

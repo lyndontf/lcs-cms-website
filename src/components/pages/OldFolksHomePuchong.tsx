@@ -316,7 +316,7 @@ export function OldFolksHomePuchongContent({ locale = 'en' }: { locale?: 'en' | 
             </div>
 
             <div>
-              <HeroEnquiryForm centreName="Puchong" pageUrl="/old-folks-home-in-puchong" />
+              <HeroEnquiryForm centreName="Puchong" pageUrl="/old-folks-home-in-puchong" lang={locale} />
             </div>
           </div>
         </div>

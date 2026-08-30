@@ -317,7 +317,7 @@ export function OldFolksHomePetalingJayaContent({ locale = 'en' }: { locale?: 'e
             </div>
 
             <div>
-              <HeroEnquiryForm centreName="Petaling Jaya" pageUrl="/old-folks-home-in-petaling-jaya" />
+              <HeroEnquiryForm centreName="Petaling Jaya" pageUrl="/old-folks-home-in-petaling-jaya" lang={locale} />
             </div>
           </div>
         </div>
