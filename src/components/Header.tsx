@@ -13,8 +13,11 @@ interface HeaderProps {
 
 // Nav-label translations for the language toggle shown in the mockups' own
 // header. Scoped to the nav itself (not full-page translation) since these
-// shared-chrome pages don't carry per-page translation dictionaries.
-const ZH_LABELS: Record<string, string> = {
+// shared-chrome pages don't carry per-page translation dictionaries. Exported
+// so Footer.tsx (which repeats the same Locations/For Families items, plus
+// its own Services list and section chrome) can reuse the same dictionary
+// instead of maintaining a second, easily-diverging copy.
+export const ZH_LABELS: Record<string, string> = {
   Home: '首页',
   Locations: '分院',
   'For Families': '家属专区',
@@ -28,13 +31,32 @@ const ZH_LABELS: Record<string, string> = {
   'Referrals & Partnerships': '转介与合作',
   'Fees & Care Packages': '收费与配套',
   'Nursing Home Cost Guide': '养老院收费指南',
+  'Home Care vs. Nursing Home Cost': '居家护理与养老院费用比较',
   'Family Care App': '家属关怀应用',
   Reviews: '评价',
   'Book a Free Visit': '预约参观',
   Call: '致电',
+  // Footer-only labels
+  Services: '服务',
+  Contact: '联系方式',
+  'About Us': '关于我们',
+  'Our Story': '我们的故事',
+  'For Investors': '投资者关系',
+  'Privacy Policy': '隐私政策',
+  'Terms of Service': '服务条款',
+  'Dementia & Memory Care': '痴呆症与记忆护理',
+  'Stroke Rehabilitation': '中风康复',
+  'Palliative Care': '缓和医疗',
+  'Post-Operative Care': '术后护理',
+  'Respite Care': '喘息护理',
+  'Elderly Day Care': '老年人日间护理',
+  'Complex Care': '复杂护理',
+  'Home Care': '居家护理',
+  'Clinical & Allied Health': '临床与专职医疗服务',
+  'AI-Assisted Care': 'AI辅助护理',
 };
 
-function tr(label: string, lang: 'en' | 'zh'): string {
+export function tr(label: string, lang: 'en' | 'zh'): string {
   if (lang === 'en') return label;
   return ZH_LABELS[label] || label;
 }

@@ -21,6 +21,7 @@ const nearestCentre = {
   reviews: 45,
   beds: '120+',
   distance: '~10 minutes',
+  distanceZh: '~10分钟',
   img: '/images/klang-centre.jpg',
 };
 
@@ -241,7 +242,7 @@ export function ElderlyCareShahAlamContent({ locale = 'en' }: { locale?: 'en' | 
                   services. Our Klang centre is just {nearestCentre.distance} away
                   — offering 24/7 nursing, on-site doctor consultations, dementia care,
                   and comprehensive rehabilitation.</>}
-                  zh={<>莎阿南的家庭信赖Genesis Life Care提供优质的养老院服务。我们的Klang中心距离仅{nearestCentre.distance}——提供24/7护理、现场医生咨询、失智症护理以及全面的康复服务。</>}
+                  zh={<>莎阿南的家庭信赖Genesis Life Care提供优质的养老院服务。我们的Klang中心距离仅{nearestCentre.distanceZh}——提供24/7护理、现场医生咨询、失智症护理以及全面的康复服务。</>}
                 />
               </p>
 
@@ -283,7 +284,7 @@ export function ElderlyCareShahAlamContent({ locale = 'en' }: { locale?: 'en' | 
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-gray-800">{nearestCentre.distance}</p>
+                  <p className="text-sm font-bold text-gray-800"><Bilingual en={nearestCentre.distance} zh={nearestCentre.distanceZh} /></p>
                   <p className="text-xs text-gray-500"><Bilingual en="from Shah Alam" zh="距莎阿南" /></p>
                 </div>
               </div>
@@ -391,7 +392,7 @@ export function ElderlyCareShahAlamContent({ locale = 'en' }: { locale?: 'en' | 
             <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
               <Bilingual
                 en={<>Just {nearestCentre.distance} from Shah Alam — our centre at Amverton Business Centre, Klang.</>}
-                zh={<>距莎阿南仅{nearestCentre.distance}——我们位于Klang的Amverton Business Centre中心。</>}
+                zh={<>距莎阿南仅{nearestCentre.distanceZh}——我们位于Klang的Amverton Business Centre中心。</>}
               />
             </p>
           </div>
@@ -422,7 +423,7 @@ export function ElderlyCareShahAlamContent({ locale = 'en' }: { locale?: 'en' | 
                     <p className="text-xs text-gray-500"><Bilingual en="Bed Capacity" zh={zhCommon.bedCapacity} /></p>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
-                    <p className="text-2xl font-extrabold text-primary">{nearestCentre.distance}</p>
+                    <p className="text-2xl font-extrabold text-primary"><Bilingual en={nearestCentre.distance} zh={nearestCentre.distanceZh} /></p>
                     <p className="text-xs text-gray-500"><Bilingual en="From Shah Alam" zh="距莎阿南" /></p>
                   </div>
                 </div>

@@ -130,6 +130,9 @@ export default async function RootLayout({
           >
             {children}
           </LayoutWrapper>
+          {!isCmsSite && !isFullHtmlPage && (
+            <WhatsAppWidget phone={(settings?.contact_phone || '60193250457').replace(/[^\d]/g, '')} />
+          )}
         </LangProvider>
         <TrackingScript />
         {/* Hides phone numbers, email addresses, and the WhatsApp widget for
@@ -159,9 +162,6 @@ export default async function RootLayout({
               __html: `(function(){document.head.querySelectorAll('[data-custom-head]').forEach(function(e){e.remove()});var t=document.createElement('template');t.innerHTML=${JSON.stringify(settings.custom_head_html)};Array.from(t.content.children).forEach(function(el){el.setAttribute('data-custom-head','');document.head.appendChild(el)});})();`,
             }}
           />
-        )}
-        {!isCmsSite && !isFullHtmlPage && (
-          <WhatsAppWidget phone={(settings?.contact_phone || '60193250457').replace(/[^\d]/g, '')} />
         )}
         {settings?.google_ads_id && (
           <Script

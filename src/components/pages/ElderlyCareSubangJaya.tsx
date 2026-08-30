@@ -21,6 +21,7 @@ const pjCentre = {
   reviews: 155,
   beds: '50+',
   distance: '~20 minutes',
+  distanceZh: '~20分钟',
   img: '/images/pj-centre.jpg',
   badge: 'Flagship Centre',
 };
@@ -36,6 +37,7 @@ const puchongCentre = {
   reviews: 58,
   beds: '120+',
   distance: '~15 minutes',
+  distanceZh: '~15分钟',
   img: '/images/puchong-centre.jpeg',
   badge: 'Nearest Centre',
 };
@@ -284,7 +286,7 @@ export function ElderlyCareSubangJayaContent({ locale = 'en' }: { locale?: 'en' 
                   services. We have two centres nearby — Puchong ({puchongCentre.distance}) and
                   Petaling Jaya ({pjCentre.distance}) — offering 24/7 nursing, on-site doctor
                   consultations, dementia care, and comprehensive rehabilitation.</>}
-                  zh={<>梳邦再也的家庭信赖Genesis Life Care提供优质的养老院服务。我们附近有两间中心——Puchong（{puchongCentre.distance}）和Petaling Jaya（{pjCentre.distance}）——提供24/7护理、现场医生咨询、失智症护理以及全面的康复服务。</>}
+                  zh={<>梳邦再也的家庭信赖Genesis Life Care提供优质的养老院服务。我们附近有两间中心——Puchong（{puchongCentre.distanceZh}）和Petaling Jaya（{pjCentre.distanceZh}）——提供24/7护理、现场医生咨询、失智症护理以及全面的康复服务。</>}
                 />
               </p>
 
@@ -465,7 +467,7 @@ export function ElderlyCareSubangJayaContent({ locale = 'en' }: { locale?: 'en' 
                     <p className="text-xs text-gray-500"><Bilingual en="Bed Capacity" zh={zhCommon.bedCapacity} /></p>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
-                    <p className="text-xl font-extrabold text-primary">{puchongCentre.distance}</p>
+                    <p className="text-xl font-extrabold text-primary"><Bilingual en={puchongCentre.distance} zh={puchongCentre.distanceZh} /></p>
                     <p className="text-xs text-gray-500"><Bilingual en="From Subang Jaya" zh="距梳邦再也" /></p>
                   </div>
                 </div>
@@ -516,7 +518,7 @@ export function ElderlyCareSubangJayaContent({ locale = 'en' }: { locale?: 'en' 
                     <p className="text-xs text-gray-500"><Bilingual en="Bed Capacity" zh={zhCommon.bedCapacity} /></p>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
-                    <p className="text-xl font-extrabold text-primary">{pjCentre.distance}</p>
+                    <p className="text-xl font-extrabold text-primary"><Bilingual en={pjCentre.distance} zh={pjCentre.distanceZh} /></p>
                     <p className="text-xs text-gray-500"><Bilingual en="From Subang Jaya" zh="距梳邦再也" /></p>
                   </div>
                 </div>

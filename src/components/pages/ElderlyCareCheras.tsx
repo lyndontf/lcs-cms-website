@@ -21,6 +21,7 @@ const nearestCentre = {
   reviews: 32,
   beds: '120+',
   distance: '~15 minutes',
+  distanceZh: '~15分钟',
   img: '/images/kajang-centre.jpeg',
 };
 
@@ -241,7 +242,7 @@ export function ElderlyCareCherasContent({ locale = 'en' }: { locale?: 'en' | 'z
                   services. Our Kajang centre is just {nearestCentre.distance} away
                   — offering 24/7 nursing, on-site doctor consultations, dementia care,
                   and comprehensive rehabilitation.</>}
-                  zh={<>蕉赖的家庭信赖Genesis Life Care提供优质的养老院服务。我们的Kajang中心距离仅{nearestCentre.distance}——提供24/7护理、现场医生咨询、失智症护理以及全面的康复服务。</>}
+                  zh={<>蕉赖的家庭信赖Genesis Life Care提供优质的养老院服务。我们的Kajang中心距离仅{nearestCentre.distanceZh}——提供24/7护理、现场医生咨询、失智症护理以及全面的康复服务。</>}
                 />
               </p>
 
@@ -283,7 +284,7 @@ export function ElderlyCareCherasContent({ locale = 'en' }: { locale?: 'en' | 'z
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-gray-800">{nearestCentre.distance}</p>
+                  <p className="text-sm font-bold text-gray-800"><Bilingual en={nearestCentre.distance} zh={nearestCentre.distanceZh} /></p>
                   <p className="text-xs text-gray-500"><Bilingual en="from Cheras" zh="距蕉赖" /></p>
                 </div>
               </div>
@@ -392,7 +393,7 @@ export function ElderlyCareCherasContent({ locale = 'en' }: { locale?: 'en' | 'z
             <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
               <Bilingual
                 en={<>Just {nearestCentre.distance} from Cheras — our centre in Kawasan Perindustrian Ria, Kajang.</>}
-                zh={<>距蕉赖仅{nearestCentre.distance}——我们位于Kajang的Kawasan Perindustrian Ria中心。</>}
+                zh={<>距蕉赖仅{nearestCentre.distanceZh}——我们位于Kajang的Kawasan Perindustrian Ria中心。</>}
               />
             </p>
           </div>
@@ -423,7 +424,7 @@ export function ElderlyCareCherasContent({ locale = 'en' }: { locale?: 'en' | 'z
                     <p className="text-xs text-gray-500"><Bilingual en="Bed Capacity" zh={zhCommon.bedCapacity} /></p>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
-                    <p className="text-2xl font-extrabold text-primary">{nearestCentre.distance}</p>
+                    <p className="text-2xl font-extrabold text-primary"><Bilingual en={nearestCentre.distance} zh={nearestCentre.distanceZh} /></p>
                     <p className="text-xs text-gray-500"><Bilingual en="From Cheras" zh="距蕉赖" /></p>
                   </div>
                 </div>

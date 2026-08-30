@@ -2,7 +2,7 @@
 
 import { useSiteLang } from '@/lib/useSiteLang';
 
-type Testimonial = { name: string; text: string; rating: number };
+type Testimonial = { name: string; text: string; textZh?: string; rating: number };
 
 const i18n = {
   en: { label: 'Reviews', heading: 'What Families Say', reviewsLabel: (r: string, n: string) => `${r} from ${n} Google reviews`, googleReview: 'Google Review' },
@@ -21,7 +21,8 @@ export default function Testimonials({
   lang?: 'en' | 'zh';
 }) {
   const detected = useSiteLang();
-  const l = i18n[lang ?? detected];
+  const currentLang = lang ?? detected;
+  const l = i18n[currentLang];
   return (
     <section className="py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,7 +45,7 @@ export default function Testimonials({
                   <span key={j}>★</span>
                 ))}
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;{tm.text}&rdquo;</p>
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">&ldquo;{currentLang === 'zh' && tm.textZh ? tm.textZh : tm.text}&rdquo;</p>
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center">
                   <span className="text-primary font-bold text-sm">{tm.name.charAt(0)}</span>

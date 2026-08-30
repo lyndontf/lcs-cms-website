@@ -16,7 +16,7 @@ export type CentreData = {
   highlights: { label: string; value: string; sub: string }[];
   facilityImages: { src: string; alt: string }[];
   teamMembers: { name: string; role: string; bio: string; img: string }[];
-  testimonials: { name: string; text: string; rating: number }[];
+  testimonials: { name: string; text: string; textZh?: string; rating: number }[];
 };
 
 export const centres: Record<string, CentreData> = {
@@ -73,16 +73,19 @@ export const centres: Record<string, CentreData> = {
       {
         name: 'Alyse Cheong',
         text: 'My mom been staying at Genesis Life Care Centre, Klang for 2 months+ for her post surgery recovery. She enjoyed staying there.',
+        textZh: '我妈妈在Genesis Life Care巴生中心住了两个多月，进行术后康复。她在那里住得很开心。',
         rating: 5,
       },
       {
         name: 'Kenneth Ng',
         text: 'I sent my mum here for 2 months after her hip operation, they take care of my mum very well, definitely a recommended place for good nursing care home for elderly.',
+        textZh: '我妈妈髋关节手术后在这里住了两个月，他们把我妈妈照顾得非常好，绝对是值得推荐的优质老年护理中心。',
         rating: 5,
       },
       {
         name: 'Lee Steffi',
         text: 'Dr Phoon, thank you and your team for the gentle care of my mum. Though she was only there a short time, she passed away peacefully, and I am truly grateful.',
+        textZh: '潘医生，感谢您和您的团队悉心照顾我的妈妈。虽然她在那里的时间不长，但她安详地离开了，我由衷感激。',
         rating: 4,
       },
     ],
@@ -141,16 +144,19 @@ export const centres: Record<string, CentreData> = {
       {
         name: 'Mei Ling T.',
         text: 'The PJ centre is outstanding. The staff truly care about every resident and the facilities are modern and well-maintained.',
+        textZh: '八打灵再也中心非常出色。工作人员真心关怀每一位居民，设施现代化且保养得宜。',
         rating: 5,
       },
       {
         name: 'Ahmad R.',
         text: 'We chose Genesis PJ for my father and it was the best decision. The team is professional and the care is excellent.',
+        textZh: '我们为父亲选择了Genesis八打灵再也中心，这是最正确的决定。团队专业，护理品质卓越。',
         rating: 5,
       },
       {
         name: 'Sarah L.',
         text: 'The dementia care programme at PJ has made a real difference for my mother. The psychologist-led approach is very effective.',
+        textZh: '八打灵再也中心的痴呆症护理计划为我的母亲带来了实质的改善。由心理学家主导的方针非常有效。',
         rating: 5,
       },
     ],
@@ -209,16 +215,19 @@ export const centres: Record<string, CentreData> = {
       {
         name: 'Sarah Tan',
         text: 'The Puchong centre is well-maintained and the staff are incredibly caring. My father has been very comfortable here.',
+        textZh: '蒲种中心保养得宜，工作人员非常体贴用心。我的父亲在这里住得很舒适。',
         rating: 5,
       },
       {
         name: 'Ahmad Razak',
         text: 'Professional nursing care with a personal touch. The team goes above and beyond for every resident.',
+        textZh: '专业的护理服务中带着人情味。团队总是为每一位居民付出额外的关怀。',
         rating: 5,
       },
       {
         name: 'Michelle Lim',
         text: 'We appreciate the regular updates about our mother. The care team is responsive and always available.',
+        textZh: '我们很感激他们定期通报母亲的状况。护理团队反应迅速，随时都能联系上。',
         rating: 4,
       },
     ],
@@ -277,16 +286,19 @@ export const centres: Record<string, CentreData> = {
       {
         name: 'Nurul Aisyah',
         text: 'The Kajang centre provides excellent care for my grandmother. The staff are attentive and the facilities are comfortable.',
+        textZh: '加影中心为我的祖母提供了卓越的护理。工作人员细心周到，设施也很舒适。',
         rating: 5,
       },
       {
         name: 'David Wong',
         text: 'Very impressed with the professional nursing care here. The team communicates regularly with our family about progress.',
+        textZh: '对这里专业的护理服务印象非常深刻。团队会定期向我们家人通报进展。',
         rating: 5,
       },
       {
         name: 'Priya Raman',
         text: 'Good rehabilitation programme and caring staff. My father has shown improvement since staying here.',
+        textZh: '康复计划完善，工作人员也很有爱心。我父亲入住以来情况已有所改善。',
         rating: 4,
       },
     ],
@@ -345,16 +357,19 @@ export const centres: Record<string, CentreData> = {
       {
         name: 'Lim Wei Shan',
         text: 'The JB centre is wonderful. The staff are very professional and my mother receives excellent care every day.',
+        textZh: '新山中心非常棒。工作人员十分专业，我的母亲每天都获得优质的照护。',
         rating: 5,
       },
       {
         name: 'Hakim Ibrahim',
         text: 'Glad to have a Genesis centre in JB now. The quality of care matches their other centres perfectly.',
+        textZh: '很高兴新山现在也有Genesis的中心。护理品质与其他中心完全一致。',
         rating: 5,
       },
       {
         name: 'Siti Nurhaliza',
         text: 'Good facilities and caring staff. The rehabilitation programme has been very helpful for my father.',
+        textZh: '设施完善，工作人员也很用心。康复计划对我父亲的帮助很大。',
         rating: 4,
       },
     ],
