@@ -138,9 +138,6 @@ export default function Footer({ settings }: FooterProps) {
                 : `© ${new Date().getFullYear()} ${settings?.site_name || 'Genesis Life Care'}. All rights reserved.`)}
           </p>
           <div className="flex gap-4 text-xs text-[#cfe6ec]">
-            <Link href="/about-us" className="hover:text-white">{tr('About Us', lang)}</Link>
-            <Link href="/our-story" className="hover:text-white">{tr('Our Story', lang)}</Link>
-            <Link href="/for-investors" className="hover:text-white">{tr('For Investors', lang)}</Link>
             <Link href="/legal/privacy-policy" className="hover:text-white">{tr('Privacy Policy', lang)}</Link>
             <Link href="/legal/terms-of-service" className="hover:text-white">{tr('Terms of Service', lang)}</Link>
           </div>
