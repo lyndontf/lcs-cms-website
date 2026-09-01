@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { headers } from 'next/headers';
 import { createClient } from './supabase';
 
@@ -6,7 +7,10 @@ export async function getCurrentSiteSlug(): Promise<string> {
   return headersList.get('x-site-slug') || 'centre';
 }
 
-export async function getCurrentSiteId(): Promise<string> {
+// cache()-wrapped: layout.tsx and every page under [...slugPath] independently
+// resolve the current site id from the same request headers — this was firing
+// as a fresh Supabase round trip up to 5x per request before dedup.
+export const getCurrentSiteId = cache(async function getCurrentSiteId(): Promise<string> {
   const slug = await getCurrentSiteSlug();
   const supabase = createClient();
   const { data } = await supabase
@@ -15,10 +19,10 @@ export async function getCurrentSiteId(): Promise<string> {
     .eq('slug', slug)
     .single();
   return data?.id || '';
-}
+});
 
 /** Returns the canonical base URL for the current site (e.g. "https://gtacademy.com.my") */
-export async function getCurrentSiteBaseUrl(): Promise<string> {
+export const getCurrentSiteBaseUrl = cache(async function getCurrentSiteBaseUrl(): Promise<string> {
   const siteId = await getCurrentSiteId();
   if (!siteId) return 'https://genesiscare.com.my';
   const supabase = createClient();
@@ -28,4 +32,4 @@ export async function getCurrentSiteBaseUrl(): Promise<string> {
     .eq('site_id', siteId)
     .single();
   return settings?.website_url || 'https://genesiscare.com.my';
-}
+});

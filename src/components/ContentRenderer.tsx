@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { ContentBlock } from '@/lib/supabase';
+import { useSiteLang } from '@/lib/useSiteLang';
 
 const JobListingsEmbed = dynamic(() => import('./JobListingsEmbed'), { ssr: false });
 
@@ -10,7 +11,18 @@ function stripHtml(html: string): string {
   return html.replace(/<[^>]+>/g, '');
 }
 
-export default function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) {
+export default function ContentRenderer({
+  blocks: blocksEn,
+  blocksZh,
+}: {
+  blocks: ContentBlock[];
+  // Optional Chinese translation. Falls back to `blocksEn` whenever this page
+  // has no translation yet, so toggling language never blanks the page.
+  blocksZh?: ContentBlock[] | null;
+}) {
+  const lang = useSiteLang();
+  const blocks = lang === 'zh' && blocksZh && blocksZh.length > 0 ? blocksZh : blocksEn;
+
   if (!blocks || blocks.length === 0) {
     return null;
   }

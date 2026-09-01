@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { useSiteLang } from '@/lib/useSiteLang';
 
 type CentreCard = {
   name: string;
@@ -24,21 +27,34 @@ const t = {
     subtext: (name: string) => `不在${name}附近？我们在马来西亚还有更多地点。`,
     viewCentre: '查看中心 →',
     viewAll: '查看所有地点',
-    locationsLink: '/zh/our-locations',
-    slugPrefix: '/zh/',
+    // Same page, no separate /zh route — the toggle swaps text in place.
+    locationsLink: '/our-locations',
+    slugPrefix: '/',
   },
+};
+
+// Centre display names are a small fixed set — translate them directly
+// rather than threading a zh name through every centre-card data source.
+const CENTRE_NAME_ZH: Record<string, string> = {
+  'Petaling Jaya': '八打灵再也',
+  Klang: '巴生',
+  Kajang: '加影',
+  Puchong: '蒲种',
+  'Johor Bahru': '新山',
 };
 
 export default function OtherCentres({
   centres,
   currentCentreName,
-  lang = 'en',
+  lang,
 }: {
   centres: CentreCard[];
   currentCentreName: string;
   lang?: 'en' | 'zh';
 }) {
-  const l = t[lang];
+  const detected = useSiteLang();
+  const resolvedLang = lang ?? detected;
+  const l = t[resolvedLang];
   return (
     <section className="py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,7 +80,7 @@ export default function OtherCentres({
               </div>
               <div className="p-4">
                 <p className="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">
-                  {c.name}
+                  {resolvedLang === 'zh' ? (CENTRE_NAME_ZH[c.name] || c.name) : c.name}
                 </p>
                 <div className="flex items-center justify-center gap-1 mt-1 text-gold text-sm">
                   ★ {c.rating}

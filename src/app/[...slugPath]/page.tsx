@@ -5,6 +5,7 @@ import { getCurrentSiteId, getCurrentSiteSlug, getCurrentSiteBaseUrl } from '@/l
 import ContentRenderer from '@/components/ContentRenderer';
 import { CmsRawBlocks } from '@/components/CmsHtmlPage';
 import { isRawBlockSequence } from '@/lib/cms-blocks';
+import CmsContentPage from '@/components/CmsContentPage';
 
 // This REQUIRED catch-all (note: [...slugPath], not the optional [[...slugPath]]) merges
 // what used to be single-segment CMS page routes ([slug]/page.tsx) with locale-prefixed
@@ -97,7 +98,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Page Not Found' };
   }
 
-  const page = await getPageBySlug(route.slug, siteId || undefined, route.locale);
+  // None of these three depend on each other — only on siteId/route, both
+  // already resolved above — so they can be fetched concurrently instead of
+  // as three sequential round trips.
+  const [page, settings, supportedLocales] = await Promise.all([
+    getPageBySlug(route.slug, siteId || undefined, route.locale),
+    getSiteSettings(siteId || undefined),
+    getSupportedLocales(siteId || undefined),
+  ]);
   if (!page) return { title: 'Page Not Found' };
 
   const title = page.meta_title || page.title;
@@ -106,7 +114,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   // Falls back to the site's dedicated share image (or its logo) when this
   // page has no featured image of its own, so link previews never go bare.
-  const settings = await getSiteSettings(siteId || undefined);
   const shareImageUrl = page.featured_image_url || settings?.og_image_url || settings?.logo_url || undefined;
   const url =
     route.locale === 'en'
@@ -114,11 +121,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       : isHome ? `${baseUrl}/${route.locale}` : `${baseUrl}/${route.locale}/${route.slug}`;
 
   let languages: Record<string, string> | undefined;
-  const supportedLocales = await getSupportedLocales(siteId || undefined);
   if (supportedLocales.length > 1) {
+    // Each locale's translation check is independent — run them concurrently
+    // rather than one Supabase round trip per locale in sequence.
+    const checks = await Promise.all(
+      supportedLocales.map(async (loc) => ({
+        loc,
+        hasTranslation: loc === 'en' || (await pageExistsForLocale(route.slug, siteId || '', loc)),
+      }))
+    );
     const langMap: Record<string, string> = {};
-    for (const loc of supportedLocales) {
-      const hasTranslation = loc === 'en' || (await pageExistsForLocale(route.slug, siteId || '', loc));
+    for (const { loc, hasTranslation } of checks) {
       if (!hasTranslation) continue;
       langMap[loc] =
         loc === 'en'
@@ -161,8 +174,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function DynamicPage({ params }: PageProps) {
   const { slugPath } = await params;
-  const siteId = await getCurrentSiteId();
-  const siteSlug = await getCurrentSiteSlug();
+  const [siteId, siteSlug] = await Promise.all([getCurrentSiteId(), getCurrentSiteSlug()]);
 
   const route = await resolveRoute(slugPath, siteId || undefined);
   if (!route) {
@@ -275,74 +287,5 @@ export default async function DynamicPage({ params }: PageProps) {
     );
   }
 
-  // Extract the first heading (h1) and first paragraph from content blocks for the hero
-  const heroHeading = page.content?.find(
-    (b) => b.type === 'heading' && (b.level === 1 || !b.level)
-  );
-  const heroParagraph = page.content?.find((b) => b.type === 'paragraph');
-
-  // Content blocks to render below the hero (skip the ones used in the hero)
-  const remainingBlocks = page.content?.filter((b) => {
-    if (b === heroHeading) return false;
-    if (b === heroParagraph) return false;
-    return true;
-  }) || [];
-
-  const heroTitle = heroHeading?.content || heroHeading?.text || page.title;
-  const heroSubtitle =
-    page.meta_description ||
-    heroParagraph?.content ||
-    heroParagraph?.text ||
-    '';
-
-  // Format the slug for the label badge (e.g. "careers" → "Careers")
-  const heroLabel = page.title;
-
-  return (
-    <article>
-      <style dangerouslySetInnerHTML={{ __html: `
-        .cms-hero h1, .cms-hero p, .cms-hero span, .cms-hero div { color: #ffffff !important; }
-      ` }} />
-      {/* ─── HERO ─── */}
-      <section className="cms-hero relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
-        <img
-          src={page.featured_image_url || '/images/general/staff-care.jpg'}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary/85 to-secondary/80" />
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-            backgroundSize: '28px 28px',
-          }}
-        />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full translate-y-1/2 -translate-x-1/3" />
-
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center" style={{ color: '#ffffff' }}>
-          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-[.14em] uppercase mb-6" style={{ color: '#ffffff' }}>
-            <span className="w-6 h-0.5 bg-[#FAB515] rounded" />
-            {heroLabel}
-            <span className="w-6 h-0.5 bg-[#FAB515] rounded" />
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-tight mb-6 max-w-3xl mx-auto" style={{ color: '#ffffff' }}>
-            {heroTitle}
-          </h1>
-          {heroSubtitle && (
-            <p className="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto" style={{ color: '#ffffff' }}>
-              {heroSubtitle}
-            </p>
-          )}
-        </div>
-      </section>
-
-      {/* ─── CONTENT ─── */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-        <ContentRenderer blocks={remainingBlocks} />
-      </div>
-    </article>
-  );
+  return <CmsContentPage page={page} />;
 }

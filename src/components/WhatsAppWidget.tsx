@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useSiteLang } from '@/lib/useSiteLang';
 
 const WA_MESSAGES = {
   en: [
@@ -31,25 +32,14 @@ export default function WhatsAppWidget({ phone }: WhatsAppWidgetProps) {
   const [dismissed, setDismissed] = useState(false);
   const [msgIndex, setMsgIndex] = useState(0);
   const [input, setInput] = useState('');
-  const [lang, setLang] = useState<'en' | 'zh'>('en');
+  // Shared with Header/Bilingual/ContentRenderer — reads the forced locale on
+  // /zh/* routes for correct first paint, then follows the site-wide toggle.
+  // (This widget used to track localStorage itself, which always started at
+  // 'en' and only caught up after mount — showing English on every /zh route
+  // until the visitor manually toggled, which ad-campaign traffic never does.)
+  const lang = useSiteLang();
   const scrollAccum = useRef(0);
   const lastScrollY = useRef(0);
-
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('glc-lang');
-      if (saved === 'zh' || saved === 'en') setLang(saved);
-    } catch {
-      /* localStorage unavailable — default to English */
-    }
-    // Header's toggle broadcasts this event since 'storage' only fires in other tabs.
-    function onLangChange(e: Event) {
-      const next = (e as CustomEvent).detail;
-      if (next === 'zh' || next === 'en') setLang(next);
-    }
-    window.addEventListener('glc-lang-change', onLangChange);
-    return () => window.removeEventListener('glc-lang-change', onLangChange);
-  }, []);
 
   useEffect(() => {
     lastScrollY.current = window.scrollY;

@@ -1,11 +1,16 @@
+'use client';
+
 import Link from 'next/link';
+import { useSiteLang } from '@/lib/useSiteLang';
 
 interface GlcHireSectionProps {
   lang?: 'en' | 'zh';
 }
 
-export default function GlcHireSection({ lang = 'en' }: GlcHireSectionProps) {
-  const t = lang === 'zh'
+export default function GlcHireSection({ lang }: GlcHireSectionProps) {
+  const detected = useSiteLang();
+  const resolvedLang = lang ?? detected;
+  const t = resolvedLang === 'zh'
     ? {
         label: '加入我们的团队',
         heading: '成为我们护理团队的一员',

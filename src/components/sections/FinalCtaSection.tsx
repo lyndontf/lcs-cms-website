@@ -1,23 +1,38 @@
+'use client';
+
 import Link from 'next/link';
+import { useSiteLang } from '@/lib/useSiteLang';
 
 interface FinalCtaSectionProps {
   heading: string;
   description: string;
+  // Optional Chinese variants of the two page-specific strings above. When
+  // omitted, this section falls back to the English text even when the
+  // visitor has toggled to Chinese (same graceful-fallback contract as
+  // Bilingual/ContentRenderer elsewhere in this codebase).
+  headingZh?: string;
+  descriptionZh?: string;
   lang?: 'en' | 'zh';
 }
 
-export default function FinalCtaSection({ heading, description, lang = 'en' }: FinalCtaSectionProps) {
-  const contactHref = lang === 'zh' ? '/zh/contact' : '/contact';
-  const btnText = lang === 'zh' ? '预约免费咨询' : 'Book a Free Consultation';
-  const phoneText = lang === 'zh' ? '致电 +6019-325-0457' : 'Call +6019-325-0457';
+export default function FinalCtaSection({ heading, description, headingZh, descriptionZh, lang }: FinalCtaSectionProps) {
+  const detected = useSiteLang();
+  const resolvedLang = lang ?? detected;
+  const isZh = resolvedLang === 'zh';
+  const shownHeading = isZh && headingZh ? headingZh : heading;
+  const shownDescription = isZh && descriptionZh ? descriptionZh : description;
+  // Same page, no separate /zh route — the toggle swaps text in place.
+  const contactHref = '/contact';
+  const btnText = isZh ? '预约免费咨询' : 'Book a Free Consultation';
+  const phoneText = isZh ? '致电 +6019-325-0457' : 'Call +6019-325-0457';
 
   return (
     <section className="relative bg-gradient-to-r from-primary via-primary-800 to-secondary py-16 sm:py-20 overflow-hidden">
       <style dangerouslySetInnerHTML={{ __html: `.final-cta .text-white { color: #ffffff !important; } .final-cta p { color: rgba(255, 255, 255, 0.8) !important; }` }} />
       <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
       <div className="final-cta relative max-w-3xl mx-auto px-4 text-center">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">{heading}</h2>
-        <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">{description}</p>
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">{shownHeading}</h2>
+        <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">{shownDescription}</p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href={contactHref}

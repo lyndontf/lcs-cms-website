@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import { isVisitorRegionBlocked } from './geo-block';
 
@@ -34,6 +35,11 @@ export interface CmsPage {
   meta_title: string | null;
   meta_description: string | null;
   content: ContentBlock[];
+  // Optional Chinese translation of `content`, rendered client-side by
+  // ContentRenderer when the visitor toggles the site language — same page,
+  // same URL, no separate zh- page/locale row. Null/absent means this page
+  // has no Chinese translation yet, and the toggle simply has no effect on it.
+  content_zh?: ContentBlock[] | null;
   featured_image_url: string | null;
   status: 'draft' | 'published' | 'archived';
   template: string;
@@ -124,7 +130,11 @@ export async function getPublishedPages(siteId?: string): Promise<CmsPage[]> {
   return (data || []) as CmsPage[];
 }
 
-export async function getPageBySlug(slug: string, siteId?: string, locale: string = 'en'): Promise<CmsPage | null> {
+// cache()-wrapped: this is called repeatedly per request (layout's full-HTML-override
+// check, generateMetadata, and the page component itself all fetch the same slug) —
+// React dedupes identical calls within a single render pass, turning what was 3
+// separate ~129KB Supabase round trips into 1.
+export const getPageBySlug = cache(async function getPageBySlug(slug: string, siteId?: string, locale: string = 'en'): Promise<CmsPage | null> {
   let query = supabase
     .from('cms_pages')
     .select('*')
@@ -134,11 +144,14 @@ export async function getPageBySlug(slug: string, siteId?: string, locale: strin
   if (siteId) query = query.eq('site_id', siteId);
   const { data } = await query.limit(1).single();
   return data as CmsPage | null;
-}
+});
 
 // ─── Locale Helpers ───
 
-export async function getSupportedLocales(siteId?: string): Promise<string[]> {
+// cache()-wrapped: called up to 3x per request in the catch-all route
+// (resolveRoute, generateMetadata, and its hreflang-languages loop all ask
+// the same siteId) — dedupe to 1 real Supabase call.
+export const getSupportedLocales = cache(async function getSupportedLocales(siteId?: string): Promise<string[]> {
   if (!siteId) return ['en'];
   const { data } = await supabase
     .from('cms_sites')
@@ -147,9 +160,9 @@ export async function getSupportedLocales(siteId?: string): Promise<string[]> {
     .single();
   const locales = data?.supported_locales as string[] | null | undefined;
   return locales && locales.length > 0 ? locales : ['en'];
-}
+});
 
-export async function pageExistsForLocale(slug: string, siteId: string, locale: string): Promise<boolean> {
+export const pageExistsForLocale = cache(async function pageExistsForLocale(slug: string, siteId: string, locale: string): Promise<boolean> {
   let query = supabase
     .from('cms_pages')
     .select('id')
@@ -159,7 +172,7 @@ export async function pageExistsForLocale(slug: string, siteId: string, locale: 
   if (siteId) query = query.eq('site_id', siteId);
   const { data } = await query.limit(1).maybeSingle();
   return !!data;
-}
+});
 
 export async function getPublishedPosts(siteId?: string): Promise<CmsPost[]> {
   let query = supabase
@@ -191,14 +204,16 @@ export async function getMenus(siteId?: string): Promise<CmsMenu[]> {
   return (data || []) as CmsMenu[];
 }
 
-export async function getSiteSettings(siteId?: string): Promise<SiteSettings | null> {
+// cache()-wrapped: called from both layout.tsx (twice) and the page-level
+// generateMetadata/page component for the same siteId every request.
+export const getSiteSettings = cache(async function getSiteSettings(siteId?: string): Promise<SiteSettings | null> {
   let query = supabase
     .from('cms_site_settings')
     .select('*');
   if (siteId) query = query.eq('site_id', siteId);
   const { data } = await query.limit(1).single();
   return data as SiteSettings | null;
-}
+});
 
 // ─── Draft Preview (by ID, any status) ───
 

@@ -1,12 +1,17 @@
+'use client';
+
 import Link from 'next/link';
 import { SiteSettings } from '@/lib/supabase';
 import { centreNavEN, centreFooterServices } from '@/lib/nav';
+import { tr } from '@/components/Header';
+import { useSiteLang } from '@/lib/useSiteLang';
 
 interface FooterProps {
   settings: SiteSettings | null;
 }
 
 export default function Footer({ settings }: FooterProps) {
+  const lang = useSiteLang();
   const social = settings?.social_links || {};
   const locations = centreNavEN.find((item) => item.label === 'Locations')?.children || [];
   const forFamilies = centreNavEN.find((item) => item.label === 'For Families')?.children || [];
@@ -60,11 +65,11 @@ export default function Footer({ settings }: FooterProps) {
 
           {/* Services */}
           <div className="md:col-span-2">
-            <h4 className="text-[13px] font-bold text-[#cfe6ec] uppercase tracking-widest mb-4">Services</h4>
+            <h4 className="text-[13px] font-bold text-[#cfe6ec] uppercase tracking-widest mb-4">{tr('Services', lang)}</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
               {centreFooterServices.map((item, i) => (
                 <Link key={i} href={item.url} className="text-sm text-[#e4f1f4] hover:text-white transition-colors">
-                  {item.label}
+                  {tr(item.label, lang)}
                 </Link>
               ))}
             </div>
@@ -72,12 +77,12 @@ export default function Footer({ settings }: FooterProps) {
 
           {/* Locations */}
           <div>
-            <h4 className="text-[13px] font-bold text-[#cfe6ec] uppercase tracking-widest mb-4">Locations</h4>
+            <h4 className="text-[13px] font-bold text-[#cfe6ec] uppercase tracking-widest mb-4">{tr('Locations', lang)}</h4>
             <ul className="space-y-2.5">
               {locations.map((item, i) => (
                 <li key={i}>
                   <Link href={item.url} className="text-sm text-[#e4f1f4] hover:text-white transition-colors">
-                    {item.label}
+                    {tr(item.label, lang)}
                   </Link>
                 </li>
               ))}
@@ -86,12 +91,12 @@ export default function Footer({ settings }: FooterProps) {
 
           {/* For Families */}
           <div>
-            <h4 className="text-[13px] font-bold text-[#cfe6ec] uppercase tracking-widest mb-4">For Families</h4>
+            <h4 className="text-[13px] font-bold text-[#cfe6ec] uppercase tracking-widest mb-4">{tr('For Families', lang)}</h4>
             <ul className="space-y-2.5">
               {forFamilies.map((item, i) => (
                 <li key={i}>
                   <Link href={item.url} className="text-sm text-[#e4f1f4] hover:text-white transition-colors">
-                    {item.label}
+                    {tr(item.label, lang)}
                   </Link>
                 </li>
               ))}
@@ -100,7 +105,7 @@ export default function Footer({ settings }: FooterProps) {
 
           {/* Contact */}
           <div>
-            <h4 className="text-[13px] font-bold text-[#cfe6ec] uppercase tracking-widest mb-4">Contact</h4>
+            <h4 className="text-[13px] font-bold text-[#cfe6ec] uppercase tracking-widest mb-4">{tr('Contact', lang)}</h4>
             <ul className="space-y-3 text-sm text-[#e4f1f4]">
               {settings?.contact_phone && (
                 <li className="flex items-start gap-2">
@@ -127,14 +132,14 @@ export default function Footer({ settings }: FooterProps) {
 
         <div className="border-t border-white/25 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-xs text-[#cfe6ec]">
-            {settings?.footer_text || `© ${new Date().getFullYear()} ${settings?.site_name || 'Genesis Life Care'}. All rights reserved.`}
+            {settings?.footer_text ||
+              (lang === 'zh'
+                ? `© ${new Date().getFullYear()} ${settings?.site_name || 'Genesis Life Care'}. 版权所有。`
+                : `© ${new Date().getFullYear()} ${settings?.site_name || 'Genesis Life Care'}. All rights reserved.`)}
           </p>
           <div className="flex gap-4 text-xs text-[#cfe6ec]">
-            <Link href="/about-us" className="hover:text-white">About Us</Link>
-            <Link href="/our-story" className="hover:text-white">Our Story</Link>
-            <Link href="/for-investors" className="hover:text-white">For Investors</Link>
-            <Link href="/legal/privacy-policy" className="hover:text-white">Privacy Policy</Link>
-            <Link href="/legal/terms-of-service" className="hover:text-white">Terms of Service</Link>
+            <Link href="/legal/privacy-policy" className="hover:text-white">{tr('Privacy Policy', lang)}</Link>
+            <Link href="/legal/terms-of-service" className="hover:text-white">{tr('Terms of Service', lang)}</Link>
           </div>
         </div>
       </div>
