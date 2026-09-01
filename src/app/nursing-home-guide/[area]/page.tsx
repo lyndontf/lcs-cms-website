@@ -14,7 +14,20 @@ type Area = {
 const AREAS: Record<string, Area> = {
   kajang: { name: 'Kajang', slug: 'kajang', centre: '/nursing-home-kajang', blurb: 'the Kajang and Semenyih area of southern Klang Valley' },
   'petaling-jaya': { name: 'Petaling Jaya', slug: 'petaling-jaya', centre: '/nursing-home-in-petaling-jaya', blurb: 'Petaling Jaya and the surrounding Klang Valley' },
-  klang: { name: 'Klang', slug: 'klang', centre: '/nursing-home-in-klang', blurb: 'Klang and the western Klang Valley' },
+  klang: {
+    name: 'Klang', slug: 'klang', centre: '/nursing-home-in-klang', blurb: 'Klang and the western Klang Valley',
+    extra: {
+      heading: 'Comparing nursing homes in Klang',
+      paragraphs: [
+        'Klang has a growing number of eldercare options, and new centres are opening in the area — so it’s worth comparing carefully rather than choosing on convenience alone.',
+        'Genesis Life Care Klang is our original centre, operating since 2018 — the longest-running of our five centres — with published pricing from RM2,500/month and no hidden fees.',
+        'Ask any home you’re considering for a written fee breakdown, check independent reviews rather than only the home’s own testimonials, and ask how they keep families updated day-to-day.',
+      ],
+    },
+    extraFaqs: [
+      { q: 'How long has Genesis Life Care been operating in Klang?', a: 'Genesis Life Care Klang is our original, longest-running centre — operating since 2018, with 4.8★ from 45 reviews and published pricing from RM2,500/month.' },
+    ],
+  },
   puchong: {
     name: 'Puchong', slug: 'puchong', centre: '/nursing-home-in-puchong', blurb: 'Puchong and the southern Klang Valley',
     extra: {
