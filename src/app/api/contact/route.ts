@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase';
 import { getCurrentSiteSlug, getCurrentSiteBaseUrl } from '@/lib/site-context';
+import { isRequestRegionBlocked } from '@/lib/geo-block';
 
 interface ContactRequestBody {
   name?: string;
@@ -12,6 +13,10 @@ interface ContactRequestBody {
 }
 
 export async function POST(request: NextRequest) {
+  if (isRequestRegionBlocked(request)) {
+    return NextResponse.json({ error: 'Unable to submit form' }, { status: 403 });
+  }
+
   let body: ContactRequestBody;
   try {
     body = await request.json();

@@ -418,33 +418,33 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
 
   if (submitted) {
     return (
-      <div className="bg-white rounded-2xl shadow-xl p-8 text-center max-w-lg mx-auto">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
-          <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="bg-white rounded-[20px] shadow-[0_30px_70px_-30px_rgba(8,30,38,0.4)] p-8 text-center max-w-lg mx-auto">
+        <div className="w-16 h-16 bg-[#e6f6ec] rounded-full flex items-center justify-center mx-auto mb-5">
+          <svg className="w-8 h-8 text-[#1a7f4b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-xl font-extrabold text-gray-900 mb-2">{l.successTitle}</h3>
-        <p className="text-sm text-gray-600 mb-6">{l.successMsg}</p>
+        <h3 className="text-xl font-extrabold text-[#173039] mb-2">{l.successTitle}</h3>
+        <p className="text-sm text-[#5b6b73] mb-6">{l.successMsg}</p>
 
-        <div className="bg-gray-50 rounded-xl p-4 mb-6 text-left space-y-2">
+        <div className="bg-[#eaf3f6] rounded-xl p-4 mb-6 text-left space-y-2">
           <div className="flex justify-between text-sm">
-            <span className="text-gray-500 font-medium">{l.step1}</span>
-            <span className="text-gray-900 font-semibold">{selectedCentre?.name}</span>
+            <span className="text-[#7a8a92] font-medium">{l.step1}</span>
+            <span className="text-[#173039] font-semibold">{selectedCentre?.name}</span>
           </div>
           <div className="flex justify-between text-sm">
-            <span className="text-gray-500 font-medium">{l.successDate}</span>
-            <span className="text-gray-900 font-semibold">{confirmedDate}</span>
+            <span className="text-[#7a8a92] font-medium">{l.successDate}</span>
+            <span className="text-[#173039] font-semibold">{confirmedDate}</span>
           </div>
           <div className="flex justify-between text-sm">
-            <span className="text-gray-500 font-medium">{l.successTime}</span>
-            <span className="text-gray-900 font-semibold">{confirmedTime}</span>
+            <span className="text-[#7a8a92] font-medium">{l.successTime}</span>
+            <span className="text-[#173039] font-semibold">{confirmedTime}</span>
           </div>
         </div>
 
         <button
           onClick={handleReset}
-          className="text-[#2E72B8] text-sm font-semibold hover:underline"
+          className="text-[#2c88a2] text-sm font-semibold hover:underline"
         >
           {l.bookAnother}
         </button>
@@ -453,15 +453,15 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-3xl mx-auto">
+    <div className="bg-white rounded-[20px] shadow-[0_30px_70px_-30px_rgba(8,30,38,0.4)] overflow-hidden max-w-3xl mx-auto">
       {/* ── header ── */}
-      <div className="bg-gradient-to-r from-[#2E72B8] to-[#09B7D3] px-6 py-5 text-white force-white-text">
-        <h2 className="text-xl font-extrabold text-white" style={{ color: '#ffffff' }}>{l.title}</h2>
-        <p className="text-sm text-white mt-1" style={{ color: 'rgba(255,255,255,0.9)' }}>{l.subtitle}</p>
+      <div className="bg-gradient-to-r from-[#0e5a72] to-[#2c88a2] px-6 py-5">
+        <h2 className="text-xl font-extrabold text-white">{l.title}</h2>
+        <p className="text-sm text-white/85 mt-1">{l.subtitle}</p>
       </div>
 
       {/* ── progress steps ── */}
-      <div className="flex items-center px-6 py-3 bg-gray-50 border-b border-gray-100 gap-1">
+      <div className="flex items-center px-6 py-3 bg-[#f8fafc] border-b border-[#e4eaed] gap-1">
         {[l.step1, l.step2, l.step3, l.step4].map((label, i) => {
           const stepNum = i + 1;
           const isActive = step === stepNum;
@@ -471,23 +471,23 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
               <div
                 className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 ${
                   isDone
-                    ? 'bg-green-500 text-white'
+                    ? 'bg-[#1a7f4b] text-white'
                     : isActive
-                    ? 'bg-[#2E72B8] text-white'
-                    : 'bg-gray-200 text-gray-500'
+                    ? 'bg-[#2c88a2] text-white'
+                    : 'bg-[#e4eaed] text-[#9aa8ae]'
                 }`}
               >
                 {isDone ? '✓' : stepNum}
               </div>
               <span
                 className={`ml-1.5 text-[11px] font-semibold truncate ${
-                  isActive ? 'text-[#2E72B8]' : isDone ? 'text-green-600' : 'text-gray-400'
+                  isActive ? 'text-[#2c88a2]' : isDone ? 'text-[#1a7f4b]' : 'text-[#9aa8ae]'
                 }`}
               >
                 {label}
               </span>
               {i < 3 && (
-                <div className={`h-px flex-1 mx-2 ${isDone ? 'bg-green-300' : 'bg-gray-200'}`} />
+                <div className={`h-px flex-1 mx-2 ${isDone ? 'bg-[#9bd4b8]' : 'bg-[#e4eaed]'}`} />
               )}
             </div>
           );
@@ -497,7 +497,7 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
       <div className="p-6">
         {/* ═══ STEP 1: Centre Selection ═══ */}
         <div className="mb-6">
-          <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+          <label className="block text-[11px] font-bold text-[#9aa8ae] uppercase tracking-wider mb-2">
             {l.step1}
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -512,14 +512,14 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
                   onClick={() => handleCentreSelect(c)}
                   className={`text-left p-3 rounded-xl border-2 transition-all ${
                     isSelected
-                      ? 'border-[#2E72B8] bg-blue-50 shadow-sm'
-                      : 'border-gray-200 hover:border-gray-300 bg-white'
+                      ? 'border-[#2c88a2] bg-[#eaf3f6] shadow-sm'
+                      : 'border-[#e4eaed] hover:border-[#9bcfda] bg-white'
                   }`}
                 >
-                  <div className={`text-sm font-bold ${isSelected ? 'text-[#2E72B8]' : 'text-gray-900'}`}>
+                  <div className={`text-sm font-bold ${isSelected ? 'text-[#2c88a2]' : 'text-[#173039]'}`}>
                     {short}
                   </div>
-                  <div className="text-[11px] text-gray-500 mt-0.5 line-clamp-1">{parseAddress(c.address)}</div>
+                  <div className="text-[11px] text-[#7a8a92] mt-0.5 line-clamp-1">{parseAddress(c.address)}</div>
                 </button>
               );
             })}
@@ -529,35 +529,35 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
         {/* ═══ STEP 2: Calendar ═══ */}
         {selectedCentre && (
           <div className="mb-6">
-            <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+            <label className="block text-[11px] font-bold text-[#9aa8ae] uppercase tracking-wider mb-2">
               {l.step2}
             </label>
 
             {slotConfigs.length === 0 ? (
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+              <div className="bg-[#fef3e2] border border-[#f5d9a8] rounded-xl p-4 text-sm text-[#8a5a1c]">
                 {l.noSlotsConfig}
                 {selectedCentre.marketing_phone_no && (
                   <a
                     href={`tel:${selectedCentre.marketing_phone_no.replace(/\s+/g, '')}`}
-                    className="block mt-2 font-bold text-amber-900 hover:underline"
+                    className="block mt-2 font-bold text-[#6b4315] hover:underline"
                   >
                     {selectedCentre.marketing_phone_no}
                   </a>
                 )}
               </div>
             ) : (
-              <div className="border border-gray-200 rounded-xl overflow-hidden">
+              <div className="border border-[#e4eaed] rounded-xl overflow-hidden">
                 {/* month nav */}
-                <div className="flex items-center justify-between px-4 py-2.5 bg-gray-50 border-b border-gray-200">
+                <div className="flex items-center justify-between px-4 py-2.5 bg-[#f8fafc] border-b border-[#e4eaed]">
                   <button
                     type="button"
                     onClick={() => setCalendarMonth(new Date(calYear, calMon - 1, 1))}
                     disabled={!canGoPrev}
-                    className="w-8 h-8 rounded-lg flex items-center justify-center text-gray-600 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed text-lg font-bold"
+                    className="w-8 h-8 rounded-lg flex items-center justify-center text-[#5b6b73] hover:bg-[#e4eaed] disabled:opacity-30 disabled:cursor-not-allowed text-lg font-bold"
                   >
                     {l.prev}
                   </button>
-                  <span className="text-sm font-bold text-gray-800">
+                  <span className="text-sm font-bold text-[#173039]">
                     {calendarMonth.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-GB', {
                       month: 'long',
                       year: 'numeric',
@@ -566,7 +566,7 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
                   <button
                     type="button"
                     onClick={() => setCalendarMonth(new Date(calYear, calMon + 1, 1))}
-                    className="w-8 h-8 rounded-lg flex items-center justify-center text-gray-600 hover:bg-gray-200 text-lg font-bold"
+                    className="w-8 h-8 rounded-lg flex items-center justify-center text-[#5b6b73] hover:bg-[#e4eaed] text-lg font-bold"
                   >
                     {l.next}
                   </button>
@@ -575,7 +575,7 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
                 {/* day headers */}
                 <div className="grid grid-cols-7 text-center">
                   {DAYS.map((d) => (
-                    <div key={d} className="py-1.5 text-[10px] font-bold text-gray-400 uppercase">
+                    <div key={d} className="py-1.5 text-[10px] font-bold text-[#9aa8ae] uppercase">
                       {d}
                     </div>
                   ))}
@@ -603,17 +603,17 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
                         onClick={() => handleDateSelect(d)}
                         className={`h-10 text-sm font-medium relative transition-colors ${
                           isSelected
-                            ? 'bg-[#2E72B8] text-white font-bold rounded-lg mx-0.5'
+                            ? 'bg-[#2c88a2] text-white font-bold rounded-lg mx-0.5'
                             : isToday
-                            ? 'text-[#2E72B8] font-bold'
+                            ? 'text-[#2c88a2] font-bold'
                             : disabled
-                            ? 'text-gray-300 cursor-not-allowed'
-                            : 'text-gray-700 hover:bg-blue-50 hover:text-[#2E72B8] rounded-lg'
+                            ? 'text-[#c3d2d6] cursor-not-allowed'
+                            : 'text-[#33424a] hover:bg-[#eaf3f6] hover:text-[#2c88a2] rounded-lg'
                         }`}
                       >
                         {d.getDate()}
                         {!disabled && !isSelected && slots && (
-                          <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-green-400" />
+                          <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#4cb579]" />
                         )}
                       </button>
                     );
@@ -627,12 +627,12 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
         {/* ═══ STEP 3: Time Slots ═══ */}
         {selectedDate && (
           <div className="mb-6">
-            <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+            <label className="block text-[11px] font-bold text-[#9aa8ae] uppercase tracking-wider mb-2">
               {l.step3} — {fmtDisplay(selectedDate)}
             </label>
 
             {loadingSlots ? (
-              <div className="flex items-center gap-2 py-4 text-sm text-gray-500">
+              <div className="flex items-center gap-2 py-4 text-sm text-[#7a8a92]">
                 <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                   <path
@@ -644,7 +644,7 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
                 Loading...
               </div>
             ) : availableSlots.length === 0 ? (
-              <p className="text-sm text-gray-500 bg-gray-50 rounded-xl p-4">{l.noSlots}</p>
+              <p className="text-sm text-[#7a8a92] bg-[#f8fafc] rounded-xl p-4">{l.noSlots}</p>
             ) : (
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
                 {availableSlots.map((slot) => {
@@ -661,20 +661,20 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
                       onClick={() => { if (!disabled) { setSelectedSlot(slot); setError(''); } }}
                       className={`p-2.5 rounded-xl border-2 text-center transition-all ${
                         isSelected
-                          ? 'border-[#2E72B8] bg-blue-50 shadow-sm'
+                          ? 'border-[#2c88a2] bg-[#eaf3f6] shadow-sm'
                           : disabled
-                          ? 'border-gray-100 bg-gray-50 cursor-not-allowed'
-                          : 'border-gray-200 hover:border-[#2E72B8]/40 bg-white'
+                          ? 'border-[#eef1f2] bg-[#f8fafc] cursor-not-allowed'
+                          : 'border-[#e4eaed] hover:border-[#9bcfda] bg-white'
                       }`}
                     >
                       <div
                         className={`text-sm font-bold ${
-                          isSelected ? 'text-[#2E72B8]' : disabled ? 'text-gray-400' : 'text-gray-800'
+                          isSelected ? 'text-[#2c88a2]' : disabled ? 'text-[#b9c4c8]' : 'text-[#33424a]'
                         }`}
                       >
                         {formatTime(slot.start_time)}
                       </div>
-                      <div className={`text-[10px] mt-0.5 ${tooSoon ? 'text-orange-400' : full ? 'text-red-400' : 'text-green-600'} font-semibold`}>
+                      <div className={`text-[10px] mt-0.5 ${tooSoon ? 'text-[#c17a2e]' : full ? 'text-[#c1493f]' : 'text-[#1a7f4b]'} font-semibold`}>
                         {tooSoon ? l.tooSoon : full ? l.full : l.available}
                       </div>
                     </button>
@@ -688,19 +688,19 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
         {/* ═══ STEP 4: Visitor Details Form ═══ */}
         {selectedSlot && (
           <form onSubmit={handleSubmit}>
-            <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">
+            <label className="block text-[11px] font-bold text-[#9aa8ae] uppercase tracking-wider mb-3">
               {l.step4}
             </label>
 
             {/* Selected summary pill */}
             <div className="flex flex-wrap gap-2 mb-4">
-              <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-[#2E72B8] text-xs font-semibold">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#eaf3f6] text-[#2c88a2] text-xs font-semibold">
                 {selectedCentre?.name.replace(/Genesis Life Care Centre\s*/i, '')}
               </span>
-              <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-[#2E72B8] text-xs font-semibold">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#eaf3f6] text-[#2c88a2] text-xs font-semibold">
                 {selectedDate && fmtDisplay(selectedDate)}
               </span>
-              <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-[#2E72B8] text-xs font-semibold">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#eaf3f6] text-[#2c88a2] text-xs font-semibold">
                 {formatTime(selectedSlot.start_time)} – {formatTime(selectedSlot.end_time)}
               </span>
             </div>
@@ -708,14 +708,14 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
             <div className="space-y-3.5">
               {/* Name */}
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1">
-                  {l.name} <span className="text-red-400">{l.required}</span>
+                <label className="block text-xs font-semibold text-[#5b6b73] mb-1">
+                  {l.name} <span className="text-[#c1493f]">{l.required}</span>
                 </label>
                 <input
                   type="text"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-[#2E72B8]/30 focus:border-[#2E72B8] outline-none transition-colors"
+                  className="w-full px-3.5 py-2.5 bg-[#f8fafc] border border-[#dbe3e6] rounded-lg text-sm text-[#173039] placeholder-[#9aa8ae] focus:ring-2 focus:ring-[#2c88a2]/30 focus:border-[#2c88a2] outline-none transition-colors"
                   placeholder={l.namePh}
                   required
                 />
@@ -723,14 +723,14 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
 
               {/* Phone */}
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1">
-                  {l.phone} <span className="text-red-400">{l.required}</span>
+                <label className="block text-xs font-semibold text-[#5b6b73] mb-1">
+                  {l.phone} <span className="text-[#c1493f]">{l.required}</span>
                 </label>
                 <input
                   type="tel"
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-[#2E72B8]/30 focus:border-[#2E72B8] outline-none transition-colors"
+                  className="w-full px-3.5 py-2.5 bg-[#f8fafc] border border-[#dbe3e6] rounded-lg text-sm text-[#173039] placeholder-[#9aa8ae] focus:ring-2 focus:ring-[#2c88a2]/30 focus:border-[#2c88a2] outline-none transition-colors"
                   placeholder={l.phonePh}
                   required
                 />
@@ -738,55 +738,55 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
 
               {/* Email */}
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1">
+                <label className="block text-xs font-semibold text-[#5b6b73] mb-1">
                   {l.email}
                 </label>
                 <input
                   type="email"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-[#2E72B8]/30 focus:border-[#2E72B8] outline-none transition-colors"
+                  className="w-full px-3.5 py-2.5 bg-[#f8fafc] border border-[#dbe3e6] rounded-lg text-sm text-[#173039] placeholder-[#9aa8ae] focus:ring-2 focus:ring-[#2c88a2]/30 focus:border-[#2c88a2] outline-none transition-colors"
                   placeholder={l.emailPh}
                 />
               </div>
 
               {/* Resident Name */}
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1">
+                <label className="block text-xs font-semibold text-[#5b6b73] mb-1">
                   {l.residentName}
                 </label>
                 <input
                   type="text"
                   value={form.residentName}
                   onChange={(e) => setForm({ ...form, residentName: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-[#2E72B8]/30 focus:border-[#2E72B8] outline-none transition-colors"
+                  className="w-full px-3.5 py-2.5 bg-[#f8fafc] border border-[#dbe3e6] rounded-lg text-sm text-[#173039] placeholder-[#9aa8ae] focus:ring-2 focus:ring-[#2c88a2]/30 focus:border-[#2c88a2] outline-none transition-colors"
                   placeholder={l.residentNamePh}
                 />
               </div>
 
               {/* Relationship */}
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1">
+                <label className="block text-xs font-semibold text-[#5b6b73] mb-1">
                   {l.relationship}
                 </label>
                 <input
                   type="text"
                   value={form.relationship}
                   onChange={(e) => setForm({ ...form, relationship: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-[#2E72B8]/30 focus:border-[#2E72B8] outline-none transition-colors"
+                  className="w-full px-3.5 py-2.5 bg-[#f8fafc] border border-[#dbe3e6] rounded-lg text-sm text-[#173039] placeholder-[#9aa8ae] focus:ring-2 focus:ring-[#2c88a2]/30 focus:border-[#2c88a2] outline-none transition-colors"
                   placeholder={l.relationshipPh}
                 />
               </div>
 
               {/* Type of Care */}
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1">
+                <label className="block text-xs font-semibold text-[#5b6b73] mb-1">
                   {l.careType}
                 </label>
                 <select
                   value={form.careTypeId}
                   onChange={(e) => setForm({ ...form, careTypeId: e.target.value })}
-                  className="w-full px-3.5 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-[#2E72B8]/30 focus:border-[#2E72B8] outline-none transition-colors"
+                  className="w-full px-3.5 py-2.5 bg-[#f8fafc] border border-[#dbe3e6] rounded-lg text-sm text-[#173039] focus:ring-2 focus:ring-[#2c88a2]/30 focus:border-[#2c88a2] outline-none transition-colors"
                 >
                   <option value="">{l.careTypePh}</option>
                   {careTypes.map((ct) => (
@@ -798,23 +798,23 @@ export default function BookingFormClient({ lang = 'en', defaultCentreSlug }: Pr
               </div>
 
               {error && (
-                <p className="text-xs text-red-600 bg-red-50 px-3 py-2 rounded-lg">{error}</p>
+                <p className="text-xs text-[#c1493f] bg-[#fbe9e9] px-3 py-2 rounded-lg">{error}</p>
               )}
 
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full bg-[#2E72B8] text-white py-3 rounded-xl font-bold text-sm hover:bg-[#245d9a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md mt-2"
+                className="w-full bg-[#2c88a2] text-white py-3 rounded-xl font-bold text-sm hover:bg-[#0b4a5e] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md mt-2"
               >
                 {submitting ? l.submitting : l.submit}
               </button>
             </div>
 
-            <p className="text-center text-[11px] text-gray-400 mt-3 flex items-center justify-center gap-2">
+            <p className="text-center text-[11px] text-[#9aa8ae] mt-3 flex items-center justify-center gap-2">
               <span>{l.trust1}</span>
-              <span className="text-gray-300">·</span>
+              <span className="text-[#dbe3e6]">·</span>
               <span>{l.trust2}</span>
-              <span className="text-gray-300">·</span>
+              <span className="text-[#dbe3e6]">·</span>
               <span>{l.trust3}</span>
             </p>
           </form>

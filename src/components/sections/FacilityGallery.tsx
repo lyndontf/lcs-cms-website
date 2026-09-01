@@ -1,3 +1,7 @@
+'use client';
+
+import { useSiteLang } from '@/lib/useSiteLang';
+
 type FacilityImage = { src: string; alt: string };
 
 const t = {
@@ -8,13 +12,14 @@ const t = {
 export default function FacilityGallery({
   images,
   centreName,
-  lang = 'en',
+  lang,
 }: {
   images: FacilityImage[];
   centreName: string;
   lang?: 'en' | 'zh';
 }) {
-  const l = t[lang];
+  const detected = useSiteLang();
+  const l = t[lang ?? detected];
   return (
     <section className="py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

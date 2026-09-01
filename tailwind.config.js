@@ -28,6 +28,17 @@ module.exports = {
           50: '#FEF7E6',
           500: '#FAB515',
         },
+        bloom: {
+          900: '#0e5a72',
+          700: '#2c88a2',
+          500: '#5faec1',
+          300: '#9bcfda',
+          50: '#eaf3f6',
+          ink: '#173039',
+          slate: '#33424a',
+          muted: '#7a8a92',
+          line: '#e4eaed',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],

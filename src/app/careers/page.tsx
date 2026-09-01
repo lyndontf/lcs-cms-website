@@ -8,13 +8,15 @@ import ContentRenderer from '@/components/ContentRenderer';
 
 export const revalidate = 60;
 
+// CMS-authored /careers is wired for GTA and the centre (Genesis Life Care) site,
+// which both have a real, current cms_pages row for this slug. Other sites (lcs,
+// glc-hire, project-deo) keep the hardcoded jobs-list experience below.
+const CMS_CAREERS_SITES = ['gta', 'centre'];
+
 export async function generateMetadata(): Promise<Metadata> {
   const baseUrl = await getCurrentSiteBaseUrl();
   const siteSlug = await getCurrentSiteSlug();
-  // CMS-authored /careers is currently only wired for GTA. Other sites (e.g. `centre`,
-  // which happens to have its own unrelated, currently-unreachable `careers` cms_pages
-  // row) intentionally keep the hardcoded experience below unless explicitly opted in.
-  const siteId = siteSlug === 'gta' ? await getCurrentSiteId() : null;
+  const siteId = CMS_CAREERS_SITES.includes(siteSlug || '') ? await getCurrentSiteId() : null;
   const cmsPage = siteId ? await getPageBySlug('careers', siteId || undefined, 'en') : null;
 
   if (cmsPage) {
@@ -61,14 +63,14 @@ function typeLabel(t: string): string {
 
 export default async function CareersPage() {
   const siteSlug = await getCurrentSiteSlug();
-  // See note in generateMetadata above — CMS-authored /careers is scoped to GTA only.
-  const siteId = siteSlug === 'gta' ? await getCurrentSiteId() : null;
+  // See CMS_CAREERS_SITES note in generateMetadata above.
+  const siteId = CMS_CAREERS_SITES.includes(siteSlug || '') ? await getCurrentSiteId() : null;
   const cmsPage = siteId ? await getPageBySlug('careers', siteId || undefined, 'en') : null;
 
   if (cmsPage) {
-    // Site has its own CMS-authored careers page (e.g. GTA). Render it with the
-    // same block logic as the generic catch-all: raw html/job_listings sequences
-    // render directly (no generic hero), anything else falls back to the
+    // Site has its own CMS-authored careers page (GTA or the centre site). Render it
+    // with the same block logic as the generic catch-all: raw html/job_listings
+    // sequences render directly (no generic hero), anything else falls back to the
     // standard hero + ContentRenderer treatment.
     if (isRawBlockSequence(cmsPage.content)) {
       return <CmsRawBlocks blocks={cmsPage.content} />;
@@ -106,27 +108,18 @@ export default async function CareersPage() {
   return (
     <article>
       {/* ─── HERO ─── */}
-      {/* Background-image hero matching the homepage pattern. force-white-text
-          beats the injected legacy stylesheet's !important colour rules, which
-          were rendering the hero copy dark-on-dark. */}
-      <section className="relative overflow-hidden force-white-text">
+      <section className="cms-hero relative bg-gradient-to-br from-primary-800 via-primary to-secondary overflow-hidden">
         <img
-          src="/images/careers-hero.webp"
+          src="/images/general/staff-care.jpg"
           alt=""
-          fetchPriority="high"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary/80 to-secondary/70" />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center">
-          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-[.14em] uppercase mb-4 text-white/80">
-            <span className="w-6 h-0.5 bg-gold rounded" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary/85 to-secondary/80" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center" style={{ color: '#ffffff' }}>
+          <h1 className="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-tight mb-6 max-w-3xl mx-auto" style={{ color: '#ffffff' }}>
             Careers
-            <span className="w-6 h-0.5 bg-gold rounded" />
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight mb-4 text-white">
-            Build Your Career in Care
           </h1>
-          <p className="text-base sm:text-lg leading-relaxed max-w-2xl mx-auto text-white/90">
+          <p className="text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto" style={{ color: '#ffffff' }}>
             Join a team that puts families first. Explore our current openings across nursing, caregiving, and support roles.
           </p>
         </div>

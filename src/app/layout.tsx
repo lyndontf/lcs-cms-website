@@ -1,50 +1,51 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Hanken_Grotesk } from 'next/font/google';
 import { headers } from 'next/headers';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import WhatsAppWidget from '@/components/WhatsAppWidget';
 import LayoutWrapper from '@/components/LayoutWrapper';
 import TrackingScript from '@/components/TrackingScript';
 import GtaOrgSchema from '@/components/GtaOrgSchema';
 import Script from 'next/script';
 import { centreNavEN } from '@/lib/nav';
-import { getMenus, getSiteSettings } from '@/lib/supabase';
-import { getCurrentSiteId, getCurrentSiteSlug, getCurrentSiteBaseUrl } from '@/lib/site-context';
+import { getSiteSettings, getPageBySlug } from '@/lib/supabase';
+import { getCurrentSiteId, getCurrentSiteSlug } from '@/lib/site-context';
+import { LangProvider } from '@/lib/LangContext';
+
+// A centre page that has been rebuilt as a single self-contained HTML block
+// (own header/footer, Bloom rebrand) embeds its own chrome — the shared
+// Header/Footer/WhatsApp widget below must not double up around it.
+async function isFullHtmlOverride(siteId: string | undefined, siteSlug: string, pathname: string) {
+  if (siteSlug !== 'centre') return false;
+  const slug = pathname === '/' || pathname === '' ? 'home' : pathname.replace(/^\/+/, '');
+  if (!slug) return false;
+  const page = await getPageBySlug(slug, siteId);
+  return !!(page && page.content?.length === 1 && page.content[0].type === 'html');
+}
 
 export const revalidate = 30;
 
 const inter = Inter({ subsets: ['latin'] });
+const hanken = Hanken_Grotesk({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'] });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const [siteId, siteSlug] = await Promise.all([getCurrentSiteId(), getCurrentSiteSlug()]);
+  const [siteId] = await Promise.all([getCurrentSiteId(), getCurrentSiteSlug()]);
   const settings = await getSiteSettings(siteId || undefined);
   const defaults = settings?.seo_defaults || {};
 
-  // Reciprocal en/zh hreflang for the centre site only (it is the only site with a /zh edition).
-  // ZH route files set no per-page `alternates`, so these layout-level values apply to them and
-  // provide the ZH->EN return tags that were previously missing. EN pages set their own
-  // `alternates`, which override these — so EN behaviour is unchanged.
-  let alternates: Metadata['alternates'] | undefined = undefined;
-  if (siteSlug === 'centre') {
-    const baseUrl = await getCurrentSiteBaseUrl();
-    const headersList = await headers();
-    const pathname = headersList.get('x-pathname') || headersList.get('x-invoke-path') || '';
-    if (pathname) {
-      const isZh = pathname === '/zh' || pathname.startsWith('/zh/');
-      const enPath = isZh ? (pathname.replace(/^\/zh/, '') || '/') : pathname;
-      const zhPath = isZh ? pathname : (pathname === '/' ? '/zh' : '/zh' + pathname);
-      const enUrl = baseUrl + (enPath === '/' ? '' : enPath);
-      const zhUrl = baseUrl + zhPath;
-      alternates = {
-        canonical: baseUrl + (pathname === '/' ? '' : pathname),
-        languages: { en: enUrl, 'zh-Hans': zhUrl, 'x-default': enUrl },
-      };
-    }
-  }
-
   const siteName = settings?.site_name || 'Genesis Life Care';
   const description = defaults.default_description || 'Quality healthcare and aged care services in Malaysia';
+
+  // og_image_url is a dedicated 1200x630 social-preview asset. logo_url is the
+  // small header wordmark (often a wide ~4:1 crop) — falls back to it only
+  // when a site hasn't had a proper share image made yet, since a link
+  // preview is still better with something than nothing.
+  const shareImageUrl = settings?.og_image_url || settings?.logo_url || undefined;
+  const shareImage = shareImageUrl
+    ? [{ url: shareImageUrl, width: 1200, height: 630, alt: siteName }]
+    : undefined;
 
   return {
     title: {
@@ -53,19 +54,18 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description,
     icons: settings?.favicon_url ? [{ url: settings.favicon_url }] : undefined,
-    alternates,
     openGraph: {
       siteName,
       title: siteName,
       description,
       type: 'website',
-      images: settings?.logo_url ? [{ url: settings.logo_url }] : undefined,
+      images: shareImage,
     },
     twitter: {
       card: 'summary_large_image',
       title: siteName,
       description,
-      images: settings?.logo_url ? [settings.logo_url] : undefined,
+      images: shareImageUrl ? [shareImageUrl] : undefined,
     },
   };
 }
@@ -75,24 +75,34 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [siteId, siteSlug] = await Promise.all([getCurrentSiteId(), getCurrentSiteSlug()]);
+  const [siteId, siteSlug, headersList] = await Promise.all([
+    getCurrentSiteId(),
+    getCurrentSiteSlug(),
+    headers(),
+  ]);
   const sid = siteId || undefined;
   const isCmsSite = siteSlug !== 'centre';
-  const [settings, menus] = await Promise.all([getSiteSettings(sid), getMenus(sid)]);
-  const headerMenu = menus.find((m) => m.location === 'header');
-  const footerMenu = menus.find((m) => m.location === 'footer');
+  const settings = await getSiteSettings(sid);
 
-  // Detect zh/ path — zh/layout.tsx provides its own Mandarin header/footer
-  const headersList = await headers();
   const pathname = headersList.get('x-pathname') || headersList.get('x-invoke-path') || headersList.get('x-nextjs-page') || '';
-  const isZh = pathname.startsWith('/zh');
   // Agency-branded pages render their own GlcHireNav — suppress the site
   // header so visitors don't see two stacked menu bars.
   const isAgencyPage = pathname === '/for-workers' || pathname.startsWith('/for-workers/')
       || pathname === '/biodata' || pathname.startsWith('/biodata/');
+  const isFullHtmlPage = !isAgencyPage && (await isFullHtmlOverride(sid, siteSlug, pathname));
+  // Header/Footer/WhatsApp widget below use the Bloom rebrand (Hanken Grotesk,
+  // glc-* palette) — only the centre site's own-chrome pages get it.
+  const isBloom = !isCmsSite && !isAgencyPage && !isFullHtmlPage;
+  // /zh/* routes (centre site only) render the same shared components as their
+  // English counterparts but need Header/nav and every page body to default to
+  // Chinese on first paint — forcing it here (not just inside each /zh page's own
+  // subtree) is what makes Header, which this layout renders as a sibling of
+  // {children}, agree with the page body instead of showing English nav on a
+  // Chinese page.
+  const isZhRoute = pathname === '/zh' || pathname.startsWith('/zh/');
 
   return (
-    <html lang={isZh ? 'zh-Hans' : 'en'} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head suppressHydrationWarning>
         {/* custom_head_html is injected from <body> below — placing this inline script in <head> via the App Router renders it as visible text */}
         {settings?.google_analytics_id && (
@@ -109,19 +119,43 @@ export default async function RootLayout({
           </>
         )}
       </head>
-      <body className={`${inter.className} flex flex-col min-h-screen`}>
+      <body className={`${isFullHtmlPage ? '' : isBloom ? hanken.className : inter.className} flex flex-col min-h-screen`}>
         {siteSlug === 'gta' && <GtaOrgSchema />}
-        {!isCmsSite && !isZh && !isAgencyPage && <Header settings={settings} menuItems={centreNavEN} />}
-        <LayoutWrapper
-          isCmsSite={isCmsSite}
-          isZh={isZh}
-          // Agency-branded pages render their own GLC Hire footer — suppress
-          // the site footer so visitors don't see two stacked footers.
-          footer={isAgencyPage ? <></> : <Footer settings={settings} menuItems={footerMenu?.items || headerMenu?.items || []} />}
-        >
-          {children}
-        </LayoutWrapper>
+        <LangProvider initialLang={isZhRoute ? 'zh' : 'en'}>
+          {!isCmsSite && !isAgencyPage && !isFullHtmlPage && <Header settings={settings} menuItems={centreNavEN} />}
+          <LayoutWrapper
+            isCmsSite={isCmsSite}
+            isFullHtmlPage={isFullHtmlPage}
+            // Agency-branded pages render their own GLC Hire footer — suppress
+            // the site footer so visitors don't see two stacked footers.
+            footer={isAgencyPage ? <></> : <Footer settings={settings} />}
+          >
+            {children}
+          </LayoutWrapper>
+          {!isCmsSite && !isFullHtmlPage && (
+            <WhatsAppWidget phone={(settings?.contact_phone || '60193250457').replace(/[^\d]/g, '')} />
+          )}
+        </LangProvider>
         <TrackingScript />
+        {/* Hides phone numbers, email addresses, and the WhatsApp widget for
+            visitors from countries flagged in middleware.ts (scam-call-origin
+            advisories), via the glc-contact-blocked cookie it sets. Runs on
+            every page — covers both shared React components (Footer, Header,
+            GlcHireNav, WhatsAppWidget, etc.) and every page's own embedded
+            raw-HTML copy (Bloom/GLC-Hire full-HTML-override pages), so this
+            never needs per-page edits. tel:/mailto:/wa.me elements are hidden
+            outright (their parent too, when the parent has no other text —
+            e.g. an <li> whose only content is an icon + the link) rather than
+            just click-blocked, since the ask is to hide the info, not just
+            make it inert. A MutationObserver re-applies this to anything
+            rendered after the initial pass (e.g. client-hydrated widgets). */}
+        <Script
+          id="contact-region-gate"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){function blocked(){return document.cookie.split('; ').some(function(c){return c.indexOf('glc-contact-blocked=1')===0;});}if(!blocked())return;var SEL='a[href*="wa.me/"],a[href*="api.whatsapp.com"],a[href^="tel:"],a[href^="mailto:"]';var WIDGET_SEL='.glc-wa-fab-wrap';function hide(a){var p=a.parentElement;if(p&&p!==document.body&&p.innerText.trim()===a.innerText.trim()){p.style.display='none';}else{a.style.display='none';}}function sweep(root){(root||document).querySelectorAll(WIDGET_SEL).forEach(function(w){w.style.display='none';});(root||document).querySelectorAll(SEL).forEach(hide);}sweep();document.addEventListener('click',function(e){var l=e.target.closest(SEL);if(l){e.preventDefault();e.stopPropagation();}},true);var o=window.open;window.open=function(u){if(typeof u==='string'&&(u.indexOf('wa.me/')!==-1||u.indexOf('api.whatsapp.com')!==-1||u.indexOf('tel:')===0||u.indexOf('mailto:')===0))return null;return o.apply(window,arguments);};new MutationObserver(function(muts){muts.forEach(function(m){m.addedNodes.forEach(function(n){if(n.nodeType!==1)return;if(n.matches&&n.matches(WIDGET_SEL)){n.style.display='none';return;}if(n.matches&&n.matches(SEL))hide(n);if(n.querySelectorAll)sweep(n);});});}).observe(document.body,{childList:true,subtree:true});})();`,
+          }}
+        />
         {settings?.custom_head_html && (
           <Script
             id="custom-head-inject"
@@ -130,19 +164,6 @@ export default async function RootLayout({
               __html: `(function(){document.head.querySelectorAll('[data-custom-head]').forEach(function(e){e.remove()});var t=document.createElement('template');t.innerHTML=${JSON.stringify(settings.custom_head_html)};Array.from(t.content.children).forEach(function(el){el.setAttribute('data-custom-head','');document.head.appendChild(el)});})();`,
             }}
           />
-        )}
-        {!isCmsSite && (
-          <a
-            href="https://wa.me/60193250457"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp us"
-            className="fixed bottom-5 right-5 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:scale-105 transition-transform"
-          >
-            <svg viewBox="0 0 32 32" className="w-8 h-8" fill="#fff" aria-hidden="true">
-              <path d="M16.001 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.59 4.46 1.71 6.4L3.2 28.8l6.57-1.72a12.74 12.74 0 0 0 6.23 1.62h.01c7.06 0 12.8-5.74 12.8-12.8s-5.75-12.7-12.81-12.7zm0 23.05h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-3.9 1.02 1.04-3.8-.25-.39a10.56 10.56 0 0 1-1.62-5.64c0-5.86 4.77-10.63 10.64-10.63 2.84 0 5.5 1.11 7.51 3.12a10.55 10.55 0 0 1 3.11 7.52c0 5.87-4.77 10.64-10.63 10.64zm5.83-7.96c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.71.16-.21.32-.82 1.04-1 1.25-.18.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.54-.71-.55l-.61-.01c-.21 0-.55.08-.84.4-.29.32-1.1 1.08-1.1 2.63s1.13 3.05 1.29 3.26c.16.21 2.22 3.39 5.38 4.76.75.32 1.34.51 1.8.66.76.24 1.44.21 1.98.13.6-.09 1.89-.77 2.16-1.52.27-.74.27-1.38.19-1.51-.08-.13-.29-.21-.61-.37z"/>
-            </svg>
-          </a>
         )}
         {settings?.google_ads_id && (
           <Script
@@ -153,7 +174,7 @@ export default async function RootLayout({
             }}
           />
         )}
-        {settings?.custom_css && (
+        {settings?.custom_css && !isFullHtmlPage && !isBloom && (
           <style dangerouslySetInnerHTML={{ __html: settings.custom_css }} />
         )}
       </body>

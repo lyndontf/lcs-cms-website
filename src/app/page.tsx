@@ -4,6 +4,7 @@ import { getPageBySlug, getSiteSettings, getPublishedPosts } from '@/lib/supabas
 import { getCurrentSiteId, getCurrentSiteSlug, getCurrentSiteBaseUrl } from '@/lib/site-context';
 import ContentRenderer from '@/components/ContentRenderer';
 import QuickEnquiryCard from '@/components/QuickEnquiryCard';
+import CmsHtmlRenderer from '@/components/CmsHtmlRenderer';
 
 export async function generateMetadata(): Promise<Metadata> {
   const [siteId, siteSlug] = await Promise.all([getCurrentSiteId(), getCurrentSiteSlug()]);
@@ -11,12 +12,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
   if (siteSlug === 'centre') {
     return {
-      title: 'Nursing Home & Elderly Care in Malaysia | Genesis Life Care',
+      title: { absolute: 'Nursing Home & Elderly Care in Malaysia | Genesis Life Care' },
       description:
         '5 government-approved Genesis Life Care nursing homes across Klang Valley & Johor Bahru. 24/7 nursing, dementia & stroke care. Rated 4.8★. Book a free visit.',
       alternates: {
         canonical: 'https://genesiscare.com.my/',
-        languages: { 'zh-Hans': 'https://genesiscare.com.my/zh' },
       },
       openGraph: {
         title: 'Genesis Life Care — Nursing Home & Elderly Care in Malaysia',
@@ -67,7 +67,9 @@ export async function generateMetadata(): Promise<Metadata> {
     page?.meta_description ||
     seoDefaults.default_description ||
     'Quality healthcare and aged care services in Malaysia';
-  const ogImage = page?.featured_image_url || undefined;
+  // Falls back to the site's dedicated share image (or its logo) when the
+  // homepage has no featured image of its own, so link previews never go bare.
+  const ogImage = page?.featured_image_url || settings?.og_image_url || settings?.logo_url || undefined;
   return {
     title,
     description,
@@ -79,7 +81,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: settings?.site_name || undefined,
       locale: 'en_MY',
       type: 'website',
-      images: ogImage ? [{ url: ogImage, width: 1200, height: 630 }] : undefined,
+      images: ogImage ? [{ url: ogImage, width: 1200, height: 630, alt: title }] : undefined,
     },
     twitter: {
       card: 'summary_large_image',
@@ -109,10 +111,7 @@ export default async function HomePage() {
           <>
             {/* Check if content is a single raw HTML block (full-page HTML) */}
             {page.content.length === 1 && page.content[0].type === 'html' ? (
-              <div
-                className="cms-html-page"
-                dangerouslySetInnerHTML={{ __html: page.content[0].content || '' }}
-              />
+              <CmsHtmlRenderer html={page.content[0].content || ''} />
             ) : (
               <article>
                 {/* Hero section */}
@@ -309,6 +308,12 @@ export default async function HomePage() {
       },
     ],
   };
+
+  // CMS override: if 'home' has been rebuilt as a single self-contained HTML
+  // block (full rebrand), render it instead of the hardcoded layout below.
+  if (page && page.content?.length === 1 && page.content[0].type === 'html') {
+    return <CmsHtmlRenderer html={page.content[0].content || ''} />;
+  }
 
   return (
     <>

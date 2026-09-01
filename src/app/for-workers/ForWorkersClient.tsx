@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { submitBiodataApplication, uploadBiodataPhoto } from '@/lib/supabase';
+import { submitBiodataApplication, uploadBiodataPhoto, type BiodataPreviousEmployer } from '@/lib/supabase';
 
 const GLC_ORG_ID = '09db6826-ee70-4e6a-a8b6-f19667cfd025';
 
@@ -21,8 +21,8 @@ const FOOD_OPTIONS = ['', 'No Preference', 'Halal', 'Vegetarian', 'Non-Vegetaria
 const COMMON_LANGUAGES = ['English', 'Bahasa Malaysia', 'Bahasa Indonesia', 'Mandarin', 'Cantonese', 'Hokkien', 'Tamil', 'Filipino/Tagalog', 'Hindi'];
 const LANG_LEVELS = ['Basic', 'Conversational', 'Fluent'];
 
-const INPUT_CLASS = 'w-full h-[42px] px-3 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2E72B8]/20 focus:border-[#2E72B8] bg-white';
-const LABEL_CLASS = 'block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5';
+const INPUT_CLASS = 'glc-input';
+const LABEL_CLASS = 'glc-label';
 
 export default function ForWorkersClient() {
   // Personal info
@@ -38,11 +38,29 @@ export default function ForWorkersClient() {
   const [heightCm, setHeightCm] = useState('');
   const [weightKg, setWeightKg] = useState('');
   const [foodPreference, setFoodPreference] = useState('');
+  const [diet, setDiet] = useState('');
+  const [siblingsCount, setSiblingsCount] = useState('');
+  const [siblingPosition, setSiblingPosition] = useState('');
 
   // Languages
   const [languages, setLanguages] = useState<{ name: string; level: string }[]>([]);
   const [langName, setLangName] = useState('');
   const [langLevel, setLangLevel] = useState('Conversational');
+
+  // Previous employers
+  const [previousEmployers, setPreviousEmployers] = useState<BiodataPreviousEmployer[]>([]);
+
+  function addEmployer() {
+    setPreviousEmployers([...previousEmployers, {}]);
+  }
+
+  function removeEmployer(index: number) {
+    setPreviousEmployers(previousEmployers.filter((_, i) => i !== index));
+  }
+
+  function updateEmployer(index: number, key: keyof BiodataPreviousEmployer, value: string) {
+    setPreviousEmployers(previousEmployers.map((emp, i) => (i === index ? { ...emp, [key]: value } : emp)));
+  }
 
   // Photo
   const [photoFile, setPhotoFile] = useState<File | null>(null);
@@ -133,7 +151,11 @@ export default function ForWorkersClient() {
       height_cm: heightCm ? parseFloat(heightCm) : undefined,
       weight_kg: weightKg ? parseFloat(weightKg) : undefined,
       food_preference: foodPreference || undefined,
+      diet: diet.trim() || undefined,
+      siblings_count: siblingsCount ? parseInt(siblingsCount, 10) : undefined,
+      sibling_position: siblingPosition ? parseInt(siblingPosition, 10) : undefined,
       languages: languages.length > 0 ? languages : undefined,
+      previous_employers: previousEmployers.length > 0 ? previousEmployers : undefined,
       cover_letter: coverLetter.trim() || undefined,
       photo_url: photoUrl,
       organization_id: GLC_ORG_ID,
@@ -149,34 +171,30 @@ export default function ForWorkersClient() {
 
   if (submitted) {
     return (
-      <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-8 text-center">
-        <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg className="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="glc-card glc-center" style={{ background: 'var(--glc-teal-soft)', borderColor: '#CDEDEF', padding: 32 }}>
+        <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(30,158,106,.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+          <svg className="w-8 h-8" fill="none" stroke="var(--glc-success)" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-xl font-bold text-gray-900 mb-2">Application Submitted!</h3>
-        <p className="text-gray-600 mb-4">
+        <h3 style={{ fontSize: 'var(--glc-fs-h3)', marginBottom: 8 }}>Application Submitted!</h3>
+        <p style={{ color: 'var(--glc-slate)', marginBottom: 16 }}>
           Thank you for your interest. Our team will review your application and contact you within 3 working days.
         </p>
-        <p className="text-sm text-gray-500">
+        <p style={{ fontSize: 'var(--glc-fs-sm)', color: 'var(--glc-slate-soft)' }}>
           If you have any questions, contact us at{' '}
-          <a href="tel:+60193250457" className="text-[#2E72B8] font-semibold hover:underline">
-            +6019 325 0457
-          </a>{' '}
+          <a href="tel:+60193250457">+6019 325 0457</a>{' '}
           or{' '}
-          <a href="mailto:enquiries@genesiscare.com.my" className="text-[#2E72B8] font-semibold hover:underline">
-            enquiries@genesiscare.com.my
-          </a>
+          <a href="mailto:enquiries@genesiscare.com.my">enquiries@genesiscare.com.my</a>
         </p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 sm:p-8 space-y-6">
+    <form onSubmit={handleSubmit} className="glc-card space-y-6">
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3">
+        <div style={{ background: '#FBEAE7', border: '1px solid #F3C7BF', color: 'var(--glc-danger)', fontSize: 'var(--glc-fs-sm)', borderRadius: 'var(--glc-r)', padding: '12px 16px' }}>
           {error}
         </div>
       )}
@@ -190,12 +208,12 @@ export default function ForWorkersClient() {
               <img
                 src={photoPreview}
                 alt="Preview"
-                className="w-20 h-20 rounded-full object-cover border-2 border-gray-200"
+                style={{ width: 80, height: 80, borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--glc-line)' }}
               />
               <button
                 type="button"
                 onClick={removePhoto}
-                className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-xs hover:bg-red-600"
+                style={{ position: 'absolute', top: -4, right: -4, width: 20, height: 20, background: 'var(--glc-danger)', color: '#fff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, border: 0, cursor: 'pointer' }}
               >
                 &times;
               </button>
@@ -203,23 +221,23 @@ export default function ForWorkersClient() {
           ) : (
             <div
               onClick={() => fileInputRef.current?.click()}
-              className="w-20 h-20 rounded-full bg-gray-100 border-2 border-dashed border-gray-300 flex flex-col items-center justify-center cursor-pointer hover:border-[#2E72B8] hover:bg-blue-50/50 transition-colors"
+              style={{ width: 80, height: 80, borderRadius: '50%', background: 'var(--glc-cloud)', border: '2px dashed var(--glc-line)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
             >
-              <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="var(--glc-slate-soft)" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             </div>
           )}
-          <div className="text-sm text-gray-500">
+          <div style={{ fontSize: 'var(--glc-fs-sm)', color: 'var(--glc-slate-soft)' }}>
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="text-[#2E72B8] font-semibold hover:underline"
+              style={{ color: 'var(--glc-teal)', fontWeight: 700, background: 'none', border: 0, cursor: 'pointer', padding: 0 }}
             >
               {photoPreview ? 'Change photo' : 'Upload a photo'}
             </button>
-            <p className="text-xs text-gray-400 mt-0.5">JPG or PNG, max 5MB</p>
+            <p style={{ fontSize: 'var(--glc-fs-xs)', color: 'var(--glc-slate-soft)', marginTop: 2 }}>JPG or PNG, max 5MB</p>
           </div>
           <input
             ref={fileInputRef}
@@ -233,8 +251,8 @@ export default function ForWorkersClient() {
 
       {/* ─── SECTION: CONTACT INFO ─── */}
       <div>
-        <h3 className="text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
-          <svg className="w-4 h-4 text-[#2E72B8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+        <h3 style={{ fontSize: 'var(--glc-fs-sm)', fontWeight: 700, color: 'var(--glc-ink)', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 8 }}>
+          <svg className="w-4 h-4" stroke="var(--glc-teal)" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
           Contact Information
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -261,8 +279,8 @@ export default function ForWorkersClient() {
 
       {/* ─── SECTION: PERSONAL DETAILS ─── */}
       <div>
-        <h3 className="text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
-          <svg className="w-4 h-4 text-[#2E72B8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+        <h3 style={{ fontSize: 'var(--glc-fs-sm)', fontWeight: 700, color: 'var(--glc-ink)', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 8 }}>
+          <svg className="w-4 h-4" stroke="var(--glc-teal)" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
           Personal Details
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -306,21 +324,33 @@ export default function ForWorkersClient() {
             <label className={LABEL_CLASS}>Weight (kg)</label>
             <input type="number" value={weightKg} onChange={(e) => setWeightKg(e.target.value)} placeholder="e.g. 55" min="30" max="150" className={INPUT_CLASS} />
           </div>
+          <div>
+            <label className={LABEL_CLASS}>Diet</label>
+            <input type="text" value={diet} onChange={(e) => setDiet(e.target.value)} placeholder="e.g. Vegetarian" className={INPUT_CLASS} />
+          </div>
+          <div>
+            <label className={LABEL_CLASS}>Siblings Count</label>
+            <input type="number" value={siblingsCount} onChange={(e) => setSiblingsCount(e.target.value)} placeholder="e.g. 3" min="0" className={INPUT_CLASS} />
+          </div>
+          <div>
+            <label className={LABEL_CLASS}>Sibling Position</label>
+            <input type="number" value={siblingPosition} onChange={(e) => setSiblingPosition(e.target.value)} placeholder="e.g. 2 = second-born" min="1" className={INPUT_CLASS} />
+          </div>
         </div>
       </div>
 
       {/* ─── SECTION: LANGUAGES ─── */}
       <div>
-        <h3 className="text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
-          <svg className="w-4 h-4 text-[#2E72B8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg>
+        <h3 style={{ fontSize: 'var(--glc-fs-sm)', fontWeight: 700, color: 'var(--glc-ink)', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 8 }}>
+          <svg className="w-4 h-4" stroke="var(--glc-teal)" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg>
           Languages Spoken
         </h3>
         {languages.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-3">
             {languages.map((l, i) => (
-              <span key={i} className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100">
+              <span key={i} className="glc-tag" style={{ gap: 6 }}>
                 {l.name} ({l.level})
-                <button type="button" onClick={() => removeLanguage(i)} className="ml-1 text-blue-400 hover:text-red-500">&times;</button>
+                <button type="button" onClick={() => removeLanguage(i)} style={{ marginLeft: 4, background: 'none', border: 0, cursor: 'pointer', color: 'inherit', fontWeight: 700 }}>&times;</button>
               </span>
             ))}
           </div>
@@ -339,7 +369,7 @@ export default function ForWorkersClient() {
           <button
             type="button"
             onClick={addLanguage}
-            className="h-[42px] px-4 rounded-lg text-sm font-bold text-white bg-[#2E72B8] hover:bg-[#245d99] transition-colors flex-shrink-0"
+            className="glc-btn glc-btn--primary flex-shrink-0"
           >
             Add
           </button>
@@ -355,6 +385,40 @@ export default function ForWorkersClient() {
         )}
       </div>
 
+      {/* ─── SECTION: PREVIOUS EMPLOYERS ─── */}
+      <div>
+        <div className="flex items-center justify-between" style={{ marginBottom: 12 }}>
+          <h3 style={{ fontSize: 'var(--glc-fs-sm)', fontWeight: 700, color: 'var(--glc-ink)', display: 'flex', alignItems: 'center', gap: 8 }}>
+            <svg className="w-4 h-4" stroke="var(--glc-teal)" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+            Previous Employers
+          </h3>
+          <button type="button" onClick={addEmployer} style={{ fontSize: 'var(--glc-fs-xs)', fontWeight: 700, color: 'var(--glc-teal)', background: 'none', border: 0, cursor: 'pointer', padding: 0 }}>
+            + Add Employer
+          </button>
+        </div>
+        {previousEmployers.length === 0 && (
+          <p style={{ fontSize: 'var(--glc-fs-xs)', color: 'var(--glc-slate-soft)', fontStyle: 'italic' }}>No previous employers to add (optional).</p>
+        )}
+        {previousEmployers.map((emp, i) => (
+          <div key={i} style={{ background: 'var(--glc-cloud)', borderRadius: 'var(--glc-r)', border: '1px solid var(--glc-line)', padding: 12, marginBottom: 10 }}>
+            <div className="flex items-center justify-between" style={{ marginBottom: 8 }}>
+              <span style={{ fontSize: 'var(--glc-fs-sm)', fontWeight: 700, color: 'var(--glc-ink)' }}>Employer {i + 1}</span>
+              <button type="button" onClick={() => removeEmployer(i)} style={{ background: 'none', border: 0, cursor: 'pointer', color: 'var(--glc-danger)', fontWeight: 700 }}>&times;</button>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <input type="text" value={emp.country || ''} onChange={(e) => updateEmployer(i, 'country', e.target.value)} placeholder="Country" className={INPUT_CLASS} />
+              <input type="text" value={emp.housing_type || ''} onChange={(e) => updateEmployer(i, 'housing_type', e.target.value)} placeholder="Housing Type" className={INPUT_CLASS} />
+              <input type="text" value={emp.period_from || ''} onChange={(e) => updateEmployer(i, 'period_from', e.target.value)} placeholder="Period From (e.g. 2019)" className={INPUT_CLASS} />
+              <input type="text" value={emp.period_to || ''} onChange={(e) => updateEmployer(i, 'period_to', e.target.value)} placeholder="Period To (e.g. 2021)" className={INPUT_CLASS} />
+              <input type="text" value={emp.family_composition || ''} onChange={(e) => updateEmployer(i, 'family_composition', e.target.value)} placeholder="Family Composition" className={`${INPUT_CLASS} sm:col-span-2`} />
+              <input type="text" value={emp.duties || ''} onChange={(e) => updateEmployer(i, 'duties', e.target.value)} placeholder="Duties" className={`${INPUT_CLASS} sm:col-span-2`} />
+              <input type="text" value={emp.termination_reason || ''} onChange={(e) => updateEmployer(i, 'termination_reason', e.target.value)} placeholder="Termination Reason" className={INPUT_CLASS} />
+              <input type="text" value={emp.remarks || ''} onChange={(e) => updateEmployer(i, 'remarks', e.target.value)} placeholder="Remarks" className={INPUT_CLASS} />
+            </div>
+          </div>
+        ))}
+      </div>
+
       {/* ─── ABOUT YOURSELF ─── */}
       <div>
         <label className={LABEL_CLASS}>Tell Us About Yourself</label>
@@ -363,19 +427,20 @@ export default function ForWorkersClient() {
           onChange={(e) => setCoverLetter(e.target.value)}
           placeholder="Briefly describe your experience, skills, and what type of work you're looking for..."
           rows={4}
-          className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2E72B8]/20 focus:border-[#2E72B8] resize-none"
+          className="glc-textarea"
         />
       </div>
 
       <button
         type="submit"
         disabled={submitting}
-        className="w-full py-3 rounded-lg text-sm font-bold text-white bg-[#2E72B8] hover:bg-[#245d99] disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
+        className="glc-btn glc-btn--primary glc-btn--block"
+        style={submitting ? { opacity: 0.5, cursor: 'not-allowed' } : undefined}
       >
         {submitting ? 'Submitting...' : 'Submit Application'}
       </button>
 
-      <p className="text-xs text-gray-400 text-center">
+      <p style={{ fontSize: 'var(--glc-fs-xs)', color: 'var(--glc-slate-soft)', textAlign: 'center' }}>
         By submitting this form, you agree to allow us to store your information for placement purposes.
         We will never share your data with unauthorized third parties.
       </p>

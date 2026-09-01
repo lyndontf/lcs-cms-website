@@ -7,14 +7,42 @@ type Area = {
   slug: string;
   centre: string;
   blurb: string;
+  extra?: { heading: string; paragraphs: string[] };
+  extraFaqs?: { q: string; a: string }[];
 };
 
 const AREAS: Record<string, Area> = {
   kajang: { name: 'Kajang', slug: 'kajang', centre: '/nursing-home-kajang', blurb: 'the Kajang and Semenyih area of southern Klang Valley' },
   'petaling-jaya': { name: 'Petaling Jaya', slug: 'petaling-jaya', centre: '/nursing-home-in-petaling-jaya', blurb: 'Petaling Jaya and the surrounding Klang Valley' },
   klang: { name: 'Klang', slug: 'klang', centre: '/nursing-home-in-klang', blurb: 'Klang and the western Klang Valley' },
-  puchong: { name: 'Puchong', slug: 'puchong', centre: '/nursing-home-in-puchong', blurb: 'Puchong and the southern Klang Valley' },
-  'johor-bahru': { name: 'Johor Bahru', slug: 'johor-bahru', centre: '/nursing-home-in-johor-bahru', blurb: 'Johor Bahru and the southern region' },
+  puchong: {
+    name: 'Puchong', slug: 'puchong', centre: '/nursing-home-in-puchong', blurb: 'Puchong and the southern Klang Valley',
+    extra: {
+      heading: 'Comparing nursing homes in Puchong',
+      paragraphs: [
+        'Puchong has a number of nursing homes to choose from, and the right one for your family depends on how each compares on price transparency, real family reviews, and how easily you can stay in touch with the care team.',
+        'Ask every home you visit for their fees in writing, not just a verbal quote — a clear, itemised quote makes it far easier to compare homes fairly. Genesis Life Care publishes its pricing upfront, from RM2,500/month, with no hidden fees.',
+        'Check independent reviews (for example on Google) rather than relying only on a home’s own testimonials, and ask whether the home gives families a way to see day-to-day updates on their loved one’s care — not just what’s shared at scheduled visits.',
+      ],
+    },
+    extraFaqs: [
+      { q: 'How do I compare nursing homes in Puchong?', a: 'Check three things at every home you visit: whether pricing is given to you clearly and in writing, whether you can find independent reviews from other families (not just testimonials on their own site), and whether they offer a way to stay updated on your loved one’s care day-to-day. Genesis Life Care in Puchong publishes pricing from RM2,500/month and gives families updates through our care app.' },
+    ],
+  },
+  'johor-bahru': {
+    name: 'Johor Bahru', slug: 'johor-bahru', centre: '/nursing-home-in-johor-bahru', blurb: 'Johor Bahru and the southern region',
+    extra: {
+      heading: 'Comparing nursing homes in Johor Bahru',
+      paragraphs: [
+        'Johor Bahru’s eldercare options are growing, with new centres opening across the city. When comparing, look beyond location alone — check licensing, staff-to-resident ratios, and exactly what’s included in the monthly fee before deciding.',
+        'Genesis Life Care Johor Bahru has been operating since 2023 in Taman Century, with published pricing from RM2,500/month and 24-hour nursing care.',
+        'Wherever in JB you’re located — including areas like Austin Heights, Tebrau or Skudai — a free, no-obligation assessment lets you compare care quality and cost against any home near you.',
+      ],
+    },
+    extraFaqs: [
+      { q: 'Are there nursing homes in other parts of Johor Bahru, like Austin Heights or Tebrau?', a: 'Johor Bahru has nursing homes across different neighbourhoods. Genesis Life Care’s centre is based in Taman Century and welcomes families from across JB and the wider southern region for a free assessment — so you can compare options no matter where in JB you’re located.' },
+    ],
+  },
 };
 
 export function generateStaticParams() {
@@ -29,7 +57,6 @@ export function generateMetadata({ params }: { params: { area: string } }): Meta
     description: `A practical guide to choosing a nursing home in ${a.name}: what to look for, the questions to ask on a visit, and how to compare care and cost. Genesis Life Care operates a trusted centre in ${a.name}.`,
     alternates: {
       canonical: `https://genesiscare.com.my/nursing-home-guide/${a.slug}`,
-      languages: { 'zh-Hans': `https://genesiscare.com.my/zh/nursing-home-guide/${a.slug}` },
     },
     openGraph: {
       title: `How to Choose a Nursing Home in ${a.name} | Genesis Life Care`,
@@ -71,6 +98,7 @@ export default function NursingHomeGuide({ params }: { params: { area: string } 
     { q: `How much does a nursing home in ${a.name} cost?`, a: `Fees depend on the level of care, room type and facility. As a general guide, private nursing home fees in Malaysia typically range from around RM2,500 to RM5,000+ per month. Genesis Life Care fees start from RM2,500/month. See our full nursing home cost guide for details.` },
     { q: `Does Genesis have a nursing home in ${a.name}?`, a: `Yes. Genesis Life Care operates a centre serving ${a.blurb}, with 24-hour nursing, dementia and post-stroke care, and transparent pricing.` },
     { q: `How do I know if a home is right for my parent?`, a: `Visit in person, use the checklist and questions on this page, and ask for a free assessment. A good home will welcome your questions and let you see the actual living areas.` },
+    ...(a.extraFaqs ?? []),
   ];
 
   return (
@@ -174,8 +202,22 @@ export default function NursingHomeGuide({ params }: { params: { area: string } 
         </div>
       </section>
 
+      {/* COMPARISON GUIDANCE (area-specific) */}
+      {a.extra && (
+        <section className="py-16 sm:py-20 bg-gray-50">
+          <div className="max-w-3xl mx-auto px-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-8 text-center">{a.extra.heading}</h2>
+            <div className="space-y-5">
+              {a.extra.paragraphs.map((p, i) => (
+                <p key={i} className="text-gray-700 leading-relaxed bg-white border border-gray-100 rounded-xl px-5 py-4 shadow-sm">{p}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* FAQ */}
-      <section className="py-16 sm:py-20 bg-gray-50">
+      <section className={`py-16 sm:py-20 ${a.extra ? '' : 'bg-gray-50'}`}>
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-10 text-center">FAQ</h2>
           <div className="space-y-4">

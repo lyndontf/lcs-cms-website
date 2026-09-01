@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <g transform="translate(60 60) rotate(0) translate(-20 -36)"><path d="M20,36 C8,24 0,16 0,10 C0,4 4,0 10,0 C15,0 18,3 20,6 C22,3 25,0 30,0 C36,0 40,4 40,10 C40,16 32,24 20,36 Z" fill="#5faec1"></path></g>
+  <g transform="translate(60 60) rotate(90) translate(-20 -36)"><path d="M20,36 C8,24 0,16 0,10 C0,4 4,0 10,0 C15,0 18,3 20,6 C22,3 25,0 30,0 C36,0 40,4 40,10 C40,16 32,24 20,36 Z" fill="#7fc1d0"></path></g>
+  <g transform="translate(60 60) rotate(180) translate(-20 -36)"><path d="M20,36 C8,24 0,16 0,10 C0,4 4,0 10,0 C15,0 18,3 20,6 C22,3 25,0 30,0 C36,0 40,4 40,10 C40,16 32,24 20,36 Z" fill="#a9d8e1"></path></g>
+  <g transform="translate(60 60) rotate(270) translate(-20 -36)"><path d="M20,36 C8,24 0,16 0,10 C0,4 4,0 10,0 C15,0 18,3 20,6 C22,3 25,0 30,0 C36,0 40,4 40,10 C40,16 32,24 20,36 Z" fill="#cde9ef"></path></g>
+</svg>

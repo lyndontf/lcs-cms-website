@@ -1,201 +1,37 @@
-import OrgSchema from '@/components/OrgSchema';
-import { Fragment } from 'react';
 import { Metadata } from 'next';
-import Link from 'next/link';
+import { OurServicesContent } from '@/components/pages/OurServices';
 
+// Real, server-rendered Chinese page at a stable URL — for search engines,
+// ad-quality crawlers, and anyone sharing a direct link, none of which
+// trigger the client-side language toggle. Renders the exact same component
+// as /our-services (single source of the page body — see that file's
+// <Bilingual> pairs for the actual EN/ZH text), just wrapped so it defaults
+// to Chinese instead of English on first paint.
 export const metadata: Metadata = {
-  title: "我们的服务",
+  // Root layout wraps this in `%s | ${siteName}` automatically — no manual suffix.
+  title: '马来西亚长者护理服务',
   description:
-    '探索创世生命关怀的全方位服务：24/7专业护理、失智症与记忆护理、中风康复、术后康复、临终关怀及长者日间护理。5家中心遍布巴生谷与柔佛，收费透明，预约免费咨询。',
+    '5间中心提供全方位长者护理服务：24/7护理服务、失智症与记忆护理、中风康复、缓和医疗、手术后康复、喘息护理及长者日间护理。政府认证。立即预约免费咨询。',
+  alternates: {
+    canonical: 'https://genesiscare.com.my/zh/our-services',
+    languages: {
+      en: 'https://genesiscare.com.my/our-services',
+      zh: 'https://genesiscare.com.my/zh/our-services',
+    },
+  },
+  openGraph: {
+    title: '马来西亚长者护理服务 | Genesis Life Care',
+    description: '5间中心提供24/7护理服务、失智症护理、中风康复、缓和医疗及更多服务，遍布雪兰莪及柔佛。',
+    url: 'https://genesiscare.com.my/zh/our-services',
+    siteName: 'Genesis Life Care',
+    locale: 'zh_MY',
+    type: 'website',
+    images: [{ url: 'https://genesiscare.com.my/images/services/rehab-department.jpg', width: 1200, height: 630, alt: 'Genesis Life Care 康复与护理服务' }],
+  },
 };
 
 export const revalidate = 60;
 
-const highlights = [
-  { label: '护理服务', value: '6', sub: '全面范围' },
-  { label: '中心', value: '5', sub: '全马来西亚' },
-  { label: '护理', value: '24/7', sub: '昼夜不间断' },
-  { label: '专业人员', value: '150+', sub: '合格员工' },
-];
-
 export default function OurServicesZh() {
-  return (
-    <main className="bg-white">
-      <OrgSchema />
-      <style dangerouslySetInnerHTML={{ __html: `
-        .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div { color: inherit; }
-        .hero-dark h1, .hero-dark h2, .hero-dark p, .hero-dark span, .hero-dark div,
-        .hero-dark .text-4xl, .hero-dark .text-5xl, .hero-dark .sm\\:text-5xl,
-        .hero-dark .text-3xl, .hero-dark .text-lg, .hero-dark .text-sm,
-        .hero-dark .text-white { color: #ffffff !important; }
-        .hero-dark .text-gray-900 { color: rgb(17 24 39) !important; }
-        .hero-dark .text-gray-800 { color: rgb(31 41 55) !important; }
-        .hero-dark .text-gold { color: #FAB515 !important; }
-      ` }} />
-
-      <section className="hero-dark relative overflow-hidden">
-        {/* Background image */}
-        <img
-          src="/images/general/hero-main.jpeg"
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-800/90 via-primary/85 to-secondary/80" />
-        {/* Decorative circles */}
-        <div className="absolute -top-[20%] -right-[10%] w-[55%] pb-[55%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.08)_0%,transparent_70%)] pointer-events-none" />
-        <div className="absolute -bottom-[30%] -left-[5%] w-[40%] pb-[40%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,.05)_0%,transparent_70%)] pointer-events-none" />
-
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center">
-          <span className="inline-block bg-gold text-gray-900 text-xs font-bold tracking-wide px-4 py-1.5 rounded-full uppercase mb-6">
-            我们的服务
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight text-white mb-5" style={{color: 'white'}}>
-            生活每个阶段的<br />综合护理
-          </h1>
-          <p className="text-lg text-white leading-relaxed max-w-2xl mx-auto mb-8" style={{color: 'white'}}>
-            从长期住宅护理到专业记忆护理和康复，Genesis Life Care在马来西亚5个中心提供全面的老年护理服务。
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/zh/booking"
-              className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-3.5 rounded-xl hover:bg-yellow-400 transition-colors text-sm whitespace-nowrap"
-            >
-              预约免费咨询
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <a
-              href="tel:+60193250457"
-              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-6 py-3.5 rounded-xl hover:bg-white/10 transition-colors text-sm whitespace-nowrap"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              致电 +6019-325-0457
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white border-b border-gray-200 py-6 sm:py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-8">
-            {highlights.map((h, i) => (
-              <Fragment key={i}>
-                {i > 0 && <div className="hidden sm:block w-px h-12 bg-gray-200" />}
-                <div className="text-center flex-1 min-w-[100px]">
-                  <span className="block text-4xl sm:text-5xl font-extrabold text-gray-700 leading-none">{h.value}</span>
-                  <span className="text-xs text-gray-500 mt-1 font-medium">{h.label}</span>
-                </div>
-              </Fragment>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">我们提供</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
-              6种专业护理服务
-            </h2>
-            <p className="text-gray-500 text-lg">
-              每项服务都在我们的5个中心提供，由受过培训、充满同情的专业人员提供。
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-primary text-sm font-bold uppercase tracking-widest mb-2">为什么选择Genesis</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
-              为什么家庭选择我们
-            </h2>
-            <p className="text-gray-500 text-lg">
-              我们不仅仅提供护理 — 我们为您的家庭创建了一个支持、专业和充满爱的环境。
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                title: '政府许可',
-                desc: '所有中心提供透明和具竞争力的定价，无隐藏费用。',
-                icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
-              },
-              {
-                title: '合格医务人员',
-                desc: '驻地医生、注册护士、物理治疗师和心理学家遍布所有中心。',
-                icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
-              },
-              {
-                title: '个性化护理计划',
-                desc: '每个居民都获得与其家人和医疗团队合作制定的定制护理计划。',
-                icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01',
-              },
-              {
-                title: '透明定价',
-                desc: '无隐藏费用。清晰的前期定价，让家庭可以放心地计划。',
-                icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
-              },
-            ].map((item, i) => (
-              <div key={i} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                <div className="bg-primary/10 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} />
-                  </svg>
-                </div>
-                <h3 className="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="hero-dark relative bg-gradient-to-r from-primary via-primary-800 to-secondary overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-            backgroundSize: '28px 28px',
-          }}
-        />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-            为您的亲人找到合适的护理
-          </h2>
-          <p className="text-lg text-white mb-8 max-w-2xl mx-auto" style={{color: 'white'}}>
-            不确定哪项服务适合您的家庭？预约免费咨询，我们的护理顾问将帮助您找到最佳解决方案 — 没有义务。
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/zh/booking"
-              className="inline-flex items-center gap-2 bg-gold text-gray-900 font-bold px-6 py-4 rounded-xl hover:bg-yellow-400 transition-colors whitespace-nowrap"
-            >
-              预约免费咨询
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <a
-              href="tel:+60193250457"
-              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-bold px-6 py-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              致电 +6019-325-0457
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
+  return <OurServicesContent locale="zh" />;
 }

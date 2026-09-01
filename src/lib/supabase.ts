@@ -1,4 +1,6 @@
+import { cache } from 'react';
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
+import { isVisitorRegionBlocked } from './geo-block';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -33,6 +35,11 @@ export interface CmsPage {
   meta_title: string | null;
   meta_description: string | null;
   content: ContentBlock[];
+  // Optional Chinese translation of `content`, rendered client-side by
+  // ContentRenderer when the visitor toggles the site language — same page,
+  // same URL, no separate zh- page/locale row. Null/absent means this page
+  // has no Chinese translation yet, and the toggle simply has no effect on it.
+  content_zh?: ContentBlock[] | null;
   featured_image_url: string | null;
   status: 'draft' | 'published' | 'archived';
   template: string;
@@ -83,6 +90,7 @@ export interface SiteSettings {
   site_name: string;
   tagline: string | null;
   logo_url: string | null;
+  og_image_url: string | null;
   favicon_url: string | null;
   primary_color: string;
   secondary_color: string;
@@ -122,7 +130,11 @@ export async function getPublishedPages(siteId?: string): Promise<CmsPage[]> {
   return (data || []) as CmsPage[];
 }
 
-export async function getPageBySlug(slug: string, siteId?: string, locale: string = 'en'): Promise<CmsPage | null> {
+// cache()-wrapped: this is called repeatedly per request (layout's full-HTML-override
+// check, generateMetadata, and the page component itself all fetch the same slug) —
+// React dedupes identical calls within a single render pass, turning what was 3
+// separate ~129KB Supabase round trips into 1.
+export const getPageBySlug = cache(async function getPageBySlug(slug: string, siteId?: string, locale: string = 'en'): Promise<CmsPage | null> {
   let query = supabase
     .from('cms_pages')
     .select('*')
@@ -132,11 +144,14 @@ export async function getPageBySlug(slug: string, siteId?: string, locale: strin
   if (siteId) query = query.eq('site_id', siteId);
   const { data } = await query.limit(1).single();
   return data as CmsPage | null;
-}
+});
 
 // ─── Locale Helpers ───
 
-export async function getSupportedLocales(siteId?: string): Promise<string[]> {
+// cache()-wrapped: called up to 3x per request in the catch-all route
+// (resolveRoute, generateMetadata, and its hreflang-languages loop all ask
+// the same siteId) — dedupe to 1 real Supabase call.
+export const getSupportedLocales = cache(async function getSupportedLocales(siteId?: string): Promise<string[]> {
   if (!siteId) return ['en'];
   const { data } = await supabase
     .from('cms_sites')
@@ -145,9 +160,9 @@ export async function getSupportedLocales(siteId?: string): Promise<string[]> {
     .single();
   const locales = data?.supported_locales as string[] | null | undefined;
   return locales && locales.length > 0 ? locales : ['en'];
-}
+});
 
-export async function pageExistsForLocale(slug: string, siteId: string, locale: string): Promise<boolean> {
+export const pageExistsForLocale = cache(async function pageExistsForLocale(slug: string, siteId: string, locale: string): Promise<boolean> {
   let query = supabase
     .from('cms_pages')
     .select('id')
@@ -157,7 +172,7 @@ export async function pageExistsForLocale(slug: string, siteId: string, locale: 
   if (siteId) query = query.eq('site_id', siteId);
   const { data } = await query.limit(1).maybeSingle();
   return !!data;
-}
+});
 
 export async function getPublishedPosts(siteId?: string): Promise<CmsPost[]> {
   let query = supabase
@@ -189,14 +204,16 @@ export async function getMenus(siteId?: string): Promise<CmsMenu[]> {
   return (data || []) as CmsMenu[];
 }
 
-export async function getSiteSettings(siteId?: string): Promise<SiteSettings | null> {
+// cache()-wrapped: called from both layout.tsx (twice) and the page-level
+// generateMetadata/page component for the same siteId every request.
+export const getSiteSettings = cache(async function getSiteSettings(siteId?: string): Promise<SiteSettings | null> {
   let query = supabase
     .from('cms_site_settings')
     .select('*');
   if (siteId) query = query.eq('site_id', siteId);
   const { data } = await query.limit(1).single();
   return data as SiteSettings | null;
-}
+});
 
 // ─── Draft Preview (by ID, any status) ───
 
@@ -262,7 +279,7 @@ export async function getJobListingById(id: string): Promise<JobListing | null> 
 
 export async function submitJobApplication(formData: {
   job_listing_id: string;
-  organization_id: string;
+  organization_id?: string;
   job_title?: string;
   applicant_name: string;
   applicant_email: string;
@@ -273,24 +290,30 @@ export async function submitJobApplication(formData: {
   years_experience?: number;
   expected_salary?: string;
 }): Promise<boolean> {
-  // All applications live in glc_biodata so they surface in the CMS
-  // Applications view alongside caregiver-pool submissions.
+  // Professional/internal-hire applications (e.g. Resident Medical Officer)
+  // now live in the unified `candidates` table alongside GLC Hire marketplace
+  // candidates. `organization_id` has no equivalent column here — candidates
+  // are centre-scoped instead, so `centre_id` is left unset and an admin
+  // assigns it later in the Biodata Pool screen.
+  if (isVisitorRegionBlocked()) return false;
+
   const notes = [
     formData.current_employer ? `Current employer: ${formData.current_employer}` : null,
     formData.years_experience != null ? `Experience: ${formData.years_experience} yr(s)` : null,
     formData.expected_salary ? `Expected salary: ${formData.expected_salary}` : null,
   ].filter(Boolean).join(' | ') || null;
 
-  const { error } = await supabase.from('glc_biodata').insert({
-    organization_id: formData.organization_id,
-    full_name: formData.applicant_name,
-    applicant_email: formData.applicant_email,
-    applicant_phone: formData.applicant_phone ?? null,
-    resume_url: formData.resume_url ?? null,
+  const { error } = await supabase.from('candidates').insert({
+    name: formData.applicant_name,
+    email: formData.applicant_email,
+    phone: formData.applicant_phone ?? null,
+    pdf_url: formData.resume_url ?? null,
     cover_letter: formData.cover_letter ?? null,
     job_listing_id: formData.job_listing_id,
     job_category: formData.job_title || 'Job Application',
-    status: 'pending',
+    status: 'pending review',
+    is_published: false,
+    application_type: 'internal',
     application_source: 'careers_form',
     notes,
   });
@@ -298,6 +321,7 @@ export async function submitJobApplication(formData: {
 }
 
 export async function uploadBiodataPhoto(file: File): Promise<string | null> {
+  if (isVisitorRegionBlocked()) return null;
   const ext = file.name.split('.').pop() || 'jpg';
   const filename = `applications/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
   const { error } = await supabase.storage
@@ -322,20 +346,49 @@ export async function submitBiodataApplication(formData: {
   height_cm?: number;
   weight_kg?: number;
   food_preference?: string;
+  diet?: string;
+  siblings_count?: number;
+  sibling_position?: number;
   languages?: { name: string; level: string }[];
+  previous_employers?: BiodataPreviousEmployer[];
   cover_letter?: string;
   photo_url?: string;
   job_listing_id?: string;
-  organization_id: string;
+  organization_id?: string;
 }): Promise<boolean> {
-  const { error } = await supabase.from('glc_biodata').insert({
-    ...formData,
-    status: 'pending',
-    application_source: 'website',
+  if (isVisitorRegionBlocked()) return false;
+
+  // GLC Hire marketplace biodata applications now insert directly into the
+  // unified `candidates` table. `age` (derived elsewhere from dob) and
+  // `organization_id` (candidates is centre-scoped, not org-scoped) have no
+  // destination column and are intentionally not passed through.
+  const { error } = await supabase.from('candidates').insert({
+    name: formData.full_name,
+    email: formData.applicant_email,
+    phone: formData.applicant_phone ?? null,
+    job_category: formData.job_category ?? null,
+    nationality_text: formData.nationality ?? null,
+    dob: formData.date_of_birth ?? null,
+    marital_status_text: formData.marital_status ?? null,
+    education_level: formData.education_level ?? null,
+    religion: formData.religion ?? null,
+    height_cm: formData.height_cm ?? null,
+    weight_kg: formData.weight_kg ?? null,
+    food_preference: formData.food_preference ?? null,
+    diet: formData.diet ?? null,
+    siblings_count: formData.siblings_count ?? null,
+    sibling_position: formData.sibling_position ?? null,
     languages: formData.languages || [],
+    cover_letter: formData.cover_letter ?? null,
+    profile_pic_url: formData.photo_url ?? null,
+    job_listing_id: formData.job_listing_id ?? null,
+    status: 'pending review',
+    is_published: false,
+    application_type: 'marketplace',
+    application_source: 'website',
     skills: [],
-    helper_experience: {},
-    previous_employers: [],
+    experience: {},
+    previous_employers: formData.previous_employers || [],
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
   });
@@ -412,16 +465,17 @@ export interface BiodataCandidate {
   updated_at: string;
 }
 
-// Published caregivers are the single source of truth in `users` (caregiver_*),
+// Published candidates are the single source of truth in `public.candidates`,
 // shared by /biodata, the agency site, and agency-services.html. Approved resume
-// submissions become published users via the approve_biodata() RPC.
+// submissions become published candidates via the approve_biodata() RPC.
 const CAREGIVER_COLUMNS =
   'id, name, profile_pic_url, nationality_text, dob, created_at, ' +
-  'caregiver_reference_no, caregiver_job_category, caregiver_pdf_url, ' +
-  'caregiver_education_level, caregiver_food_preference, caregiver_children_info, ' +
-  'caregiver_monthly_salary_myr, caregiver_rest_days_per_month, ' +
-  'caregiver_off_day_compensation_myr, caregiver_languages, caregiver_skills, ' +
-  'caregiver_experience, caregiver_notes';
+  'reference_no, job_category, pdf_url, ' +
+  'education_level, food_preference, children_info, ' +
+  'monthly_salary_myr, rest_days_per_month, ' +
+  'off_day_compensation_myr, languages, skills, ' +
+  'experience, notes, height_cm, weight_kg, religion, diet, ' +
+  'siblings_count, sibling_position, marital_status_text, previous_employers';
 
 function mapUserToCandidate(u: Record<string, any>): BiodataCandidate {
   let age: number | null = null;
@@ -434,33 +488,33 @@ function mapUserToCandidate(u: Record<string, any>): BiodataCandidate {
   return {
     id: u.id,
     organization_id: '',
-    reference_no: u.caregiver_reference_no ?? null,
+    reference_no: u.reference_no ?? null,
     status: 'available',
-    job_category: u.caregiver_job_category ?? null,
+    job_category: u.job_category ?? null,
     photo_url: u.profile_pic_url ?? null,
-    pdf_url: u.caregiver_pdf_url ?? null,
+    pdf_url: u.pdf_url ?? null,
     full_name: u.name ?? '',
     date_of_birth: u.dob ?? null,
     age,
     nationality: u.nationality_text ?? null,
-    height_cm: null,
-    weight_kg: null,
-    education_level: u.caregiver_education_level ?? null,
-    religion: null,
-    food_preference: u.caregiver_food_preference ?? null,
-    diet: null,
-    siblings_count: null,
-    sibling_position: null,
-    marital_status: null,
-    children_info: u.caregiver_children_info ?? null,
-    monthly_salary_myr: u.caregiver_monthly_salary_myr ?? null,
-    rest_days_per_month: u.caregiver_rest_days_per_month ?? null,
-    off_day_compensation_myr: u.caregiver_off_day_compensation_myr ?? null,
-    languages: (u.caregiver_languages as BiodataLanguage[]) ?? [],
-    skills: (u.caregiver_skills as BiodataSkill[]) ?? [],
-    helper_experience: (u.caregiver_experience as Record<string, string>) ?? {},
-    previous_employers: [],
-    notes: u.caregiver_notes ?? null,
+    height_cm: u.height_cm ?? null,
+    weight_kg: u.weight_kg ?? null,
+    education_level: u.education_level ?? null,
+    religion: u.religion ?? null,
+    food_preference: u.food_preference ?? null,
+    diet: u.diet ?? null,
+    siblings_count: u.siblings_count ?? null,
+    sibling_position: u.sibling_position ?? null,
+    marital_status: u.marital_status_text ?? null,
+    children_info: u.children_info ?? null,
+    monthly_salary_myr: u.monthly_salary_myr ?? null,
+    rest_days_per_month: u.rest_days_per_month ?? null,
+    off_day_compensation_myr: u.off_day_compensation_myr ?? null,
+    languages: (u.languages as BiodataLanguage[]) ?? [],
+    skills: (u.skills as BiodataSkill[]) ?? [],
+    helper_experience: (u.experience as Record<string, string>) ?? {},
+    previous_employers: (u.previous_employers as BiodataPreviousEmployer[]) ?? [],
+    notes: u.notes ?? null,
     created_at: u.created_at ?? '',
     updated_at: u.created_at ?? '',
   };
@@ -468,21 +522,19 @@ function mapUserToCandidate(u: Record<string, any>): BiodataCandidate {
 
 export async function getAvailableBiodata(): Promise<BiodataCandidate[]> {
   const { data } = await supabase
-    .from('users')
+    .from('candidates')
     .select(CAREGIVER_COLUMNS)
-    .eq('is_caregiver', true)
-    .eq('caregiver_is_published', true)
+    .eq('is_published', true)
     .order('created_at', { ascending: false });
   return (data || []).map(mapUserToCandidate);
 }
 
 export async function getBiodataById(id: string): Promise<BiodataCandidate | null> {
   const { data } = await supabase
-    .from('users')
+    .from('candidates')
     .select(CAREGIVER_COLUMNS)
     .eq('id', id)
-    .eq('is_caregiver', true)
-    .eq('caregiver_is_published', true)
+    .eq('is_published', true)
     .limit(1)
     .maybeSingle();
   return data ? mapUserToCandidate(data) : null;
@@ -498,6 +550,8 @@ export async function submitContactForm(formData: {
   page_url?: string;
   centre_id?: string;
 }): Promise<boolean> {
+  if (isVisitorRegionBlocked()) return false;
+
   const { error } = await supabase.from('cms_forms').insert({
     ...formData,
     form_type: 'contact',
@@ -609,6 +663,8 @@ export async function submitBooking(booking: {
   type_of_care_id?: string | null;
   booking_status_id?: string | null;
 }): Promise<{ success: boolean; duplicate?: boolean; full?: boolean }> {
+  if (isVisitorRegionBlocked()) return { success: false };
+
   const { data, error } = await supabase.rpc('submit_booking_safe', {
     p_centre_id: booking.centre_id,
     p_booking_slot_config_id: booking.booking_slot_config_id,
